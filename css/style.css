@@ -1,0 +1,16 @@
+:root{
+    --cor-primaria: #0047E1;
+    --cor-secundaria: #1A2B4C;
+}
+
+.logo{
+    aspect-ratio: 1 / 1;
+    width: 100px;
+}
+
+.background-1{
+    background-image: url(../img/foto-1-mobile.png);
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background-repeat: no-repeat;   
+}
