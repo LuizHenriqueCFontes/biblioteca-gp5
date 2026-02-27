@@ -3,14 +3,54 @@
     --cor-secundaria: #1A2B4C;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100vh;
+}
+
 .logo{
     aspect-ratio: 1 / 1;
     width: 100px;
 }
 
 .background-1{
-    background-image: url(../img/foto-1-mobile.png);
+    background-image: url(../img/imagem-mobile.png);
+    aspect-ratio: 9 / 16;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.icones{
+    background-color: var(--cor-secundaria);
+}
+
+.explore-acervo{
+    padding-top: 10px;
     aspect-ratio: 1 / 1;
+}
+
+.container-1{
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+}
+
+.container-icones{
+    background-color: var(--cor-primaria);
+    margin: auto;
+    padding: 10px;
+    width: 65%;
+    height: 65%;
+}
+
+.container-icones img{
     width: 100%;
-    background-repeat: no-repeat;   
+    height: 100%;
+    border-radius: 7px;
 }
