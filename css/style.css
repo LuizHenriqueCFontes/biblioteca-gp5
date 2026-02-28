@@ -54,3 +54,8 @@ html, body{
     height: 100%;
     border-radius: 7px;
 }
+
+.container-ultimo{
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
