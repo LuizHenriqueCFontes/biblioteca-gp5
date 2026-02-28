@@ -1,6 +1,7 @@
 :root{
     --cor-primaria: #0047E1;
-    --cor-secundaria: #1A2B4C;
+    --cor-secundaria: #00A8E8;
+    --cor-terciaria: #F5F7FF;
 }
 
 *{
@@ -28,11 +29,12 @@ html, body{
 }
 
 .icones{
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-primaria);
 }
 
 .explore-acervo{
-    padding-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     aspect-ratio: 1 / 1;
 }
 
@@ -42,7 +44,7 @@ html, body{
 }
 
 .container-icones{
-    background-color: var(--cor-primaria);
+    background-color: var(--cor-secundaria);
     margin: auto;
     padding: 10px;
     width: 65%;
@@ -58,4 +60,15 @@ html, body{
 .container-ultimo{
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
+}
+
+.comece-ler{
+    text-align: center;
+}
+
+.comece-ler img{
+    display: block;
+    aspect-ratio: 3 / 2;
+    width: 65%;
+    margin: 10px auto;
 }
