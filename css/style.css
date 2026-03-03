@@ -1,6 +1,7 @@
 :root{
     --cor-primaria: #0047E1;
-    --cor-secundaria: #1A2B4C;
+    --cor-secundaria: #00A8E8;
+    --cor-terciaria: #F5F7FF;
 }
 
 *{
@@ -13,13 +14,17 @@ html, body{
     height: 100vh;
 }
 
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .logo{
     aspect-ratio: 1 / 1;
     width: 100px;
 }
 
 .background-1{
-    background-image: url(../img/imagem-mobile.png);
+    background-image: url(../img/funcionalidades/imagem-mobile.png);
     aspect-ratio: 9 / 16;
     height: 100%;
     background-repeat: no-repeat;
@@ -28,11 +33,12 @@ html, body{
 }
 
 .icones{
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-primaria);
 }
 
 .explore-acervo{
-    padding-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     aspect-ratio: 1 / 1;
 }
 
@@ -42,7 +48,7 @@ html, body{
 }
 
 .container-icones{
-    background-color: var(--cor-primaria);
+    background-color: var(--cor-secundaria);
     margin: auto;
     padding: 10px;
     width: 65%;
@@ -54,3 +60,116 @@ html, body{
     height: 100%;
     border-radius: 7px;
 }
+
+.container-ultimo{
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.comece-ler{
+    text-align: center;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-terciaria);
+    padding: 10px;
+}
+
+.comece-ler h2{
+    margin-bottom: 15px;
+}
+
+.comece-ler button{
+    width: 25%;
+    padding: 8px;
+    border: 1px solid var(--cor-terciaria);
+    background-color: var(--cor-primaria);
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.comece-ler a{
+    color: var(--cor-terciaria);
+    font-size: 1.2em;
+}
+
+.slide p{
+    text-decoration: underline;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.comece-ler img{
+    display: block;
+    aspect-ratio: 3 / 2;
+    width: 60%;
+    margin: 10px auto;
+}
+
+.sugestao{
+    text-align: center;
+    padding: 10px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-terciaria);
+}
+
+.sugestao h2{
+    margin-bottom: 20px;
+}
+
+.sugestao button{
+    width: 25%;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: var(--cor-secundaria);
+    border: 1px solid var(--cor-terciaria);
+    margin-bottom: 25px;
+}
+
+.sugestao a{
+    color: var(--cor-terciaria);
+}
+
+.temas a{
+    display: inline-block;
+    padding: 9px;
+    color: var(--cor-terciaria);
+    margin-bottom: 25px;
+    text-decoration: none;
+    border: 1px solid var(--cor-terciaria);
+    border-radius: 10px;
+    font-size: 0.9em;
+}
+
+.destaque{
+    text-align: center;
+}
+
+.destaque h2{
+    
+}
+
+.slide-1{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.slide-1 img{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.slide-1 .seta-1{
+    grid-column: 1 / 2;
+    align-self: center;
+    text-align: center;
+}
+
+
+.slide-1 .seta-2{
+    grid-column: 3 / 4;
+    align-self: center;
+    text-align: center;
+}
+
+
+
