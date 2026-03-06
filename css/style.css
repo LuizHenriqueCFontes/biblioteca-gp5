@@ -18,9 +18,25 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+header{
+    background-color: var(--cor-primaria);
+    color: var(--cor-terciaria);
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header ul{
+    display: flex;
+    mar
+}
+
 .logo{
     aspect-ratio: 1 / 1;
     width: 100px;
+    display: block;
 }
 
 .background-1{
@@ -145,7 +161,21 @@ body{
 }
 
 .destaque h2{
-    
+    margin: 20px 0 12px;
+}
+
+.destaque button{
+    padding: 10px;
+    width: 160px;
+    border: none;
+    background-color: var(--cor-primaria);
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.destaque-btn{
+    color: var(--cor-terciaria);
+    text-transform: uppercase;
 }
 
 .slide-1{
@@ -171,5 +201,11 @@ body{
     text-align: center;
 }
 
-
+footer{
+    padding: 20px;
+    text-align: center;
+    background-color: var(--cor-primaria);
+    color: var(--cor-terciaria);
+    margin-top: 15px;
+}
 
