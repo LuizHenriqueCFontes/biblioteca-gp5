@@ -1,0 +1,34 @@
+:root{
+    --primary-color: #0047E1;
+    --secondary-color: #00A8E8;
+    --tertiary-color: #F5F7FF;
+
+    --primary-color-transparency: rgba(0, 71, 225, 0.3);
+    --secondary-color-transparency: rgba(0, 168, 232, 0.3);
+}
+
+.button{
+    border-radius: 3px;
+    border: none;
+    width: 100%;
+    padding: 13px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.primary{
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+}
+
+.secondary{
+    background-color: aliceblue;
+    border: 1px solid var(--primary-color);
+}
+
+.primary:hover{
+    background-color:  var(--primary-color-transparency);
+}
+.secondary:hover{
+    background-color: var(--secondary-color-transparency);
+}
