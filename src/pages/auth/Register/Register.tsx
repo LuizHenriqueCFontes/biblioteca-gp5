@@ -1,11 +1,29 @@
-import { useState } from "react";
+import styles from "../../../styles/auth/authTheme.module.css";
+import Logo from "../../../components/Logo/Logo";
 import { Input } from "../../../components/Input/Input";
+import { useState } from "react";
 
 export default function Register(){
     const [email, setEmail] = useState("");
 
     return(
-        <Input id="5" label="Teste" value={email} onChange={setEmail}/>
+        <main>
+            <article >
+
+                <section className={styles.top}>
+                    <Logo />
+                    <h4>Vamos registrar-se na plataforma</h4>
+                    <p>Pedimos que preencha o campo para o cadastro</p>
+                </section>
+
+                <section>
+                    <form>
+                        <Input id="email" label="Digite seu email" placeholder="Email@example.com" type="email" value={email} onChange={setEmail} />
+
+                    </form>
+                </section>
+            </article>
+        </main>
 
     );
 }

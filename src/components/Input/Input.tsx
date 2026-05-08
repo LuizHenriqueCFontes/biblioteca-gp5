@@ -2,7 +2,7 @@ import styles from "./Input.module.css";
 
 interface InputProps{
     id: string,
-    label: string,
+    label?: string,
     type?: string,
     placeholder?: string,
     value: string,

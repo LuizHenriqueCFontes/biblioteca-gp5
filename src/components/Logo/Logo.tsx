@@ -1,7 +1,8 @@
 import logo from "../../assets/logo/alternative-logo.png";
+import styles from "./Logo.module.css";
 
-export function Logo(){
+export default function Logo(){
     return(
-        <img src={logo} alt="Logo da empresa" />
+        <img src={logo} className={styles.logo} alt="Logo da empresa" />
     );
 }
