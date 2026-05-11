@@ -7,8 +7,8 @@ export default function Register(){
     const [email, setEmail] = useState("");
 
     return(
-        <main>
-            <article >
+        <main className={styles.background}>
+            <article className={styles.article}>
 
                 <section className={styles.top}>
                     <Logo />

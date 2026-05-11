@@ -1,12 +1,29 @@
 .background{
     background: linear-gradient(to bottom, var(--primary-color-transparency),  var(--secondary-color-transparency)), url(../../assets/auth/auth-background.png);
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;  
+}
+
+.article{
+    width: 65%;
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    max-width: 470px;
+    align-self: center;
 }
 
 .top{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    margin-bottom: 55px; 
+    margin-bottom: 15px;
 }
 
 .top img{
@@ -23,12 +40,8 @@
 }
 
 .top p{
+    grid-column: 1 / -1;
     font-weight: normal;
     font-size: 0.9em;
-    text-align: left;
     text-align: center;
-}
-
-article{
-    width: 90%;
 }
