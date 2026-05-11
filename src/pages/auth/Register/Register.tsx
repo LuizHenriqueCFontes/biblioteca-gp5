@@ -2,9 +2,20 @@ import styles from "../../../styles/auth/authTheme.module.css";
 import Logo from "../../../components/Logo/Logo";
 import { Input } from "../../../components/Input/Input";
 import { useState } from "react";
+import { Button } from "../../../components/Button/Button";
+
+interface RegisterFormData{
+    email: string,
+    username: string,
+    phone: string
+}
 
 export default function Register(){
-    const [email, setEmail] = useState("");
+    const [registerFormData, setRegisterFormData] = useState<RegisterFormData>({
+        email: "",
+        username: "",
+        phone: ""
+    });
 
     return(
         <main className={styles.background}>
@@ -18,9 +29,31 @@ export default function Register(){
 
                 <section>
                     <form>
-                        <Input id="email" label="Digite seu email" placeholder="Email@example.com" type="email" value={email} onChange={setEmail} />
+                        <Input id="email" label="Digite seu email" placeholder="Email@example.com" type="email" value={registerFormData.email} onChange={(value) => {
+                        setRegisterFormData({
+                            ...registerFormData,
+                            email: value
+                            });
+                        }} />
 
-                    </form>
+                        <Input id="username" label="Digite seu nome completo" placeholder="Digite seu nome" type="text" value={registerFormData.username} onChange={(value) => {
+                            setRegisterFormData({
+                                ...registerFormData,
+                                username: value
+                            })
+                        }}/>
+
+                        <Input id="phone" label="Digite seu telefone" placeholder="(00) 00000-0000" type="tel" value={registerFormData.phone} onChange={(value) => {
+                            setRegisterFormData({
+                               ...registerFormData,
+                               phone: value 
+                            })
+                        }}/>
+
+                        <Button variant="primary" type="submit">Continuar</Button>
+
+                        <Button variant="secondary" type="button">Voltar</Button>
+                    </form> 
                 </section>
             </article>
         </main>

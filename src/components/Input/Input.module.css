@@ -4,6 +4,7 @@
     outline: none;
     border-radius: 10px;
     border: 1px solid black;
+    margin-bottom: 15px;
 }
 
 .input:focus-within{

@@ -10,7 +10,7 @@ interface ButtonProps{
 export function Button(props: ButtonProps){
 
     return(
-        <button className={styles[props.variant]} type={props.type} onClick={props.onClick}>
+        <button className={`${styles.button} ${styles[props.variant]}`} type={props.type} onClick={props.onClick}>
             {props.children}
         </button>
 
