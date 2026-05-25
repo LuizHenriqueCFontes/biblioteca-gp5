@@ -8,12 +8,16 @@
 }
 
 .button{
-    border-radius: 3px;
+    border-radius: 7px;
     border: none;
     width: 100%;
     padding: 13px;
     transition: 0.5s;
     cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 0.85em;
+    font-weight: 500;
 }
 
 .primary{

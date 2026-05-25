@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Passion+One:wght@400;700;900&family=Sriracha&display=swap');
+
+:root{
+    --primary-color: #0047E1;
+    --secondary-color: #00A8E8;
+    --contrast-primary-color: #ffffff;
+
+    --background-page: #F5F7FF;
+    --title-color: #0f172a;
+    --informations-color: #475569;
+
+    --border-color: #cbd5e1;
+
+    --primary-color-transparency: rgba(0, 71, 225, 0.3);
+    --secondary-color-transparency: rgba(0, 168, 232, 0.3);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100vh;
+    font-family: "Inter", sans-serif;
+}
+
