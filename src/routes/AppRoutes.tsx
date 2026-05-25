@@ -1,12 +1,18 @@
-
-
 import { Route, Routes } from "react-router-dom";
-import Register from "../pages/auth/Register/Register";
+import MainLayout from "../layout/PublicLayout/MainLayout";
+import AdminLayout from "../layout/AdminLayout/AdminLayout";
+import ImportBooksPage from "../pages/admin/ImportBooksPage/ImportBooksPage";
 
 export default function AppRoutes(){
     return(
         <Routes>
-            <Route path="/register" element={<Register />} />
+            <Route element={<MainLayout />}>
+
+            </Route>
+
+            <Route element={<AdminLayout />}>
+                <Route path="/admin/imports" element={<ImportBooksPage />}/>
+            </Route>
         </Routes>
     );
 
