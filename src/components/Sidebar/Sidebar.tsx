@@ -10,7 +10,7 @@ export default function Sidebar(){
         exit={{x: "-100%"}}
         transition={{type: "spring", stiffness: 300, damping: 30}}
         >
-            <Logo />
+            <Logo variant="blue"/>
             <div>
                 <h1>Biblioteca-GP5</h1>
                 <p>Painel Administrativo</p>
