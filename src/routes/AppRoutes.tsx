@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layout/PublicLayout/MainLayout";
 import AdminLayout from "../layout/AdminLayout/AdminLayout";
-import ImportBooksPage from "../pages/admin/ImportBooksPage/ImportBooksPage";
+import ImportBooksPage from "../pages/admin/ImportBooksPage/pages/ImportBooksPage";
 
 export default function AppRoutes(){
     return(

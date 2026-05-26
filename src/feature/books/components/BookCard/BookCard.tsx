@@ -1,10 +1,9 @@
 interface BookCardProps{
     id: string,
     coverUrl: string,
-    fileUrl: string,
+    fileUrl?: string,
     title: string,
     authors: string,
-    description: string,
     action?: React.ReactNode
 }
 
@@ -15,7 +14,6 @@ export default function BookCard(props: BookCardProps){
 
             <div>
                 {props.title}
-                {props.description}
                 {props.authors}
             </div>
 

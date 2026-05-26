@@ -22,7 +22,7 @@ export type ImportBooksResponseDTO = {
 }
 
 export const importBooksService = {
-    getBooks: async (url?: string) => {
+    getBooks: async (url?: string): Promise<ImportBooksResponseDTO> => {
         const endpoint = url ?? "/admin/books";
 
         const { data } = await api.get<ImportBooksResponseDTO>(endpoint);

@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { Input } from "../../../components/Input/Input";
+import { Input } from "../../../../shared/components/Input/Input";
 import styles from "./ImportBooksPage.module.css";
 import { CircleAlert, SlidersHorizontal } from "lucide-react";
-import { Button } from "../../../components/Button/Button";
+import { Button } from "../../../../shared/components/Button/Button";
+import { useImportBooks } from "../../../../feature/importBooks/hooks/useImportBooks";
+import BookCard from "../../../../feature/books/components/BookCard/BookCard";
 
 export default function ImportBooksPage(){
     const [book, findBook] = useState("");
+
+    const { books, loading, error, previousPage, nextPage, fetchBooks } = useImportBooks();
 
     return(
         <section className={styles.container}>
@@ -44,7 +48,9 @@ export default function ImportBooksPage(){
 
                 <button className={styles.resultIconContainer}>
                     <SlidersHorizontal className={styles.resultIcon}/>
-                </button>    
+                </button>
+
+                  
             </section>
         </section>
 
