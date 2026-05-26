@@ -44,9 +44,7 @@ export default function ImportBooksPage(){
 
                 <button className={styles.resultIconContainer}>
                     <SlidersHorizontal className={styles.resultIcon}/>
-                </button>
-
-                
+                </button>    
             </section>
         </section>
 
