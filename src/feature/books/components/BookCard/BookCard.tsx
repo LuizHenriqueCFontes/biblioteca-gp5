@@ -1,23 +1,30 @@
+import styles from "./BookCard.module.css";
+
 interface BookCardProps{
     id: string,
     coverUrl: string,
     fileUrl?: string,
     title: string,
-    authors: string,
+    authors: string[],
+    description?: string[],
     action?: React.ReactNode
 }
 
 export default function BookCard(props: BookCardProps){
     return(
-        <article>
-            <img src={props.coverUrl} alt="Imagem do livro" />
+        <article className={styles.container}>
+            
+            <img className={styles.cover} src={props.coverUrl} alt="Imagem do livro" />
 
-            <div>
-                {props.title}
-                {props.authors}
+            <div className={styles.informationContainer}>
+                <h1 className={styles.title}>{props.title}</h1>
+                <p className={styles.authors}>{props.authors}</p>
             </div>
+            
 
-            {props.action && <div>{props.action}</div>}
+            <div className={styles.buttonContainer}>
+                {props.action}
+            </div>
         </article>
     );
 }

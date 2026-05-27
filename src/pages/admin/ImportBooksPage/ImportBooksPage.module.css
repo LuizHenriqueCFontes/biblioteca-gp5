@@ -66,9 +66,10 @@
     border: 1px solid var(--border-color);
     border-radius: 10px;
     padding: 10px 15px;
+}
 
+.containerSearch{
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
@@ -76,13 +77,21 @@
     color: var(--title-color);
     font-size: 0.9em;
     letter-spacing: -0.98px;
+    margin-bottom: 2px;
+}
+
+.resultDescription{
+    color: var(--informations-color);
+    font-weight: 600;
+    font-size: 0.75em;
+
 }
 
 .resultIconContainer{
     border: 1px solid var(--border-color);
     background-color: transparent;
     padding: 7px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     border-radius: 7px;
 }
@@ -90,4 +99,10 @@
 .resultIcon{
     width: 20px;
     height: 20px;
+}
+
+.button{
+    padding: 8px !important;
+    display: block;
+    margin: auto;
 }

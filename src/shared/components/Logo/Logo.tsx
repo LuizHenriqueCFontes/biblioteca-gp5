@@ -1,5 +1,5 @@
-import logoBlue from "../../assets/logo/logo-blue.png";
-import logoWhite from "../../assets/logo/logo-white.png";
+import logoBlue from "../../../assets/logo/logo-blue.png";
+import logoWhite from "../../../assets/logo/logo-white.png";
 import styles from "./Logo.module.css";
 
 interface LogoProps{

@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import type { ImportBooksResponseDTO } from "../services/ImportBooks";
+import type { PaginatedBookResponseDTO } from "../services/ImportBooks";
 import { importBooksService } from "../services/ImportBooks";
 
 export function useImportBooks(){
-    const [response, setResponse] = useState<ImportBooksResponseDTO | null>(null);
+    const [response, setResponse] = useState<PaginatedBookResponseDTO | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -35,11 +35,13 @@ export function useImportBooks(){
     }, [fetchBooks]);
 
     return{
-        books: response?.results ?? [],
+        /*books: response?.results ?? [],
         nextPage: response?.next ?? null,
         previousPage: response?.previous ?? null,
-        count: response?.count ?? 0,
+        count: response?.count ?? 0,*/
 
+        books: response?.content ?? [],
+        totalElements: response?.totalElements ?? 0,
         loading,
         error,
         fetchBooks
