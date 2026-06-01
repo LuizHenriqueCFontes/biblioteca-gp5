@@ -54,21 +54,15 @@ export default function ImportBooksPage(){
                 </div>
 
                 {books.map((book) => (
-                    <>
-                        
-                        <BookCard key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} 
-                        action={
-                            <>
-                                <Button className={styles.button} variant="secondary">Detalhes</Button> 
-                                
-                                <Button className={styles.button} variant="primary">Importar</Button>
-                            </>
-                        } />
-                        
+                    <BookCard key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} 
+                    action={
 
-                        {/*<hr />*/}
-
-                    </>
+                        <>
+                            <Button className={styles.button} variant="secondary">Detalhes</Button> 
+                            
+                            <Button className={styles.button} variant="primary">Importar</Button>
+                        </>
+                    } />
                 ))}
             </section>
         </section>
