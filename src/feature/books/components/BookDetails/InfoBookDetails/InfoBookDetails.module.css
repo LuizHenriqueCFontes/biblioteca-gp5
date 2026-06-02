@@ -1,0 +1,124 @@
+.container {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 5px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.titleContainer {
+  color: var(--title-color);
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.informationContainer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.information:last-child {
+  border-bottom: none;
+}
+
+.key {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.value {
+  color: var(--informations-color);
+  font-weight: 700;
+  text-align: right;
+  max-width: 60%;
+}
+
+.descriptionContainer {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.descriptionTitle {
+  color: var(--title-color);
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.description {
+  color: var(--informations-color);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.categoriesContainer {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.categories {
+  color: var(--title-color);
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.tagCategories {
+  display: inline-block;
+  background-color: #f1f5f9;
+  color: var(--informations-color);
+  font-size: 12px;
+  font-weight: 650;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+/*Config para telas maiores*/
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 45%;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 4%;
+    }
+
+  .descriptionContainer {
+        max-width: 50%;
+        display: inline-block;
+        margin: 16px 0;
+    }
+
+  .categoriesContainer {
+        width: 100%;
+        display: block;
+        margin-top: 24px;
+    }
+}

@@ -1,11 +1,11 @@
 import { api } from "../../../../services/api"
 
-/*export type GutendexBookDTO =  {
+export type GutendexBookDTO =  {
     id: number,
     title: string,
     authors: string[],
-    summaries: string[],
     coverUrl: string,
+    fileUrl: string,
 }
 
 export type ImportSearchResponseDTO = {
@@ -13,9 +13,9 @@ export type ImportSearchResponseDTO = {
     next: string | null,
     previous: string | null,
     results: GutendexBookDTO[]
-}*/
+}
 
-export type BookResponseDTO = {
+/*export type BookResponseDTO = {
     id: string,
     title: string,
     authors: string[],
@@ -32,13 +32,13 @@ export type PaginatedResponseDTO = {
     size: number,
     totalElements: number,
     totalPages: number
-}
+}*/
 
 export const importBooksService = {
-    getBooks: async (url?: string): Promise<PaginatedResponseDTO> => {
-        const endpoint = url ?? "/books";
+    getBooks: async (url?: string): Promise<ImportSearchResponseDTO> => {
+        const endpoint = url ?? "/admin/books";
 
-        const { data } = await api.get<PaginatedResponseDTO>(endpoint);
+        const { data } = await api.get<ImportSearchResponseDTO>(endpoint);
 
         return data;
     }

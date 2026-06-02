@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "../../shared/components/Header/Header";
-import styles from "./AdminLayout.module.css";
+import styles from "./MainLayout.module.css";
 
 
 export default function AdminLayout(){

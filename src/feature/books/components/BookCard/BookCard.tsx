@@ -1,12 +1,11 @@
 import styles from "./BookCard.module.css";
 
 interface BookCardProps{
-    id: string,
+    id: number,
     coverUrl: string,
     fileUrl?: string,
     title: string,
     authors: string[],
-    description?: string[],
     action?: React.ReactNode
 }
 

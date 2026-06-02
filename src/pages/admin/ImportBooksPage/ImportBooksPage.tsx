@@ -9,7 +9,7 @@ import BookCard from "../../../feature/books/components/BookCard/BookCard";
 export default function ImportBooksPage(){
     const [book, findBook] = useState("");
 
-    const { books, totalElements /*loading, error, previousPage, nextPage, fetchBooks*/ } = useImportBooks();
+    const { books, totalElements, loading, /*error, previousPage, nextPage, fetchBooks*/ } = useImportBooks();
 
     return(
         <section className={styles.container}>
@@ -52,6 +52,8 @@ export default function ImportBooksPage(){
                         <SlidersHorizontal className={styles.resultIcon}/>
                     </button>
                 </div>
+                
+                {loading ? <p>Carregando</p>: ""}
 
                 {books.map((book) => (
                     <BookCard key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} 
