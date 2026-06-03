@@ -19,7 +19,7 @@ export default function ImportBookDetailPage(){
                 </Button>
             }/>}
 
-            {book && <InfoBookDetails className={sytles.infoBook} title={book.title} description={book.description} bookshelves={book?.bookshelves} authors={book.authors}/>}
+            {book && <InfoBookDetails className={sytles.infoBook} title={book.title} description={book.description} /*bookshelves={book.bookshelves.map(name => ({name}))}*/authors={book.authors}/>}
         </section>
     );
 }

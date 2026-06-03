@@ -1,10 +1,15 @@
 import { useState } from "react";
 import styles from "./InfoBookDetails.module.css";
 
+interface CategoryOption {
+    id?: string,
+    name: string
+}
+
 interface InfoBookDetails {
     title: string,
     authors: string[],
-    bookshelves: string[],
+    bookshelves: CategoryOption[],
     description: string[],
     className?: string
 }
@@ -33,7 +38,7 @@ export default function InfoBookDetails(props: InfoBookDetails) {
 
                     <li className={styles.information}>
                         <span className={styles.key}>Categoria</span>
-                        <strong className={styles.value}>{firstBookshelves}</strong>
+                        <strong className={styles.value}>{firstBookshelves.name}</strong>
                     </li>
 
                     <li className={styles.information}>
@@ -57,8 +62,8 @@ export default function InfoBookDetails(props: InfoBookDetails) {
 
             <section className={styles.categoriesContainer}>
                 <h2 className={styles.categories}>Categorias relacionadas</h2>
-                {props.bookshelves.map((bookshelve ) => (
-                    <p className={styles.tagCategories} key={bookshelve}>{bookshelve}</p>
+                {props.bookshelves.map((bookshelve) => (
+                    <p className={styles.tagCategories} key={bookshelve.id ?? bookshelve.name}>{bookshelve.name}</p>
                 ))}
             </section>
         </>
