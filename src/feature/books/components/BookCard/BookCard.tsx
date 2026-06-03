@@ -1,7 +1,7 @@
 import styles from "./BookCard.module.css";
 
 interface BookCardProps{
-    id: number,
+    id: number | string,
     coverUrl: string,
     fileUrl?: string,
     title: string,

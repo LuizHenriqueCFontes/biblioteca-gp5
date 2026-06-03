@@ -35,11 +35,6 @@ export function useImportBooks(){
     }, [fetchBooks]);
 
     return{
-        /*books: response?.results ?? [],
-        nextPage: response?.next ?? null,
-        previousPage: response?.previous ?? null,
-        count: response?.count ?? 0,*/
-
         books: response?.results ?? [],
         totalElements: response?.count ?? 0,
         loading,

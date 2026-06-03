@@ -15,25 +15,6 @@ export type ImportSearchResponseDTO = {
     results: GutendexBookDTO[]
 }
 
-/*export type BookResponseDTO = {
-    id: string,
-    title: string,
-    authors: string[],
-    coverUrl: string
-}
-
-export type PaginatedResponseDTO = {
-    content: BookResponseDTO[],
-    empty: boolean,
-    first: boolean,
-    last: boolean,
-    number: boolean,
-    numberOfElements: number,
-    size: number,
-    totalElements: number,
-    totalPages: number
-}*/
-
 export const importBooksService = {
     getBooks: async (url?: string): Promise<ImportSearchResponseDTO> => {
         const endpoint = url ?? "/admin/books";

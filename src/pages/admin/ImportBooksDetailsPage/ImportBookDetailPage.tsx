@@ -7,7 +7,7 @@ import sytles from "./ImportBookDetailPage.module.css"
 
 export default function ImportBookDetailPage(){
 
-    const { book, loading, error } = useImportBooksDetails();
+    const { book, loading, /*error*/ } = useImportBooksDetails();
 
     return(
         <section className={sytles.container}>
@@ -20,7 +20,6 @@ export default function ImportBookDetailPage(){
             }/>}
 
             {book && <InfoBookDetails className={sytles.infoBook} title={book.title} description={book.description} bookshelves={book?.bookshelves} authors={book.authors}/>}
-
         </section>
     );
 }

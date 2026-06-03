@@ -1,50 +1,29 @@
-import { useState } from "react";
+import { useSearchBooks } from "../../../feature/user/searchBooks/hooks/useSearchBooks";
+import BookSearch from "../../../shared/components/BookSearch/BookSearch";
 import { Button } from "../../../shared/components/Button/Button";
-import { Input } from "../../../shared/components/Input/Input";
 import styles from "./SearchBooks.module.css";
-import { SlidersHorizontal } from "lucide-react";
 
 export default function SearchBooks(){
-    const [book, setBook] = useState("");
+
+    const { books, loading, totalElements } = useSearchBooks();
     
     return(
-        <section className={styles.container}>
-
-            <div>
-                <h1 className={styles.title}>Pesquisar livros</h1>
-                <p className={styles.information}>Encontre livros disponíveis e amplie seus conhecimentos</p>
-            </div>
-
-            <div className={styles.searchContainer}>
-
-                <form>
-                    <Input className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={book} onChange={setBook}/>
-
-                    <select name="category" id="category" className={styles.filter}>
-                        <option>Todos os tipos</option>
-                    </select>
-
-                    
-                    <Button variant="primary">
-                        Pesquisar
+        <BookSearch 
+            description="Encontre livros disponíveis e amplie seus conhecimentos"
+            books={books}
+            totalElements={totalElements}
+            loading={loading}
+            action={
+                <>
+                    <Button className={styles.button} variant="secondary">
+                        Detalhes
                     </Button>
-                </form>
-            </div>
 
-            <section className={styles.resultContainer}>
-
-                <div className={styles.containerSearch}>
-                    <div>
-                        <h2 className={styles.resultTitle}>Resultados da pesquisa</h2>
-                        <p className={styles.resultDescription}> resultados encontrados</p>
-                    </div>
-                    
-                    <button className={styles.resultIconContainer}>
-                        <SlidersHorizontal className={styles.resultIcon}/>
-                    </button>
-                </div>
-            </section>
-        </section>
-
+                    <Button className={styles.button} variant="primary">
+                        Emprestimo
+                    </Button>
+                </>
+            }
+        />
     );
 }
