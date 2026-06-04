@@ -24,50 +24,49 @@ export default function InfoBookDetails(props: InfoBookDetails) {
     return(
         <>
             <section className={styles.container}>
-                <h2 className={styles.titleContainer}>Informações detalhadas</h2>
 
-                <ul className={styles.informationContainer}>
+                <div className={styles.informationContainer}>
+                    <h2 className={styles.titleContainer}>Informações detalhadas</h2>
+                    
+                    <ul className={styles.listInformation}>
+                        <li className={styles.information}>
+                            <span className={styles.key}>Titulo</span>
+                            <strong className={styles.value}>{props.title}</strong>
+                        </li>
 
-                    <li className={styles.information}>
-                        <span className={styles.key}>Titulo</span>
-                        <strong className={styles.value}>{props.title}</strong>
-                    </li>
+                        <li className={styles.information}>
+                            <span className={styles.key}>Autor</span>
+                            <strong className={styles.value}>{props.authors}</strong>
+                        </li>
+                        {firstBookshelves && <li className={styles.information}>
+                            <span className={styles.key}>Categoria</span>
+                            <strong className={styles.value}>{firstBookshelves.name}</strong>
+                        </li>}
+                        <li className={styles.information}>
+                            <span className={styles.key}>Fonte</span>
+                            <strong className={styles.value}>Gutendex</strong>
+                        </li>
+                        <li className={styles.information}>
+                            <span className={styles.key}>Data da captura</span>
+                            <strong className={styles.value}>{date.toLocaleDateString("pt-BR")} às {localeTimeFormated}</strong>
+                        </li>
+                    </ul>
+                </div>
 
-                    <li className={styles.information}>
-                        <span className={styles.key}>Autor</span>
-                        <strong className={styles.value}>{props.authors}</strong>
-                    </li>
+            
 
-                    {firstBookshelves && <li className={styles.information}>
-                        <span className={styles.key}>Categoria</span>
-                        <strong className={styles.value}>{firstBookshelves.name}</strong>
-                    </li>}
+                {props.description && <section className={styles.descriptionContainer}>
+                    <h2 className={styles.descriptionTitle}>Descrição do livro</h2>
+                    <p className={styles.description}>{props.description}</p>
+                </section>}
 
-                    <li className={styles.information}>
-                        <span className={styles.key}>Fonte</span>
-                        <strong className={styles.value}>Gutendex</strong>
-                    </li>
-
-                    <li className={styles.information}>
-                        <span className={styles.key}>Data da captura</span>
-                        <strong className={styles.value}>{date.toLocaleDateString("pt-BR")} às {localeTimeFormated}</strong>
-                    </li>
-
-                </ul>
-
+                {props.bookshelves.length > 0 && <section className={styles.categoriesContainer}>
+                    <h2 className={styles.categories}>Categorias relacionadas</h2>
+                    {props.bookshelves.map((bookshelve) => (
+                        <p className={styles.tagCategories} key={bookshelve.idCategory ?? bookshelve.name}>{bookshelve.name}</p>
+                    ))}
+                </section>}
             </section>
-
-            {props.description && <section className={styles.descriptionContainer}>
-                <h2 className={styles.descriptionTitle}>Descrição do livro</h2>
-                <p className={styles.description}>{props.description}</p>
-            </section>}
-
-            {props.bookshelves.length > 0 && <section className={styles.categoriesContainer}>
-                <h2 className={styles.categories}>Categorias relacionadas</h2>
-                {props.bookshelves.map((bookshelve) => (
-                    <p className={styles.tagCategories} key={bookshelve.idCategory ?? bookshelve.name}>{bookshelve.name}</p>
-                ))}
-            </section>}
         </>
     );
 }

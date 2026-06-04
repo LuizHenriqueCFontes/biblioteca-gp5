@@ -10,10 +10,10 @@ export default function AppRoutes(){
         <Routes>
             <Route element={<MainLayout />}>
                 <Route path="/admin/imports" element={<ImportBooksPage />}/>
-                <Route path="/admin/details" element={<ImportBookDetailsPage />}/>
+                <Route path="/admin/details/:id" element={<ImportBookDetailsPage />}/>
 
                 <Route path="/search-books" element={<SearchBooks />}/>
-                <Route path="/book" element={<BookDetails />}/>
+                <Route path="/book/:id" element={<BookDetails />}/>
 
             </Route>
         </Routes>

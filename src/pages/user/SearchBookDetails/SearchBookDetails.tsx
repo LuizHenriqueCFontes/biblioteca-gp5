@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import BookDetails from "../../../feature/books/components/BookDetails/Book/BookDetails";
 import InfoBookDetails from "../../../feature/books/components/BookDetails/InfoBookDetails/InfoBookDetails";
 import { useBookDetails } from "../../../feature/user/bookDetails/hooks/useBookDetails";
@@ -5,7 +6,9 @@ import { Button } from "../../../shared/components/Button/Button";
 import styles from "./SearchBookDetails.module.css";
 
 export default function SearchBookDetails() {
-    const {book, loading} = useBookDetails();
+    const { id } = useParams();
+
+    const {book, loading} = useBookDetails(id);
 
     return (
         <section className={styles.container}>

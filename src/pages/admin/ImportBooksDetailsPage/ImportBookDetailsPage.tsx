@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import { useImportBooksDetails } from "../../../feature/admin/importBooksDetails/hooks/useImportBookDetails";
 import BookDetails from "../../../feature/books/components/BookDetails/Book/BookDetails";
 import InfoBookDetails from "../../../feature/books/components/BookDetails/InfoBookDetails/InfoBookDetails";
@@ -7,7 +8,10 @@ import styles from "./ImportBookDetailsPage.module.css"
 
 export default function ImportBookDetailPage(){
 
-    const { book, loading, /*error*/ } = useImportBooksDetails();
+    const { id } = useParams();
+
+    const { book, loading, /*error*/ } = useImportBooksDetails(id);
+
 
     const normalizedBookshelves = book ? book.bookshelves.map(bookshelve => ({
         name: bookshelve

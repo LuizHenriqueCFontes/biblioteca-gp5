@@ -11,8 +11,8 @@ export type BookDetails = {
 }
 
 export const importBooksDetailsService = {
-    bookDetails: async (url?: string): Promise<BookDetails> => {
-        const endpoint = url ?? "/admin/books/84";
+    bookDetails: async (id?: string): Promise<BookDetails> => {
+        const endpoint = `/admin/books/${id}`;
 
         const { data } = await api.get<BookDetails>(endpoint);
 

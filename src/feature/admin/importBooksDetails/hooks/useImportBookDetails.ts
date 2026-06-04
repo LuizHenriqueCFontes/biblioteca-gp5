@@ -1,17 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 import { importBooksDetailsService, type BookDetails } from "../services/importBooksDetails";
 
-export function useImportBooksDetails(){
+export function useImportBooksDetails(id: string | undefined){
     const [response, setResponse] = useState<BookDetails | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchBook = useCallback(async (url?: string):Promise<void> => {
+    const fetchBook = useCallback(async ():Promise<void> => {
         try {
             setLoading(true);
             setError(null);
 
-            const data = await importBooksDetailsService.bookDetails(url);
+            const data = await importBooksDetailsService.bookDetails(id);
 
             setResponse(data);
 
@@ -26,7 +26,7 @@ export function useImportBooksDetails(){
             setLoading(false);
         }
 
-    }, []);
+    }, [id]);
 
     useEffect(() => {
         fetchBook();

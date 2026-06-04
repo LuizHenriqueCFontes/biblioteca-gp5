@@ -1,8 +1,8 @@
 import { CircleAlert, SlidersHorizontal } from "lucide-react";
-import { Button } from "../Button/Button";
-import { Input } from "../Input/Input";
+import { Button } from "../../../../shared/components/Button/Button";
+import { Input } from "../../../../shared/components/Input/Input";
 import styles from "./BookSearch.module.css"
-import BookCard from "../../../feature/books/components/BookCard/BookCard";
+import BookCard from "../BookCard/BookCard";
 import { useState } from "react";
 
 interface BookCardItem {
@@ -19,7 +19,7 @@ interface BookSearchProps {
     totalElements: number,
     loading?: boolean,
     showGutendexInfo?: boolean,
-    action?: React.ReactNode
+    action?: (book: BookCardItem) => React.ReactNode
 }
 
 export default function BookSearch(props: BookSearchProps){
@@ -71,10 +71,9 @@ export default function BookSearch(props: BookSearchProps){
                 {props.loading ? <p>Carregando</p>: ""}
 
                 {props.books.map((book) => (
-                    <BookCard key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} action={props.action}/>
+                    <BookCard key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} action={props.action?.(book)}/>
                 ))}
             </section>
         </section>
-
     );
 }
