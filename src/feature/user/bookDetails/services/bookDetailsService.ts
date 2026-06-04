@@ -17,7 +17,7 @@ export type BookDetailsResponseDTO = {
 
 export const bookDetailsService = {
     getBookDetails: async(url?: string): Promise<BookDetailsResponseDTO> => {
-        const endpoint = url ?? "/books/8faa18bb-0422-4b38-8454-668ee445f231";
+        const endpoint = url ?? "/books/859c9724-5520-4172-9c05-464c1f133c08";
 
         const { data } = await api.get<BookDetailsResponseDTO>(endpoint);
 

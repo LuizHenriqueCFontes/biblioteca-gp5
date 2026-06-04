@@ -2,8 +2,8 @@ import { useState } from "react";
 import styles from "./InfoBookDetails.module.css";
 
 interface CategoryOption {
-    id?: string,
-    name: string
+    idCategory?: string,
+    name?: string
 }
 
 interface InfoBookDetails {
@@ -15,7 +15,9 @@ interface InfoBookDetails {
 }
 
 export default function InfoBookDetails(props: InfoBookDetails) {
-    const [date] = useState<Date>(new Date())
+    const [date] = useState<Date>(new Date());
+
+    const localeTimeFormated = date.toLocaleTimeString("pt-BR", {hour: "2-digit", minute: "2-digit"})
 
     const firstBookshelves = props.bookshelves[0];
 
@@ -36,10 +38,10 @@ export default function InfoBookDetails(props: InfoBookDetails) {
                         <strong className={styles.value}>{props.authors}</strong>
                     </li>
 
-                    <li className={styles.information}>
+                    {firstBookshelves && <li className={styles.information}>
                         <span className={styles.key}>Categoria</span>
                         <strong className={styles.value}>{firstBookshelves.name}</strong>
-                    </li>
+                    </li>}
 
                     <li className={styles.information}>
                         <span className={styles.key}>Fonte</span>
@@ -48,24 +50,24 @@ export default function InfoBookDetails(props: InfoBookDetails) {
 
                     <li className={styles.information}>
                         <span className={styles.key}>Data da captura</span>
-                        <strong className={styles.value}>{date.toLocaleDateString("pt-BR")} às {date.toLocaleTimeString("pt-BR", {hour: "2-digit", minute: "2-digit"})}</strong>
+                        <strong className={styles.value}>{date.toLocaleDateString("pt-BR")} às {localeTimeFormated}</strong>
                     </li>
 
                 </ul>
 
             </section>
 
-            <section className={styles.descriptionContainer}>
+            {props.description && <section className={styles.descriptionContainer}>
                 <h2 className={styles.descriptionTitle}>Descrição do livro</h2>
                 <p className={styles.description}>{props.description}</p>
-            </section>
+            </section>}
 
-            <section className={styles.categoriesContainer}>
+            {props.bookshelves.length > 0 && <section className={styles.categoriesContainer}>
                 <h2 className={styles.categories}>Categorias relacionadas</h2>
                 {props.bookshelves.map((bookshelve) => (
-                    <p className={styles.tagCategories} key={bookshelve.id ?? bookshelve.name}>{bookshelve.name}</p>
+                    <p className={styles.tagCategories} key={bookshelve.idCategory ?? bookshelve.name}>{bookshelve.name}</p>
                 ))}
-            </section>
+            </section>}
         </>
     );
 }

@@ -2,24 +2,30 @@ import { useImportBooksDetails } from "../../../feature/admin/importBooksDetails
 import BookDetails from "../../../feature/books/components/BookDetails/Book/BookDetails";
 import InfoBookDetails from "../../../feature/books/components/BookDetails/InfoBookDetails/InfoBookDetails";
 import { Button } from "../../../shared/components/Button/Button";
-import sytles from "./ImportBookDetailPage.module.css"
+import styles from "./ImportBookDetailsPage.module.css"
 
 
 export default function ImportBookDetailPage(){
 
     const { book, loading, /*error*/ } = useImportBooksDetails();
 
+    const normalizedBookshelves = book ? book.bookshelves.map(bookshelve => ({
+        name: bookshelve
+    }))
+    : []
+
+
     return(
-        <section className={sytles.container}>
+        <section className={styles.container}>
             {loading ? <div>Carregando</div> : ""}
 
             {book && <BookDetails id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} actions={
-                <Button className={sytles.import} variant="primary">
+                <Button className={styles.import} variant="primary">
                     Importar Livro
                 </Button>
             }/>}
 
-            {book && <InfoBookDetails className={sytles.infoBook} title={book.title} description={book.description} /*bookshelves={book.bookshelves.map(name => ({name}))}*/authors={book.authors}/>}
+            {book && <InfoBookDetails className={styles.infoBook} title={book.title} description={book.description} bookshelves={normalizedBookshelves} authors={book.authors}/>}
         </section>
     );
 }
