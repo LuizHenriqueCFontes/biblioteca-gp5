@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { importBooksDetailsService, type BookDetails } from "../services/importBooksDetails";
 
 export function useImportBooksDetails(id: string | undefined){
@@ -6,32 +6,33 @@ export function useImportBooksDetails(id: string | undefined){
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchBook = useCallback(async ():Promise<void> => {
-        try {
-            setLoading(true);
-            setError(null);
+    useEffect(() => {
+        const fetchBook = async (): Promise<void> => {
+            try {
+                setLoading(true);
+                setError(null);
 
-            const data = await importBooksDetailsService.bookDetails(id);
+                const data = await importBooksDetailsService.bookDetails(id);
 
-            setResponse(data);
+                setResponse(data);
 
-        } catch (error) {
-            setError(
+            } catch (error) {
+                setError(
                 error instanceof Error
                 ? error.message
                 : "Erro ao carregar livro"
-            );
+                );
 
-        }finally {
-            setLoading(false);
-        }
+                throw error;
 
-    }, [id]);
+            }finally {
+                setLoading(false);
+            }
+        };   
 
-    useEffect(() => {
         fetchBook();
 
-    }, [fetchBook]);
+    }, [id]);
 
     return {
         book: response,

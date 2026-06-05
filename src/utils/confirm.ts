@@ -9,7 +9,8 @@ export async function confirmAction(title: string, text: string):Promise<boolean
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Confirmar",
-        cancelButtonText: "Cancelar"
+        confirmButtonColor: "#0047E1",
+        cancelButtonText: "Cancelar",
     });
 
     return result.isConfirmed

@@ -22,6 +22,8 @@ export function useSearchBooks() {
                 : "Livros não encontrados"
             );
 
+            throw error;
+
         } finally {
             setLoading(false);
         }

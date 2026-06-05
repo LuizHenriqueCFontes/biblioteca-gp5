@@ -67,8 +67,6 @@ export default function BookSearch(props: BookSearchProps){
                         <SlidersHorizontal className={styles.resultIcon}/>
                     </button>
                 </div>
-                
-                {props.loading ? <p>Carregando</p>: ""}
 
                 {props.books.map((book) => (
                     <BookCard key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} action={props.action?.(book)}/>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { bookDetailsService, type BookDetailsResponseDTO } from "../services/bookDetailsService";
 
 export function useBookDetails(id: string | undefined) {
@@ -6,31 +6,34 @@ export function useBookDetails(id: string | undefined) {
     const [loading, setLoanding] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const bookDetails = useCallback(async(): Promise<void> => {
-        try {
-            setLoanding(true);
-            setError(null);
+    useEffect(() => {
 
-            const data  = await bookDetailsService.getBookDetails(id);
+        const bookDetails = async(): Promise<void> => {
+            try {
+                setLoanding(true);
+                setError(null);
 
-            setResponse(data);
+                const data  = await bookDetailsService.getBookDetails(id);
 
-        } catch (error) {
-            setError(
+                setResponse(data);
+
+            } catch (error) {
+                setError(
                 error instanceof Error
                 ? error.message
                 : "Falha ao carregar livro"
-            );
-        } finally {
+                );
+
+                throw error;
+            
+
+            } finally {
             setLoanding(false);
-        }
+            }
+        };
 
-    }, [id]);
-
-    useEffect(() => {
         bookDetails();
-
-    }, [bookDetails]);
+    }, [id]);
 
     return {
         book: response,
