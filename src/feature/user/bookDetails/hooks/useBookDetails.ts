@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { bookDetailsService, type BookDetailsResponseDTO } from "../services/bookDetailsService";
+import type { BookDetailsResponseDTO } from "../../../books/types/response/bookDetailsResponseDTO";
+import { userBookService } from "../../../books/services/user/userBookService";
 
 export function useBookDetails(id: string | undefined) {
     const [response, setResponse] = useState<BookDetailsResponseDTO | null>(null);
@@ -13,7 +14,7 @@ export function useBookDetails(id: string | undefined) {
                 setLoanding(true);
                 setError(null);
 
-                const data  = await bookDetailsService.getBookDetails(id);
+                const data  = await userBookService.getBookDetails(id);
 
                 setResponse(data);
 

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import type { BookResponseDTO, ImportSearchResponseDTO } from "../services/importBooks";
-import { importBooksService } from "../services/importBooks";
+import { adminBooksService, type ImportSearchResponseDTO } from "../../../books/services/admin/adminBookService";
 import axios from "axios";
+import type { BookResponseDTO } from "../../../books/types/response/bookReponseDTO";
 
 export function useImportBooks(){
     const [response, setResponse] = useState<ImportSearchResponseDTO | null>(null);
@@ -13,7 +13,7 @@ export function useImportBooks(){
             setLoading(true);
             setError(null);
 
-            const data = await importBooksService.getBooks(url);
+            const data = await adminBooksService.getBooks(url);
 
             setResponse(data);
 
@@ -37,7 +37,7 @@ export function useImportBooks(){
             setLoading(true);
             setError(null);
 
-            const data = await importBooksService.importBook(id);
+            const data = await adminBooksService.importBook(id);
 
             return data;
 

@@ -1,15 +1,11 @@
 import { useState } from "react";
 import styles from "./InfoBookDetails.module.css";
-
-interface CategoryOption {
-    idCategory?: string,
-    name?: string
-}
+import type { CategoryResponseDTO } from "../../../types/response/bookDetailsResponseDTO";
 
 interface InfoBookDetails {
     title: string,
     authors: string[],
-    bookshelves: CategoryOption[],
+    bookshelves: CategoryResponseDTO[],
     description: string[],
     className?: string
 }

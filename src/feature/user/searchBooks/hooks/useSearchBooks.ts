@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { searchBooksService, type PaginatedResponseDTO } from "../services/searchBooksServices";
+import { userBookService, type PaginatedResponseDTO } from "../../../books/services/user/userBookService";
 
 export function useSearchBooks() {
     const [response, setResponse] = useState<PaginatedResponseDTO | null>(null);
@@ -11,7 +11,7 @@ export function useSearchBooks() {
             setLoading(true);
             setError(null);
 
-            const data =  await searchBooksService.searchBooks(url);
+            const data =  await userBookService.searchBooks(url);
 
             setResponse(data);
 

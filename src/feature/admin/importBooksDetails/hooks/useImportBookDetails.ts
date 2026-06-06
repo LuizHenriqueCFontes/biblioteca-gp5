@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { importBooksDetailsService, type BookDetails } from "../services/importBooksDetails";
+import { adminBooksService, type AdminBookDetails } from "../../../books/services/admin/adminBookService";
+
 
 export function useImportBooksDetails(id: string | undefined){
-    const [response, setResponse] = useState<BookDetails | null>(null);
+    const [response, setResponse] = useState<AdminBookDetails | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -12,7 +13,7 @@ export function useImportBooksDetails(id: string | undefined){
                 setLoading(true);
                 setError(null);
 
-                const data = await importBooksDetailsService.bookDetails(id);
+                const data = await adminBooksService.bookDetails(id);
 
                 setResponse(data);
 

@@ -4,6 +4,8 @@ import BookDetails from "../../../feature/books/components/BookDetails/Book/Book
 import InfoBookDetails from "../../../feature/books/components/BookDetails/InfoBookDetails/InfoBookDetails";
 import { Button } from "../../../shared/components/Button/Button";
 import styles from "./ImportBookDetailsPage.module.css"
+import { handleImportBook } from "../../../feature/books/actions/importBookAction";
+import { useImportBooks } from "../../../feature/admin/importBooks/hooks/useImportBooks";
 
 
 export default function ImportBookDetailPage(){
@@ -11,6 +13,8 @@ export default function ImportBookDetailPage(){
     const { id } = useParams();
 
     const { book, loading, /*error*/ } = useImportBooksDetails(id);
+
+    const { importBook } = useImportBooks();
 
 
     const normalizedBookshelves = book ? book.bookshelves.map(bookshelve => ({
@@ -24,7 +28,7 @@ export default function ImportBookDetailPage(){
             {loading ? <div>Carregando</div> : ""}
 
             {book && <BookDetails id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} actions={
-                <Button className={styles.import} variant="primary">
+                <Button className={styles.import} variant="primary" onClick={() => handleImportBook(`${book.id}`, importBook)}>
                     Importar Livro
                 </Button>
             }/>}
