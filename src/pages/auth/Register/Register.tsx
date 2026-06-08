@@ -1,8 +1,8 @@
 import styles from "../../../styles/auth/authTheme.module.css";
-import Logo from "../../../components/Logo/Logo";
-import { Input } from "../../../components/Input/Input";
+import Logo from "../../../shared/components/Logo/Logo";
+import { Input } from "../../../shared/components/Input/Input";
 import { useState } from "react";
-import { Button } from "../../../components/Button/Button";
+import { Button } from "../../../shared/components/Button/Button";
 
 interface RegisterFormData{
     email: string,
