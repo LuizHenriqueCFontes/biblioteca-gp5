@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { adminBooksService, type ImportSearchResponseDTO } from "../../../books/services/admin/adminBookService";
-import axios from "axios";
 import type { BookResponseDTO } from "../../../books/types/response/bookReponseDTO";
+import { getErrorMessage } from "../../../../utils/getErrorMessage";
 
 export function useImportBooks(){
     const [response, setResponse] = useState<ImportSearchResponseDTO | null>(null);
@@ -44,12 +44,7 @@ export function useImportBooks(){
         } catch (error) {
             let message = "Falha ao importar o livro";
 
-            if(axios.isAxiosError(error)){
-                message = error.response?.data?.message;
-
-            }else if(error instanceof Error) {
-                message = error.message;
-            }
+            message = getErrorMessage(error);
 
             setError(message);
 

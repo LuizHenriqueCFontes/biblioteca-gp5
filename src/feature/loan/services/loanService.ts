@@ -1,12 +1,13 @@
-import type { BookLoanRequestDTO } from "../types/request/bookLoanRequestDTO";
 import type { BookLoanResponseDTO } from "../types/response/bookLoanResponseDTO";
 import { api } from "../../../services/api";
 
 export const loanService = {
-    bookLoan: async(request: BookLoanRequestDTO): Promise<BookLoanResponseDTO> => {
+    bookLoan: async(id: string): Promise<BookLoanResponseDTO> => {
         const endpoint = "/loan";
 
-        const { data } = await api.post<BookLoanResponseDTO>(endpoint, request);
+        const { data } = await api.post<BookLoanResponseDTO>(endpoint, {
+            bookId: id
+        });
 
         return data;
     }

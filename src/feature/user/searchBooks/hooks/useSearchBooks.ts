@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { userBookService, type PaginatedResponseDTO } from "../../../books/services/user/userBookService";
+import { loanService } from "../../../loan/services/loanService";
+import { getErrorMessage } from "../../../../utils/getErrorMessage";
+import type { BookLoanResponseDTO } from "../../../loan/types/response/bookLoanResponseDTO";
 
 export function useSearchBooks() {
     const [response, setResponse] = useState<PaginatedResponseDTO | null>(null);
@@ -30,6 +33,30 @@ export function useSearchBooks() {
 
     }, []);
 
+    const bookLoan = useCallback(async(id: string): Promise<BookLoanResponseDTO> => {
+        try {
+            setLoading(true);
+            setError(null);
+
+            const data = await loanService.bookLoan(id);
+
+            return data;
+
+        } catch (error) {
+            const message = getErrorMessage(error);
+
+            setError(message);
+
+            throw new Error(message, {
+                cause: error
+            });
+
+        }finally {
+            setLoading(false);
+        }
+
+    }, []);
+
     useEffect(() => {
         searchBook();
 
@@ -44,6 +71,7 @@ export function useSearchBooks() {
         totalElements: response?.totalElements ?? 0,
         totalPages: response?.totalPages ?? 0,
         error,
-        loading
+        loading,
+        bookLoan
     }
 }

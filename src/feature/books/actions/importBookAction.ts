@@ -1,6 +1,7 @@
 import { toast } from "sonner";
 import { confirmAction } from "../../../utils/confirm";
 import type { BookResponseDTO } from "../types/response/bookReponseDTO"
+import { getErrorMessage } from "../../../utils/getErrorMessage";
 
 export async function handleImportBook(id: string, importBook: (id: string) => Promise<BookResponseDTO>): Promise<void> {
 
@@ -21,9 +22,7 @@ export async function handleImportBook(id: string, importBook: (id: string) => P
 
         } catch (error) {
             toast.error(
-                error instanceof Error
-                ? error.message
-                : "Erro ao importar livro", 
+                getErrorMessage(error),
                 {
                     id: toastId
                 }
