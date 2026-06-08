@@ -1,4 +1,4 @@
-import type { BookLoanResponseDTO } from "../types/response/bookLoanResponseDTO";
+import type { BookLoanResponseDTO } from "../types/bookLoanResponseDTO";
 import { api } from "../../../services/api";
 
 export const loanService = {
