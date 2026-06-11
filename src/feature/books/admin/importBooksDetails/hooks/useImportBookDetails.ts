@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { adminBooksService, type AdminBookDetails } from "../../../books/services/admin/adminBookService";
+import { adminBooksService, type AdminBookDetails } from "../../services/adminBookService";
 
 
 export function useImportBooksDetails(id: string | undefined){

@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layout/MainLayout/MainLayout";
-import ImportBooksPage from "../pages/admin/ImportBooksPage/ImportBooksPage";
-import ImportBookDetailsPage from "../pages/admin/ImportBooksDetailsPage/ImportBookDetailsPage";
-import SearchBooks from "../pages/user/SearchBooks/SearchBooks";
-import BookDetails from "../pages/user/SearchBookDetails/SearchBookDetails";
+import ImportBooksPage from "../feature/books/admin/importBooks/pages/ImportBooksPage";
+import ImportBookDetailsPage from "../feature/books/admin/importBooksDetails/pages/ImportBookDetailsPage";
+import SearchBooks from "../feature/books/user/searchBooks/pages/SearchBooks";
+import BookDetails from "../feature/books/user/bookDetails/pages/SearchBookDetails";
 
 export default function AppRoutes(){
     return(

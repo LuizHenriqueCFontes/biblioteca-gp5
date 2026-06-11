@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useImportBooksDetails } from "../../../feature/admin/importBooksDetails/hooks/useImportBookDetails";
-import BookDetails from "../../../feature/books/components/BookDetails/Book/BookDetails";
-import InfoBookDetails from "../../../feature/books/components/BookDetails/InfoBookDetails/InfoBookDetails";
-import { Button } from "../../../shared/components/Button/Button";
+import { useImportBooksDetails } from "../hooks/useImportBookDetails";
+import BookDetails from "../../../components/BookDetails/Book/BookDetails";
+import InfoBookDetails from "../../../components/BookDetails/InfoBookDetails/InfoBookDetails";
+import { Button } from "../../../../../shared/components/Button/Button";
 import styles from "./ImportBookDetailsPage.module.css"
-import { handleImportBook } from "../../../feature/books/actions/importBookAction";
-import { useImportBooks } from "../../../feature/admin/importBooks/hooks/useImportBooks";
+import { handleImportBook } from "../../../actions/importBookAction";
+import { useImportBooks } from "../../importBooks/hooks/useImportBooks";
 
 
 export default function ImportBookDetailPage(){

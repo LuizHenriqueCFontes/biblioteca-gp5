@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { userBookService, type PaginatedResponseDTO } from "../../../books/services/user/userBookService";
-import { loanService } from "../../../loan/services/loanService";
-import { getErrorMessage } from "../../../../utils/getErrorMessage";
-import type { BookLoanResponseDTO } from "../../../loan/types/bookLoanResponseDTO";
+import { userBookService, type PaginatedResponseDTO } from "../../services/userBookService";
+import { loanService } from "../../../../loan/services/loanService";
+import { getErrorMessage } from "../../../../../utils/getErrorMessage";
+import type { BookLoanResponseDTO } from "../../../../loan/types/bookLoanResponseDTO";
 
 export function useSearchBooks() {
     const [response, setResponse] = useState<PaginatedResponseDTO | null>(null);

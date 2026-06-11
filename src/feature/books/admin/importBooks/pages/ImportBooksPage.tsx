@@ -1,9 +1,9 @@
 import styles from "./ImportBooksPage.module.css";
-import { Button } from "../../../shared/components/Button/Button";
-import { useImportBooks } from "../../../feature/admin/importBooks/hooks/useImportBooks";
-import BookSearch from "../../../feature/books/components/BookSearch/BookSearch";
+import { Button } from "../../../../../shared/components/Button/Button";
+import { useImportBooks } from "../hooks/useImportBooks";
+import BookSearch from "../../../components/BookSearch/BookSearch";
 import { useNavigate } from "react-router-dom";
-import { handleImportBook } from "../../../feature/books/actions/importBookAction";
+import { handleImportBook } from "../../../actions/importBookAction";
 
 export default function ImportBooksPage(){
     const { books, totalElements, loading, importBook/*error, previousPage, nextPage, fetchBooks*/ } = useImportBooks();

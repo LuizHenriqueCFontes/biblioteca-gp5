@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import type { BookDetailsResponseDTO } from "../../../books/types/response/bookDetailsResponseDTO";
-import { userBookService } from "../../../books/services/user/userBookService";
+import type { BookDetailsResponseDTO } from "../../../types/response/bookDetailsResponseDTO";
+import { userBookService } from "../../services/userBookService";
 
 export function useBookDetails(id: string | undefined) {
     const [response, setResponse] = useState<BookDetailsResponseDTO | null>(null);

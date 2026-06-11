@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import BookDetails from "../../../feature/books/components/BookDetails/Book/BookDetails";
-import InfoBookDetails from "../../../feature/books/components/BookDetails/InfoBookDetails/InfoBookDetails";
-import { useBookDetails } from "../../../feature/user/bookDetails/hooks/useBookDetails";
-import { Button } from "../../../shared/components/Button/Button";
+import BookDetails from "../../../components/BookDetails/Book/BookDetails";
+import InfoBookDetails from "../../../components/BookDetails/InfoBookDetails/InfoBookDetails";
+import { useBookDetails } from "../hooks/useBookDetails";
+import { Button } from "../../../../../shared/components/Button/Button";
 import styles from "./SearchBookDetails.module.css";
-import { useSearchBooks } from "../../../feature/user/searchBooks/hooks/useSearchBooks";
-import { handleBookLoan } from "../../../feature/books/actions/loanBookAction";
+import { useSearchBooks } from "../../searchBooks/hooks/useSearchBooks";
+import { handleBookLoan } from "../../../actions/loanBookAction";
 
 export default function SearchBookDetails() {
     const { id } = useParams();

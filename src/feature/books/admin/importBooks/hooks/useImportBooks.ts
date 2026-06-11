@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import { adminBooksService, type ImportSearchResponseDTO } from "../../../books/services/admin/adminBookService";
-import type { BookResponseDTO } from "../../../books/types/response/bookReponseDTO";
-import { getErrorMessage } from "../../../../utils/getErrorMessage";
+import { adminBooksService, type ImportSearchResponseDTO } from "../../services/adminBookService";
+import type { BookResponseDTO } from "../../../types/response/bookReponseDTO";
+import { getErrorMessage } from "../../../../../utils/getErrorMessage";
 
 export function useImportBooks(){
     const [response, setResponse] = useState<ImportSearchResponseDTO | null>(null);
@@ -44,13 +44,13 @@ export function useImportBooks(){
         } catch (error) {
             let message = "Falha ao importar o livro";
 
-            message = getErrorMessage(error);
+            message = getErrorMessage(error);   
 
             setError(message);
 
             throw new Error(message, {
                 cause: error
-            });
+            }); 
 
         }finally {
             setLoading(false);

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useSearchBooks } from "../../../feature/user/searchBooks/hooks/useSearchBooks";
-import BookSearch from "../../../feature/books/components/BookSearch/BookSearch";
-import { Button } from "../../../shared/components/Button/Button";
+import { useSearchBooks } from "../hooks/useSearchBooks";
+import BookSearch from "../../../components/BookSearch/BookSearch";
+import { Button } from "../../../../../shared/components/Button/Button";
 import styles from "./SearchBooks.module.css";
-import { handleBookLoan } from "../../../feature/books/actions/loanBookAction";
+import { handleBookLoan } from "../../../actions/loanBookAction";
 
 export default function SearchBooks(){
 

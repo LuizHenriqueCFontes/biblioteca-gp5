@@ -1,4 +1,4 @@
-import type { Status } from "../loanStatus"
+import type { Status } from "./loanStatus"
 
 export type BookLoanResponseDTO = {
     idLoan: string,
