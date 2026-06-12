@@ -30,7 +30,9 @@ export const loanService = {
         const endpoint = BASE_ENDPOINT;
 
         const { data } = await api.get<PageResponse<BookLoanResponseDTO>>(endpoint, {
-            params: status
+            params: {
+                status: status
+            }
         });
 
         return data;

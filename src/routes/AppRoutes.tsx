@@ -4,6 +4,7 @@ import ImportBooksPage from "../feature/books/admin/importBooks/pages/ImportBook
 import ImportBookDetailsPage from "../feature/books/admin/importBooksDetails/pages/ImportBookDetailsPage";
 import SearchBooks from "../feature/books/user/searchBooks/pages/SearchBooks";
 import BookDetails from "../feature/books/user/bookDetails/pages/SearchBookDetails";
+import GetLoans from "../feature/loan/getLoans/pages/GetLoans/GetLoans";
 
 export default function AppRoutes(){
     return(
@@ -14,6 +15,8 @@ export default function AppRoutes(){
 
                 <Route path="/search-books" element={<SearchBooks />}/>
                 <Route path="/book/:id" element={<BookDetails />}/>
+
+                <Route path="/loan" element={<GetLoans />}/>
 
             </Route>
         </Routes>

@@ -2,9 +2,9 @@ import type { LucideIcon } from "lucide-react";
 
 interface CardStatusLoan {
     icon: LucideIcon,
-    title: string,
+    number?: number,
+    subTitle: string,
     information: string
-
 }
 
 export default function CardStatusLoan(props: CardStatusLoan) {
@@ -14,7 +14,8 @@ export default function CardStatusLoan(props: CardStatusLoan) {
     return(
         <article>
             <Icon />
-            <h3>{props.title}</h3>
+            <h3>{props.number}</h3>
+            <p>{props.subTitle}</p>
             <p>{props.information}</p>
         </article>
     );
