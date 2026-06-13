@@ -10,6 +10,10 @@ export default function GetLoans() {
 
     const { loans, summary, errorLoans } = useGetLoans(currentStatus);
 
+    function handleChange(status: "ACTIVE" | "RETURNED") {
+        setCurrentStatus(status);
+    }
+
     return(
         <section>
 
@@ -28,12 +32,12 @@ export default function GetLoans() {
             </div>
 
             <div>
-                <button>Ativos</button>
-                <button>Histórico</button>
+                <button onClick={() => handleChange("ACTIVE")}>Ativos</button>
+                <button onClick={() => handleChange("RETURNED")}>Histórico</button>
             </div>
 
             {loans.map((loan) => (
-                <BookCard id={loan.idLoan} coverUrl={loan.coverUrl} fileUrl={loan.coverUrl} title={loan.title} authors={loan.authors} action={
+                <BookCard key={loan.idLoan} id={loan.idLoan} coverUrl={loan.coverUrl} fileUrl={loan.coverUrl} title={loan.title} authors={loan.authors} action={
                     <>
                         <Button variant="primary">Ler agora</Button>
                         <Button variant="secondary">Devolver</Button>
