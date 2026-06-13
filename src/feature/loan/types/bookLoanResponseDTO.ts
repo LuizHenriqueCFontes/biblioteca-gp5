@@ -8,6 +8,6 @@ export type BookLoanResponseDTO = {
     fileUrl: string,
     bookId: string,
     status: Status,
-    loanData: string,
-    expirationDate: string 
+    loanDate: string,
+    expectedReturnDate: string 
 }

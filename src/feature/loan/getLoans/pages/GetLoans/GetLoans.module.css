@@ -1,0 +1,43 @@
+.statusContainer{
+    gap: 10px;
+    display: flex;
+    flex: 1;
+
+    justify-content: center;
+    margin: 0 10px;
+    align-items: stretch;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 24px;
+    margin: 16px 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.buttonFilter{
+    background-color: #ffffff;
+    border: none;
+    font-size: 0.8em;
+    color: var(--informations-color);
+    font-weight: 550;
+    padding: 12px 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.active{
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.indicator{
+    position: absolute;
+    background-color: var(--primary-color);
+    left: 0;
+    right: 0;
+    height: 1px;
+    bottom: -1px;
+}
