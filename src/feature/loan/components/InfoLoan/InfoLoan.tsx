@@ -1,4 +1,5 @@
 import { CalendarDays } from "lucide-react";
+import styles from "./InfoLoan.module.css"
 
 interface InfoLoan {
     loanDate: string,
@@ -8,16 +9,26 @@ interface InfoLoan {
 export default function InfoLoan(props: InfoLoan) {
 
     return(
-        <section>
-            <div>
-                <CalendarDays />
-                <p>Emprestado em</p>
-                <span>{props.loanDate}</span>
+        <section className={styles.container}>
+
+            <div className={styles.loanContainer}>
+
+                <div className={styles.iconContainer}>
+                    <CalendarDays className={styles.icon}/>
+                </div>
+
+                <div>
+                    <p className={styles.information}>Emprestado em</p>
+                    <span className={`${styles.information} ${styles.loanDate}`}>{props.loanDate}</span>
+                </div>
             </div>
 
+            <div className={styles.space}/>
+
             <div>
-                <p>Devolver até</p>
-                <span>{props.expectedReturnDate}</span>
+                <p className={styles.information}>Devolver até</p>
+                
+                <span className={`${styles.information} ${styles.expectedReturnDate}`}>{props.expectedReturnDate}</span>
             </div>
         </section>
     );

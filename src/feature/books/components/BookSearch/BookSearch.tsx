@@ -69,7 +69,7 @@ export default function BookSearch(props: BookSearchProps){
                 </div>
 
                 {props.books.map((book) => (
-                    <BookCard key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} action={props.action?.(book)}/>
+                    <BookCard className={styles.bookContainer} key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} action={props.action?.(book)}/>
                 ))}
             </section>
         </section>

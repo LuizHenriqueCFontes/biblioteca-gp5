@@ -7,6 +7,7 @@ import { Button } from "../../../../../shared/components/Button/Button";
 import styles from "./GetLoans.module.css";
 import { motion } from "framer-motion";
 import InfoLoan from "../../../components/InfoLoan/InfoLoan";
+import { formatDate } from "../../../../../utils/date";
 
 export default function GetLoans() {
     const [currentStatus, setCurrentStatus] = useState<"ACTIVE" | "RETURNED">("ACTIVE");
@@ -22,10 +23,15 @@ export default function GetLoans() {
 
             {errorLoans && <div>{errorLoans}</div>}
 
-            <BookOpen />
-            <div>
-                <h1>Meus Empréstimos</h1>
-                <p>Acompanhe seus empréstimos e faça a leitura dos seus livros</p>
+            <div className={styles.titleContainer}>
+                <div className={styles.iconContainer}>
+                    <BookOpen className={styles.icon}/>
+                </div>
+                
+                <div>
+                    <h1 className={styles.title}>Meus Empréstimos</h1>
+                    <p className={styles.information}>Acompanhe seus empréstimos e faça a leitura dos seus livros</p>
+                </div>
             </div>
 
             <div className={styles.statusContainer}>
@@ -50,15 +56,15 @@ export default function GetLoans() {
             </div>
 
             {loans.map((loan) => (
-                <div key={loan.idLoan}>
-                    <BookCard id={loan.idLoan} coverUrl={loan.coverUrl} fileUrl={loan.coverUrl} title={loan.title} authors={loan.authors} action={
+                <div key={loan.idLoan} className={styles.loanContainer}>
+                    <BookCard className={styles.bookContainer} id={loan.idLoan} coverUrl={loan.coverUrl} fileUrl={loan.coverUrl} title={loan.title} authors={loan.authors} action={
                     <>
-                        <Button variant="primary">Ler agora</Button>
-                        <Button variant="secondary">Devolver</Button>
+                        <Button className={styles.actionButton} variant="primary">Ler agora</Button>
+                        <Button className={styles.actionButton} variant="secondary">Devolver</Button>
                     </>
                     }/>
 
-                    <InfoLoan loanDate={loan.loanDate} expectedReturnDate={loan.expectedReturnDate}/>
+                    <InfoLoan loanDate={formatDate(loan.loanDate)} expectedReturnDate={formatDate(loan.expectedReturnDate)}/>
                 </div>
             ))}
         </section>

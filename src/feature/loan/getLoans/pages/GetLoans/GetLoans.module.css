@@ -1,3 +1,38 @@
+.titleContainer{
+    display: flex;
+    margin: 22px 10px;
+}
+
+.iconContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    min-width: 50px;
+    height: 50px;
+    background-color: #e9e5fa;
+    border-radius: 7px;
+    margin-right: 23px;
+    border: 1px solid var(--border-color);
+}
+
+.icon{
+    color: #5b5df7;
+}
+
+.title{
+    color: var(title-color);
+    font-weight: 700;
+    font-size: 1.55em;
+    margin-bottom: 7px;
+}
+
+.information{
+    color: var(--informations-color);
+    font-weight: 500;
+    font-size: 0.8em;
+}
+
 .statusContainer{
     gap: 10px;
     display: flex;
@@ -40,4 +75,20 @@
     right: 0;
     height: 1px;
     bottom: -1px;
+}
+
+.loanContainer{
+    margin: 0 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 13px;
+}
+
+.bookContainer{
+    padding-bottom: 0px !important;
+}
+
+.actionButton{
+    width: 100%;
+    padding: 8px 12px !important;  
 }

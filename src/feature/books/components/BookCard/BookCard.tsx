@@ -6,12 +6,13 @@ interface BookCardProps{
     fileUrl?: string,
     title: string,
     authors: string[],
-    action?: React.ReactNode
+    action?: React.ReactNode,
+    className?: string
 }
 
 export default function BookCard(props: BookCardProps){
     return(
-        <article className={styles.container}>
+        <article className={`${styles.container} ${props.className ?? ""}`}>
             
             <img className={styles.cover} src={props.coverUrl} alt="Imagem do livro" />
 
