@@ -7,7 +7,9 @@ interface BookCardProps{
     title: string,
     authors: string[],
     action?: React.ReactNode,
-    className?: string
+    className?: string,
+    variant: "available" | "returned",
+    tagBook: string
 }
 
 export default function BookCard(props: BookCardProps){
@@ -19,7 +21,7 @@ export default function BookCard(props: BookCardProps){
             <div className={styles.informationContainer}>
                 <h1 className={styles.title}>{props.title}</h1>
                 <p className={styles.authors}>{props.authors}</p>
-                <p className={styles.available}>Disponível</p>
+                <p className={`${styles.tagBook} ${styles[props.variant]}`}>{props.tagBook}</p>
             </div>
             
 

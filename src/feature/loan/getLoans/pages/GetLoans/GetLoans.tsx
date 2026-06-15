@@ -18,6 +18,8 @@ export default function GetLoans() {
         setCurrentStatus(status);
     }
 
+    const isActive = currentStatus === "ACTIVE";
+
     return(
         <section>
 
@@ -41,7 +43,7 @@ export default function GetLoans() {
             </div>
 
             <div className={styles.buttonContainer}>
-                <button className={`${styles.buttonFilter} ${currentStatus === "ACTIVE" ? styles.active : ""}`} onClick={() => handleChange("ACTIVE")}>
+                <button className={`${styles.buttonFilter} ${isActive ? styles.active : ""}`} onClick={() => handleChange("ACTIVE")}>
                     Ativos
                     
                     {currentStatus === "ACTIVE" && <motion.div layoutId="underline" className={styles.indicator}/>}
@@ -57,14 +59,30 @@ export default function GetLoans() {
 
             {loans.map((loan) => (
                 <div key={loan.idLoan} className={styles.loanContainer}>
-                    <BookCard className={styles.bookContainer} id={loan.idLoan} coverUrl={loan.coverUrl} fileUrl={loan.coverUrl} title={loan.title} authors={loan.authors} action={
-                    <>
-                        <Button className={styles.actionButton} variant="primary">Ler agora</Button>
-                        <Button className={styles.actionButton} variant="secondary">Devolver</Button>
-                    </>
+                    <BookCard variant={isActive
+                        ? "available"
+                        : "returned"
+                    } tagBook={isActive
+                        ? "Disponível"
+                        : "Livro"
+                    } className={styles.bookContainer} id={loan.idLoan} coverUrl={loan.coverUrl} fileUrl={loan.coverUrl} title={loan.title} authors={loan.authors} action={
+                        isActive
+                        ? <>
+                            <Button className={styles.actionButton} variant="primary">Ler agora</Button>
+                            <Button className={styles.actionButton} variant="secondary">Devolver</Button>
+                        </>
+
+                        : <div className={styles.returnedContainer}>
+                            <CircleCheck className={styles.returnedIcon}/>
+
+                            <p className={styles.returnedInformation}>Devolvido</p>
+                        </div>
                     }/>
 
-                    <InfoLoan loanDate={formatDate(loan.loanDate)} expectedReturnDate={formatDate(loan.expectedReturnDate)}/>
+                    <InfoLoan variant={currentStatus === "ACTIVE" ? "expected" : "returned"} informReturnDate={isActive
+                    ? "Devolver até"
+                    : "Devolvido em"
+                    } loanDate={formatDate(loan.loanDate)} expectedReturnDate={formatDate(loan.expectedReturnDate)}/>
                 </div>
             ))}
         </section>

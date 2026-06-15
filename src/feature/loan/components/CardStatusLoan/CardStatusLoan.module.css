@@ -44,15 +44,15 @@
 }
 
 .active .iconContainer{
-    background-color: #e7e4f5;
+    background-color: var(--details-background);
 }
 
 .active .icon{
-    color: #3033d3;
+    color: var(--details-color);
 }
 
 .active .caption{
-    color: #3033d3;
+    color: var(--details-color);
 }
 
 .days .iconContainer{
@@ -72,9 +72,9 @@
 }
 
 .done .icon{
-    color: #16a34a;
+    color: var(--done-color);
 }
 
 .done .caption{
-    color: #16a34a;
+    color: var(--done-color);
 }

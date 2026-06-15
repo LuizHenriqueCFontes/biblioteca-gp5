@@ -3,7 +3,9 @@ import styles from "./InfoLoan.module.css"
 
 interface InfoLoan {
     loanDate: string,
-    expectedReturnDate: string
+    expectedReturnDate: string,
+    informReturnDate: string,
+    variant: "expected" | "returned"
 }
 
 export default function InfoLoan(props: InfoLoan) {
@@ -26,9 +28,9 @@ export default function InfoLoan(props: InfoLoan) {
             <div className={styles.space}/>
 
             <div>
-                <p className={styles.information}>Devolver até</p>
+                <p className={styles.information}>{props.informReturnDate}</p>
                 
-                <span className={`${styles.information} ${styles.expectedReturnDate}`}>{props.expectedReturnDate}</span>
+                <span className={`${styles.information} ${styles[props.variant] ?? ""}`}>{props.expectedReturnDate}</span>
             </div>
         </section>
     );

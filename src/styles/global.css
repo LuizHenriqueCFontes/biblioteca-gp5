@@ -13,6 +13,11 @@
 
     --primary-color-transparency: rgba(0, 71, 225, 0.3);
     --secondary-color-transparency: rgba(0, 168, 232, 0.3);
+
+    --done-color: #16a34a;
+
+    --details-color: #3033d3;
+    --details-background:  #e7e4f5;
 }
 
 *{

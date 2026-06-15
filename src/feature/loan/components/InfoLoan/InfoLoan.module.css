@@ -38,9 +38,14 @@
     margin: 0 10px 0 10px;
 }
 
-.expectedReturnDate{
+.expected{
     color: #ff6b00;
     font-weight: 700;
+}
+
+.returned{
+    font-weight: 800;
+    font-size: 0.85;
 }
 
 
