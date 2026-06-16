@@ -28,8 +28,9 @@
 }
 
 .secondary{
-    background-color: aliceblue;
-    border: 1px solid var(--primary-color);
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--informations-color);
 }
 
 .primary:hover{

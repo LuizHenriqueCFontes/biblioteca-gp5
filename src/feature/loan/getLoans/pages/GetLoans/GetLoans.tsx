@@ -8,6 +8,7 @@ import styles from "./GetLoans.module.css";
 import { motion } from "framer-motion";
 import InfoLoan from "../../../components/InfoLoan/InfoLoan";
 import { formatDate } from "../../../../../utils/date";
+import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
 
 export default function GetLoans() {
     const [currentStatus, setCurrentStatus] = useState<"ACTIVE" | "RETURNED">("ACTIVE");
@@ -57,7 +58,9 @@ export default function GetLoans() {
                 </button>
             </div>
 
-            {loans.map((loan) => (
+            {loans.length === 0 
+                ? <EmptyState title="Nenhum emprestimo encontrado" description="Você não possui nenhum emprestimo"/>
+                : loans.map((loan) => (
                 <div key={loan.idLoan} className={styles.loanContainer}>
                     <BookCard variant={isActive
                         ? "available"
@@ -84,7 +87,10 @@ export default function GetLoans() {
                     : "Devolvido em"
                     } loanDate={formatDate(loan.loanDate)} expectedReturnDate={formatDate(loan.expectedReturnDate)}/>
                 </div>
-            ))}
+                ))
+            
+            }
+            
         </section>
     );
 }
