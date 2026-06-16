@@ -6,8 +6,7 @@ export function getErrorMessage(error: unknown): string {
 
     } else if(error instanceof Error) {
         return error.message;
-
     }
 
-    return "Error inesperado";
+    return "Erro inesperado";
 }

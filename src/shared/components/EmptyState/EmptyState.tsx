@@ -1,4 +1,5 @@
 import { BookX } from "lucide-react";
+import styles from "./EmptyState.module.css";
 
 interface EmptyState {
     title: string,
@@ -7,11 +8,12 @@ interface EmptyState {
 
 export default function EmptyState(props: EmptyState) {
     return(
-        <article>
-            <BookX />
-            <h1>{props.title}</h1>
+        <article className={styles.container}>
+            <BookX className={styles.icon}/>
 
-            <p>{props.description}</p>
+            <h1 className={styles.title}>{props.title}</h1>
+
+            <p className={styles.description}>{props.description}</p>
         </article>
     );    
 }

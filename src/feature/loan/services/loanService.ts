@@ -36,7 +36,12 @@ export const loanService = {
         });
 
         return data;
-    }
+    },
 
+    returnLoan: async(idLoan: string): Promise<void> => {
+        const endpoint = `${BASE_ENDPOINT}/${idLoan}`
+
+        await api.patch<void>(endpoint);
+    }
 
 }

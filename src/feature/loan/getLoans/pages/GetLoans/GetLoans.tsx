@@ -9,11 +9,12 @@ import { motion } from "framer-motion";
 import InfoLoan from "../../../components/InfoLoan/InfoLoan";
 import { formatDate } from "../../../../../utils/date";
 import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
+import { handleBookReturn } from "../../../actions/handleBookReturn";
 
 export default function GetLoans() {
     const [currentStatus, setCurrentStatus] = useState<"ACTIVE" | "RETURNED">("ACTIVE");
 
-    const { loans, summary, errorLoans } = useGetLoans(currentStatus);
+    const { loans, summary, errorLoans, returnLoan } = useGetLoans(currentStatus);
 
     function handleChange(status: "ACTIVE" | "RETURNED") {
         setCurrentStatus(status);
@@ -59,7 +60,8 @@ export default function GetLoans() {
             </div>
 
             {loans.length === 0 
-                ? <EmptyState title="Nenhum emprestimo encontrado" description="Você não possui nenhum emprestimo"/>
+                ? <EmptyState title={isActive ? "Nenhum emprestimo encontrado" : "Nenhum histórico encontrado"} 
+                description={isActive ? "Você não possui nenhum emprestimo" : "Você não possui nenhum histórico de emprestimos"}/>
                 : loans.map((loan) => (
                 <div key={loan.idLoan} className={styles.loanContainer}>
                     <BookCard variant={isActive
@@ -72,7 +74,8 @@ export default function GetLoans() {
                         isActive
                         ? <>
                             <Button className={styles.actionButton} variant="primary">Ler agora</Button>
-                            <Button className={styles.actionButton} variant="secondary">Devolver</Button>
+
+                            <Button onClick={() => handleBookReturn(loan.idLoan, returnLoan)} className={styles.actionButton} variant="secondary">Devolver</Button>
                         </>
 
                         : <div className={styles.returnedContainer}>

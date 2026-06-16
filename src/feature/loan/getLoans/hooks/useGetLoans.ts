@@ -1,9 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { Status } from "../../types/loanStatus";
 import { loanService } from "../../services/loanService";
 import { getErrorMessage } from "../../../../utils/getErrorMessage";
 
 export function useGetLoans(status: Status) {
+
+    const queryClient = useQueryClient();
 
     const FIVE_MINUTES = 1000 * 60 * 5;
 
@@ -17,6 +19,16 @@ export function useGetLoans(status: Status) {
         queryKey: ["get-summary"],
         queryFn: () => loanService.getSummary(),
         staleTime: FIVE_MINUTES
+    });
+
+    const returnLoanMutation = useMutation({
+        mutationFn: loanService.returnLoan,
+
+        onSuccess: async() => {
+            await queryClient.invalidateQueries({
+                queryKey: ["get-loans"]
+            });
+        }
     });
 
     const errorLoans = getLoans.error
@@ -34,6 +46,8 @@ export function useGetLoans(status: Status) {
 
         summary: getLoansSummary.data ?? null,
         loadingSummary: getLoansSummary.isLoading,
-        errorSummary
+        errorSummary,
+
+        returnLoan: returnLoanMutation.mutateAsync
     }
 }

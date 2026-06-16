@@ -19,7 +19,7 @@ export default function CardStatusLoan(props: CardStatusLoan) {
             <div className={styles.iconContainer}>
                 <Icon className={styles.icon}/>
             </div>
-            <h3 className={styles.number}>{props.number}</h3>
+            <h3 className={styles.number}>{props.number ?? 0}</h3>
             <p className={styles.caption}>{props.caption}</p>
             <p className={styles.information}>{props.information}</p>
         </article>
