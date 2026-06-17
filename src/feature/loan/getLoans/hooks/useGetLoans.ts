@@ -28,6 +28,10 @@ export function useGetLoans(status: Status) {
             await queryClient.invalidateQueries({
                 queryKey: ["get-loans"]
             });
+
+            await queryClient.invalidateQueries({
+                queryKey: ["get-summary"]
+            });
         }
     });
 

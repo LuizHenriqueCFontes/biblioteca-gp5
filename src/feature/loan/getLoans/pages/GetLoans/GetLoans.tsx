@@ -85,10 +85,10 @@ export default function GetLoans() {
                         </div>
                     }/>
 
-                    <InfoLoan variant={currentStatus === "ACTIVE" ? "expected" : "returned"} informReturnDate={isActive
+                    <InfoLoan currentStatus={currentStatus} variant={currentStatus === "ACTIVE" ? "expected" : "returned"} informReturnDate={isActive
                     ? "Devolver até"
                     : "Devolvido em"
-                    } loanDate={formatDate(loan.loanDate)} expectedReturnDate={formatDate(loan.expectedReturnDate)}/>
+                    } loanDate={formatDate(loan.loanDate)} expectedReturnDate={formatDate(loan.expectedReturnDate)} actualReturnDate={formatDate(loan.actualReturnDate)}/>
                 </div>
                 ))
             

@@ -9,5 +9,6 @@ export type BookLoanResponseDTO = {
     bookId: string,
     status: Status,
     loanDate: string,
-    expectedReturnDate: string 
+    expectedReturnDate: string,
+    actualReturnDate: string 
 }

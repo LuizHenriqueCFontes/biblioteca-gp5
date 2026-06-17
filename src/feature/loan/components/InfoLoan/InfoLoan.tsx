@@ -4,11 +4,14 @@ import styles from "./InfoLoan.module.css"
 interface InfoLoan {
     loanDate: string,
     expectedReturnDate: string,
+    actualReturnDate: string,
     informReturnDate: string,
-    variant: "expected" | "returned"
+    variant: "expected" | "returned",
+    currentStatus: "ACTIVE" | "RETURNED"
 }
 
 export default function InfoLoan(props: InfoLoan) {
+    const isActive = props.currentStatus === "ACTIVE";
 
     return(
         <section className={styles.container}>
@@ -30,7 +33,7 @@ export default function InfoLoan(props: InfoLoan) {
             <div>
                 <p className={styles.information}>{props.informReturnDate}</p>
                 
-                <span className={`${styles.information} ${styles[props.variant] ?? ""}`}>{props.expectedReturnDate}</span>
+                <span className={`${styles.information} ${styles[props.variant] ?? ""}`}>{isActive ? props.expectedReturnDate : props.actualReturnDate}</span>
             </div>
         </section>
     );
