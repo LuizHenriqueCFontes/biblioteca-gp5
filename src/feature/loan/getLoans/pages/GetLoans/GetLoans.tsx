@@ -10,14 +10,27 @@ import InfoLoan from "../../../components/InfoLoan/InfoLoan";
 import { formatDate } from "../../../../../utils/date";
 import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
 import { handleBookReturn } from "../../../actions/handleBookReturn";
+import { useStartReading } from "../../../../reading/hooks/useStartReading";
+import { startReadingAction } from "../../../../reading/actions/startReading";
+import { useNavigate } from "react-router-dom";
 
 export default function GetLoans() {
     const [currentStatus, setCurrentStatus] = useState<"ACTIVE" | "RETURNED">("ACTIVE");
 
+    const navigate = useNavigate();
+
     const { loans, summary, errorLoans, returnLoan } = useGetLoans(currentStatus);
+
+    const { startReading } = useStartReading();
 
     function handleChange(status: "ACTIVE" | "RETURNED") {
         setCurrentStatus(status);
+    }
+
+    async function handleStartReading(idBook: string) {
+        await startReadingAction(idBook, startReading);
+
+        navigate(`/reading/${idBook}`);
     }
 
     const isActive = currentStatus === "ACTIVE";
@@ -73,7 +86,7 @@ export default function GetLoans() {
                     } className={styles.bookContainer} id={loan.idLoan} coverUrl={loan.coverUrl} fileUrl={loan.coverUrl} title={loan.title} authors={loan.authors} action={
                         isActive
                         ? <>
-                            <Button className={styles.actionButton} variant="primary">Ler agora</Button>
+                            <Button className={styles.actionButton} variant="primary" onClick={() => handleStartReading(loan.bookId)}>{loan.hasReading ? "Continuar Leitura" : "Iniciar leitura"}</Button>
 
                             <Button onClick={() => handleBookReturn(loan.idLoan, returnLoan)} className={styles.actionButton} variant="secondary">Devolver</Button>
                         </>
