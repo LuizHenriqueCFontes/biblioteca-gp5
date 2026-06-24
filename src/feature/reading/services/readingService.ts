@@ -1,5 +1,6 @@
 import { api } from "../../../services/api";
 import type { ReadingResponseDTO } from "../types/readingResponseDTO";
+import type { UpdateReadingResponseDTO } from "../types/updateReadingResponseDTO";
 
 const BASE_ENDPOINT = "/reading";
 
@@ -8,6 +9,22 @@ export const readingService = {
         const endpoint = `${BASE_ENDPOINT}/${idBook}`;
 
         const { data } = await api.post<ReadingResponseDTO>(endpoint);
+
+        return data;
+    },
+
+    getReadingProgress: async(idBook: string): Promise<ReadingResponseDTO> => {
+        const endpoint = `${BASE_ENDPOINT}/${idBook}`;
+
+        const { data } = await api.get<ReadingResponseDTO>(endpoint);
+
+        return data;
+    },
+
+    updateReading: async(idBook: string): Promise<UpdateReadingResponseDTO> => {
+        const endpoint = `${BASE_ENDPOINT}/${idBook}`;
+
+        const { data } =  await api.patch<UpdateReadingResponseDTO>(endpoint);
 
         return data;
     }

@@ -33,6 +33,10 @@ export default function GetLoans() {
         navigate(`/reading/${idBook}`);
     }
 
+    function handleContinueReading(idBook: string) {
+        navigate(`/reading/${idBook}`);
+    }
+
     const isActive = currentStatus === "ACTIVE";
 
     return(
@@ -65,7 +69,8 @@ export default function GetLoans() {
                     
                     </button>
 
-                <button className={`${styles.buttonFilter} ${currentStatus === "RETURNED" ? styles.active : ""}`} onClick={() => handleChange("RETURNED")}>
+                <button className={`${styles.buttonFilter} ${currentStatus === "RETURNED" ? styles.active : ""}`}
+                 onClick={() => handleChange("RETURNED")}>
                     Histórico
 
                     {currentStatus === "RETURNED" && <motion.div layoutId="underline" className={styles.indicator}/>}
@@ -86,7 +91,9 @@ export default function GetLoans() {
                     } className={styles.bookContainer} id={loan.idLoan} coverUrl={loan.coverUrl} fileUrl={loan.coverUrl} title={loan.title} authors={loan.authors} action={
                         isActive
                         ? <>
-                            <Button className={styles.actionButton} variant="primary" onClick={() => handleStartReading(loan.bookId)}>{loan.hasReading ? "Continuar Leitura" : "Iniciar leitura"}</Button>
+                            <Button className={styles.actionButton} variant="primary" onClick={loan.hasReading 
+                                ? () => handleContinueReading(loan.bookId) 
+                                : () => handleStartReading(loan.bookId)}>{loan.hasReading ? "Continuar Leitura" : "Iniciar leitura"}</Button>
 
                             <Button onClick={() => handleBookReturn(loan.idLoan, returnLoan)} className={styles.actionButton} variant="secondary">Devolver</Button>
                         </>

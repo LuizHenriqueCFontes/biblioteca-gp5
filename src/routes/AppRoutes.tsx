@@ -5,7 +5,7 @@ import ImportBookDetailsPage from "../feature/books/admin/importBooksDetails/pag
 import SearchBooks from "../feature/books/user/searchBooks/pages/SearchBooks";
 import BookDetails from "../feature/books/user/bookDetails/pages/SearchBookDetails";
 import GetLoans from "../feature/loan/getLoans/pages/GetLoans/GetLoans";
-import ReaderPage from "../feature/reading/pages/ReaderPage";
+import ReaderPage from "../feature/reading/reader/pages/ReaderPage";
 
 export default function AppRoutes(){
     return(
