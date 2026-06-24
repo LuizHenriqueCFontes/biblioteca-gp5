@@ -12,7 +12,7 @@ export default function ReaderPage() {
 
     const { idBook } = useParams();
 
-    const { reading, loadingReading } = useReaderProgress(`${idBook}`);
+    const { reading, loadingReading, updateReading} = useReaderProgress(`${idBook}`);
 
     if(loadingReading) {
         return(<p>Carregando...</p>);
@@ -24,7 +24,7 @@ export default function ReaderPage() {
 
     return(
         <div className={styles.readerContainer}>
-            <ReactReader url={reading.fileUrl} location={null} locationChanged={handleLocationChanged}/>
+            <ReactReader url={reading.fileUrl} location={reading.epubCfi} locationChanged={handleLocationChanged}/>
         </div>
     );
 }

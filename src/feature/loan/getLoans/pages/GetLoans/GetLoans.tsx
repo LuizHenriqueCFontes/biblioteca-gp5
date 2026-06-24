@@ -11,13 +11,10 @@ import { formatDate } from "../../../../../utils/date";
 import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
 import { handleBookReturn } from "../../../actions/handleBookReturn";
 import { useStartReading } from "../../../../reading/hooks/useStartReading";
-import { startReadingAction } from "../../../../reading/actions/startReading";
-import { useNavigate } from "react-router-dom";
+import { handleContinueReading, handleStartReading } from "../../../actions/handleReading";
 
 export default function GetLoans() {
     const [currentStatus, setCurrentStatus] = useState<"ACTIVE" | "RETURNED">("ACTIVE");
-
-    const navigate = useNavigate();
 
     const { loans, summary, errorLoans, returnLoan } = useGetLoans(currentStatus);
 
@@ -27,15 +24,15 @@ export default function GetLoans() {
         setCurrentStatus(status);
     }
 
-    async function handleStartReading(idBook: string) {
+    /*async function handleStartReading(idBook: string) {
         await startReadingAction(idBook, startReading);
 
         navigate(`/reading/${idBook}`);
-    }
+    }*/
 
-    function handleContinueReading(idBook: string) {
+    /*function handleContinueReading(idBook: string) {
         navigate(`/reading/${idBook}`);
-    }
+    }*/
 
     const isActive = currentStatus === "ACTIVE";
 
@@ -93,7 +90,7 @@ export default function GetLoans() {
                         ? <>
                             <Button className={styles.actionButton} variant="primary" onClick={loan.hasReading 
                                 ? () => handleContinueReading(loan.bookId) 
-                                : () => handleStartReading(loan.bookId)}>{loan.hasReading ? "Continuar Leitura" : "Iniciar leitura"}</Button>
+                                : () => handleStartReading(loan.bookId, startReading)}>{loan.hasReading ? "Continuar Leitura" : "Iniciar leitura"}</Button>
 
                             <Button onClick={() => handleBookReturn(loan.idLoan, returnLoan)} className={styles.actionButton} variant="secondary">Devolver</Button>
                         </>
