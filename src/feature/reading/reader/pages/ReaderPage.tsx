@@ -4,6 +4,7 @@ import styles from "./ReaderPage.module.css";
 import EmptyState from "../../../../shared/components/EmptyState/EmptyState";
 import { useReaderProgress } from "../hooks/useReaderProgress";
 import { Rendition } from "epubjs"
+import { readerTheme } from "../../styles/readerTheme";
 
 export default function ReaderPage() {
 
@@ -17,6 +18,10 @@ export default function ReaderPage() {
         rendition.book.ready.then(() => {
             rendition.book.locations.generate(1024);
         });
+
+        rendition.themes.register("modern", readerTheme)
+
+        rendition.themes.select("modern");
     }
 
     if(loadingReading) {
@@ -30,14 +35,13 @@ export default function ReaderPage() {
     return(
         <div className={styles.readerContainer}>
             <ReactReader url={reading.fileUrl} 
-            location={reading.epubCfi} 
+            location={reading.epubCfi  || null} 
             locationChanged={handleLocationChange}
             getRendition={handleSetRendition}
             epubOptions={{
                 allowPopups: true,
                 allowScriptedContent: true
             }}
-            
             />
         </div>
     );

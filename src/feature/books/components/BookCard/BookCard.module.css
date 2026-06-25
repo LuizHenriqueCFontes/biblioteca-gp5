@@ -69,7 +69,7 @@
 .buttonContainer{
     display: flex;
     flex-direction: column;
-    min-width: 90px;
+    width: fit-content;
     align-self: center;
     margin-left: auto;
 }

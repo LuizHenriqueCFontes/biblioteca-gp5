@@ -6,8 +6,6 @@ import { Rendition } from "epubjs"
 
 export function useReaderProgress(idBook: string) {
 
-    const queryClient = useQueryClient();
-
     const renditionRef = useRef<Rendition | null>(null);
 
     const readingProgressRef = useRef<ReadingRequestDTO>({epubCfi: "", percentage: 0});
@@ -22,15 +20,20 @@ export function useReaderProgress(idBook: string) {
     const updateProgress = useMutation({
         mutationFn: (readingProgress: ReadingRequestDTO) => readingService.updateReading(idBook, readingProgress),
 
-        onSuccess: (newData) => {
+        onSuccess: () => {
             lastReadingProgressRef.current = readingProgressRef.current;
 
-            queryClient.setQueryData(["readingProgress", idBook], newData);
+            //queryClient.setQueryData(["readingProgress", idBook], newData);
         }
     });
 
 
     const handleLocationChange = (epubCfi: string) => {
+        if(readingProgressRef.current.epubCfi === epubCfi) {
+            return;
+        }
+
+        console.log(epubCfi)
         let percentage = 0;
 
         if(renditionRef.current) {
@@ -55,20 +58,17 @@ export function useReaderProgress(idBook: string) {
 
         return () => {
 
-        console.log("CLEANUP");
+            clearInterval(saveProgressInterval);
 
-        clearInterval(saveProgressInterval);
+            const hasChangeReading = lastReadingProgressRef.current.epubCfi !== readingProgressRef.current.epubCfi;
 
-        const hasChangeReading = lastReadingProgressRef.current.epubCfi !== readingProgressRef.current.epubCfi;
-
-        if(hasChangeReading) {
-            console.log("SALVANDO NO CLEANUP");
-
-            updateProgress.mutate(
-                readingProgressRef.current
-            );
-        }}
-    }, [idBook, updateProgress]);
+            if(hasChangeReading) {
+                updateProgress.mutate(
+                    readingProgressRef.current
+                );
+            }
+        }
+    }, [idBook]);
 
 
     return {

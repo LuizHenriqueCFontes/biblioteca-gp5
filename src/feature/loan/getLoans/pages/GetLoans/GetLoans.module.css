@@ -89,8 +89,8 @@
 }
 
 .actionButton{
-    width: 100%;
-    padding: 8px 12px !important;  
+    min-width: 120px;
+    padding: 7px 7px !important;  
 }
 
 .returnedContainer{
