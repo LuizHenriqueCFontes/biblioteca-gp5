@@ -1,10 +1,15 @@
-import type { Status } from "../loanStatus"
+import type { Status } from "./loanStatus"
 
 export type BookLoanResponseDTO = {
     idLoan: string,
     title: string,
+    authors: string[],
+    coverUrl: string,
+    fileUrl: string,
     bookId: string,
     status: Status,
-    loanData: string,
-    expirationDate: string 
+    loanDate: string,
+    expectedReturnDate: string,
+    actualReturnDate: string,
+    hasReading: boolean
 }

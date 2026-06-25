@@ -1,0 +1,51 @@
+.container{
+    display: flex;
+    gap: 20px;
+    margin: 12px;
+    max-width: 500px;
+}
+
+.loanContainer{
+    display: flex;
+}
+
+.iconContainer{
+    margin: auto 7px;
+}
+
+.icon{
+    width: 17px;
+    height: 17px;
+    color: var(--informations-color);
+    margin-right: 5px;
+}
+
+.information{
+    color: var(--informations-color);
+    font-size: 0.75em;
+    font-weight: 600;
+}
+
+.loanDate{
+    font-weight: 800;
+    font-size: 0.85;
+}
+
+.space{
+    width: 2px;
+    height: 30px;
+    background-color: #e2e8f0;
+    margin: 0 10px 0 10px;
+}
+
+.expected{
+    color: #ff6b00;
+    font-weight: 700;
+}
+
+.returned{
+    font-weight: 800;
+    font-size: 0.85;
+}
+
+

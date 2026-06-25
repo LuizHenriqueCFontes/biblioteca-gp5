@@ -1,0 +1,110 @@
+.titleContainer{
+    display: flex;
+    margin: 22px 10px;
+}
+
+.iconContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    min-width: 45px;
+    height: 45px;
+    background-color: var(--details-background);
+    border-radius: 7px;
+    margin-right: 23px;
+    border: 1px solid var(--border-color);
+}
+
+.icon{
+    color: var(--details-color);
+}
+
+.title{
+    color: var(title-color);
+    font-weight: 700;
+    font-size: 1.50em;
+    margin-bottom: 6px;
+}
+
+.information{
+    color: var(--informations-color);
+    font-weight: 500;
+    font-size: 0.8em;
+}
+
+.statusContainer{
+    gap: 10px;
+    display: flex;
+    flex: 1;
+
+    justify-content: center;
+    margin: 0 10px;
+    align-items: stretch;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 24px;
+    margin: 16px 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.buttonFilter{
+    background-color: #ffffff;
+    border: none;
+    font-size: 0.8em;
+    color: var(--informations-color);
+    font-weight: 550;
+    padding: 12px 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.active{
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.indicator{
+    position: absolute;
+    background-color: var(--primary-color);
+    left: 0;
+    right: 0;
+    height: 1px;
+    bottom: -1px;
+}
+
+.loanContainer{
+    margin: 0 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 13px;
+}
+
+.bookContainer{
+    padding-bottom: 0px !important;
+}
+
+.actionButton{
+    min-width: 120px;
+    padding: 7px 7px !important;  
+}
+
+.returnedContainer{
+    margin: auto;
+}
+
+.returnedIcon{
+    color: var(--done-color);
+    display: block;
+    margin: 3px auto;
+}
+
+.returnedInformation{
+    color: var(--done-color);
+    font-size: 0.75em;
+    font-weight: 700;
+}

@@ -103,3 +103,7 @@
     width: 20px;
     height: 20px;
 }
+
+.bookContainer:not(:last-child){
+    border-bottom: 1px solid var(--border-color);
+}

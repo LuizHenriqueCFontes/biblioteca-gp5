@@ -1,9 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layout/MainLayout/MainLayout";
-import ImportBooksPage from "../pages/admin/ImportBooksPage/ImportBooksPage";
-import ImportBookDetailsPage from "../pages/admin/ImportBooksDetailsPage/ImportBookDetailsPage";
-import SearchBooks from "../pages/user/SearchBooks/SearchBooks";
-import BookDetails from "../pages/user/SearchBookDetails/SearchBookDetails";
+import ImportBooksPage from "../feature/books/admin/importBooks/pages/ImportBooksPage";
+import ImportBookDetailsPage from "../feature/books/admin/importBooksDetails/pages/ImportBookDetailsPage";
+import SearchBooks from "../feature/books/user/searchBooks/pages/SearchBooks";
+import BookDetails from "../feature/books/user/bookDetails/pages/SearchBookDetails";
+import GetLoans from "../feature/loan/getLoans/pages/GetLoans/GetLoans";
+import ReaderPage from "../feature/reading/reader/pages/ReaderPage";
 
 export default function AppRoutes(){
     return(
@@ -14,6 +16,10 @@ export default function AppRoutes(){
 
                 <Route path="/search-books" element={<SearchBooks />}/>
                 <Route path="/book/:id" element={<BookDetails />}/>
+
+                <Route path="/loan" element={<GetLoans />}/>
+
+                <Route path="/reading/:idBook" element={<ReaderPage />}/>
 
             </Route>
         </Routes>
