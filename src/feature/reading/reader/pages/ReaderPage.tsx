@@ -3,16 +3,21 @@ import { ReactReader } from "react-reader"
 import styles from "./ReaderPage.module.css";
 import EmptyState from "../../../../shared/components/EmptyState/EmptyState";
 import { useReaderProgress } from "../hooks/useReaderProgress";
+import { Rendition } from "epubjs"
 
 export default function ReaderPage() {
 
-    const handleLocationChanged = (epubCfi: string) => {
-        console.log(epubCfi);
-    }
-
     const { idBook } = useParams();
 
-    const { reading, loadingReading, updateReading} = useReaderProgress(`${idBook}`);
+    const { reading, loadingReading, handleLocationChange, renditionRef} = useReaderProgress(`${idBook}`);
+
+    const handleSetRendition = (rendition: Rendition) => {
+        renditionRef.current = rendition;
+
+        rendition.book.ready.then(() => {
+            rendition.book.locations.generate(1024);
+        });
+    }
 
     if(loadingReading) {
         return(<p>Carregando...</p>);
@@ -24,7 +29,16 @@ export default function ReaderPage() {
 
     return(
         <div className={styles.readerContainer}>
-            <ReactReader url={reading.fileUrl} location={reading.epubCfi} locationChanged={handleLocationChanged}/>
+            <ReactReader url={reading.fileUrl} 
+            location={reading.epubCfi} 
+            locationChanged={handleLocationChange}
+            getRendition={handleSetRendition}
+            epubOptions={{
+                allowPopups: true,
+                allowScriptedContent: true
+            }}
+            
+            />
         </div>
     );
 }
