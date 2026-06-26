@@ -1,4 +1,4 @@
-import { BookOpen, CircleCheck, Clock } from "lucide-react";
+import { BookOpen, BookX, CircleCheck, Clock } from "lucide-react";
 import CardStatusLoan from "../../../components/CardStatusLoan/CardStatusLoan";
 import { useGetLoans } from "../../hooks/useGetLoans";
 import { useState } from "react";
@@ -78,7 +78,7 @@ export default function GetLoans() {
             </div>
 
             {loans.length === 0 
-                ? <EmptyState title={isActive ? "Nenhum emprestimo encontrado" : "Nenhum histórico encontrado"} 
+                ? <EmptyState  icon={BookX} title={isActive ? "Nenhum emprestimo encontrado" : "Nenhum histórico encontrado"} 
                 description={isActive ? "Você não possui nenhum emprestimo" : "Você não possui nenhum histórico de emprestimos"}/>
                 : loans.map((loan) => (
                 <div key={loan.idLoan} className={styles.loanContainer}>
@@ -111,7 +111,6 @@ export default function GetLoans() {
                     } loanDate={formatDate(loan.loanDate)} expectedReturnDate={formatDate(loan.expectedReturnDate)} actualReturnDate={formatDate(loan.actualReturnDate)}/>
                 </div>
                 ))
-            
             }
             
         </section>

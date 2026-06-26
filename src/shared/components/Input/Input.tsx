@@ -5,18 +5,23 @@ interface InputProps{
     id: string,
     label?: string,
     type?: string,
+    ariaLabel?: string,
     icon?: LucideIcon,
     placeholder?: string,
     value: string,
     onChange: (value: string) => void,
     required?: boolean,
-    className?: string
+    className?: string,
 }
 
 export function Input(props: InputProps){
 
+    const Icon = props.icon;
+
     return(
         <div>
+            <Icon />
+
             {props.label && <label  className={styles.label} htmlFor={props.id}>{props.label}</label>}
 
             <input type={props.type} id={props.id} placeholder={props.placeholder} required={props.required} className={`${styles.input} ${props.className ?? ""}`}
