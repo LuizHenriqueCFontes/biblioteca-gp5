@@ -6,6 +6,7 @@ import SearchBooks from "../feature/books/user/searchBooks/pages/SearchBooks";
 import BookDetails from "../feature/books/user/bookDetails/pages/SearchBookDetails";
 import GetLoans from "../feature/loan/getLoans/pages/GetLoans/GetLoans";
 import ReaderPage from "../feature/reading/reader/pages/ReaderPage";
+import SearchCategories from "../feature/category/search/pages/SearchCategories/SearchCategories";
 
 export default function AppRoutes(){
     return(
@@ -20,6 +21,8 @@ export default function AppRoutes(){
                 <Route path="/loan" element={<GetLoans />}/>
 
                 <Route path="/reading/:idBook" element={<ReaderPage />}/>
+
+                <Route path="/categories" element={<SearchCategories />}/>
 
             </Route>
         </Routes>

@@ -19,8 +19,8 @@ export function Input(props: InputProps){
     const Icon = props.icon;
 
     return(
-        <div>
-            <Icon />
+        <div className={styles.inputContainer}>
+            {Icon && <Icon className={styles.icon}/>}
 
             {props.label && <label  className={styles.label} htmlFor={props.id}>{props.label}</label>}
 

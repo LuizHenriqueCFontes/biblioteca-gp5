@@ -1,9 +1,27 @@
+.inputContainer{
+    position: relative;
+    margin: 20px 0;
+}
+
+.icon{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--informations-color);
+    pointer-events: none;
+    width: 19px;
+    height: 19px;
+}
+
 .input{
     width: 100%;
     padding: 10px;
+    padding-left: 43px;
     outline: none;
     border-radius: 7px;
     border: 1px solid var(--border-color);
+    font-weight: 550;
 }
 
 .input:focus-within{

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useCategory } from "../../../hooks/useCategory";
 import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
 import CardCategory from "../../components/CardCategory";
+import styles from "./SearchCategories.module.css"
 
 export default function SearchCategories() {
 
@@ -13,37 +14,41 @@ export default function SearchCategories() {
     const { categories, loadingCategories } = useCategory(findCategory);
 
     return(
-        <section>
-            <div>
-                <h1>Categorias</h1>
-                <p>Gerencie as categorias de livros da biblioteca.</p>
+        <section className={styles.container}>
+            <div className={styles.titleContainer}>
+                <div className={styles.informContainer}>
+                    <h1 className={styles.title}>Categorias</h1>
+                    <p className={styles.description}>Gerencie as categorias de livros da biblioteca.</p>
+                </div>
+
+                <Button className={styles.btnCategory} variant="primary" icon={Plus}>Nova categoria</Button>
             </div>
 
-            <Button variant="primary" icon={Plus}>Nova categoria</Button>
+            <div className={styles.inputContainer}>
 
-            <div>
                 <Input id="categorias" icon={Search} ariaLabel="Buscar Categorias" placeholder="Buscar categorias..." value={findCategory} onChange={setFindCategory}/>
 
-                <div>
-                    <label>Ordenar por</label>
-                    <select name="order" id="order">
+                <div className={styles.orderContainer}>
+                    <label className={styles.orderLabel}>Ordenar por</label>
+
+                    <select className={styles.selectOrder} name="order" id="order">
                         <option>Nome (A-Z)</option>
                     </select>
                 </div>
             </div>
 
-            <div>
-                {loadingCategories && <p>Carregando</p>}
+            <div className={styles.categoriesContainer}>
+               {categories.length === 0 && <EmptyState  icon={Shapes} title="Nenhuma categoria cadastrada" description="O sistema nao possui categorias cadastradas"/>}
 
-                {categories.length === 0
-                    ? <EmptyState  icon={Shapes} title="Nenhuma categoria cadastrada" description="O sistema nao possui categorias cadastradas"/>
+                {loadingCategories 
+                    ? <p>Carregando...</p>
 
                     : categories.map((categorie) => (
                         <CardCategory key={categorie.idCategory}
-                            title={categorie.name} action={
+                            title={categorie.name} numberBooks={categorie.bookCount} action={
                                 <>
-                                    <Pencil />
-                                    <Trash2 />
+                                    <button><Pencil /></button>
+                                    <button><Trash2 /></button>
                                 </>
                             }/>
                     ))}

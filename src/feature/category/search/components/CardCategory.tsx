@@ -2,7 +2,7 @@ import { Bookmark } from "lucide-react";
 
 interface CardCategory {
     title: string,
-    numberBooks?: number,
+    numberBooks: number,
     action: React.ReactNode
 }
 
@@ -13,11 +13,11 @@ export default function CardCategory(props: CardCategory) {
 
             <div>
                 <h2>{props.title}</h2>
-                <p>{props.numberBooks}</p>
+                <p>{props.numberBooks} {props.numberBooks >= 1 ? "livro" : "livros"}</p>
             </div>
 
             <div>
-                {props.action}
+                <p>{props.action}</p>
             </div>
         </article>
     );

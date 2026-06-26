@@ -1,0 +1,33 @@
+.container{
+    margin: 0 10px;
+}
+
+.titleContainer{
+    display: flex;
+    gap: 10px;
+}
+
+.title{
+    color: var(--title-color);
+    font-size: 1.4em;
+    margin: 20px 0 4px;
+}
+
+.description{
+    font-size: 0.8em;
+    font-weight: 520;
+    color: var(--informations-color);
+}
+
+.btnCategory{
+    width: auto;
+    white-space: nowrap;
+    height: 40px;
+    padding: 3px 7px;
+    margin-top: 20px;
+}
+
+.orderContainer{
+    display: flex;
+    flex-direction: column;
+}

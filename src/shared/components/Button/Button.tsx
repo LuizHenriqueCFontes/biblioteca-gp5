@@ -16,9 +16,10 @@ export function Button(props: ButtonProps){
 
     return(
         <>
-            <Icon />
-
             <button className={`${styles.button} ${styles[props.variant]} ${props.className ?? ""}`} type={props.type} onClick={props.onClick}>
+
+                {Icon && <Icon className={styles.icon}/>}
+
                 {props.children}
             </button>
         </>

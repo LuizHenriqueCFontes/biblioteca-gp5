@@ -1,4 +1,5 @@
 export type CategoryResponseDTO = {
     idCategory: string,
-    name: string
+    name: string,
+    bookCount: number
 }

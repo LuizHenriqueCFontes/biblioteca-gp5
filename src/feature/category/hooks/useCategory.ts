@@ -11,7 +11,7 @@ export function useCategory(name?: string) {
     });
 
     return {
-        categories: listCategories?.data ?? [],
+        categories: listCategories.data?.content ?? [],
         loadingCategories: listCategories.isLoading
     }
 }
