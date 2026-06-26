@@ -4,7 +4,8 @@ import styles from "./ReaderPage.module.css";
 import EmptyState from "../../../../shared/components/EmptyState/EmptyState";
 import { useReaderProgress } from "../hooks/useReaderProgress";
 import { Rendition } from "epubjs"
-import { readerTheme } from "../../styles/readerTheme";
+import { readerTheme } from "../../themes/readerTheme";
+import { BookX } from "lucide-react";
 
 export default function ReaderPage() {
 
@@ -29,7 +30,7 @@ export default function ReaderPage() {
     }
 
     if(!reading) {
-        return <EmptyState title="Livro não encontrado" description="nenhum livro foi encontrado"/>
+        return <EmptyState  icon={BookX} title="Livro não encontrado" description="nenhum livro foi encontrado"/>
     }
 
     return(

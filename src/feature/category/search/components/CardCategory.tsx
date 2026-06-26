@@ -1,19 +1,15 @@
-import type { LucideIcon } from "lucide-react";
+import { Bookmark } from "lucide-react";
 
 interface CardCategory {
-    icon?: LucideIcon,
     title: string,
-    numberBooks: number,
+    numberBooks?: number,
     action: React.ReactNode
 }
 
 export default function CardCategory(props: CardCategory) {
-
-    const Icon = props.icon;
-
     return(
         <article>
-            <Icon />
+            <Bookmark />
 
             <div>
                 <h2>{props.title}</h2>

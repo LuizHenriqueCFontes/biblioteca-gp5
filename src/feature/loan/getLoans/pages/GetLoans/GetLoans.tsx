@@ -80,6 +80,7 @@ export default function GetLoans() {
             {loans.length === 0 
                 ? <EmptyState  icon={BookX} title={isActive ? "Nenhum emprestimo encontrado" : "Nenhum histórico encontrado"} 
                 description={isActive ? "Você não possui nenhum emprestimo" : "Você não possui nenhum histórico de emprestimos"}/>
+                
                 : loans.map((loan) => (
                 <div key={loan.idLoan} className={styles.loanContainer}>
                     <BookCard variant={isActive

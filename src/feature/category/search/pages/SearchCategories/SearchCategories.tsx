@@ -1,9 +1,10 @@
-import { Plus, Search, Shapes } from "lucide-react";
+import { Pencil, Plus, Search, Shapes, Trash2 } from "lucide-react";
 import { Button } from "../../../../../shared/components/Button/Button";
 import { Input } from "../../../../../shared/components/Input/Input";
 import { useState } from "react";
-import type { useCategory } from "../../../hooks/useCategory";
+import { useCategory } from "../../../hooks/useCategory";
 import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
+import CardCategory from "../../components/CardCategory";
 
 export default function SearchCategories() {
 
@@ -23,7 +24,12 @@ export default function SearchCategories() {
             <div>
                 <Input id="categorias" icon={Search} ariaLabel="Buscar Categorias" placeholder="Buscar categorias..." value={findCategory} onChange={setFindCategory}/>
 
-                <select name="order" id="order"></select>
+                <div>
+                    <label>Ordenar por</label>
+                    <select name="order" id="order">
+                        <option>Nome (A-Z)</option>
+                    </select>
+                </div>
             </div>
 
             <div>
@@ -31,9 +37,16 @@ export default function SearchCategories() {
 
                 {categories.length === 0
                     ? <EmptyState  icon={Shapes} title="Nenhuma categoria cadastrada" description="O sistema nao possui categorias cadastradas"/>
-                    : 
-                }
 
+                    : categories.map((categorie) => (
+                        <CardCategory key={categorie.idCategory}
+                            title={categorie.name} action={
+                                <>
+                                    <Pencil />
+                                    <Trash2 />
+                                </>
+                            }/>
+                    ))}
             </div>
         </section>
     );
