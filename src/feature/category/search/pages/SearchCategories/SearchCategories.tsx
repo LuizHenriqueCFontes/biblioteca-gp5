@@ -7,8 +7,15 @@ import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
 import CardCategory from "../../components/CardCategory";
 import styles from "./SearchCategories.module.css"
 import Select from "../../../../../shared/components/Select/Select";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchCategories() {
+
+    const navigate = useNavigate();
+
+    function handleNewCategory() {
+        navigate("/categories/create");
+    }
 
     const [findCategory, setFindCategory] = useState("");
 
@@ -22,7 +29,7 @@ export default function SearchCategories() {
                     <p className={styles.description}>Gerencie as categorias de livros da biblioteca.</p>
                 </div>
 
-                <Button className={styles.btnCategory} variant="primary" icon={Plus}>Nova categoria</Button>
+                <Button className={styles.btnCategory} variant="primary" icon={Plus} onClick={handleNewCategory}>Nova categoria</Button>
             </div>
 
             <div className={styles.inputContainer}>

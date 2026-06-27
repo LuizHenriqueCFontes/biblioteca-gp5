@@ -22,7 +22,7 @@ export function Input(props: InputProps){
         <div className={styles.inputContainer}>
             {Icon && <Icon className={styles.icon}/>}
 
-            {props.label && <label  className={styles.label} htmlFor={props.id}>{props.label}</label>}
+            {props.label && <label  className={`${styles.label} ${props.required ? styles.required : ""}`} htmlFor={props.id}>{props.label}</label>}
 
             <input type={props.type} id={props.id} placeholder={props.placeholder} required={props.required} className={`${styles.input} ${props.className ?? ""}`}
                 value={props.value}
