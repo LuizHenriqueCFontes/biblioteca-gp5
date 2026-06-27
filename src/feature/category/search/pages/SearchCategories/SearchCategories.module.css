@@ -5,6 +5,7 @@
 .titleContainer{
     display: flex;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
 .title{
@@ -22,12 +23,27 @@
 .btnCategory{
     width: auto;
     white-space: nowrap;
-    height: 40px;
-    padding: 3px 7px;
+    height: 34px;
+    padding: 3px 9px !important;
     margin-top: 20px;
 }
 
-.orderContainer{
+.inputContainer{
     display: flex;
     flex-direction: column;
+    gap: 35px;
 }
+
+.categoriesContainer{
+    border: 1px solid var(--border-color);
+    border-radius: 7px;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.categories:not(:last-child){
+    margin-bottom: 1px solid var(--border-color);
+}
+
+
+

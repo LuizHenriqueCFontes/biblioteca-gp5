@@ -6,6 +6,7 @@ import { useCategory } from "../../../hooks/useCategory";
 import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
 import CardCategory from "../../components/CardCategory";
 import styles from "./SearchCategories.module.css"
+import Select from "../../../../../shared/components/Select/Select";
 
 export default function SearchCategories() {
 
@@ -26,15 +27,9 @@ export default function SearchCategories() {
 
             <div className={styles.inputContainer}>
 
-                <Input id="categorias" icon={Search} ariaLabel="Buscar Categorias" placeholder="Buscar categorias..." value={findCategory} onChange={setFindCategory}/>
+                <Input className={styles.findInput} id="categorias" icon={Search} ariaLabel="Buscar Categorias" placeholder="Buscar categorias..." value={findCategory} onChange={setFindCategory}/>
 
-                <div className={styles.orderContainer}>
-                    <label className={styles.orderLabel}>Ordenar por</label>
-
-                    <select className={styles.selectOrder} name="order" id="order">
-                        <option>Nome (A-Z)</option>
-                    </select>
-                </div>
+                <Select id="order" options={[{value: "", label: "Nome (A-Z)"}]} label="Ordernar por"/>
             </div>
 
             <div className={styles.categoriesContainer}>
@@ -44,14 +39,14 @@ export default function SearchCategories() {
                     ? <p>Carregando...</p>
 
                     : categories.map((categorie) => (
-                        <CardCategory key={categorie.idCategory}
+                        <CardCategory  className={styles.categories} key={categorie.idCategory}
                             title={categorie.name} numberBooks={categorie.bookCount} action={
                                 <>
-                                    <button><Pencil /></button>
+                                    <button className={styles.btnEdit}><Pencil /></button>
                                     <button><Trash2 /></button>
                                 </>
                             }/>
-                    ))}
+                ))}
             </div>
         </section>
     );

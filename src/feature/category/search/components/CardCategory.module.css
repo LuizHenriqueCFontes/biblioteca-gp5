@@ -1,0 +1,41 @@
+.cardContainer{
+    display: flex;
+}
+
+.iconContainer{
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    margin-right: 14px;
+}
+
+.icon{
+    width: 25px;
+    height: 25px;
+    color: var(--contrast-primary-color);
+}
+
+.title{
+    color: var(--title-color);
+    font-size: 1em;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.numberBooks{
+    color: var(--informations-color);
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+.actionContainer{
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+}

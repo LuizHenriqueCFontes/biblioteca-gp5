@@ -1,0 +1,42 @@
+.orderContainer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.orderLabel{
+    position: absolute;
+    background-color: #ffffff;
+    left: 8px;
+    top: -10px;
+    border-radius: 8px;
+    color: var(--informations-color);
+    font-size: 0.8em;
+    padding: 0 4px;
+    font-weight: 520;
+}
+
+.icon{
+    color: var(--title-color);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 92%;
+    pointer-events: none;
+}
+
+.selectOrder{
+    width: 100%;
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 7px;
+    outline: none;
+
+    color: var(--title-color);
+    font-weight: 535;
+    font-size: 0.85em;
+
+    appearance: none;
+}

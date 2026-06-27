@@ -1,4 +1,4 @@
-import { CircleAlert, SlidersHorizontal } from "lucide-react";
+import { CircleAlert, Search, SlidersHorizontal } from "lucide-react";
 import { Button } from "../../../../shared/components/Button/Button";
 import { Input } from "../../../../shared/components/Input/Input";
 import styles from "./BookSearch.module.css"
@@ -36,13 +36,14 @@ export default function BookSearch(props: BookSearchProps){
             <div className={styles.searchContainer}>
 
                 <form>
-                    <Input className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={book} onChange={findBook}/>
 
-                    <select name="category" id="category" className={styles.filter}>
-                        <option>Todos os tipos</option>
-                    </select>
+                    <div className={styles.inputContainer}>
+                        <Input icon={Search} className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={book} onChange={findBook}/>
+                        <select name="category" id="category" className={styles.filter}>
+                            <option>Todos os tipos</option>
+                        </select>
+                    </div>
 
-                    
                     <Button variant="primary">
                         Pesquisar
                     </Button>

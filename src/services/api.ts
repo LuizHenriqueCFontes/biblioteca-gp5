@@ -12,7 +12,7 @@ export const api = axios.create({
 
 api.interceptors.request.use((config) => {
 
-    localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYmlibGlvdGVjYS1ncDUiLCJzdWIiOiI4Yzk3MTVhOS02NWM3LTQ2OTEtYTcxNi1hMTQ5N2NjYzhiMDIiLCJyb2xlIjpbIkFETUlOIl0sImV4cCI6MTc4MjQ5OTg4MH0.44gQBsjcgrsHk4hrIsVKr-UnUvAIu1vzOivSaUX7zz0");
+    localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYmlibGlvdGVjYS1ncDUiLCJzdWIiOiI0YWEwNWZjOC1lZDNiLTQ5YTEtOGMwMS04ZDk1MmI2ZDEyZTIiLCJyb2xlIjpbIlVTRVIiXSwiZXhwIjoxNzgyNTE5MTg2fQ.847nnHThQBi8ZLuoOi2CqXzsjf1PTqqNDbXWm6cD7R8");
 
     const token = localStorage.getItem("token");
 

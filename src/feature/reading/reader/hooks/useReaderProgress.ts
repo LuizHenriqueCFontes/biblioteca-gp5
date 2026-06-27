@@ -1,10 +1,12 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { readingService } from "../../services/readingService";
 import { useEffect, useRef } from "react";
 import type { ReadingRequestDTO } from "../../types/request/readingRequestDTO";
 import { Rendition } from "epubjs"
 
 export function useReaderProgress(idBook: string) {
+
+    const queryClient = useQueryClient();
 
     const renditionRef = useRef<Rendition | null>(null);
 
@@ -22,6 +24,10 @@ export function useReaderProgress(idBook: string) {
 
         onSuccess: () => {
             lastReadingProgressRef.current = readingProgressRef.current;
+
+            queryClient.invalidateQueries({
+                queryKey: ["get-loans", "ACTIVE"]
+            });
         }
     });
 
