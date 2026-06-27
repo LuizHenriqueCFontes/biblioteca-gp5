@@ -42,8 +42,8 @@ export default function SearchCategories() {
                         <CardCategory  className={styles.categories} key={categorie.idCategory}
                             title={categorie.name} numberBooks={categorie.bookCount} action={
                                 <>
-                                    <button className={styles.btnEdit}><Pencil /></button>
-                                    <button><Trash2 /></button>
+                                    <button className={`${styles.btnBase} ${styles.btnEdit}`}> <Pencil className={`${styles.btnIcon} ${styles.iconEdit}`}/> </button>
+                                    <button className={`${styles.btnBase} ${styles.btnDel}`}> <Trash2 className={`${styles.btnIcon} ${styles.iconDel}`}/> </button>
                                 </>
                             }/>
                 ))}
