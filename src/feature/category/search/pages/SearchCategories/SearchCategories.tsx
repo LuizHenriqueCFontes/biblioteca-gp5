@@ -34,7 +34,9 @@ export default function SearchCategories() {
 
             <div className={styles.inputContainer}>
 
-                <Input className={styles.findInput} id="categorias" icon={Search} ariaLabel="Buscar Categorias" placeholder="Buscar categorias..." value={findCategory} onChange={setFindCategory}/>
+                <form>
+                    <Input className={styles.findInput} id="categorias" icon={Search} ariaLabel="Buscar Categorias" placeholder="Buscar categorias..." value={findCategory} onChange={setFindCategory}/>
+                </form>
 
                 <Select id="order" options={[{value: "", label: "Nome (A-Z)"}]} label="Ordernar por"/>
             </div>

@@ -1,16 +1,31 @@
 import { ChevronRight, FolderClosed, Save, Tag } from "lucide-react"
 import { Input } from "../../../../shared/components/Input/Input";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "../../../../shared/components/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Register.module.css"
+import { useCategory } from "../../hooks/useCategory";
+import { handleCreateCategory } from "../actions/handleCreateCategory";
 
 export default function RegisterCategory() {
     const [category, setCategory] = useState("");
 
+    const { createCategory } = useCategory();
+
+    const navigate = useNavigate();
+
+    async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+        await handleCreateCategory(event, category, createCategory);
+
+        setCategory("");
+    }
+    
+    function handleCancel() {
+        navigate("/categories");
+    }
 
     return(
-        <section>
+        <section className={styles.mainContainer}>
             <nav>
                <ul className={styles.breadcrumbContainer}>
                     <li> 
@@ -27,45 +42,46 @@ export default function RegisterCategory() {
                 </ul> 
             </nav>
 
-            <div className={styles.titleContainer}>
-                <div className={styles.iconContainer}>
-                    <FolderClosed className={styles.icon}/>
+            <div className={styles.generalContainer}>
+                <div className={styles.titleContainer}>
+                    <div className={styles.iconContainer}>
+                        <FolderClosed className={styles.icon}/>
+                    </div>
+                    <div className={styles.infoContainer}>
+                        <h1 className={styles.title}>Cadastrar nova categoria</h1>
+                        <p className={styles.description}>Preencha as informações abaixo para criar uma nova categoria</p>
+                    </div>
                 </div>
 
-                <div className={styles.infoContainer}>
-                    <h1 className={styles.title}>Cadastrar nova categoria</h1>
-                    <p className={styles.description}>Preencha as informações abaixo para criar uma nova categoria</p>
-                </div>
+                <hr className={styles.divider}/>
+
+                <form className={styles.inputContainer} onSubmit={(event) => handleSubmit(event)}>
+                    <Input className={styles.input} id="category" label="Nome da categoria" type="text" placeholder="Ex.: Ficção, Educação, Ciência..." required value={category} onChange={setCategory}/>
+                
+                    <div className={styles.tagContainer}>
+                        <div>
+                            <Tag className={styles.iconTag}/>
+                        </div>
+                        <div>
+                            <h3 className={styles.titleTag}>Organize do seu jeito</h3>
+                            <p className={styles.infoTag}>Você poderá adicionar itens e organizar sua categoria depois</p>
+                        </div>
+                    </div>
+                
+                    <hr className={styles.divider}/>
+
+                    <div className={styles.btnContainer}>
+                        <Button variant="primary">
+                            <Save />
+                            Salvar categoria
+                        </Button>
+                        
+                        <Button type="button" variant="secondary" onClick={handleCancel}>
+                            Cancelar
+                        </Button>
+                    </div>
+                </form>
             </div>
-
-            <hr />
-
-            <form className={styles.inputContainer}>
-                <Input className={styles.input} id="category" label="Nome da categoria" type="text" placeholder="Ex.: Ficção, Educação, Ciência..." required value={category} onChange={setCategory}/>
-
-                
-                <div className={styles.tagContainer}>
-                    <div>
-                        <Tag className={styles.iconTag}/>
-                    </div>
-
-                    <div>
-                        <h3>Organize do seu jeito</h3>
-                        <p>Você poderá adicionar itens e organizar sua categoria depois</p>
-                    </div>
-                </div>
-                
-                <hr />
-
-                <Button variant="primary">
-                    <Save />
-                    Salvar categoria
-                </Button>
-
-                <Button type="button" variant="secondary">
-                    Cancelar
-                </Button>
-            </form>
         </section>
     );
 }

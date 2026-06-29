@@ -20,7 +20,15 @@
     outline: none;
     border-radius: 7px;
     border: 1px solid var(--border-color);
-    font-weight: 550;
+    font-weight: 450;
+    font-size: 0.8em;
+
+    font-family: "Inter", sans-serif;
+}
+
+.input::placeholder{
+    font-size: 1em;
+    font-weight: 600;
 }
 
 .input:focus-within{
