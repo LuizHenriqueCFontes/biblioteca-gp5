@@ -2,29 +2,6 @@
     padding: 15px;
 }
 
-.breadcrumbContainer{
-    display: flex;
-    list-style: none;
-    gap: 10px;
-    align-items: center;
-    width: fit-content;
-    margin-bottom: 13px;
-}
-
-.breadcrumbValue{
-    font-size: 0.8em;
-    color: var(--informations-color);
-    text-decoration: none;
-    font-weight: 550;
-}
-
-.breadcrumbIcon{
-    width: 15px;
-    height: 15px;
-    color: var(--informations-color);
-    margin-top: 7px;
-}
-
 .generalContainer{
     padding: 15px;
     border: 1px solid var(--border-color);

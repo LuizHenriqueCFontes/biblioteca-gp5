@@ -1,11 +1,12 @@
-import { ChevronRight, FolderClosed, Save, Tag } from "lucide-react"
+import { FolderClosed, Save, Tag } from "lucide-react"
 import { Input } from "../../../../shared/components/Input/Input";
 import React, { useState } from "react";
 import { Button } from "../../../../shared/components/Button/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./Register.module.css"
 import { useCategory } from "../../hooks/useCategory";
 import { handleCreateCategory } from "../actions/handleCreateCategory";
+import Breadcrumb from "../../../../shared/components/Breadcrumb/Breadcrumb";
 
 export default function RegisterCategory() {
     const [category, setCategory] = useState("");
@@ -26,21 +27,11 @@ export default function RegisterCategory() {
 
     return(
         <section className={styles.mainContainer}>
-            <nav>
-               <ul className={styles.breadcrumbContainer}>
-                    <li> 
-                        <Link  className={styles.breadcrumbValue} to="/categories">Categorias</Link>
-                    </li>
-                
-                    <li>
-                        <ChevronRight className={styles.breadcrumbIcon}/>
-                    </li>
 
-                    <li>
-                        <span className={styles.breadcrumbValue}>Nova categoria</span>
-                    </li>
-                </ul> 
-            </nav>
+            <Breadcrumb breadcrumb={[
+                {label: "Categorias", to: "/categories"},
+                {label: "Nova categoria"}
+            ]}/>
 
             <div className={styles.generalContainer}>
                 <div className={styles.titleContainer}>
