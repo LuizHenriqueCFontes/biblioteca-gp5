@@ -14,13 +14,15 @@ interface BreadcrumbProps {
 export default function Breadcrumb(props: BreadcrumbProps) {
     return(
         <nav>
-            <ul className={styles.breadcrumbContainer}>    
+            <ul className={styles.breadcrumbContainer}>   
+
                 {props.breadcrumb.map((breadcrumb, index) => {
                     const isLast = index === props.breadcrumb.length -1;
                     
                     return(
                         isLast
                         ? <li key={breadcrumb.label}><span className={styles.breadcrumbValue}>{breadcrumb.label}</span></li>
+                        
                         :   <>
                                 <li key={breadcrumb.label}><Link className={styles.breadcrumbValue} to={`${breadcrumb.to}`}>{breadcrumb.label}</Link></li>
 

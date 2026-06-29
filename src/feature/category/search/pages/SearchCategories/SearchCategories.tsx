@@ -8,6 +8,7 @@ import CardCategory from "../../components/CardCategory";
 import styles from "./SearchCategories.module.css"
 import Select from "../../../../../shared/components/Select/Select";
 import { useNavigate } from "react-router-dom";
+import { handleDeleteCategory } from "../../actions/handleDeleteCategory";
 
 export default function SearchCategories() {
 
@@ -17,9 +18,13 @@ export default function SearchCategories() {
         navigate("/categories/create");
     }
 
+    function handleEditCategory(idCategory: string) {
+        navigate(`/categories/edit/${idCategory}`);
+    }
+
     const [findCategory, setFindCategory] = useState("");
 
-    const { categories, loadingCategories } = useCategory(findCategory);
+    const { categories, loadingCategories, deleteCategory } = useCategory(findCategory);
 
     return(
         <section className={styles.container}>
@@ -51,8 +56,9 @@ export default function SearchCategories() {
                         <CardCategory  className={styles.categories} key={categorie.idCategory}
                             title={categorie.name} numberBooks={categorie.bookCount} action={
                                 <>
-                                    <button className={`${styles.btnBase} ${styles.btnEdit}`}> <Pencil className={`${styles.btnIcon} ${styles.iconEdit}`}/> </button>
-                                    <button className={`${styles.btnBase} ${styles.btnDel}`}> <Trash2 className={`${styles.btnIcon} ${styles.iconDel}`}/> </button>
+                                    <button className={`${styles.btnBase} ${styles.btnEdit}`} onClick={() => handleEditCategory(categorie.idCategory)}> <Pencil className={`${styles.btnIcon} ${styles.iconEdit}`}/> </button>
+
+                                    <button className={`${styles.btnBase} ${styles.btnDel}`} onClick={() => handleDeleteCategory(categorie.idCategory, deleteCategory)}> <Trash2 className={`${styles.btnIcon} ${styles.iconDel}`}/> </button>
                                 </>
                             }/>
                 ))}

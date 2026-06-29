@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { categoryService } from "../services/categoryService";
+import type { EditCategoryRequestDTO } from "../types/request/editCategoryRequestDTO";
 
 export function useCategory(name?: string) {
     const queryClient = useQueryClient();
@@ -22,10 +23,34 @@ export function useCategory(name?: string) {
         }
     });
 
+    const editCategory = useMutation({
+        mutationFn: (request: EditCategoryRequestDTO) => categoryService.editCategory(request.idCategory, request.name),
+
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: ["categories"]
+            })
+        }
+    });
+
+    const deleteCategory = useMutation({
+        mutationFn: categoryService.deleteCategory,
+
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: ["categories"]
+            })
+        }
+    });
+
     return {
         categories: listCategories.data?.content ?? [],
         loadingCategories: listCategories.isLoading,
 
-        createCategory: createCategoryMutation.mutateAsync
+        createCategory: createCategoryMutation.mutateAsync,
+
+        editCategory: editCategory.mutateAsync,
+
+        deleteCategory: deleteCategory.mutateAsync
     }
 }

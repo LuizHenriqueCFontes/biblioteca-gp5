@@ -16,7 +16,9 @@ export default function RegisterCategory() {
     const navigate = useNavigate();
 
     async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
-        await handleCreateCategory(event, category, createCategory);
+        event.preventDefault();
+
+        await handleCreateCategory(category, createCategory);
 
         setCategory("");
     }
@@ -38,6 +40,7 @@ export default function RegisterCategory() {
                     <div className={styles.iconContainer}>
                         <FolderClosed className={styles.icon}/>
                     </div>
+
                     <div className={styles.infoContainer}>
                         <h1 className={styles.title}>Cadastrar nova categoria</h1>
                         <p className={styles.description}>Preencha as informações abaixo para criar uma nova categoria</p>

@@ -8,6 +8,7 @@ import GetLoans from "../feature/loan/getLoans/pages/GetLoans/GetLoans";
 import ReaderPage from "../feature/reading/reader/pages/ReaderPage";
 import SearchCategories from "../feature/category/search/pages/SearchCategories/SearchCategories";
 import RegisterCategory from "../feature/category/register/pages/Register";
+import EditCategory from "../feature/category/edit/pages/EditCategory";
 
 export default function AppRoutes(){
     return(
@@ -24,8 +25,8 @@ export default function AppRoutes(){
                 <Route path="/reading/:idBook" element={<ReaderPage />}/>
 
                 <Route path="/categories" element={<SearchCategories />}/>
-
                 <Route path="/categories/create" element={<RegisterCategory />}/>
+                <Route path="/categories/edit/:idCategory" element={<EditCategory />}/>
 
             </Route>
         </Routes>
