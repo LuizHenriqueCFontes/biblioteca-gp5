@@ -1,0 +1,13 @@
+.iconContainer{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-self: flex-start;
+    margin-left: auto;
+}
+
+.icon{
+    width: 21px;
+    height: 21px;
+    color: var(--title-color);
+}

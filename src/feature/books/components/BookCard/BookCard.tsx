@@ -24,10 +24,7 @@ export default function BookCard(props: BookCardProps){
                 <p className={`${styles.tagBook} ${styles[props.variant]}`}>{props.tagBook}</p>
             </div>
             
-
-            <div className={styles.buttonContainer}>
-                {props.action}
-            </div>
+            {props.action}
         </article>
     );
 }

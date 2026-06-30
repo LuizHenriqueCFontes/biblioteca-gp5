@@ -22,11 +22,11 @@ export default function ImportBooksPage(){
                 loading={loading}
                 showGutendexInfo
                 action={(books) => (
-                    <>
+                    <div className={styles.buttonContainer}>
                         <Button className={styles.button} onClick={() => handleGoToImportBookDetails(`${books.id}`)} variant="secondary">Detalhes</Button>
 
                         <Button className={styles.button} onClick={() => handleImportBook(`${books.id}`, importBook)} variant="primary">Importar</Button>
-                    </>
+                    </div>
                 )}
                 />
             </>
