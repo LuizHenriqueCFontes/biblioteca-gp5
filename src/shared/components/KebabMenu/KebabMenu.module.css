@@ -1,0 +1,15 @@
+.kebabButton{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-self: flex-start;
+    margin-left: auto;
+    border: none;
+    background: none;
+}
+
+.icon{
+    width: 21px;
+    height: 21px;
+    color: var(--title-color);
+}
