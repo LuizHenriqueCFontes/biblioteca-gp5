@@ -1,0 +1,101 @@
+.container{
+    margin: 0 17px;
+}
+
+.titleContainer{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.title{
+    color: var(--title-color);
+    font-size: 1.4em;
+    margin: 20px 0 4px;
+}
+
+.description{
+    font-size: 0.8em;
+    font-weight: 520;
+    color: var(--informations-color);
+}
+
+.btnCategory{
+    width: auto;
+    white-space: nowrap;
+    height: 34px;
+    padding: 3px 9px !important;
+    margin-top: 20px;
+}
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.categoriesContainer{
+    border: 1px solid var(--border-color);
+    border-radius: 7px;
+    margin-top: 15px;
+}
+
+.categories{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px;
+}
+
+.categories:not(:last-child){
+    border-bottom: 1px solid var(--border-color);
+}
+
+.btnBase{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.btnIcon{
+    width: 17px;
+    height: 17px;
+}
+
+.btnEdit{
+    border: 1px solid #7a56b9;
+}
+
+.iconEdit{
+    color:#320385;
+}
+
+.btnEdit:hover,
+.btnEdit:active{
+    background-color: var(--details-background);
+}
+
+.btnDel{
+    border: 1px solid var(--red-details);
+}
+
+.iconDel{
+    color: var(--red-color);
+}
+
+.btnDel:hover,
+.btnDel:active{
+    background-color: var(--red-hover);
+}
+
+
+

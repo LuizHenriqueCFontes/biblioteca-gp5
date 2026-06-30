@@ -10,15 +10,25 @@
 .button{
     border-radius: 7px;
     border: none;
-    width: 100%;
     padding: 13px;
     transition: 0.5s;
     cursor: pointer;
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 0.85em;
-    font-weight: 500;
+    font-weight: 540;
     text-align: center;
+    width: 100%;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.icon{
+    width: 18px;
+    height: 18px;
 }
 
 .primary{

@@ -1,0 +1,65 @@
+.mainContainer{
+    padding: 15px;
+}
+
+.generalContainer{
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.titleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.iconContainer{
+    min-width: 69px;
+    height: 69px;
+    border-radius: 50%;
+    background-color: var(--details-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon{
+    width: 29px;
+    height: 29px;
+    color: var(--details-color);
+}
+
+.title{
+    color: var(--title-color);
+    font-size: 1.12em;
+    font-weight: bolder;
+    margin-bottom: 6px;
+}
+
+.description{
+    color: var(--informations-color);
+    font-weight: 550;
+    font-size: 0.8em;
+    width: 83%;
+    line-height: 1.4;
+}
+
+.inputContainer{
+    margin-top: 22px;
+}
+
+.divider{
+    border-top: 1px solid var(--border-color);
+}
+
+.input{
+    padding-left: 13px;
+    margin-bottom: 27px;
+}
+
+.btnContainer{
+    margin-top: 27px;
+}

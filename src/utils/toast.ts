@@ -1,9 +1,9 @@
 import { toast } from "sonner";
 import { getErrorMessage } from "./getErrorMessage";
 
-export async function executeWithToast<T>(action: () => Promise<T>, loandingMessage: string, sucessMessage: string): Promise<T> {
+export async function executeWithToast<T>(action: () => Promise<T>, loadingMessage: string, sucessMessage: string): Promise<T> {
 
-   const toastId = toast.loading(loandingMessage);
+   const toastId = toast.loading(loadingMessage);
    
    try {
     const result = await action();

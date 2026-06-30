@@ -6,6 +6,8 @@ import { Rendition } from "epubjs"
 
 export function useReaderProgress(idBook: string) {
 
+    const queryClient = useQueryClient();
+
     const renditionRef = useRef<Rendition | null>(null);
 
     const readingProgressRef = useRef<ReadingRequestDTO>({epubCfi: "", percentage: 0});
@@ -23,7 +25,9 @@ export function useReaderProgress(idBook: string) {
         onSuccess: () => {
             lastReadingProgressRef.current = readingProgressRef.current;
 
-            //queryClient.setQueryData(["readingProgress", idBook], newData);
+            queryClient.invalidateQueries({
+                queryKey: ["get-loans", "ACTIVE"]
+            });
         }
     });
 

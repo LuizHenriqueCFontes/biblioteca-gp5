@@ -23,8 +23,10 @@
     margin-bottom: 17px;
 }
 
-.input{
-    margin-bottom: 10px;
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .filter{

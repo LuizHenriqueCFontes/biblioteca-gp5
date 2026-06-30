@@ -18,6 +18,10 @@
 
     --details-color: #3033d3;
     --details-background:  #e7e4f5;
+
+    --red-color: #ad0000;
+    --red-details: #d33e3e; 
+    --red-hover: #fddada;
 }
 
 *{
