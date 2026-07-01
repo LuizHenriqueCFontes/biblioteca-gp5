@@ -6,10 +6,16 @@
     margin-left: auto;
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 .icon{
     width: 21px;
     height: 21px;
     color: var(--title-color);
+}
+
+.kebabItem{
+    cursor: pointer;
+    font-size: 0.8em;
 }

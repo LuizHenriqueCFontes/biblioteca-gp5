@@ -1,9 +1,11 @@
 import { AnimatePresence, motion } from "framer-motion";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
 import { EllipsisVertical } from "lucide-react";
-
+import * as DropDownMenu from "@radix-ui/react-dropdown-menu";
+import { useState } from "react";
+import styles from "./KebabMenu.module.css"
 
 interface KebabItens {
+    icon?: React.ReactNode
     label: string,
     onClick?: () => void
 }
@@ -13,5 +15,42 @@ interface KebabProps {
 }
 
 export default function KebabMenu(props: KebabProps) {
+
+    const [open, setOpen] = useState(false);
+
+    return(
+        <DropDownMenu.Root open={open} onOpenChange={setOpen} >
+
+            <DropDownMenu.Trigger asChild> 
+                <button className={styles.kebabButton}>
+                    <EllipsisVertical className={styles.icon}/>
+                </button>
+            </DropDownMenu.Trigger>
+
+            <DropDownMenu.Portal forceMount>
+
+                <AnimatePresence>
+                    {open && (
+                        <DropDownMenu.Content asChild sideOffset={5} className={styles.kebabContent}>
+
+                            <motion.div initial={{opacity: 0, scale: 0.95}}
+                            animate={{opacity: 1, scale: 1}}
+                            exit={{opacity: 0, scale: 0.95}}
+                            transition={{duration: 0.2}}>
+                                {props.options.map((option) => (
+                                    <DropDownMenu.Item className={styles.kebabItem} key={option.label} onSelect={option.onClick}>
+                                        {option.icon}
+                                        {option.label}
+                                    </DropDownMenu.Item>
+                                ))}
+                            </motion.div>
+                        </DropDownMenu.Content>
+                    )}
+                </AnimatePresence>
+
+            </DropDownMenu.Portal>
+        </DropDownMenu.Root>
+
+    );
     
 }
