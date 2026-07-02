@@ -18,6 +18,7 @@ export default function AppRoutes(){
                 <Route path="/admin/imports" element={<ImportBooksPage />}/>
                 <Route path="/admin/details/:id" element={<ImportBookDetailsPage />}/>
                 <Route path="/admin/search/books" element={<SearchBooksAdmin />}/>
+                <Route path="/admin/manage/categories/:idBook"/>
 
                 <Route path="/search/books" element={<SearchBooks />}/>
                 <Route path="/book/:id" element={<BookDetails />}/>

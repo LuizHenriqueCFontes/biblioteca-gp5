@@ -10,12 +10,58 @@
 }
 
 .icon{
-    width: 21px;
-    height: 21px;
+    width: 20px;
+    height: 20px;
     color: var(--title-color);
+}
+
+.kebabContent{
+    background: white;
+    border-radius: 8px;
+    min-width: 100px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.212);
+    padding: 12px 0;
+    margin-right: 12px;
+}
+
+.kebabTrigger{
+    outline: none;
 }
 
 .kebabItem{
     cursor: pointer;
-    font-size: 0.8em;
+    font-size: 0.78em;
+    color: var(--title-color);
+    font-weight: 550;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 9px 12px;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.kebabItem:hover,
+.kebabItem:active,
+.kebabItem:focus{
+    outline: none;
+    background-color: var(--secondary-color-transparency);
+}
+
+.kebabItemDel:hover,
+.kebabItemDel:active{
+    background-color: var(--red-hover);
+}
+
+.itemIcon{
+    width: 16px;
+    height: 16px;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deleteOption{
+    color: var(--red-details);
 }

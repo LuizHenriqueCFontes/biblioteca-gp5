@@ -46,6 +46,12 @@
     box-shadow: 0 0 10px var(--primary-color);
 }
 
+.divider{
+    margin-top: 12px;
+    border: none;
+    border-top: 1px solid var(--border-color);
+}
+
 .alert{
     display: flex;
     align-items: center;

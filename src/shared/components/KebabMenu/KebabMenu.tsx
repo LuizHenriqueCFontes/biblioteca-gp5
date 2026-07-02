@@ -7,7 +7,8 @@ import styles from "./KebabMenu.module.css"
 interface KebabItens {
     icon?: React.ReactNode
     label: string,
-    onClick?: () => void
+    onClick?: () => void,
+    deleteOption?: boolean    
 }
 
 interface KebabProps {
@@ -21,7 +22,7 @@ export default function KebabMenu(props: KebabProps) {
     return(
         <DropDownMenu.Root open={open} onOpenChange={setOpen} >
 
-            <DropDownMenu.Trigger asChild> 
+            <DropDownMenu.Trigger asChild className={styles.kebabTrigger}> 
                 <button className={styles.kebabButton}>
                     <EllipsisVertical className={styles.icon}/>
                 </button>
@@ -37,10 +38,12 @@ export default function KebabMenu(props: KebabProps) {
                             animate={{opacity: 1, scale: 1}}
                             exit={{opacity: 0, scale: 0.95}}
                             transition={{duration: 0.2}}>
+
                                 {props.options.map((option) => (
-                                    <DropDownMenu.Item className={styles.kebabItem} key={option.label} onSelect={option.onClick}>
-                                        {option.icon}
-                                        {option.label}
+                                    <DropDownMenu.Item className={`${styles.kebabItem} ${option.deleteOption ? styles.kebabItemDel : ""}`} key={option.label} onSelect={option.onClick}>
+                                        <span className={styles.itemIcon}>{option.icon}</span>
+
+                                        <span className={option.deleteOption ? styles.deleteOption : ""}>{option.label}</span>
                                     </DropDownMenu.Item>
                                 ))}
                             </motion.div>

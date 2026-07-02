@@ -11,3 +11,13 @@
     height: 21px;
     color: var(--title-color);
 }
+
+.itemIcon{
+    width: 16px;
+    height: 16px;
+    color: var(--informations-color);
+}
+
+.itemIconDelete{
+    color: #d33e3e;
+}

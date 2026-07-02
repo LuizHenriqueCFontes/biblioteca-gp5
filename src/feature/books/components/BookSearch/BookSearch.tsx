@@ -63,11 +63,13 @@ export default function BookSearch(props: BookSearchProps){
                         <h2 className={styles.resultTitle}>Resultados da pesquisa</h2>
                         <p className={styles.resultDescription}>{props.totalElements} resultados encontrados</p>
                     </div>
-                    
+                
                     <button className={styles.resultIconContainer}>
                         <SlidersHorizontal className={styles.resultIcon}/>
                     </button>
                 </div>
+
+                <hr className={styles.divider}/>
 
                 {props.books.map((book) => (
                     <BookCard variant="available" tagBook="Disponível" className={styles.bookContainer} key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} action={props.action?.(book)}/>
