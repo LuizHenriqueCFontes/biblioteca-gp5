@@ -41,6 +41,7 @@ export default function KebabMenu(props: KebabProps) {
 
                                 {props.options.map((option) => (
                                     <DropDownMenu.Item className={`${styles.kebabItem} ${option.deleteOption ? styles.kebabItemDel : ""}`} key={option.label} onSelect={option.onClick}>
+                                        
                                         <span className={styles.itemIcon}>{option.icon}</span>
 
                                         <span className={option.deleteOption ? styles.deleteOption : ""}>{option.label}</span>

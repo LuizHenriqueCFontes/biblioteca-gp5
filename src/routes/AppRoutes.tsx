@@ -10,6 +10,7 @@ import SearchCategories from "../feature/category/search/pages/SearchCategories/
 import RegisterCategory from "../feature/category/register/pages/Register";
 import EditCategory from "../feature/category/edit/pages/EditCategory";
 import SearchBooksAdmin from "../feature/books/admin/searchBooksAdmin/pages/SearchBooksAdmin";
+import ManageCategories from "../feature/bookCategories/pages/ManageCategories";
 
 export default function AppRoutes(){
     return(
@@ -18,7 +19,7 @@ export default function AppRoutes(){
                 <Route path="/admin/imports" element={<ImportBooksPage />}/>
                 <Route path="/admin/details/:id" element={<ImportBookDetailsPage />}/>
                 <Route path="/admin/search/books" element={<SearchBooksAdmin />}/>
-                <Route path="/admin/manage/categories/:idBook"/>
+                <Route path="/admin/manage/categories/:idBook" element={<ManageCategories />}/>
 
                 <Route path="/search/books" element={<SearchBooks />}/>
                 <Route path="/book/:id" element={<BookDetails />}/>
