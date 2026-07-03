@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SearchBooksAdmin() {
 
-    const { books, totalElements } = useSearchBooks();
+    const { books, totalElements, loading } = useSearchBooks();
 
     const navigate = useNavigate();
 
@@ -16,16 +16,23 @@ export default function SearchBooksAdmin() {
     }
 
     return(
-        <BookSearch books={books} description="Gerencie os livros do acervo da biblioteca" totalElements={totalElements} action={(books) => (
-            <div className={styles.kebabContainer}>
-                <KebabMenu options={[
-                    {icon: <Pencil className={styles.itemIcon}/>, label: "Editar informações"},
 
-                    {icon: <Tag className={styles.itemIcon}/>, label: "Gerenciar categorias", onClick: () => handleGoMangaCategories(`${books.id}`)},
+        <>
 
-                    {icon: <Trash2 className={`${styles.itemIcon} ${styles.itemIconDelete}`}/>, label: "Excluir", deleteOption: true}
-                ]}/>
-            </div>
-        )}/>
+            {loading && <p>carregando...</p>}
+
+            <BookSearch books={books} description="Gerencie os livros do acervo da biblioteca" totalElements={totalElements} action={(books) => (
+                <div className={styles.kebabContainer}>
+                    <KebabMenu options={[
+                        {icon: <Pencil className={styles.itemIcon}/>, label: "Editar informações"},
+
+                        {icon: <Tag className={styles.itemIcon}/>, label: "Gerenciar categorias", onClick: () => handleGoMangaCategories(`${books.id}`)},
+
+                        {icon: <Trash2 className={`${styles.itemIcon} ${styles.itemIconDelete}`}/>, label: "Excluir", deleteOption: true}
+                    ]}/>
+                </div>
+             )}/>
+        
+        </>
     );
 }

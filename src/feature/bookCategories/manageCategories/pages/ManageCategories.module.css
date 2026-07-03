@@ -1,0 +1,138 @@
+.container{
+    padding: 10px;
+}
+
+.bookContainer{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    border-color: 1px solid var(--border-color);
+    padding: 13px;
+    margin-bottom: 15px;
+}
+
+.cover{
+    min-width: 80px;
+    width:70px;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bookTitleContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.bookTitle{
+    font-size: 1.2em;
+    color: var(--title-color);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.bookAuthors{
+    font-size: 0.8em;
+    color: var(--informations-color);
+    font-weight: 550;
+}
+
+.tagBook{
+    width: max-content;
+    font-size: 0.65em;
+    padding: 3px 10px;
+    font-weight: 700;
+    border-radius: 8px;
+    background-color: var(--background-available);
+    color: var(--color-available);
+}
+
+.categoriesContainer{
+    margin: 15px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.categoriesTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  color: var(--informations-color);
+  font-size: 0.66em;
+  padding: 10px 10px 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.categoriesTitle{
+    font-weight: bolder;
+}
+
+.booksCategories{
+    font-weight: bolder;
+}
+
+.categories {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.checkbox {
+  display: none;
+}
+
+.customCheckbox{
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    margin-right: 16px;
+}
+
+.iconCheck{
+    width: 16px;
+    height: 16px;
+    color: var(--contrast-primary-color);
+}
+
+.checkbox:checked + label .customCheckbox{
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.label {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  cursor: pointer;
+}
+
+.labelName {
+    font-size: 0.95em;
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+.bookCount {
+    font-size: 0.79em;
+    color: var(--informations-color);
+    font-weight: 450;
+    margin-left: auto;
+}
+
+.divider{
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid var(--border-color);
+}

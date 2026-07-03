@@ -23,7 +23,9 @@ export const categoryService = {
     listCategories: async(name?: string): Promise<CategoryResponseDTO[]> => {
         
         const { data } = await api.get<CategoryResponseDTO[]>(BASE_ENDPOINT, {
-            params: name
+            params: {
+                name: name
+            }
         });
 
         return data;
