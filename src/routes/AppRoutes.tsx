@@ -10,7 +10,7 @@ import SearchCategories from "../feature/category/search/pages/SearchCategories/
 import RegisterCategory from "../feature/category/register/pages/Register";
 import EditCategory from "../feature/category/edit/pages/EditCategory";
 import SearchBooksAdmin from "../feature/books/admin/searchBooksAdmin/pages/SearchBooksAdmin";
-import ManageCategories from "../feature/bookCategories/pages/ManageCategories";
+import ManageCategories from "../feature/bookCategories/manageCategories/pages/ManageCategories";
 
 export default function AppRoutes(){
     return(
