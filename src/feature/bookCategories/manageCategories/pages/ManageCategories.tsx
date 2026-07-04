@@ -28,11 +28,11 @@ export default function ManageCategories() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if(!book) return;
+   useEffect(() => {
+    if(!book) return;
 
-        setSelectedCategorie(book.categories.map((category) => `${category.idCategory}`))
-    }, [book]);
+    setSelectedCategorie(book.categories.map((category) => category.idCategory));
+   }, [book])
 
     function handleCategoryChange(checked: boolean, idCategory: string) {
         if(checked) {
@@ -87,7 +87,7 @@ export default function ManageCategories() {
                     <h3 className={styles.booksCategories}>Livros vinculados</h3>
                 </div>
 
-                {loadingListCategories && <p>Carregando...</p>}
+                {loadingListCategories && <p>Carregando...</p>}    
 
                 {listCategories.length === 0 ? <EmptyState icon={FolderOpen} title="Falha ao encontrar categoria" description="Nenhuma categoria foi encontrada"/> : ""}
 

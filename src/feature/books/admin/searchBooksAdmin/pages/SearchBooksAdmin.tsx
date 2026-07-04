@@ -11,8 +11,12 @@ export default function SearchBooksAdmin() {
 
     const navigate = useNavigate();
 
-    function handleGoMangaCategories(idBook: string) {
+    function handleGoManageCategories(idBook: string) {
         navigate(`/admin/manage/categories/${idBook}`);
+    }
+
+    function handleGoEditBook(idBook: string) {
+        navigate(`/admin/edit/book/${idBook}`);
     }
 
     return(
@@ -24,9 +28,9 @@ export default function SearchBooksAdmin() {
             <BookSearch books={books} description="Gerencie os livros do acervo da biblioteca" totalElements={totalElements} action={(books) => (
                 <div className={styles.kebabContainer}>
                     <KebabMenu options={[
-                        {icon: <Pencil className={styles.itemIcon}/>, label: "Editar informações"},
+                        {icon: <Pencil className={styles.itemIcon}/>, label: "Editar informações", onClick: () => handleGoEditBook(`${books.id}`)},
 
-                        {icon: <Tag className={styles.itemIcon}/>, label: "Gerenciar categorias", onClick: () => handleGoMangaCategories(`${books.id}`)},
+                        {icon: <Tag className={styles.itemIcon}/>, label: "Gerenciar categorias", onClick: () => handleGoManageCategories(`${books.id}`)},
 
                         {icon: <Trash2 className={`${styles.itemIcon} ${styles.itemIconDelete}`}/>, label: "Excluir", deleteOption: true}
                     ]}/>
