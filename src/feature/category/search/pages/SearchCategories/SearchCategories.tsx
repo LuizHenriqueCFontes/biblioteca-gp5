@@ -56,9 +56,9 @@ export default function SearchCategories() {
                         <CardCategory  className={styles.categories} key={categorie.idCategory}
                             title={categorie.name} numberBooks={categorie.bookCount} action={
                                 <>
-                                    <button className={`${styles.btnBase} ${styles.btnEdit}`} onClick={() => handleEditCategory(categorie.idCategory)}> <Pencil className={`${styles.btnIcon} ${styles.iconEdit}`}/> </button>
+                                    <Button variant="action" className={styles.btnEdit} onClick={() => handleEditCategory(categorie.idCategory)}> <Pencil className={`${styles.btnIcon} ${styles.iconEdit}`}/> </Button>
 
-                                    <button className={`${styles.btnBase} ${styles.btnDel}`} onClick={() => handleDeleteCategory(categorie.idCategory, deleteCategory)}> <Trash2 className={`${styles.btnIcon} ${styles.iconDel}`}/> </button>
+                                    <Button variant="action" className={styles.btnDel} onClick={() => handleDeleteCategory(categorie.idCategory, deleteCategory)}> <Trash2 className={`${styles.btnIcon} ${styles.iconDel}`}/> </Button>
                                 </>
                             }/>
                 ))}
