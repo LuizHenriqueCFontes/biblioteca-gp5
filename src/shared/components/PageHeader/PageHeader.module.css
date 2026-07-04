@@ -1,7 +1,6 @@
 .titleContainer{
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 20px;
 }
 
@@ -32,6 +31,5 @@
     color: var(--informations-color);
     font-weight: 550;
     font-size: 0.8em;
-    width: 83%;
     line-height: 1.4;
 }

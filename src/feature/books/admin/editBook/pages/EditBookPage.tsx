@@ -1,11 +1,11 @@
-import { BookOpenText } from "lucide-react";
+import { BookOpenText, Plus, Save, Trash2 } from "lucide-react";
 import PageHeader from "../../../../../shared/components/PageHeader/PageHeader";
 import { Input } from "../../../../../shared/components/Input/Input";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useBookDetails } from "../../../user/bookDetails/hooks/useBookDetails";
-import type { EditBookRequestDTO } from "../types/editBookRequestDTO";
 import Breadcrumb from "../../../../../shared/components/Breadcrumb/Breadcrumb";
+import { Button } from "../../../../../shared/components/Button/Button";
+import { useEditBooks } from "../hooks/useEditBook";
 
 export default function EditBookPage() {
 
@@ -13,37 +13,7 @@ export default function EditBookPage() {
 
     const { book, loading } = useBookDetails(idBook);
 
-    const [bookFormData, setBookFormData] = useState<EditBookRequestDTO>({title: "", authors: [], description: [], source: ""});
-
-    useEffect(() => {
-        if(!book) {
-            return;
-        }
-
-        setBookFormData({
-            title: book?.title ?? "",
-            authors: book.authors ?? [],
-            description: book.description ??[],
-            source: ""
-        });
-    }, [book]);
-
-    function handleStringChange(field: keyof EditBookRequestDTO, value: string) {
-        setBookFormData((prev) => ({
-            ...prev,
-            [field]: value
-        }));
-    }
-    
-    function handleArrayChange(field: keyof EditBookRequestDTO, value: string) {
-        setBookFormData((prev) => ({
-            ...prev,
-            [field]: [
-                        ...(prev[field] as string []), 
-                        value
-                    ]
-        }))
-    }
+    const { bookFormData, setBookFormData, handleArrayChange, handleStringChange } = useEditBooks(book ?? undefined);
 
     return(
         <section>
@@ -59,15 +29,35 @@ export default function EditBookPage() {
 
                 <Input id="" label="Título" value={bookFormData.title} onChange={(value) => handleStringChange("title", value)} placeholder="Adicione um novo título ao livro"/>
 
-                {bookFormData.authors.map((author, index) => (
-                    <div key={index}>
-                        <Input id="index" 
-                        value={author}
-                        onChange={(value) => handleArrayChange("authors", value)}/>
-                    </div>
-                ))}
+                <div>
+                    {bookFormData.authors.map((author, index) => (
+                        <div key={index}>
+                            <Input id="index"
+                            label="Autores"
+                            value={author}
+                            onChange={(value) => handleArrayChange("authors", value)}/>
+                            <Button variant="action" type="button"> <Trash2/> </Button>
+                        </div>
+                    ))}
 
+                    <Button variant="secondary" icon={Plus} type="button">Adicionar autor</Button>
+                </div>
 
+                <div>
+                    <label htmlFor="description">Descrição</label>
+                    <textarea 
+                    name="description" 
+                    id="description" 
+                    value={bookFormData.description} 
+                    onChange={(e) => handleArrayChange("description", e.target.value)}
+                    rows={20}
+                    maxLength={2000}></textarea>
+                </div>
+
+                <div>
+                    <Button variant="primary" icon={Save}>Salvar alterações</Button>
+                    <Button type="button" variant="secondary">Cancelar  </Button>
+                </div>
             </form>
         </section>
     );
