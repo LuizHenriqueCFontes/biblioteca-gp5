@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
-import type { EditBookRequestDTO } from "../types/editBookRequestDTO";
+import type { EditBookRequestDTO } from "../types/request/editBookRequestDTO";
 import type { BookDetailsResponseDTO } from "../../../types/response/bookDetailsResponseDTO";
+import { useMutation } from "@tanstack/react-query";
+import { adminBooksService } from "../../services/adminBookService";
+import type { EditBookMutationRequest } from "../types/request/editBookMutationRequest";
 
 export function useEditBooks(book?: BookDetailsResponseDTO) {
+    const [originalBookData, setOriginalBookData] = useState<EditBookRequestDTO>({title: "", authors: [], description: []});
     const [bookFormData, setBookFormData] = useState<EditBookRequestDTO>({title: "", authors: [], description: []});
 
     useEffect(() => {
         if(!book) return;
+
+        setOriginalBookData({
+            title: book.title,
+            authors: book.authors,
+            description: book.description
+        })
 
         setBookFormData({
             title: book.title,
@@ -22,21 +32,25 @@ export function useEditBooks(book?: BookDetailsResponseDTO) {
         }))
     )
 
-    const handleArrayChange = (field: keyof EditBookRequestDTO, value: string) => (
+    const handleDescriptionChange = (field: keyof EditBookRequestDTO, value: string) => (
         setBookFormData((prev) => ({
             ...prev,
             [field]: [
-                ...(prev[field] as string[]),
                 value
             ]
         }))
     )
 
+    const editBook = useMutation({
+        mutationFn: (request: EditBookMutationRequest) => adminBooksService.editBook(request.id, request.playload)
+    })
+
     return {
         bookFormData,
-        setBookFormData,
-        handleArrayChange,
-        handleStringChange
+        handleDescriptionChange,
+        handleStringChange,
+        originalBookData,
+        editBook: editBook.mutateAsync
     }
 
 }
