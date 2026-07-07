@@ -20,7 +20,7 @@ export default function BookCard(props: BookCardProps){
 
             <div className={styles.informationContainer}>
                 <h1 className={styles.title}>{props.title}</h1>
-                <p className={styles.authors}>{props.authors}</p>
+                    <p className={styles.authors}>{props.authors.join(", ")}</p>
                 <p className={`${styles.tagBook} ${styles[props.variant]}`}>{props.tagBook}</p>
             </div>
             

@@ -13,7 +13,14 @@ export async function handleEditBook(id : string, originalBookData: EditBookRequ
         return;
     }
 
-    const playload = buildBookPatchPayload(originalBookData, bookFormData);
+    const cleanAuthors = bookFormData.authors.filter((author) => author.trim() !== "");
+
+    const bookFormDataFormated = {
+        ...bookFormData,
+        authors: cleanAuthors
+    }
+
+    const playload = buildBookPatchPayload(originalBookData, bookFormDataFormated);
 
     const playloadMutation = {
         id,

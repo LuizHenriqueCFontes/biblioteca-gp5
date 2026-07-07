@@ -44,11 +44,22 @@
     font-weight: 550;
 }
 
+.dashed{
+    border: 2px dashed var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 550;
+    background-color: #ffffff;
+}
+
 .primary:hover{
     background-color:  var(--primary-color-transparency);
 }
 .secondary:hover{
     background-color: var(--secondary-color-transparency);
+}
+
+.dashed:hover{
+    background-color:  var(--primary-color-transparency);
 }
 
 .action{

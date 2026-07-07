@@ -41,6 +41,30 @@ export function useEditBooks(book?: BookDetailsResponseDTO) {
         }))
     )
 
+    const handleAddAuthorEmpty = () => (
+        setBookFormData((prev) => ({
+            ...prev,
+            authors: [
+                ...prev.authors,
+                ""
+            ]
+        }))
+    )
+
+    const handleEditAuthors = (index: number, value: string) => (
+        setBookFormData((prev) => ({
+            ...prev,
+            authors: prev.authors.map((author, i) => i === index ? value : author)
+        }))
+    )
+
+    const handleDeleteAuthor = (index: number) => (
+        setBookFormData((prev) => ({
+            ...prev,
+            authors: prev.authors.filter((_, i) => i !== index)
+        }))
+    )
+
     const editBook = useMutation({
         mutationFn: (request: EditBookMutationRequest) => adminBooksService.editBook(request.id, request.playload)
     })
@@ -49,6 +73,9 @@ export function useEditBooks(book?: BookDetailsResponseDTO) {
         bookFormData,
         handleDescriptionChange,
         handleStringChange,
+        handleAddAuthorEmpty,
+        handleEditAuthors,
+        handleDeleteAuthor,
         originalBookData,
         editBook: editBook.mutateAsync
     }

@@ -24,7 +24,9 @@ export default function SearchCategories() {
 
     const [findCategory, setFindCategory] = useState("");
 
-    const { categories, loadingCategories, deleteCategory } = useCategory(findCategory);
+    const { categories, loadingCategories, errorCategories, deleteCategory } = useCategory(findCategory);
+
+    {errorCategories ? errorCategories.valueOf : ""}
 
     return(
         <section className={styles.container}>

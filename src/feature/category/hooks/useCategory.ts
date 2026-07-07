@@ -55,6 +55,7 @@ export function useCategory(name?: string) {
 
         listCategories: listCategories.data ?? [],
         loadingListCategories: listCategories.isPending,
+        errorCategories: listCategories.isError,
 
         createCategory: createCategoryMutation.mutateAsync,
 
