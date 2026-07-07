@@ -4,9 +4,13 @@
 
 .formContainer{
     margin-top: 20px;
+}
+
+.dataContainer{
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 13px;
+    margin-bottom: 20px;
 }
 
 .inputTitle{
@@ -58,4 +62,36 @@
 
 .descriptionContainer{
     margin-top: 17px;
+    gap: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.description{
+    min-height: 160px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    font-family: "Inter", sans-serif;
+    color: var(--title-color);
+    font-weight: 550;
+    line-height: 1.5;
+    width: 100%;
+    resize: none;
+    outline: none;   
+}
+
+.description:focus-within{
+    box-shadow: 0 0 10px var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.countDescription{
+    align-self: flex-end;
+    right: 5%;
+    top: 85%;
+    font-size: 0.72em;
+    pointer-events: none;
+    color: var(--informations-color);
+    font-weight: 530;
 }

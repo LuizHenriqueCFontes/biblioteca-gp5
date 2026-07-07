@@ -5,12 +5,12 @@ import type { EditBookRequestDTO } from "../types/request/editBookRequestDTO";
 import type { EditBookResponseDTO } from "../types/response/editBookResponseDTO";
 import { buildBookPatchPayload } from "../utils/buildBookPatchPayload";
 
-export async function handleEditBook(id : string, originalBookData: EditBookRequestDTO, bookFormData: EditBookRequestDTO, editBook: (playload: EditBookMutationRequest) => Promise<EditBookResponseDTO>): Promise<void> {
+export async function handleEditBook(id : string, originalBookData: EditBookRequestDTO, bookFormData: EditBookRequestDTO, editBook: (playload: EditBookMutationRequest) => Promise<EditBookResponseDTO>): Promise<boolean> {
 
     const confirm = await confirmAction("Atualizar livro", "Você deseja atualizar esse livro?");
 
     if(!confirm) {
-        return;
+        return false;
     }
 
     const cleanAuthors = bookFormData.authors.filter((author) => author.trim() !== "");
@@ -28,4 +28,6 @@ export async function handleEditBook(id : string, originalBookData: EditBookRequ
     };
 
     await executeWithToast(() => editBook(playloadMutation), "Atualizando livro...", "Livro atualizado com sucesso!");
+
+    return true;
 }
