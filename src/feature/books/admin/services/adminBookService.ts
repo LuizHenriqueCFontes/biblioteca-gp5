@@ -59,6 +59,12 @@ export const adminBooksService = {
         const { data } = await api.patch<EditBookResponseDTO>(endpoint, request);
 
         return data;
+    },
+
+    deleteBook: async(id: string): Promise<void> => {
+        const endpoint = `/admin/books/${id}`;
+
+        await api.delete<void>(endpoint);
     }
 
 }

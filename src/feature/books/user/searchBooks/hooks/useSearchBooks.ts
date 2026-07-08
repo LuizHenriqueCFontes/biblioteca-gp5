@@ -3,35 +3,20 @@ import { userBookService, type PaginatedResponseDTO } from "../../services/userB
 import { loanService } from "../../../../loan/services/loanService";
 import { getErrorMessage } from "../../../../../utils/getErrorMessage";
 import type { BookLoanResponseDTO } from "../../../../loan/types/bookLoanResponseDTO";
+import { useQuery } from "@tanstack/react-query";
 
-export function useSearchBooks() {
-    const [response, setResponse] = useState<PaginatedResponseDTO | null>(null);
+export function useSearchBooks(name?: string) {
+    //const [response, setResponse] = useState<PaginatedResponseDTO | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null)
 
-    const searchBook = useCallback(async(url?: string): Promise<void> => {
-        try {
-            setLoading(true);
-            setError(null);
+    const FIVE_MINUTES = 1000 * 60 * 5;
 
-            const data =  await userBookService.searchBooks(url);
-
-            setResponse(data);
-
-        } catch (error) {
-            setError(
-                error instanceof Error
-                ? error.message
-                : "Livros não encontrados"
-            );
-
-            throw error;
-
-        } finally {
-            setLoading(false);
-        }
-
-    }, []);
+    const searchBook = useQuery({
+        queryKey: ["books", name],
+        queryFn: () => userBookService.searchBooks(name),
+        staleTime: FIVE_MINUTES
+    });
 
     const bookLoan = useCallback(async(id: string): Promise<BookLoanResponseDTO> => {
         try {
@@ -57,21 +42,17 @@ export function useSearchBooks() {
 
     }, []);
 
-    useEffect(() => {
-        searchBook();
-
-    }, [searchBook])
-
     return {
-        books: response?.content ?? [],
-        first: response?.first,
-        last: response?.last,
-        number: response?.number ?? 0,
-        size: response?.size ?? 0,
-        totalElements: response?.totalElements ?? 0,
-        totalPages: response?.totalPages ?? 0,
-        error,
-        loading,
+        books: searchBook.data?.content ?? [],
+
+        first: searchBook?.data?.first,
+        last: searchBook?.data?.last,
+        number: searchBook?.data?.number ?? 0,
+        size: searchBook?.data?.size ?? 0,
+        totalElements: searchBook.data?.totalElements ?? 0,
+        totalPages: searchBook?.data?.totalPages ?? 0,
+        error: searchBook.error,
+        loading: searchBook.isLoading,
         bookLoan
     }
 }

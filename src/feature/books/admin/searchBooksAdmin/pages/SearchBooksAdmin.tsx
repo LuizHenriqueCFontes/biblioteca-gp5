@@ -4,10 +4,14 @@ import styles from "./SearchBooksAdmin.module.css";
 import KebabMenu from "../../../../../shared/components/KebabMenu/KebabMenu";
 import { Pencil, Tag, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useSearchBooksAdmin } from "../hooks/useSearchBooksAdmin";
+import { handleDeactiveBook } from "../action/handleDeactiveBook";
 
 export default function SearchBooksAdmin() {
 
     const { books, totalElements, loading } = useSearchBooks();
+
+    const { deleteBook } = useSearchBooksAdmin();
 
     const navigate = useNavigate();
 
@@ -32,7 +36,7 @@ export default function SearchBooksAdmin() {
 
                         {icon: <Tag className={styles.itemIcon}/>, label: "Gerenciar categorias", onClick: () => handleGoManageCategories(`${books.id}`)},
 
-                        {icon: <Trash2 className={`${styles.itemIcon} ${styles.itemIconDelete}`}/>, label: "Excluir", deleteOption: true}
+                        {icon: <Trash2 className={`${styles.itemIcon} ${styles.itemIconDelete}`}/>, label: "Excluir", onClick: () => handleDeactiveBook(`${books.id}`, deleteBook), deleteOption: true}
                     ]}/>
                 </div>
              )}/>
