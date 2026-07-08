@@ -9,7 +9,7 @@ const BASE_ENDPOINT = "/category"
 
 export const categoryService = {
 
-    listCategories: async(name?: string): Promise<PageResponse<CategoryResponseDTO>> => {
+    listPageCategories: async(name?: string): Promise<PageResponse<CategoryResponseDTO>> => {
         const endpoint = `${BASE_ENDPOINT}/summary`;
         
         const { data } = await api.get<PageResponse<CategoryResponseDTO>>(endpoint, {
@@ -17,6 +17,17 @@ export const categoryService = {
                 name: name
             }  
         });
+        return data;
+    },
+
+    listCategories: async(name?: string): Promise<CategoryResponseDTO[]> => {
+        
+        const { data } = await api.get<CategoryResponseDTO[]>(BASE_ENDPOINT, {
+            params: {
+                name: name
+            }
+        });
+
         return data;
     },
 

@@ -1,5 +1,7 @@
 import { api } from "../../../../services/api"
 import type { BookResponseDTO } from "../../types/response/bookReponseDTO"
+import type { EditBookRequestDTO } from "../editBook/types/request/editBookRequestDTO"
+import type { EditBookResponseDTO } from "../editBook/types/response/editBookResponseDTO"
 
 export type GutendexBookDTO =  {
     id: number,
@@ -49,6 +51,20 @@ export const adminBooksService = {
         const { data } = await api.get<AdminBookDetails>(endpoint);
 
         return data;
+    },
+
+    editBook: async(id: string, request: Partial<EditBookRequestDTO>): Promise<EditBookResponseDTO> => {
+        const endpoint = `/admin/books/${id}`;
+
+        const { data } = await api.patch<EditBookResponseDTO>(endpoint, request);
+
+        return data;
+    },
+
+    deleteBook: async(id: string): Promise<void> => {
+        const endpoint = `/admin/books/${id}`;
+
+        await api.delete<void>(endpoint);
     }
 
 }

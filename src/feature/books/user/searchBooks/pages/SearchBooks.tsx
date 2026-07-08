@@ -22,7 +22,7 @@ export default function SearchBooks(){
             totalElements={totalElements}
             loading={loading}
             action={(books) => (
-                 <>
+                 <div className={styles.buttonContainer}>
                     <Button onClick={() => handleGoToBookDetails(`${books.id}`)} className={styles.button} variant="secondary">
                         Detalhes
                     </Button>
@@ -30,7 +30,7 @@ export default function SearchBooks(){
                     <Button onClick={() => handleBookLoan(`${books.id}`, bookLoan)} className={styles.button} variant="primary">
                         Emprestimo
                     </Button>
-                </>
+                </div>
             )}
         />
     );

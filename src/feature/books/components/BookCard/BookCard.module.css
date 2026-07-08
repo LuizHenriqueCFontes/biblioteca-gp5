@@ -65,11 +65,3 @@
     background-color: var(--details-background);
     color: var(--details-color);
 }
-
-.buttonContainer{
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    align-self: center;
-    margin-left: auto;
-}

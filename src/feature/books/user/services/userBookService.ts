@@ -1,6 +1,7 @@
 import { api } from "../../../../services/api";
 import type { BookDetailsResponseDTO } from "../../types/response/bookDetailsResponseDTO";
 import type { BookResponseDTO } from "../../types/response/bookReponseDTO";
+import type { PageResponse } from "../../../../shared/types/pageResponse";
 
 export type PaginatedResponseDTO = {
     content: BookResponseDTO[],
@@ -13,10 +14,10 @@ export type PaginatedResponseDTO = {
 }
 
 export const userBookService = {
-    searchBooks: async(url?: string): Promise<PaginatedResponseDTO> => {
+    searchBooks: async(url?: string): Promise<PageResponse<BookResponseDTO>> => {
         const endpoint = url ?? "/books"
 
-        const { data } = await api.get<PaginatedResponseDTO>(endpoint);
+        const { data } = await api.get<PageResponse<BookResponseDTO>>(endpoint);
 
         return data;
     },

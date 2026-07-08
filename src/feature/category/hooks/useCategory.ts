@@ -7,8 +7,14 @@ export function useCategory(name?: string) {
 
     const FIVE_MINUTES = 1000 * 60 * 5;
 
-    const listCategories = useQuery({
+    const listPageCategories = useQuery({
         queryKey: ["categories", name],
+        queryFn: () => categoryService.listPageCategories(name),
+        staleTime: FIVE_MINUTES
+    });
+
+    const listCategories = useQuery({
+        queryKey: ["listCategories", name],
         queryFn: () => categoryService.listCategories(name),
         staleTime: FIVE_MINUTES
     });
@@ -44,8 +50,12 @@ export function useCategory(name?: string) {
     });
 
     return {
-        categories: listCategories.data?.content ?? [],
-        loadingCategories: listCategories.isLoading,
+        categories: listPageCategories.data?.content ?? [],
+        loadingCategories: listPageCategories.isLoading,
+
+        listCategories: listCategories.data ?? [],
+        loadingListCategories: listCategories.isPending,
+        errorCategories: listCategories.isError,
 
         createCategory: createCategoryMutation.mutateAsync,
 
