@@ -8,11 +8,12 @@ interface KebabItens {
     icon?: React.ReactNode
     label: string,
     onClick?: () => void,
-    deleteOption?: boolean    
+    deleteOption?: boolean   
 }
 
 interface KebabProps {
-    options: KebabItens[]
+    options: KebabItens[],
+    variant?: "editUser"
 }
 
 export default function KebabMenu(props: KebabProps) {
@@ -40,7 +41,7 @@ export default function KebabMenu(props: KebabProps) {
                             transition={{duration: 0.2}}>
 
                                 {props.options.map((option) => (
-                                    <DropDownMenu.Item className={`${styles.kebabItem} ${option.deleteOption ? styles.kebabItemDel : ""}`} key={option.label} onSelect={option.onClick}>
+                                    <DropDownMenu.Item className={`${styles.kebabItem} ${option.deleteOption ? styles.kebabItemDel : ""} ${styles[props.variant ?? ""]}`} key={option.label} onSelect={option.onClick}>
                                         
                                         <span className={styles.itemIcon}>{option.icon}</span>
 

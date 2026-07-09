@@ -1,7 +1,8 @@
 .cardContainer{
     display: flex;
     align-items: center;
-    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+    padding: 17px;
 }
 
 .photoUser{
@@ -13,7 +14,7 @@
     border-radius: 50%;
     background-color: #e9ecef;
     padding: 10px;
-    margin-right: 15px;
+    margin-right: 18px;
 }
 
 .iconUser{
@@ -26,29 +27,31 @@
 .infoContainer{
     display: flex;
     flex-direction: column;
-    gap: 3px;
 }
 
 .name{
     color: var(--title-color);
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 700;
-    width: fit-content;
 }
 
 .email{
     color: var(--informations-color);
     font-size: 0.77em;
     font-weight: 500;
-    margin-bottom: 5px;
+    margin: 3px 0 6px;
 }
 
 .role{
     width: fit-content;
-    padding: 3px 7px;
-    font-size: 0.77em;
+    padding: 3px 6px;
+    font-size: 0.72em;
     border-radius: 5px;
     color: var(--title-color);
     font-weight: 600;
     background-color: #e9ecef;
+}
+
+.kebab{
+    margin-left: auto;
 }

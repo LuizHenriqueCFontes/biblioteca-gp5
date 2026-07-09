@@ -48,6 +48,7 @@ export default function EditBookPage() {
 
                 <div className={styles.dataContainer}>
                     {loading && <p>Carregando...</p>}
+
                     <Input className={styles.inputTitle} id="title" label="Título" value={bookFormData.title} onChange={(value) => handleStringChange("title", value)} placeholder="Adicione um novo título ao livro"/>
                     <div>
                         <label className={styles.label} htmlFor="authors">Autores</label>
@@ -60,8 +61,10 @@ export default function EditBookPage() {
                                 <Trash2 className={styles.deleteIcon}/> </Button>
                             </div>
                         ))}
+
                         <Button variant="dashed" icon={Plus} type="button" onClick={handleAddAuthorEmpty}>Adicionar autor</Button>
                     </div>
+                    
                     <div className={styles.descriptionContainer}>
                         <label className={styles.label} htmlFor="description">Descrição</label>
                         <textarea

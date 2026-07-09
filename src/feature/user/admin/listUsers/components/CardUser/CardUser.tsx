@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import { Pencil, User } from "lucide-react";
 import KebabMenu from "../../../../../../shared/components/KebabMenu/KebabMenu";
 import styles from "./CardUser.module.css";
 
@@ -21,9 +21,11 @@ export default function CardUser(props: CardUser) {
                 <span className={styles.role}>{props.role}</span>
             </div>
 
-            <KebabMenu options={[
-                {label: "Alterar"}
-            ]}/>
+            <div className={styles.kebab}>
+                <KebabMenu variant="editUser" options={[
+                    {icon: <Pencil />, label: "Alterar"}
+                ]}/>
+            </div>
         </article>
     );  
 }

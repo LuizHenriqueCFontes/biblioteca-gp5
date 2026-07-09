@@ -31,6 +31,7 @@ export default function SearchBooksAdmin() {
 
             <BookSearch books={books} description="Gerencie os livros do acervo da biblioteca" totalElements={totalElements} action={(books) => (
                 <div className={styles.kebabContainer}>
+                    
                     <KebabMenu options={[
                         {icon: <Pencil className={styles.itemIcon}/>, label: "Editar informações", onClick: () => handleGoEditBook(`${books.id}`)},
 
