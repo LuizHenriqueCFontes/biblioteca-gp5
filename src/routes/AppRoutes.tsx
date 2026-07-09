@@ -12,6 +12,7 @@ import EditCategory from "../feature/category/edit/pages/EditCategory";
 import SearchBooksAdmin from "../feature/books/admin/searchBooksAdmin/pages/SearchBooksAdmin";
 import ManageCategories from "../feature/bookCategories/manageCategories/pages/ManageCategories";
 import EditBookPage from "../feature/books/admin/editBook/pages/EditBookPage";
+import ListUsers from "../feature/user/admin/listUsers/pages/ListUsers";
 
 export default function AppRoutes(){
     return(
@@ -22,6 +23,8 @@ export default function AppRoutes(){
                 <Route path="/admin/search/books" element={<SearchBooksAdmin />}/>
                 <Route path="/admin/manage/categories/:idBook" element={<ManageCategories />}/>
                 <Route path="/admin/edit/book/:idBook" element={<EditBookPage />}/>
+
+                <Route path="/admin/list/users" element={<ListUsers />}/>
 
                 <Route path="/search/books" element={<SearchBooks />}/>
                 <Route path="/book/:id" element={<BookDetails />}/>

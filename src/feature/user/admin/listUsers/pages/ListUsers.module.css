@@ -1,0 +1,14 @@
+.container{
+    padding: 10px;
+}
+
+.pageHeader{
+    margin-bottom: 20px;
+}
+
+.userContainer{
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 17px;
+}
