@@ -55,3 +55,7 @@
 .kebab{
     margin-left: auto;
 }
+
+.btnCancel{
+    pointer-events: auto;
+}

@@ -1,7 +1,6 @@
-import { ChevronDown } from "lucide-react";
-import styles from "./Select.module.css"
+import { Check, ChevronDown } from "lucide-react";
+import styles from "./Select.module.css";
 import * as SelectRadix from "@radix-ui/react-select";
-import { useState } from "react";
 
 interface OptionType {
     label: string,
@@ -17,8 +16,6 @@ interface Select {
 }
 
 export default function Select(props: Select) {
-    const [open, setOpen] = useState(false);
-
    return(
         <SelectRadix.Root value={props.value} onValueChange={props.onChangeValue}>
 
@@ -29,20 +26,26 @@ export default function Select(props: Select) {
                 </SelectRadix.Icon>
             </SelectRadix.Trigger>
 
-            {open && (
-                <SelectRadix.Portal>
-                    <SelectRadix.Content>
+            <SelectRadix.Portal>
+                <SelectRadix.Content>
 
-                        <SelectRadix.Viewport>
+                    <SelectRadix.Viewport>
+                        {props.options.map((option) => (
+                            <SelectRadix.Item value={option.value}>
+                                <SelectRadix.ItemText>{option.label}</SelectRadix.ItemText>
+
+                                <SelectRadix.ItemIndicator asChild>
+                                    <Check />
+                                </SelectRadix.ItemIndicator>
+                            </SelectRadix.Item>
+                        ))}
 
 
+                    </SelectRadix.Viewport>
 
-                        </SelectRadix.Viewport>
+                </SelectRadix.Content>
 
-                    </SelectRadix.Content>
-
-                </SelectRadix.Portal>
-            )}
+            </SelectRadix.Portal>
 
         </SelectRadix.Root>
    );
