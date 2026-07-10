@@ -1,6 +1,7 @@
 import { Pencil, User } from "lucide-react";
 import KebabMenu from "../../../../../../shared/components/KebabMenu/KebabMenu";
 import styles from "./CardUser.module.css";
+import { useState } from "react";
 
 interface CardUser {
     name: string,
@@ -9,6 +10,9 @@ interface CardUser {
 }
 
 export default function CardUser(props: CardUser) {
+
+    const [isEditing, setIsEditing] = useState(false);
+
     return(
         <article className={styles.cardContainer}>
             <div className={styles.photoUser}>
@@ -21,11 +25,11 @@ export default function CardUser(props: CardUser) {
                 <span className={styles.role}>{props.role}</span>
             </div>
 
-            <div className={styles.kebab}>
-                <KebabMenu variant="editUser" options={[
-                    {icon: <Pencil />, label: "Alterar"}
-                ]}/>
-            </div>
+            {!isEditing && <div className={styles.kebab}>
+                                <KebabMenu variant="editUser" options={[
+                                    {icon: <Pencil />, label: "Alterar"}
+                                ]}/>
+                            </div>}
         </article>
     );  
 }

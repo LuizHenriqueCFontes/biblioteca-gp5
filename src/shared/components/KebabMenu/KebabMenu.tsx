@@ -33,7 +33,7 @@ export default function KebabMenu(props: KebabProps) {
 
                 <AnimatePresence>
                     {open && (
-                        <DropDownMenu.Content asChild sideOffset={5} className={styles.kebabContent}>
+                        <DropDownMenu.Content asChild sideOffset={5} className={`${styles.kebabContent} ${styles[props.variant ?? ""]}`}>
 
                             <motion.div initial={{opacity: 0, scale: 0.95}}
                             animate={{opacity: 1, scale: 1}}
@@ -41,7 +41,7 @@ export default function KebabMenu(props: KebabProps) {
                             transition={{duration: 0.2}}>
 
                                 {props.options.map((option) => (
-                                    <DropDownMenu.Item className={`${styles.kebabItem} ${option.deleteOption ? styles.kebabItemDel : ""} ${styles[props.variant ?? ""]}`} key={option.label} onSelect={option.onClick}>
+                                    <DropDownMenu.Item className={`${styles.kebabItem} ${option.deleteOption ? styles.kebabItemDel : ""}`} key={option.label} onSelect={option.onClick}>
                                         
                                         <span className={styles.itemIcon}>{option.icon}</span>
 

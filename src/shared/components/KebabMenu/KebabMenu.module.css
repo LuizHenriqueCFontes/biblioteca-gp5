@@ -67,6 +67,10 @@
     color: var(--red-details);
 }
 
+.editUser.kebabContent{
+    min-width: 90px;
+}
+
 .editUser .itemIcon{
     margin-right: 5px;
 }
