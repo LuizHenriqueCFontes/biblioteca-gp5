@@ -4,6 +4,9 @@ import styles from "./CardUser.module.css";
 import { useState } from "react";
 import SelectEdit from "../../../components/SelectEdit";
 import { Button } from "../../../../../../shared/components/Button/Button";
+import { useListUsers } from "../../hooks/useListUsers";
+import { hadnleUpdateRole, handleUpdateRole } from "../../actions/handleUpdateRole";
+import type { UpdateRoleRequestMutation } from "../../types/updateRoleRequestMutation";
 
 interface CardUser {
     name: string,
@@ -17,6 +20,8 @@ export default function CardUser(props: CardUser) {
     const [role, setRole] = useState("");
     const [tempRole, setTempRole] = useState(props.role);
 
+    const { updateRole } = useListUsers();
+
     function handleCancel() {
         setRole(props.role)
         setIsEditing(false);
@@ -24,6 +29,12 @@ export default function CardUser(props: CardUser) {
 
     function handleEdit() {
         setIsEditing(true);
+    }
+
+    function handleIntermediaryFunctionSend(id: string, role: string, updateRole: (request: UpdateRoleRequestMutation) => Promise<void>) {
+        setRole(role);
+
+        handleUpdateRole(id, role, updateRole);
     }
 
     return(
@@ -48,7 +59,7 @@ export default function CardUser(props: CardUser) {
                         ]}/>
 
                         <div>
-                            <Button variant="primary">Salvar</Button>
+                            <Button variant="primary" onClick={handleIntermediaryFunctionSend(id)}>Salvar</Button>
                             <Button variant="secondary" onClick={() => handleCancel()} className={styles.btnCancel}>Cancelar</Button>
                         </div>
                     </div> 

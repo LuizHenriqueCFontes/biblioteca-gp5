@@ -1,7 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { adminUserService } from "../../services/adminUserService";
+import type { UpdateRoleRequestMutation } from "../types/updateRoleRequestMutation";
 
 export function useListUsers(name?: string) {
+
+    const queryClient = useQueryClient();
 
     const FIVE_MINUTES = 1000 * 60 * 5;
 
@@ -9,11 +12,23 @@ export function useListUsers(name?: string) {
         queryKey: ["users", name],
         queryFn: () => adminUserService.listUsers(name),
         staleTime: FIVE_MINUTES
+    });
+
+    const updateRole = useMutation({
+        mutationFn: (request: UpdateRoleRequestMutation) => adminUserService.updateRole(request.id, request.role),
+
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: ["users"]
+            });
+        }
     })
 
     return{
         users: listUsers?.data?.content ?? [],
-        loadingUsers: listUsers.isPending
+        loadingUsers: listUsers.isPending,
+
+        updateRole: updateRole.mutateAsync
     }
 
 }
