@@ -1,5 +1,6 @@
-import { ChevronDown } from "lucide-react";
-import styles from "./Select.module.css"
+import { Check, ChevronDown } from "lucide-react";
+import styles from "./Select.module.css";
+import * as SelectRadix from "@radix-ui/react-select";
 
 interface OptionType {
     label: string,
@@ -8,22 +9,44 @@ interface OptionType {
 
 interface Select {
     id: string
-    label?: string,
+    value?: string,
+    onChangeValue?: (value: string) => void,
+    placeholder?: string,
     options: OptionType[]
 }
 
 export default function Select(props: Select) {
    return(
-        <div className={styles.orderContainer}>
-            {props.label && <label htmlFor={props.id} className={styles.orderLabel}>{props.label}</label>}
+        <SelectRadix.Root value={props.value} onValueChange={props.onChangeValue}>
 
-            <ChevronDown className={styles.icon}/>
+            <SelectRadix.Trigger>
+                <SelectRadix.Value placeholder={props.placeholder}/>
+                <SelectRadix.Icon asChild>
+                    <ChevronDown />
+                </SelectRadix.Icon>
+            </SelectRadix.Trigger>
 
-            <select className={styles.selectOrder} name={props.id} id={props.id}>
-                {props.options.map((option) => (
-                    <option key={option.value} value={option.value}>{option.label}</option>
-                ))}
-            </select>
-        </div>
+            <SelectRadix.Portal>
+                <SelectRadix.Content>
+
+                    <SelectRadix.Viewport>
+                        {props.options.map((option) => (
+                            <SelectRadix.Item value={option.value}>
+                                <SelectRadix.ItemText>{option.label}</SelectRadix.ItemText>
+
+                                <SelectRadix.ItemIndicator asChild>
+                                    <Check />
+                                </SelectRadix.ItemIndicator>
+                            </SelectRadix.Item>
+                        ))}
+
+
+                    </SelectRadix.Viewport>
+
+                </SelectRadix.Content>
+
+            </SelectRadix.Portal>
+
+        </SelectRadix.Root>
    );
 }

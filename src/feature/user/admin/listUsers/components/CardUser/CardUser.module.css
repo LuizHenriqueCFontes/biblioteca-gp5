@@ -1,0 +1,85 @@
+.cardContainer{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding: 17px;
+}
+
+.cardEditContainer{
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    background-color: var(--secondary-color-transparency);
+    transition: 0.3s;
+}
+
+.photoUser{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #b0becc;
+    padding: 10px;
+    margin-right: 18px;
+}
+
+.iconUser{
+    color: #5f5f5f;
+    stroke-width: 2px;
+    width: 30px;
+    height: 30px;
+}
+
+.photoEdit{
+    background-color: #cde3fa;
+    margin-bottom: auto;
+}
+
+.iconUserEdit{
+    color: var(--primary-color);
+}
+
+.infoContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.name{
+    color: var(--title-color);
+    font-size: 0.9em;
+    font-weight: 700;
+}
+
+.email{
+    color: var(--informations-color);
+    font-size: 0.77em;
+    font-weight: 500;
+    margin: 3px 0 6px;
+}
+
+.role{
+    width: fit-content;
+    padding: 3px 6px;
+    font-size: 0.72em;
+    border-radius: 5px;
+    color: var(--title-color);
+    font-weight: 600;
+    background-color: #e9ecef;
+}
+
+.btnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.kebab{
+    margin-left: auto;
+}
+
+.btn{
+    padding: 8px 0px;
+}

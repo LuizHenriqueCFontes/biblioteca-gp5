@@ -8,11 +8,12 @@ interface KebabItens {
     icon?: React.ReactNode
     label: string,
     onClick?: () => void,
-    deleteOption?: boolean    
+    deleteOption?: boolean   
 }
 
 interface KebabProps {
-    options: KebabItens[]
+    options: KebabItens[],
+    variant?: "editUser"
 }
 
 export default function KebabMenu(props: KebabProps) {
@@ -32,7 +33,7 @@ export default function KebabMenu(props: KebabProps) {
 
                 <AnimatePresence>
                     {open && (
-                        <DropDownMenu.Content asChild sideOffset={5} className={styles.kebabContent}>
+                        <DropDownMenu.Content asChild sideOffset={5} className={`${styles.kebabContent} ${styles[props.variant ?? ""]}`}>
 
                             <motion.div initial={{opacity: 0, scale: 0.95}}
                             animate={{opacity: 1, scale: 1}}

@@ -4,7 +4,8 @@ import styles from "./PageHeader.module.css"
 interface PageHeader {
     icon: LucideIcon,
     title: string,
-    description: string
+    description: string,
+    className?: string
 }
 
 export default function PageHeader(props: PageHeader) {
@@ -12,7 +13,7 @@ export default function PageHeader(props: PageHeader) {
     const Icon = props.icon;
 
     return(
-    <div className={styles.titleContainer}>
+    <div className={`${styles.titleContainer} ${props.className ?? ""}`}>
         <div className={styles.iconContainer}>
             <Icon className={styles.icon}/>
         </div>
