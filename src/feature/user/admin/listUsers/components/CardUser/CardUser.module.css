@@ -5,6 +5,13 @@
     padding: 17px;
 }
 
+.cardEditContainer{
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    background-color: var(--secondary-color-transparency);
+    transition: 0.3s;
+}
+
 .photoUser{
     width: 48px;
     height: 48px;
@@ -12,7 +19,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: #e9ecef;
+    background-color: #b0becc;
     padding: 10px;
     margin-right: 18px;
 }
@@ -24,9 +31,19 @@
     height: 30px;
 }
 
+.photoEdit{
+    background-color: #cde3fa;
+    margin-bottom: auto;
+}
+
+.iconUserEdit{
+    color: var(--primary-color);
+}
+
 .infoContainer{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .name{
@@ -52,10 +69,17 @@
     background-color: #e9ecef;
 }
 
+.btnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
 .kebab{
     margin-left: auto;
 }
 
-.btnCancel{
-    pointer-events: auto;
+.btn{
+    padding: 8px 0px;
 }

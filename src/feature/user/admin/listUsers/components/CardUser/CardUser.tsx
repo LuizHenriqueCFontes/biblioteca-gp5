@@ -3,12 +3,13 @@ import KebabMenu from "../../../../../../shared/components/KebabMenu/KebabMenu";
 import styles from "./CardUser.module.css";
 import { useState } from "react";
 import SelectEdit from "../../../components/SelectEdit";
-import { Button } from "../../../../../../shared/components/Button/Button";
 import { useListUsers } from "../../hooks/useListUsers";
-import { hadnleUpdateRole, handleUpdateRole } from "../../actions/handleUpdateRole";
+import { handleUpdateRole } from "../../actions/handleUpdateRole";
 import type { UpdateRoleRequestMutation } from "../../types/updateRoleRequestMutation";
+import { Button } from "../../../../../../shared/components/Button/Button";
 
 interface CardUser {
+    id: string,
     name: string,
     email: string,
     role: string
@@ -17,8 +18,7 @@ interface CardUser {
 export default function CardUser(props: CardUser) {
 
     const [isEditing, setIsEditing] = useState(false);
-    const [role, setRole] = useState("");
-    const [tempRole, setTempRole] = useState(props.role);
+    const [role, setRole] = useState(props.role);
 
     const { updateRole } = useListUsers();
 
@@ -31,16 +31,20 @@ export default function CardUser(props: CardUser) {
         setIsEditing(true);
     }
 
-    function handleIntermediaryFunctionSend(id: string, role: string, updateRole: (request: UpdateRoleRequestMutation) => Promise<void>) {
-        setRole(role);
+    async function handleIntermediaryFunctionSend(id: string, role: string, updateRole: (request: UpdateRoleRequestMutation) => Promise<void>) {
+         setRole(role);
 
-        handleUpdateRole(id, role, updateRole);
+        const update = await handleUpdateRole(id, role, updateRole);
+
+        if(update) {
+            setIsEditing(false);
+        }
     }
 
     return(
-        <article className={styles.cardContainer}>
-            <div className={styles.photoUser}>
-                <User className={styles.iconUser}/>
+        <article className={`${styles.cardContainer} ${isEditing && styles.cardEditContainer}`}>
+            <div className={`${styles.photoUser} ${isEditing && styles.photoEdit}`}>
+                <User className={`${styles.iconUser} ${isEditing && styles.iconUserEdit}`}/>
             </div>
 
             <div className={styles.infoContainer}>
@@ -48,19 +52,20 @@ export default function CardUser(props: CardUser) {
                 <p className={styles.email}>{props.email}</p>
                 
                 {isEditing 
-                ?   <div>
+                ?   <div className={styles.selectContainer}>
                         <SelectEdit 
-                        value={tempRole} 
-                        onChangeValue={setTempRole}
+                        value={role} 
+                        onChangeValue={setRole}
                         placeholder="Edite as permissões do usuário"
                         options={[
                             {value: "USER", label: "Usuário"},
-                            {value: "ADMIN", label: "ADMINISTRADOR"}
+                            {value: "ADMIN", label: "Administrador"}
                         ]}/>
 
-                        <div>
-                            <Button variant="primary" onClick={handleIntermediaryFunctionSend(id)}>Salvar</Button>
-                            <Button variant="secondary" onClick={() => handleCancel()} className={styles.btnCancel}>Cancelar</Button>
+                        <div className={styles.btnContainer}>
+                            <Button className={styles.btn} variant="primary" onClick={() => handleIntermediaryFunctionSend(props.id, role, updateRole)}>Salvar</Button>
+
+                            <Button variant="secondary" onClick={() => handleCancel()} className={styles.btn}>Cancelar</Button>
                         </div>
                     </div> 
                     

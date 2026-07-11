@@ -26,12 +26,13 @@ export default function ListUsers() {
             placeholder="Buscar usuário..."/>
 
             <div className={styles.userContainer}>
-                {users.length === 0 ? <EmptyState icon={UserX} title="Usuário não encontrado" description="Nenhum usuário foi encontrado"/> : " "}
+                {users.length === 0 ? <EmptyState icon={UserX} title="Usuário não encontrado" description="Nenhum usuário foi encontrado"/> : ""}
 
                 {loadingUsers ?? <p>Carregando...</p>}
 
                 {users.map((user) => (
-                    <CardUser name={user.username}
+                    <CardUser id={user.idUser} 
+                    name={user.username}
                     email={user.email}
                     role={user.role}/>
                 ))}

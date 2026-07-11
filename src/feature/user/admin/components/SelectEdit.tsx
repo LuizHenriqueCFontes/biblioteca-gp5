@@ -18,7 +18,7 @@ export default function SelectEdit(props: SelectEdit) {
 
         <div className={styles.container}>
             <div className={styles.select}>
-                <span>{props.value}</span>
+                <span className={styles.textSelected}>{props.value}</span>
                 <ChevronDown className={styles.iconChev}/>
             </div>
 
@@ -27,8 +27,8 @@ export default function SelectEdit(props: SelectEdit) {
                     const isSelected = props.value === option.value;
 
                     return (
-                        <div className={styles.itemList} onClick={() => props.onChangeValue(option.value)}>
-                            <span>{option.label}</span>
+                        <div className={`${styles.itemList} ${isSelected && styles.itemSelected}`} onClick={() => props.onChangeValue(option.value)}>
+                            <span className={`${styles.label} ${isSelected && styles.labelSelected}`}>{option.label}</span>
 
                             {isSelected && <Check className={styles.iconCheck}/>}
                         </div>
