@@ -91,13 +91,13 @@ export default function GetLoans() {
                         : "Livro"
                     } className={styles.bookContainer} id={loan.idLoan} coverUrl={loan.coverUrl} fileUrl={loan.coverUrl} title={loan.title} authors={loan.authors} action={
                         isActive
-                        ? <>
+                        ? <div className={styles.containerBtn}>
                             <Button className={styles.actionButton} variant="primary" onClick={loan.hasReading 
                                 ? () => handleContinueReading(loan.bookId) 
                                 : () => handleStartReading(loan.bookId)}>{loan.hasReading ? "Continuar Leitura" : "Iniciar leitura"}</Button>
 
                             <Button onClick={() => handleBookReturn(loan.idLoan, returnLoan)} className={styles.actionButton} variant="secondary">Devolver</Button>
-                        </>
+                        </div>
 
                         : <div className={styles.returnedContainer}>
                             <CircleCheck className={styles.returnedIcon}/>

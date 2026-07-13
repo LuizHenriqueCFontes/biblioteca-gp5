@@ -109,3 +109,9 @@
     font-size: 0.75em;
     font-weight: 700;
 }
+
+.containerBtn{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
