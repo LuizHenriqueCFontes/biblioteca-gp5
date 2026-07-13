@@ -1,4 +1,6 @@
 import { api } from "../../../../services/api";
+import type { UpdateUserRequestDTO } from "../types/request/updateUserRequestDTO";
+import type { UpdateUserResponseDTO } from "../types/response/updateUserResponseDTO";
 import type { UserResponseDTO } from "../types/response/userResponseDTO";
 
 const BASE_ENDPOINT = "/users";
@@ -6,6 +8,14 @@ const BASE_ENDPOINT = "/users";
 export const userService = {
     getUserData: async(): Promise<UserResponseDTO> => {
         const { data } = await api.get(BASE_ENDPOINT);
+
+        return data;
+    },
+
+    updateUser: async(request: Partial <UpdateUserRequestDTO>): Promise<UpdateUserResponseDTO> => {
+        const endpoint = `${BASE_ENDPOINT}/me`
+
+        const { data } = await api.patch<UpdateUserResponseDTO>(endpoint, request);
 
         return data;
     }

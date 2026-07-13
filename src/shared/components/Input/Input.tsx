@@ -4,7 +4,8 @@ import styles from "./Input.module.css";
 interface InputProps{
     id: string,
     label?: string,
-    type?: string,
+    type?: "text" | "password" | "email" | "phone",
+    minLength?: number,
     ariaLabel?: string,
     icon?: LucideIcon,
     placeholder?: string,
@@ -24,7 +25,7 @@ export function Input(props: InputProps){
 
             {props.label && <label  className={`${styles.label} ${props.required ? styles.required : ""}`} htmlFor={props.id}>{props.label}</label>}
 
-            <input type={props.type} id={props.id} placeholder={props.placeholder} required={props.required} className={`${styles.input} ${props.className ?? ""}`}
+            <input minLength={props.minLength} type={props.type} id={props.id} placeholder={props.placeholder} required={props.required} className={`${styles.input} ${props.className ?? ""}`}
                 value={props.value}
                 onChange={(e) => props.onChange(e.target.value)}
             />

@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { userService } from "../../services/userService";
 import type { UpdateUserRequestDTO } from "../../types/request/updateUserRequestDTO";
 import { useEffect, useState } from "react";
@@ -6,10 +6,22 @@ import { useEffect, useState } from "react";
 export function useEditPersonalData() {
     const FIVE_MINUTES = 1000 * 6 * 5;
 
+    const queryClient = useQueryClient();
+
     const getUserData = useQuery({
         queryKey: ["user"],
         queryFn: userService.getUserData,
         staleTime: FIVE_MINUTES
+    });
+
+    const updateUser = useMutation({
+        mutationFn:userService.updateUser,
+
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: ["user"]
+            });
+        }
     });
 
     const [originalUserData, setOriginalUserData] = useState<UpdateUserRequestDTO>({username: "", email: "", phone: ""});
@@ -46,6 +58,8 @@ export function useEditPersonalData() {
         userLoading: getUserData.isPending,
         originalUserData,
         userData,
-        handleUserData
+        handleUserData,
+
+        updateUser: updateUser.mutateAsync
     }
 }
