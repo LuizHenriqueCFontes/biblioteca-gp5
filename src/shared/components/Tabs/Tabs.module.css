@@ -1,0 +1,42 @@
+.buttonContainer{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 27px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.buttonFilter{
+    background-color: #ffffff;
+    border: none;
+    font-size: 0.8em;
+    color: var(--informations-color);
+    font-weight: 550;
+    padding: 12px 10px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.active{
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.icon{
+    width: 18px;
+    height: 18px;
+    align-self: center;
+}
+
+.indicator{
+    position: absolute;
+    background-color: var(--primary-color);
+    left: 0;
+    right: 0;
+    height: 1px;
+    bottom: -1px;
+}

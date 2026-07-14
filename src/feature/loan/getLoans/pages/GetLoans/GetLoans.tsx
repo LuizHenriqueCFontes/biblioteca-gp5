@@ -57,7 +57,9 @@ export default function GetLoans() {
 
             <div className={styles.statusContainer}>
                 <CardStatusLoan  variant="active" icon={BookOpen} number={summary?.activeLoans} caption="Ativos" information="Emprestimos" />
+
                 <CardStatusLoan variant="days" icon={Clock} number={summary?.nextDueDateInDays} caption="Dias restantes" information="mais urgente" />
+                
                 <CardStatusLoan variant="done" icon={CircleCheck} number={summary?.totalLoans} caption="Realizados" information="Totais"/>
             </div>
 
@@ -91,13 +93,13 @@ export default function GetLoans() {
                         : "Livro"
                     } className={styles.bookContainer} id={loan.idLoan} coverUrl={loan.coverUrl} fileUrl={loan.coverUrl} title={loan.title} authors={loan.authors} action={
                         isActive
-                        ? <>
+                        ? <div className={styles.containerBtn}>
                             <Button className={styles.actionButton} variant="primary" onClick={loan.hasReading 
                                 ? () => handleContinueReading(loan.bookId) 
                                 : () => handleStartReading(loan.bookId)}>{loan.hasReading ? "Continuar Leitura" : "Iniciar leitura"}</Button>
 
                             <Button onClick={() => handleBookReturn(loan.idLoan, returnLoan)} className={styles.actionButton} variant="secondary">Devolver</Button>
-                        </>
+                        </div>
 
                         : <div className={styles.returnedContainer}>
                             <CircleCheck className={styles.returnedIcon}/>

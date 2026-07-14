@@ -13,6 +13,7 @@ import SearchBooksAdmin from "../feature/books/admin/searchBooksAdmin/pages/Sear
 import ManageCategories from "../feature/bookCategories/manageCategories/pages/ManageCategories";
 import EditBookPage from "../feature/books/admin/editBook/pages/EditBookPage";
 import ListUsers from "../feature/user/admin/listUsers/pages/ListUsers";
+import EditData from "../feature/user/user/editData/EditData";
 
 export default function AppRoutes(){
     return(
@@ -36,6 +37,8 @@ export default function AppRoutes(){
                 <Route path="/categories" element={<SearchCategories />}/>
                 <Route path="/categories/create" element={<RegisterCategory />}/>
                 <Route path="/categories/edit/:idCategory" element={<EditCategory />}/>
+
+                <Route path="/user/edit/data" element={<EditData />}/>
 
             </Route>
         </Routes>
