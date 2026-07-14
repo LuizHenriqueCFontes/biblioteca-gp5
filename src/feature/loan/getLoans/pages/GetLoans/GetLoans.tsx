@@ -57,7 +57,9 @@ export default function GetLoans() {
 
             <div className={styles.statusContainer}>
                 <CardStatusLoan  variant="active" icon={BookOpen} number={summary?.activeLoans} caption="Ativos" information="Emprestimos" />
+
                 <CardStatusLoan variant="days" icon={Clock} number={summary?.nextDueDateInDays} caption="Dias restantes" information="mais urgente" />
+                
                 <CardStatusLoan variant="done" icon={CircleCheck} number={summary?.totalLoans} caption="Realizados" information="Totais"/>
             </div>
 

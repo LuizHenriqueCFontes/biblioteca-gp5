@@ -3,6 +3,7 @@ import { Input } from "../../../../../shared/components/Input/Input";
 import { useEditPersonalData } from "../hooks/useEditPersonalData";
 import { Button } from "../../../../../shared/components/Button/Button";
 import { handleEditPersonalData } from "../action/handleEditPersonalData";
+import styles from "./EditPersonalData.module.css";
 
 export default function EditPersonalData() {
 
@@ -15,10 +16,10 @@ export default function EditPersonalData() {
     }
 
     return(
-        <section>
-            {userLoading && <p>Carregando...</p>}
-
-            <form onSubmit={handleOnSubmit}>
+        <section className={styles.container}>
+            {userLoading ? <p>Carregando...</p> : 
+            
+            <form onSubmit={handleOnSubmit} className={styles.formContainer}>
                 <Input id="username"
                 icon={User}
                 label="Nome completo" 
@@ -51,7 +52,9 @@ export default function EditPersonalData() {
                         Cancelar
                     </Button>
                 </div>
-            </form>
+            </form>}
+
+            
         </section>
     );
 }

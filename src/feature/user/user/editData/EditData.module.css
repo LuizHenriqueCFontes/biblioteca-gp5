@@ -1,0 +1,11 @@
+.container{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.divider{
+    border: none;
+    border-top: 2px solid var(--border-color);
+}
