@@ -1,5 +1,58 @@
+.container{
+width: 100%;
+  max-width: 1200px; /* Garante que ele possa esticar na tela */
+  padding: 10px;
+}
+
 .titleContainer{
-    background-image: url("../../../assets/images/home/home-user-background.png");
-    background-position: center center;
-    background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px; /* Define um limite máximo elegante para telas grandes */
+  margin: 0 auto;    /* Centraliza o bloco todo na tela */
+  background-color: #f7f9fc; /* Cor de fundo suave para o lado do texto se necessário */
+  border-radius: 12px;
+  overflow: hidden; 
+}
+
+.containerContent {
+    flex: 1;
+    width: 50%;           /* Faz o texto ocupar o espaço disponível na esquerda */
+    padding: 40px;     /* Espaçamento interno para o texto respirar */
+    min-width: 320px;  
+}
+
+.bannerImage {
+    flex: 1;           /* Faz a imagem dividir o espaço meio a meio com o texto */
+    width: 50%;
+    height: 100%;
+    object-fit: cover; /* Garante que ela se ajuste perfeitamente à altura do bloco */
+}
+
+.tagTitle {
+  background-color: var(--details-background); 
+  width: fit-content;
+  color: var(--details-color);
+  padding: 6px 5px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  font-size: 0.7em;
+}
+
+.title{
+    font-size: 1.35em;
+    color: var(--title-color);
+    font-weight: 700;
+}
+
+.description{
+    font-size: 0.8em;
+    color: var(--informations-color);
+    font-weight: 700;
+}
+
+.btn{
+    height: 40px;
 }
