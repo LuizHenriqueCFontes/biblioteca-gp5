@@ -4,8 +4,10 @@ import { loanService } from "../../../../loan/services/loanService";
 import { getErrorMessage } from "../../../../../utils/getErrorMessage";
 import type { BookLoanResponseDTO } from "../../../../loan/types/bookLoanResponseDTO";
 import { useQuery } from "@tanstack/react-query";
+import type { BookFilterRequestDTO } from "../../types/bookFilterRequestDTO";
+import type { Pageable } from "../../../../../shared/types/pageable";
 
-export function useSearchBooks(name?: string) {
+export function useSearchBooks(name?: string, filter?: BookFilterRequestDTO, pageable?: Pageable) {
     //const [response, setResponse] = useState<PaginatedResponseDTO | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null)
@@ -14,7 +16,7 @@ export function useSearchBooks(name?: string) {
 
     const searchBook = useQuery({
         queryKey: ["books", name],
-        queryFn: () => userBookService.searchBooks(name),
+        queryFn: () => userBookService.searchBooks(name, filter, pageable),
         staleTime: FIVE_MINUTES
     });
 
@@ -44,6 +46,7 @@ export function useSearchBooks(name?: string) {
 
     return {
         books: searchBook.data?.content ?? [],
+        loadingBooks: searchBook.isPending,
 
         first: searchBook?.data?.first,
         last: searchBook?.data?.last,
@@ -52,7 +55,6 @@ export function useSearchBooks(name?: string) {
         totalElements: searchBook.data?.totalElements ?? 0,
         totalPages: searchBook?.data?.totalPages ?? 0,
         error: searchBook.error,
-        loading: searchBook.isLoading,
         bookLoan
     }
 }

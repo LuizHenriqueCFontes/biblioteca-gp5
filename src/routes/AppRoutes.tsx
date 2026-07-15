@@ -14,6 +14,7 @@ import ManageCategories from "../feature/bookCategories/manageCategories/pages/M
 import EditBookPage from "../feature/books/admin/editBook/pages/EditBookPage";
 import ListUsers from "../feature/user/admin/listUsers/pages/ListUsers";
 import EditData from "../feature/user/user/editData/EditData";
+import HomeUser from "../feature/home/user/HomeUser";
 
 export default function AppRoutes(){
     return(
@@ -39,6 +40,8 @@ export default function AppRoutes(){
                 <Route path="/categories/edit/:idCategory" element={<EditCategory />}/>
 
                 <Route path="/user/edit/data" element={<EditData />}/>
+
+                <Route path="/home/user" element={<HomeUser />}/>
 
             </Route>
         </Routes>
