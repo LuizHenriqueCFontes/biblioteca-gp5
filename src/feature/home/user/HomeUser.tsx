@@ -5,21 +5,32 @@ import { useSearchBooks } from "../../books/user/searchBooks/hooks/useSearchBook
 import styles from "./HomeUser.module.css";
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react";
+import { useHomeUser } from "./hooks/useHomeUser";
 //import homeUseBackground from "../../../assets/images/home/home-user-background.png";
 
 export default function HomeUser() {
 
     const { listCategories, loadingListCategories } = useCategory(undefined, 6);
 
-    const { books, loadingBooks, totalElements } = useSearchBooks(undefined, undefined, {page: 0, size: 6});
+    const { books, loadingBooks, totalElements } = useSearchBooks(undefined, {page: 0, size: 6});
 
-    const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    const { handleBookSearchCategory } = useHomeUser();
+
+    const [categoriesRef] = useKeenSlider<HTMLDivElement>({
         mode: "free-snap",
         slides: {
             perView: "auto",
             spacing: 12
         },
-    })
+    });
+
+    const [booksRef] = useKeenSlider<HTMLDivElement>({
+        mode: "free-snap",
+        slides: {
+            perView: "auto",
+            spacing: 12
+        }
+    });
 
     return(
         <section className={styles.container}>
@@ -39,11 +50,11 @@ export default function HomeUser() {
             <article className={styles.categoriesContainer}>
                 <h3 className={styles.titleCategories}>Categorias</h3>
 
-                <div ref={sliderRef} className={`${styles.listCategories} keen-slider`}>
+                <div ref={categoriesRef} className={`${styles.listCategories} keen-slider`}>
                     {loadingListCategories ?? <p>Carregando...</p>}
 
                     {listCategories.map((categorie) => (
-                        <div key={categorie.idCategory} className={`${styles.categoryCard} keen-slider__slide`}>
+                        <div key={categorie.idCategory} className={`${styles.categoryCard} keen-slider__slide`} onClick={() => handleBookSearchCategory(categorie.idCategory)}>
                            <div className={styles.containerIcon}>
                                <Bookmark className={styles.iconCategory}/>
                            </div>
@@ -59,9 +70,9 @@ export default function HomeUser() {
 
                 {loadingBooks ?? <p>Carregando...</p>}
 
-                <div className={styles.bookCardContainer}>
+                <div ref={booksRef} className={`${styles.bookCardContainer} keen-slider`}>
                     {books.map((book) => (
-                        <div className={styles.bookCard}>
+                        <div className={`${styles.bookCard} keen-slider__slide`}>
                             <img className={styles.cover} src={book.coverUrl} alt="imagem do livro" />
 
                             <div className={styles.bookInformations}>

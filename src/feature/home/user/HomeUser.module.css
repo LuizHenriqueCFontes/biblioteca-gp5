@@ -9,6 +9,7 @@
     max-width: 1200px;
     aspect-ratio: 3 / 2;
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: left center;
     display: flex;
     align-items: center;

@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { userBookService, type PaginatedResponseDTO } from "../../services/userBookService";
+import { useCallback, useState } from "react";
+import { userBookService } from "../../services/userBookService";
 import { loanService } from "../../../../loan/services/loanService";
 import { getErrorMessage } from "../../../../../utils/getErrorMessage";
 import type { BookLoanResponseDTO } from "../../../../loan/types/bookLoanResponseDTO";
@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { BookFilterRequestDTO } from "../../types/bookFilterRequestDTO";
 import type { Pageable } from "../../../../../shared/types/pageable";
 
-export function useSearchBooks(name?: string, filter?: BookFilterRequestDTO, pageable?: Pageable) {
+export function useSearchBooks(filter?: BookFilterRequestDTO, pageable?: Pageable) {
     //const [response, setResponse] = useState<PaginatedResponseDTO | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null)
@@ -15,8 +15,8 @@ export function useSearchBooks(name?: string, filter?: BookFilterRequestDTO, pag
     const FIVE_MINUTES = 1000 * 60 * 5;
 
     const searchBook = useQuery({
-        queryKey: ["books", name],
-        queryFn: () => userBookService.searchBooks(name, filter, pageable),
+        queryKey: ["books", filter?.title],
+        queryFn: () => userBookService.searchBooks(undefined, filter, pageable),
         staleTime: FIVE_MINUTES
     });
 
