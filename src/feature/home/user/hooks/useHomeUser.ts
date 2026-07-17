@@ -4,7 +4,7 @@ export function useHomeUser() {
 
     const navigate = useNavigate();
 
-    const handleBookSearchCategory = (idsCategories: string) =>(
+    const handleBookSearchCategory = (idsCategories: string) => (
         navigate("/search/books", {
             state: {
                 categories: [idsCategories]
@@ -12,7 +12,19 @@ export function useHomeUser() {
         })
     );
 
+    const handleBookDetails = (idBook: string) => (
+        navigate(`/book/${idBook}`)
+    );
+
+    const handleExploreBooks = () => (
+        navigate("/search/books")
+    );
+
     return{
-        handleBookSearchCategory
+        handleBookSearchCategory,
+
+        handleBookDetails,
+
+        handleExploreBooks
     }
 }

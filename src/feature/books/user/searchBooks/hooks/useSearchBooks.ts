@@ -1,11 +1,11 @@
 import { useCallback, useState } from "react";
 import { userBookService } from "../../services/userBookService";
-import { loanService } from "../../../../loan/services/loanService";
 import { getErrorMessage } from "../../../../../utils/getErrorMessage";
-import type { BookLoanResponseDTO } from "../../../../loan/types/bookLoanResponseDTO";
+import type { BookLoanResponseDTO } from "../../../../loan/user/types/bookLoanResponseDTO";
 import { useQuery } from "@tanstack/react-query";
 import type { BookFilterRequestDTO } from "../../types/bookFilterRequestDTO";
 import type { Pageable } from "../../../../../shared/types/pageable";
+import { loanService } from "../../../../loan/user/services/loanService";
 
 export function useSearchBooks(filter?: BookFilterRequestDTO, pageable?: Pageable) {
     //const [response, setResponse] = useState<PaginatedResponseDTO | null>(null);

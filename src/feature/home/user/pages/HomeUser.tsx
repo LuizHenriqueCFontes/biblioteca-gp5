@@ -1,11 +1,11 @@
 import { BookCopy, Bookmark, BookOpen } from "lucide-react";
-import { useCategory } from "../../category/hooks/useCategory";
-import { Button } from "../../../shared/components/Button/Button";
-import { useSearchBooks } from "../../books/user/searchBooks/hooks/useSearchBooks";
+import { useCategory } from "../../../category/hooks/useCategory";
+import { Button } from "../../../../shared/components/Button/Button";
+import { useSearchBooks } from "../../../books/user/searchBooks/hooks/useSearchBooks";
 import styles from "./HomeUser.module.css";
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react";
-import { useHomeUser } from "./hooks/useHomeUser";
+import { useHomeUser } from "../hooks/useHomeUser";
 //import homeUseBackground from "../../../assets/images/home/home-user-background.png";
 
 export default function HomeUser() {
@@ -14,7 +14,7 @@ export default function HomeUser() {
 
     const { books, loadingBooks, totalElements } = useSearchBooks(undefined, {page: 0, size: 6});
 
-    const { handleBookSearchCategory } = useHomeUser();
+    const { handleBookSearchCategory, handleBookDetails, handleExploreBooks } = useHomeUser();
 
     const [categoriesRef] = useKeenSlider<HTMLDivElement>({
         mode: "free-snap",
@@ -41,7 +41,8 @@ export default function HomeUser() {
                     <p className={styles.description}>Explore milhares de livros gratuitos, organize suas leituras e descubra novos mundos todos os dias.</p>
 
                     <div className={styles.btnContainer}>
-                        <Button className={styles.btn} type="button" variant="primary" icon={BookOpen}>Explorar livros</Button>
+                        <Button className={styles.btn} type="button" variant="primary" icon={BookOpen} onClick={handleExploreBooks}>Explorar livros</Button>
+
                         <Button className={styles.btn} type="button" variant="loan" icon={Bookmark}> Emprestimos</Button>
                     </div>
                 </div>
@@ -72,7 +73,7 @@ export default function HomeUser() {
 
                 <div ref={booksRef} className={`${styles.bookCardContainer} keen-slider`}>
                     {books.map((book) => (
-                        <div className={`${styles.bookCard} keen-slider__slide`}>
+                        <div className={`${styles.bookCard} keen-slider__slide`} onClick={() => handleBookDetails(book.id)}>
                             <img className={styles.cover} src={book.coverUrl} alt="imagem do livro" />
 
                             <div className={styles.bookInformations}>

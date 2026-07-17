@@ -43,38 +43,50 @@
     color: var(--informations-color);
 }
 
-.active .iconContainer{
+.purple .iconContainer{
     background-color: var(--details-background);
 }
 
-.active .icon{
+.purple .icon{
     color: var(--details-color);
 }
 
-.active .caption{
+.purple .caption{
     color: var(--details-color);
 }
 
-.days .iconContainer{
+.orange .iconContainer{
     background-color: #f3e9c2;
 }
 
-.days .icon{
+.orange .icon{
     color: #d97706;
 }
 
-.days .caption{
+.orange .caption{
     color: #d97706;
 }
 
-.done .iconContainer{
+.green .iconContainer{
     background-color: #f0fdf4;
 }
 
-.done .icon{
+.green .icon{
     color: var(--done-color);
 }
 
-.done .caption{
+.green .caption{
     color: var(--done-color);
+}
+
+.blue .iconContainer{
+    background-color: var(--contrast-secondary-color);
+}
+
+.blue .icon{
+    color: var(--secondary-color);
+}
+
+.blue .caption{
+    color: var(--secondary-color);
 }

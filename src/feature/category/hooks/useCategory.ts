@@ -51,6 +51,7 @@ export function useCategory(name?: string, limit?: number) {
 
     return {
         categories: listPageCategories.data?.content ?? [],
+        totalCategories: listPageCategories.data?.totalElements,
         loadingCategories: listPageCategories.isLoading,
 
         listCategories: listCategories.data ?? [],

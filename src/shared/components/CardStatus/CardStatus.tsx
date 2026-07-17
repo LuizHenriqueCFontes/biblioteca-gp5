@@ -5,12 +5,12 @@ interface CardStatusLoan {
     icon: LucideIcon,
     number?: number,
     caption: string,
-    information: string,
+    information?: string,
     className?: string
-    variant: "active" | "days" | "done",
+    variant: "purple" | "orange" | "green" | "blue"
 }
 
-export default function CardStatusLoan(props: CardStatusLoan) {
+export default function CardStatus(props: CardStatusLoan) {
     
     const Icon = props.icon;
 

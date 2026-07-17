@@ -1,8 +1,8 @@
-import type { BookLoanResponseDTO } from "../types/bookLoanResponseDTO";
-import { api } from "../../../services/api";
-import type { Status } from "../types/loanStatus";
-import type { PageResponse } from "../../../shared/types/pageResponse";
-import type { LoanSummaryResponseDTO } from "../types/loanSummaryResponseDTO";
+import type { BookLoanResponseDTO } from "../../user/types/bookLoanResponseDTO";
+import { api } from "../../../../services/api";
+import type { Status } from "../../user/types/loanStatus";
+import type { PageResponse } from "../../../../shared/types/pageResponse";
+import type { LoanSummaryResponseDTO } from "../../user/types/loanSummaryResponseDTO";
 
 const BASE_ENDPOINT = "/loan"
 

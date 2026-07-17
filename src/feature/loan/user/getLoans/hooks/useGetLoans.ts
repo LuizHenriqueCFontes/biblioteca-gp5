@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { Status } from "../../types/loanStatus";
 import { loanService } from "../../services/loanService";
-import { getErrorMessage } from "../../../../utils/getErrorMessage";
+import { getErrorMessage } from "../../../../../utils/getErrorMessage";
 
 export function useGetLoans(status: Status) {
 
@@ -45,6 +45,7 @@ export function useGetLoans(status: Status) {
 
     return {
         loans: getLoans.data?.content ?? [],
+        totalLoans: getLoans.data?.totalElements,
         loading: getLoans.isLoading,
         errorLoans,
 
