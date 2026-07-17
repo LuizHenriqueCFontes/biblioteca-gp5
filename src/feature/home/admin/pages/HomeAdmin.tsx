@@ -5,13 +5,14 @@ import { useCategory } from "../../../category/hooks/useCategory";
 import { useListUsers } from "../../../user/admin/listUsers/hooks/useListUsers";
 import { useGetLoans } from "../../../loan/user/getLoans/hooks/useGetLoans";
 import { useLoanAdmin } from "../../../loan/admin/hooks/useLoanAdmin";
+import Loading from "../../../../shared/components/Loading/Loading";
 
 export default function HomeAdmin() {
     const { totalElements } = useSearchBooks();
     const { totalCategories } = useCategory();
     const { totalUsers } = useListUsers();
     const { totalLoans } = useGetLoans("ACTIVE");
-    const { listDetailsLoan } = useLoanAdmin();
+    const { listDetailsLoan, loadingListDetailsLoan } = useLoanAdmin();
 
     return(
         <section>
@@ -42,6 +43,8 @@ export default function HomeAdmin() {
 
             <div>
                 <h3>Últimos empréstimos</h3>
+
+                {loadingListDetailsLoan && <Loading />}
 
                 {listDetailsLoan.map((loan) => (
                     <div>

@@ -12,6 +12,7 @@ export function useLoanAdmin() {
 
 
     return {
-        listDetailsLoan: listDetailsLoan.data ?? []
+        listDetailsLoan: listDetailsLoan.data ?? [],
+        loadingListDetailsLoan: listDetailsLoan.isPending
     }
 }

@@ -3,6 +3,7 @@ import { Button } from "../../../../shared/components/Button/Button";
 import { Input } from "../../../../shared/components/Input/Input";
 import styles from "./BookSearch.module.css"
 import BookCard from "../BookCard/BookCard";
+import Loading from "../../../../shared/components/Loading/Loading";
 
 interface BookCardItem {
     id: number | string,
@@ -70,6 +71,8 @@ export default function BookSearch(props: BookSearchProps){
                 </div>
 
                 <hr className={styles.divider}/>
+
+                {props.loading ? <Loading /> : ""}
 
                 {props.books.map((book) => (
                     <BookCard variant="available" tagBook="Disponível" className={styles.bookContainer} key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} action={props.action?.(book)}/>
