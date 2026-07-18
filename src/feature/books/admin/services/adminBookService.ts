@@ -1,5 +1,6 @@
 import { api } from "../../../../services/api"
 import type { BookResponseDTO } from "../../types/response/bookReponseDTO"
+import type { BooksRecentlyCreatedResponseDTO } from "../../types/response/booksRecentlyCreatedResponseDTO"
 import type { EditBookRequestDTO } from "../editBook/types/request/editBookRequestDTO"
 import type { EditBookResponseDTO } from "../editBook/types/response/editBookResponseDTO"
 
@@ -33,6 +34,14 @@ export const adminBooksService = {
         const endpoint = url ?? "/admin/books";
 
         const { data } = await api.get<ImportSearchResponseDTO>(endpoint);
+
+        return data;
+    },
+
+    listRecently: async(): Promise<BooksRecentlyCreatedResponseDTO[]> => {
+        const endpoint = "/admin/books/recent";
+
+        const { data } = await api.get<BooksRecentlyCreatedResponseDTO[]>(endpoint);
 
         return data;
     },

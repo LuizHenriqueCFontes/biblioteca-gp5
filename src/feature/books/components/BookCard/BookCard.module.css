@@ -65,3 +65,22 @@
     background-color: var(--details-background);
     color: var(--details-color);
 }
+
+.younger .container{
+    align-items: center;
+    justify-content: center;
+}
+
+.younger .informationContainer {
+    margin-top: auto;
+}
+
+.younger .cover{
+    min-width: 50px;
+    width: 50px;
+    height: 75px;
+}
+
+.younger .title {
+    font-size: 0.85em;
+}

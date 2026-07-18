@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import styles from "./CardStatusLoan.module.css";
+import styles from "./CardStatus.module.css";
 
 interface CardStatusLoan {
     icon: LucideIcon,
