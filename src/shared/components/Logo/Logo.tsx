@@ -1,14 +1,7 @@
-import logoBlue from "../../../assets/logo/logo-blue.png";
-import logoWhite from "../../../assets/logo/logo-white.png";
+import logo from "../../../assets/logo/logo.png";
 import styles from "./Logo.module.css";
 
-interface LogoProps{
-    variant: "blue" | "white"
-}
-
-export default function Logo(props:LogoProps){
-    const logo = props.variant === "blue" ? logoBlue : logoWhite;
-
+export default function Logo(){
     return(
         <img src={logo} className={styles.logo} alt="Logo da empresa" />
     );

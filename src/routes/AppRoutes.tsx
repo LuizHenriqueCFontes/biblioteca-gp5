@@ -16,6 +16,7 @@ import ListUsers from "../feature/user/admin/listUsers/pages/ListUsers";
 import EditData from "../feature/user/user/editData/EditData";
 import HomeUser from "../feature/home/user/pages/HomeUser";
 import HomeAdmin from "../feature/home/admin/pages/HomeAdmin";
+import Login from "../feature/auth/login/pages/Login";
 
 export default function AppRoutes(){
     return(
@@ -45,6 +46,8 @@ export default function AppRoutes(){
                 <Route path="/user/edit/data" element={<EditData />}/>
 
                 <Route path="/home/user" element={<HomeUser />}/>
+
+                <Route path="/login" element={<Login />}/>
             </Route>
         </Routes>
     );
