@@ -47,7 +47,9 @@ export default function HomeAdmin() {
             </section>
 
             <section className={styles.loanSection}>
-                <h3 className={styles.titlesFeature}>Últimos empréstimos</h3>
+                <div className={styles.loanTitleContainer}>
+                    <h3 className={styles.titlesFeature}>Últimos empréstimos</h3>
+                </div>
 
                 {loadingListDetailsLoan && <Loading />}
 
@@ -73,12 +75,13 @@ export default function HomeAdmin() {
             </section>
 
             <section className={styles.booksSection}>
-                <h3>Útimos livros adicionados</h3>
+                <h3 className={styles.titlesFeature}>Útimos livros adicionados</h3>
 
                 {booksRecentLoading && <Loading />}
 
                 {booksRecent.map((bookRecent, index) => (
                     <BookCard key={index}
+                    className={styles.bookCard}
                     coverUrl={bookRecent.coverUrl}
                     title={bookRecent.title}
                     authors={bookRecent.authors}

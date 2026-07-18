@@ -56,12 +56,12 @@
     border-radius: 8px;
 }
 
-.available{
+.available .tagBook{
     background-color: var(--background-available);
     color: var(--color-available);
 }
 
-.returned{
+.returned .tagBook{
     background-color: var(--details-background);
     color: var(--details-color);
 }

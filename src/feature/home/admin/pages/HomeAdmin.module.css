@@ -38,7 +38,8 @@
 .loanSection{
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 13px;
+    padding: 20px;
+    margin-bottom: 15px;
 }
 
 .containerLoan{
@@ -46,11 +47,15 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 17px;
-    padding: 10px;
+    padding: 0 10px 15px 10px;
 }
 
 .containerLoan:not(:last-child){
     border-bottom: 2px solid var(--border-color);
+}
+
+.containerLoan:last-child{
+    padding-bottom: 0;
 }
 
 .loanContet{
@@ -110,6 +115,16 @@
 .expectedReturnDate{
     margin-top: 7px;
     color: #d97706;
+}
+
+.booksSection{
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.bookCard:not(:last-child){
+    border-bottom: 2px solid var(--border-color);
 }
 
 .creationDate{
