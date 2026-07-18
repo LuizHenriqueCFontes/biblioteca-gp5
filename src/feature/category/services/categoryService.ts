@@ -20,11 +20,12 @@ export const categoryService = {
         return data;
     },
 
-    listCategories: async(name?: string): Promise<CategoryResponseDTO[]> => {
+    listCategories: async(name?: string, limit?: number): Promise<CategoryResponseDTO[]> => {
         
         const { data } = await api.get<CategoryResponseDTO[]>(BASE_ENDPOINT, {
             params: {
-                name: name
+                name: name,
+                limit: limit
             }
         });
 

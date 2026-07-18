@@ -6,6 +6,7 @@ import { Button } from "../../../../../shared/components/Button/Button";
 import styles from "./SearchBookDetails.module.css";
 import { useSearchBooks } from "../../searchBooks/hooks/useSearchBooks";
 import { handleBookLoan } from "../../../actions/loanBookAction";
+import Loading from "../../../../../shared/components/Loading/Loading";
 
 export default function SearchBookDetails() {
     const { id } = useParams();
@@ -16,7 +17,7 @@ export default function SearchBookDetails() {
 
     return (
         <section className={styles.container}>
-            {loading ? <div>Carregando...</div> : ""}
+            {loading ? <Loading /> : ""}
 
            {book &&  <BookDetails id={book?.id} coverUrl={book?.coverUrl} title={book?.title} authors={book?.authors} actions={
                 <Button onClick={() => handleBookLoan(book.id, bookLoan)} className={styles.loan} variant="primary">

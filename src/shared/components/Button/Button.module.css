@@ -51,6 +51,20 @@
     background-color: #ffffff;
 }
 
+.loan{
+    border: 1px solid var(--primary-color);
+    color: var(--title-color);
+    font-weight: 550;
+}
+
+.loan .icon{
+    color: var(--primary-color);
+}
+
+.loan:hover{
+    background-color:  var(--primary-color-transparency);
+}
+
 .primary:hover{
     background-color:  var(--primary-color-transparency);
 }

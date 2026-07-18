@@ -3,7 +3,7 @@ import { Button } from "../../../../shared/components/Button/Button";
 import { Input } from "../../../../shared/components/Input/Input";
 import styles from "./BookSearch.module.css"
 import BookCard from "../BookCard/BookCard";
-import { useState } from "react";
+import Loading from "../../../../shared/components/Loading/Loading";
 
 interface BookCardItem {
     id: number | string,
@@ -19,11 +19,12 @@ interface BookSearchProps {
     totalElements: number,
     loading?: boolean,
     showGutendexInfo?: boolean,
+    findBook: string,
+    setFindBook: (book: string) => void,
     action?: (book: BookCardItem) => React.ReactNode
 }
 
 export default function BookSearch(props: BookSearchProps){
-    const [book, findBook] = useState("");
 
     return (
         <section className={styles.container}>
@@ -38,7 +39,7 @@ export default function BookSearch(props: BookSearchProps){
                 <form>
 
                     <div className={styles.inputContainer}>
-                        <Input icon={Search} className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={book} onChange={findBook}/>
+                        <Input icon={Search} className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={props.findBook} onChange={props.setFindBook}/>
                         <select name="category" id="category" className={styles.filter}>
                             <option>Todos os tipos</option>
                         </select>
@@ -70,6 +71,8 @@ export default function BookSearch(props: BookSearchProps){
                 </div>
 
                 <hr className={styles.divider}/>
+
+                {props.loading ? <Loading /> : ""}
 
                 {props.books.map((book) => (
                     <BookCard variant="available" tagBook="Disponível" className={styles.bookContainer} key={book.id} id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} action={props.action?.(book)}/>

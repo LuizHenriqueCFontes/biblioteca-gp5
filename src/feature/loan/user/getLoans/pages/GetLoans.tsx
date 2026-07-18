@@ -1,18 +1,18 @@
 import { BookOpen, BookX, CircleCheck, Clock } from "lucide-react";
-import CardStatusLoan from "../../../components/CardStatusLoan/CardStatusLoan";
-import { useGetLoans } from "../../hooks/useGetLoans";
+import CardStatus from "../../../../../shared/components/CardStatus/CardStatus";
+import { useGetLoans } from "../hooks/useGetLoans";
 import { useState } from "react";
 import BookCard from "../../../../books/components/BookCard/BookCard";
 import { Button } from "../../../../../shared/components/Button/Button";
 import styles from "./GetLoans.module.css";
 import { motion } from "framer-motion";
-import InfoLoan from "../../../components/InfoLoan/InfoLoan";
+import InfoLoan from "../../components/InfoLoan/InfoLoan";
 import { formatDate } from "../../../../../utils/date";
 import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
-import { handleBookReturn } from "../../../actions/handleBookReturn";
 import { useStartReading } from "../../../../reading/hooks/useStartReading";
 import { useNavigate } from "react-router-dom";
 import { startReadingAction } from "../../../../reading/actions/startReading";
+import { handleBookReturn } from "../../actions/handleBookReturn";
 
 export default function GetLoans() {
     const [currentStatus, setCurrentStatus] = useState<"ACTIVE" | "RETURNED">("ACTIVE");
@@ -56,11 +56,11 @@ export default function GetLoans() {
             </div>
 
             <div className={styles.statusContainer}>
-                <CardStatusLoan  variant="active" icon={BookOpen} number={summary?.activeLoans} caption="Ativos" information="Emprestimos" />
+                <CardStatus  variant="purple" icon={BookOpen} number={summary?.activeLoans} caption="Ativos" information="Emprestimos" />
 
-                <CardStatusLoan variant="days" icon={Clock} number={summary?.nextDueDateInDays} caption="Dias restantes" information="mais urgente" />
+                <CardStatus variant="orange" icon={Clock} number={summary?.nextDueDateInDays} caption="Dias restantes" information="mais urgente" />
                 
-                <CardStatusLoan variant="done" icon={CircleCheck} number={summary?.totalLoans} caption="Realizados" information="Totais"/>
+                <CardStatus variant="green" icon={CircleCheck} number={summary?.totalLoans} caption="Realizados" information="Totais"/>
             </div>
 
             <div className={styles.buttonContainer}>

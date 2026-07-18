@@ -4,7 +4,7 @@ import ImportBooksPage from "../feature/books/admin/importBooks/pages/ImportBook
 import ImportBookDetailsPage from "../feature/books/admin/importBooksDetails/pages/ImportBookDetailsPage";
 import SearchBooks from "../feature/books/user/searchBooks/pages/SearchBooks";
 import BookDetails from "../feature/books/user/bookDetails/pages/SearchBookDetails";
-import GetLoans from "../feature/loan/getLoans/pages/GetLoans/GetLoans";
+import GetLoans from "../feature/loan/user/getLoans/pages/GetLoans";
 import ReaderPage from "../feature/reading/reader/pages/ReaderPage";
 import SearchCategories from "../feature/category/search/pages/SearchCategories/SearchCategories";
 import RegisterCategory from "../feature/category/register/pages/Register";
@@ -14,6 +14,8 @@ import ManageCategories from "../feature/bookCategories/manageCategories/pages/M
 import EditBookPage from "../feature/books/admin/editBook/pages/EditBookPage";
 import ListUsers from "../feature/user/admin/listUsers/pages/ListUsers";
 import EditData from "../feature/user/user/editData/EditData";
+import HomeUser from "../feature/home/user/pages/HomeUser";
+import HomeAdmin from "../feature/home/admin/pages/HomeAdmin";
 
 export default function AppRoutes(){
     return(
@@ -26,6 +28,8 @@ export default function AppRoutes(){
                 <Route path="/admin/edit/book/:idBook" element={<EditBookPage />}/>
 
                 <Route path="/admin/list/users" element={<ListUsers />}/>
+
+                <Route path="/admin/home" element={<HomeAdmin />}/>
 
                 <Route path="/search/books" element={<SearchBooks />}/>
                 <Route path="/book/:id" element={<BookDetails />}/>
@@ -40,6 +44,7 @@ export default function AppRoutes(){
 
                 <Route path="/user/edit/data" element={<EditData />}/>
 
+                <Route path="/home/user" element={<HomeUser />}/>
             </Route>
         </Routes>
     );

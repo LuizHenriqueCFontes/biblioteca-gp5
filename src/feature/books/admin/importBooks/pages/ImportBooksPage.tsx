@@ -4,10 +4,13 @@ import { useImportBooks } from "../hooks/useImportBooks";
 import BookSearch from "../../../components/BookSearch/BookSearch";
 import { useNavigate } from "react-router-dom";
 import { handleImportBook } from "../../../actions/importBookAction";
+import { useState } from "react";
 
 export default function ImportBooksPage(){
     const { books, totalElements, loading, importBook/*error, previousPage, nextPage, fetchBooks*/ } = useImportBooks();
     const navigate = useNavigate();
+
+    const [findBook, setFindBook] = useState("");
 
     function handleGoToImportBookDetails(id: string){
         navigate(`/admin/details/${id}`)
@@ -15,9 +18,9 @@ export default function ImportBooksPage(){
 
     return (
             <>
-                {loading ? "Carregando..." : ""}
-
                 <BookSearch description="Pesquise e importe livros para a biblioteca e disponibilize para todos os usuários." 
+                findBook={findBook}
+                setFindBook={setFindBook}
                 books={books} totalElements={totalElements} 
                 loading={loading}
                 showGutendexInfo

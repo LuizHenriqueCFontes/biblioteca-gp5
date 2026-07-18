@@ -1,26 +1,26 @@
 import styles from "./BookCard.module.css";
 
 interface BookCardProps{
-    id: number | string,
+    id?: number | string,
     coverUrl: string,
     fileUrl?: string,
     title: string,
     authors: string[],
     action?: React.ReactNode,
     className?: string,
-    variant: "available" | "returned",
-    tagBook: string
+    variant: "available" | "returned" | "younger",
+    tagBook?: string
 }
 
 export default function BookCard(props: BookCardProps){
     return(
-        <article className={`${styles.container} ${props.className ?? ""}`}>
+        <article className={`${styles.container} ${props.className ?? ""} ${styles[props.variant]}`}>
             
             <img className={styles.cover} src={props.coverUrl} alt="Imagem do livro" />
 
             <div className={styles.informationContainer}>
                 <h1 className={styles.title}>{props.title}</h1>
-                    <p className={styles.authors}>{props.authors.join(", ")}</p>
+                <p className={styles.authors}>{props.authors.join(", ")}</p>
                 <p className={`${styles.tagBook} ${styles[props.variant]}`}>{props.tagBook}</p>
             </div>
             
