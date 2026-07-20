@@ -69,6 +69,7 @@
     border: 1.7px solid var(--primary-color);
     color: var(--primary-color);
     font-weight: 550;
+    background-color: #ffffff;
 }
 
 .create .icon{

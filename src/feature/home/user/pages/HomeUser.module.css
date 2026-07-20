@@ -81,7 +81,7 @@
 .listCategories{
     padding: 6px 4px;
     background-color: transparent !important;
-    padding-bottom: 20px;
+    padding-bottom: 24px;
 }
 
 .categoryCard{
@@ -137,7 +137,6 @@
 
 .bookCardContainer{
     display: flex;
-    gap: 20px;
 }
 
 .bookCard{

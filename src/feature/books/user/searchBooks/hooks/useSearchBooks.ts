@@ -15,7 +15,7 @@ export function useSearchBooks(filter?: BookFilterRequestDTO, pageable?: Pageabl
     const FIVE_MINUTES = 1000 * 60 * 5;
 
     const searchBook = useQuery({
-        queryKey: ["books", filter?.title],
+        queryKey: ["books", filter],
         queryFn: () => userBookService.searchBooks(undefined, filter, pageable),
         staleTime: FIVE_MINUTES
     });

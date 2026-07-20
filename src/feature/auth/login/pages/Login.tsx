@@ -5,24 +5,36 @@ import styles from "./Login.module.css";
 import { useLogin } from "../hooks/useLogin";
 import { Button } from "../../../../shared/components/Button/Button";
 import { handleLogin } from "../action/handleLogin";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
 
-    const { handleSetLogin, login } = useLogin();
+    const { handleSetLogin, login, loginMutation } = useLogin();
 
-    function onSubmit() {
-        
-    }
+    const navigate = useNavigate();
+
+    async function onSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        await handleLogin(login, loginMutation);
+
+        navigate("/");
+    }   
 
     return(
-        <section>
+        <section className={styles.container}>
             <div className={styles.logoContainer}>
-                <Logo />
+                <Logo className={styles.logo}/>
             </div>
 
-            <div></div>
+            <div className={styles.imageBackground}></div>
 
-            <form onSubmit={=> handleLogin()}>
+            <div className={styles.containerTitle}>
+                <h1 className={styles.title}>Bem-vindo de volta!</h1>
+                <p className={styles.description}>Faça login para acessar sua conta</p>
+            </div>
+
+            <form className={styles.formContainer} onSubmit={(event) => onSubmit(event)}>
                 <Input id="email"
                 label="E-mail"
                 icon={Mail}
@@ -40,17 +52,18 @@ export default function Login() {
                 onChange={(value) => handleSetLogin("password", value)}
                 placeholder="........"/>
 
-                <div>
+                <div className={styles.btnContainer}>
                     <Button variant="primary">Entrar</Button>
 
-                    <div>
-                        <hr />
+                    <div className={styles.detailsContainer}>
+                        <hr className={styles.divider}/>
                         
-                        <p>ou</p>
-                        <hr />
+                        <p className={styles.details}>ou</p>
+
+                        <hr className={styles.divider}/>
                     </div>
 
-                    <Button icon={User} variant="create">Criar uma conta</Button>
+                    <Button type="button" icon={User} variant="create">Criar uma conta</Button>
                 </div>
             </form>
         </section>

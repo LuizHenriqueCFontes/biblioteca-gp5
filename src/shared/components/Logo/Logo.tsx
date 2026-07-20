@@ -1,8 +1,12 @@
 import logo from "../../../assets/logo/logo.png";
 import styles from "./Logo.module.css";
 
-export default function Logo(){
+interface Logo {
+    className?: string
+}
+
+export default function Logo(props: Logo){
     return(
-        <img src={logo} className={styles.logo} alt="Logo da empresa" />
+        <img src={logo} className={`${styles.logo} ${props.className ?? ""}`} alt="Logo da empresa" />
     );
 }
