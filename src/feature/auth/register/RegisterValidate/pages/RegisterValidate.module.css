@@ -1,0 +1,40 @@
+.container{
+    padding: 15px;
+}
+
+.logo{
+    text-align: center;
+    margin: 0 auto;
+    width: 120px;
+}
+
+.imageBackground{
+    background-image: url("../../../../../assets/auth/background-auth-mobile.png");
+    aspect-ratio: 3 / 2;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.containerTitle{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title{
+    color: var(--title-color);
+    font-size: 1.6em;
+    margin-bottom: 5px;
+}
+
+.description{
+    color: var(--informations-color);
+    font-size: 0.85em;
+    font-weight: 520;
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}

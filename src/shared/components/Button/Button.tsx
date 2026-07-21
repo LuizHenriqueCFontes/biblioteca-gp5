@@ -5,7 +5,7 @@ interface ButtonProps{
     children: React.ReactNode,
     type?: "button" | "submit",
     onClick?: () => void,
-    variant: "primary" | "secondary" | "action" | "dashed" | "loan" | "create", 
+    variant: "primary" | "secondary" | "action" | "dashed" | "loan" | "create" | "continue", 
     className?: string,
     icon?: LucideIcon
 }
@@ -20,7 +20,7 @@ export function Button(props: ButtonProps){
 
                 {Icon && <Icon className={styles.icon}/>}
 
-                {props.children}
+                <span className={styles.content}>{props.children}</span>
             </button>
         </>
     );
