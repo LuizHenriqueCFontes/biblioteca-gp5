@@ -19,6 +19,7 @@ import HomeAdmin from "../feature/home/admin/pages/HomeAdmin";
 import Login from "../feature/auth/login/pages/Login";
 import AuthLayout from "../layout/AuthLayout/AuthLayout";
 import RegisterValidate from "../feature/auth/register/RegisterValidate/pages/RegisterValidate";
+import RegisterPassword from "../feature/auth/register/RegisterPassword/pages/RegisterPassword";
 
 export default function AppRoutes(){
     return(
@@ -53,6 +54,7 @@ export default function AppRoutes(){
             <Route element={<AuthLayout />}>
                 <Route path="auth/login" element={<Login />}/>
                 <Route path="auth/register" element={<RegisterValidate />}/>
+                <Route path="auth/register/password" element={<RegisterPassword />}/>
             </Route>
         </Routes>
     );

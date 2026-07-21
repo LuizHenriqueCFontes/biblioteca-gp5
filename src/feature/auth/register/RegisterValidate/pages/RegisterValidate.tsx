@@ -1,14 +1,25 @@
 import { ArrowRight, Mail, Phone, User } from "lucide-react";
 import { Input } from "../../../../../shared/components/Input/Input";
 import Logo from "../../../../../shared/components/Logo/Logo";
-import styles from "./Register.module.css";
+import styles from "./RegisterValidate.module.css";
 import { useRegisterValidate } from "../hooks/useRegister";
 import { Button } from "../../../../../shared/components/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { handleRegisterValidate } from "../action/handleRegisterValidate";
 
 export default function RegisterValidate() {
 
-    const { handleSetData, data } = useRegisterValidate();
+    const { handleSetData, data, registerValidate } = useRegisterValidate();
+
+    const navigate = useNavigate();
+
+    async function onSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        await handleRegisterValidate(data, registerValidate);
+
+        navigate("/auth/register/password");
+    }
 
     return(
         <section className={styles.container}>
@@ -24,7 +35,7 @@ export default function RegisterValidate() {
                 <p className={styles.description}>Informe seus dados pessoais para criar sua conta.</p>
             </div>
 
-            <form className={styles.formContainer}>
+            <form className={styles.formContainer} onSubmit={(value) => onSubmit(value)}>
                 <Input id="username"
                 label="Nome completo"
                 icon={User}
@@ -47,13 +58,14 @@ export default function RegisterValidate() {
                 value={data.phone}
                 onChange={(value) => handleSetData("phone", value)}
                 placeholder="(00) 00000-0000"
-                required/>
+                required
+                maxLength={15}/>
 
                 <Button icon={ArrowRight} variant="continue">Continuar</Button> 
             </form>
 
-            <div>
-                <p>Já tem uma conta? <Link to={"auth/login"}>Faça login</Link> </p>
+            <div className={styles.informationContainer}>
+                <p  className={styles.information}>Já tem uma conta? <Link className={styles.informationLink} to={"/auth/login"}>Faça login</Link> </p>
             </div>
         </section>
     );

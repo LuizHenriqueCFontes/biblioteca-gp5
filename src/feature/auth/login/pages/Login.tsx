@@ -21,6 +21,10 @@ export default function Login() {
         navigate("/");
     }   
 
+    function handleRegisterPage() {
+        navigate("/auth/register");
+    }
+
     return(
         <section className={styles.container}>
             <div className={styles.logoContainer}>
@@ -63,7 +67,7 @@ export default function Login() {
                         <hr className={styles.divider}/>
                     </div>
 
-                    <Button type="button" icon={User} variant="create">Criar uma conta</Button>
+                    <Button type="button" icon={User} variant="create" onClick={handleRegisterPage}>Criar uma conta</Button>
                 </div>
             </form>
         </section>
