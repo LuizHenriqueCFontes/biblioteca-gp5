@@ -10,6 +10,8 @@ import { useSearchBooksAdmin } from "../../../books/admin/searchBooksAdmin/hooks
 import BookCard from "../../../books/components/BookCard/BookCard";
 import { formatDate } from "../../../../utils/date";
 import styles from "./HomeAdmin.module.css";
+import { authStorage } from "../../../auth/services/authStorage";
+import { formatName } from "../../../../utils/formatName";
 
 export default function HomeAdmin() {
     const { totalElements } = useSearchBooks();
@@ -19,9 +21,11 @@ export default function HomeAdmin() {
     const { listDetailsLoan, loadingListDetailsLoan } = useLoanAdmin();
     const { booksRecent, booksRecentLoading } = useSearchBooksAdmin();
 
+    const username = formatName(authStorage.getUsername() ?? "");
+
     return(
         <section className={styles.container}>
-            <h1 className={styles.title}>Olá, variavel! 👋</h1>
+                <h1 className={styles.title}>Olá, {username}! 👋</h1>
             <p className={styles.welcome}>Bem-vindo ao painel administrativo da Biblioteca-GP5.</p>
 
             <section className={styles.cardContainer}>
