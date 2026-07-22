@@ -1,0 +1,60 @@
+.container{
+    padding: 15px;
+}
+
+.logo{
+    text-align: center;
+    margin: 0 auto;
+    width: 120px;
+}
+
+.imageBackground{
+    background-image: url("../../../../assets/auth/background-auth-mobile.png");
+    aspect-ratio: 3 / 2;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 25px;
+}
+
+.containerTitle{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.title{
+    color: var(--title-color);
+    font-size: 1.6em;
+    margin-bottom: 5px;
+}
+
+.description{
+    color: var(--informations-color);
+    font-size: 0.9em;
+    font-weight: 520;
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.detailsContainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0 18px;
+}
+
+.details{
+    color: var(--informations-color);
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.divider{
+    border: none;
+    width: 50%;
+    border-top: 2px solid var(--border-color);
+}

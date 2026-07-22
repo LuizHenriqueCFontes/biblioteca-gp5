@@ -6,6 +6,7 @@ interface InputProps{
     label?: string,
     type?: "text" | "password" | "email" | "phone",
     minLength?: number,
+    maxLength?: number,
     ariaLabel?: string,
     icon?: LucideIcon,
     placeholder?: string,
@@ -27,7 +28,7 @@ export function Input(props: InputProps){
             <div className={styles.inputContainer}>
                 {Icon && <Icon className={styles.icon}/>}
 
-                <input minLength={props.minLength} type={props.type} id={props.id} placeholder={props.placeholder} required={props.required} className={`${styles.input} ${props.className ?? ""}`}
+                <input minLength={props.minLength} maxLength={props.maxLength} type={props.type} id={props.id} placeholder={props.placeholder} required={props.required} className={`${styles.input} ${props.className ?? ""}`}
                     value={props.value}
                     onChange={(e) => props.onChange(e.target.value)}
                 />

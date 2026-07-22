@@ -65,6 +65,44 @@
     background-color:  var(--primary-color-transparency);
 }
 
+.create{
+    border: 1.7px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 550;
+    background-color: #ffffff;
+}
+
+.create .icon{
+    color: var(--primary-color);
+}
+
+.create:hover{
+    background-color:  var(--primary-color-transparency);
+}
+
+.continue {
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.continue {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.continue .content{
+    margin: 0 auto;
+}
+
+.continue .icon{
+    justify-content: flex-end;
+}
+
+.continue:hover {
+    background-color: var(--primary-color-transparency);
+}
+
 .primary:hover{
     background-color:  var(--primary-color-transparency);
 }

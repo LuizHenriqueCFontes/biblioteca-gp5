@@ -73,7 +73,7 @@ export default function HomeUser() {
 
                 <div ref={booksRef} className={`${styles.bookCardContainer} keen-slider`}>
                     {books.map((book) => (
-                        <div className={`${styles.bookCard} keen-slider__slide`} onClick={() => handleBookDetails(book.id)}>
+                        <div key={book.id} className={`${styles.bookCard} keen-slider__slide`} onClick={() => handleBookDetails(book.id)}>
                             <img className={styles.cover} src={book.coverUrl} alt="imagem do livro" />
 
                             <div className={styles.bookInformations}>

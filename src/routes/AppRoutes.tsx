@@ -16,6 +16,10 @@ import ListUsers from "../feature/user/admin/listUsers/pages/ListUsers";
 import EditData from "../feature/user/user/editData/EditData";
 import HomeUser from "../feature/home/user/pages/HomeUser";
 import HomeAdmin from "../feature/home/admin/pages/HomeAdmin";
+import Login from "../feature/auth/login/pages/Login";
+import AuthLayout from "../layout/AuthLayout/AuthLayout";
+import RegisterValidate from "../feature/auth/register/RegisterValidate/pages/RegisterValidate";
+import RegisterPassword from "../feature/auth/register/RegisterPassword/pages/RegisterPassword";
 
 export default function AppRoutes(){
     return(
@@ -44,7 +48,13 @@ export default function AppRoutes(){
 
                 <Route path="/user/edit/data" element={<EditData />}/>
 
-                <Route path="/home/user" element={<HomeUser />}/>
+                <Route path="/" element={<HomeUser />}/>
+            </Route>
+
+            <Route element={<AuthLayout />}>
+                <Route path="auth/login" element={<Login />}/>
+                <Route path="auth/register" element={<RegisterValidate />}/>
+                <Route path="auth/register/password" element={<RegisterPassword />}/>
             </Route>
         </Routes>
     );
