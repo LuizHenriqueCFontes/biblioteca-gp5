@@ -8,6 +8,6 @@ export async function handleRegisterPassword(request: RegisterDTO, register: (re
     
     const response = await executeWithToast(() => register(request), "Criando conta...", "Conta criada com sucesso!");
 
-    authStorage.save(response.token, response.username);
+    authStorage.save(response.token, response.username, response.role);
     registerStorage.clear();
 }

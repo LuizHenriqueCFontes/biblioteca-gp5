@@ -1,5 +1,6 @@
 export type AuthResponseDTO = {
     type: string,
     token: string,
-    username: string
+    username: string,
+    role: string
 }

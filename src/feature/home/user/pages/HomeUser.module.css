@@ -137,6 +137,7 @@
 
 .bookCardContainer{
     display: flex;
+    padding-bottom: 20px;
 }
 
 .bookCard{
