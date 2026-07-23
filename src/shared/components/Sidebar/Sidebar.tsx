@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import styles from "./Sidebar.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { Book, BookUp, Home, User, Users, X } from "lucide-react";
+import { ArrowDown, Book, BookUp, Home, User, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { authStorage } from "../../../feature/auth/services/authStorage";
 
@@ -34,50 +34,54 @@ export default function Sidebar(props: Sidebar){
                             exit={{ x: "-100%" }}
                             transition={{duration: 0.25}}>
                                 
-                                <button onClick={() => props.onOpenChange(false)}> <X /> </button>
+                
 
                                 <nav>
                                     <ul>
-                                        <li>
-                                            <Link to={isAdmin ? "/admin/home" : "/"}><Home /> {isAdmin ? "Dashboard" : "Tela de início"}</Link>
+                                        <li className={styles.linkContent}>
+                                            <Link className={styles.link} to={isAdmin ? "/admin/home" : "/"}><Home className={styles.linkIcon}/> {isAdmin ? "Dashboard" : "Tela de início"}</Link>
                                         </li>
                                         
-                                        <li>
-                                            <Link to={isAdmin ? "/admin/imports" : "/search/books"}><Book /> {isAdmin ? "Importar livros" : "Pesquisar livros"}</Link>
+                                        <li className={styles.linkContent}>
+                                            <Link className={styles.link} to={isAdmin ? "/admin/imports" : "/search/books"}><Book className={styles.linkIcon}/> {isAdmin ? "Importar livros" : "Pesquisar livros"}</Link>
                                         </li>
 
-                                        <li>
-                                            <Link to={isAdmin ? "/admin/list/users" : "/loan"}>{isAdmin ? 
+                                        <li className={styles.linkContent}>
+                                            <Link className={styles.link} to={isAdmin ? "/admin/list/users" : "/loan"}>{isAdmin ? 
                                             <>
-                                                <Users /> 
+                                                <Users className={styles.linkIcon}/> 
                                                 <span>Listar usuários</span>
                                             </> 
                                             :
                                             <>
-                                                <BookUp /> 
+                                                <BookUp className={styles.linkIcon}/> 
                                                 <span>Meus empréstimos</span>
                                             </>}</Link>
                                         </li>
 
                                         {
                                             isAdmin && 
-                                            <li>
-                                                <Link to={"/categories"}>Categorias</Link>
+                                            <li className={styles.linkContent}>
+                                                <Link className={styles.link} to={"/categories"}> <BookUp className={styles.linkIcon}/> Categorias</Link>
                                             </li>
                                         }
 
                                         <li>
                                             <Collapsible.Root>
 
-                                                <Collapsible.Trigger>
-                                                    <User /> Meu Perfil
+                                                <Collapsible.Trigger className={styles.trigger}>
+                                                    <div className={styles.triggerContent}>
+                                                        <User className={styles.link}/>
+                                                        Meu Perfil
+                                                    </div>
+                                                    
+                                                    <ArrowDown className={styles.arrow}/>
                                                 </Collapsible.Trigger>
 
-                                                <Collapsible.Content asChild>
+                                                <Collapsible.Content className={styles.profileContent} asChild>
                                                     <ul>
-                                                        <li>Minha conta</li>
-                                                        <li>Editar dados</li>
-                                                        <li>Sair</li>
+                                                        <li> <Link to={"/user/edit/data"}>Editar dados</Link> </li>
+                                                        <li> <Link to={"/"}>Sair</Link> </li>
                                                     </ul>
 
                                                 </Collapsible.Content>

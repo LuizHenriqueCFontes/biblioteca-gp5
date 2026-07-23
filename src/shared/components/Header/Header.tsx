@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Logo from "../Logo/Logo";
 import styles from "./Header.module.css"
 import { useState } from "react";
@@ -15,8 +15,12 @@ export default function Header(props:HeaderProps){
         <>
             <header className={`${styles.header} ${props.className ?? ""}`}>
 
-                <button onClick={() => setIsOpen(true)} aria-label="Abrir menu" className={styles.iconContainer}>
-                    <Menu className={styles.icon}/>
+                <Logo />
+
+                <button onClick={() => {setIsOpen(!open)
+                    console.log("Cliquei");
+                }} aria-label="Abrir menu" className={styles.iconContainer}>
+                    {open ? <X className={styles.icon}/> : <Menu className={styles.icon}/>} 
                 </button>
             </header>
 

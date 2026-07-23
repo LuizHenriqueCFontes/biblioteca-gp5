@@ -26,6 +26,12 @@
     gap: 8px;
 }
 
+.content{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .icon{
     width: 18px;
     height: 18px;

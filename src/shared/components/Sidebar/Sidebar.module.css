@@ -4,13 +4,94 @@
 
 .sidebar {
     position: fixed;
-    top: 0;
+    top: 10%;
     left: 0;
 
     width: 220px;
     height: 100vh;
 
     background: white;
-    padding: 30px;
-    padding-top: 70px;
+    padding-top: 50px;
+}
+
+.linkContent{
+    list-style: none;
+    padding: 13px 10px;
+}
+
+.link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--informations-color);
+    font-weight: 520;
+    gap: 10px;
+}
+
+.linkIcon{
+    width: 19px;
+    height: 19px;
+    color: var(--informations-color);
+}
+
+.trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.triggerContent{
+    display: flex;
+    align-items: center;
+    padding: 13px 10px;
+    color: var(--informations-color);
+    font-weight: 550;
+    gap: 10px;
+    font-size: 1.15em;
+}
+
+.arrow {
+    transition: transform 200ms ease;
+}
+
+.trigger[data-state="open"] .arrow {
+    transform: rotate(180deg);
+}
+
+.profileContent {
+    overflow: hidden;
+}
+
+.profileContent[data-state="open"] {
+    animation: slideDown 250ms ease-out;
+}
+
+.profileContent[data-state="closed"] {
+    animation: slideUp 250ms ease-in;
+}
+
+@keyframes slideDown {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+
+    to {
+        height: var(--radix-collapsible-content-height);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        height: var(--radix-collapsible-content-height);
+        opacity: 1;
+    }
+
+    to {
+        height: 0;
+        opacity: 0;
+    }
 }
