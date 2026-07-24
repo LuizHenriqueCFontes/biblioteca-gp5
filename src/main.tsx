@@ -7,6 +7,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "./styles/global.css";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { AuthProvider } from './feature/auth/context/AuthContext.tsx';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,7 +27,9 @@ createRoot(document.getElementById('root')!).render(
 
       <QueryClientProvider client={queryClient}>
 
-        <App />
+        <AuthProvider>
+            <App />
+        </AuthProvider>
 
         <ReactQueryDevtools initialIsOpen={false}/>
       </QueryClientProvider>

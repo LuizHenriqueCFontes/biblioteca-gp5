@@ -2,20 +2,30 @@ import { AnimatePresence, motion } from "framer-motion";
 import styles from "./Sidebar.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { Bolt, Book, BookUp, ChevronDown, Home, LogOut, User, Users } from "lucide-react";
+import { Bolt, Book, BookUp, ChevronDown, Home, LogIn, LogOut, User, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { authStorage } from "../../../feature/auth/services/authStorage";
+import { useAuth } from "../../../feature/auth/hooks/useAuth";
 
 interface Sidebar {
     open: boolean,
     onOpenChange: (open: boolean) => void
 }
 
-const role = authStorage.getRole();
-const isAdmin = role === "ADMIN";
-const hasToken = authStorage.getToken();
-
 export default function Sidebar(props: Sidebar){
+
+    const { isAuthenticated, logout } = useAuth();
+
+    const role = authStorage.getRole();
+    const isAdmin = role === "ADMIN";
+
+    function handleExit() {
+        authStorage.clear();
+        logout();
+    }   
+
+    console.log(isAuthenticated);
+
     return(
         <Dialog.Root open={props.open}
         onOpenChange={props.onOpenChange}>
@@ -48,7 +58,7 @@ export default function Sidebar(props: Sidebar){
                                         </li>
 
                                         <li className={styles.linkContent}>
-                                            <Link className={styles.link} to={isAdmin ? "/admin/list/users" : hasToken ? "/loan" : "/auth/login"}>{isAdmin ? 
+                                            <Link className={styles.link} to={isAdmin ? "/admin/list/users" : isAuthenticated ? "/loan" : "/auth/login"}>{isAdmin ? 
                                             <>
                                                 <Users className={styles.linkIcon}/> 
                                                 <span>Listar usuários</span>
@@ -67,6 +77,7 @@ export default function Sidebar(props: Sidebar){
                                             </li>
                                         }
 
+                                        {isAuthenticated ? 
                                         <li className={styles.myProfile}>
                                             <Collapsible.Root className={styles.rootCollapsible}>
 
@@ -81,15 +92,17 @@ export default function Sidebar(props: Sidebar){
 
                                                 <Collapsible.Content className={styles.profileContent} asChild>
                                                     <ul className={styles.listProfileContainer}>
-                                                        <li className={styles.profileContent}> <Link className={styles.link} to={hasToken ? "/user/edit/data" : "/auth/login"}> <Bolt className={styles.linkIcon}/> Editar dados</Link> </li>
+                                                        <li className={styles.profileContent}> <Link className={styles.link} to={"/user/edit/data"}> <Bolt className={styles.linkIcon}/> Editar dados</Link></li>
 
-                                                        <li className={styles.profileContent}> <Link className={styles.link} to={hasToken ? "/" : "/auth/login"}><LogOut className={styles.linkIcon}/> {hasToken ? "Sair" : "Fazer login"}</Link> </li>
+                                                        <li onClick={handleExit} className={styles.profileContent}> <Link className={styles.link} to={"/"}><LogOut className={styles.linkIcon}/>Sair</Link> </li>
                                                     </ul>
-
                                                 </Collapsible.Content>
 
                                             </Collapsible.Root>
                                         </li>
+                                        :
+                                        <li className={`${styles.linkContent} ${styles.linkLogin}`}><Link className={styles.link} to={"/auth/login"}> <LogIn className={styles.linkIcon}/> Fazer login</Link></li>
+                                        }
                                     </ul>
                                 </nav>
 

@@ -66,7 +66,7 @@
 }
 
 .myProfile{
-    margin-top: 135%;
+    margin-top: 115%;
 }
 
 .rootCollapsible{
@@ -107,6 +107,10 @@
 
 .profileContent {
     overflow: hidden;
+}
+
+.linkLogin{
+    margin-top: 10%;
 }
 
 .profileContent[data-state="open"] {

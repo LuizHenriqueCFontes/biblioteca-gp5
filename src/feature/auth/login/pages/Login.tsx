@@ -6,10 +6,12 @@ import { useLogin } from "../hooks/useLogin";
 import { Button } from "../../../../shared/components/Button/Button";
 import { handleLogin } from "../action/handleLogin";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Login() {
 
     const { handleSetLogin, login, loginMutation } = useLogin();
+    const { loginUse } = useAuth();
 
     const navigate = useNavigate();
 
@@ -18,6 +20,7 @@ export default function Login() {
 
         await handleLogin(login, loginMutation);
 
+        loginUse();
         navigate("/");
     }   
 

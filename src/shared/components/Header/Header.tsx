@@ -3,6 +3,8 @@ import Logo from "../Logo/Logo";
 import styles from "./Header.module.css"
 import { useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
+import { useNavigate } from "react-router-dom";
+import { authStorage } from "../../../feature/auth/services/authStorage";
 
 interface HeaderProps{
     className?: string
@@ -11,11 +13,19 @@ interface HeaderProps{
 export default function Header(props:HeaderProps){
     const [open, setIsOpen] = useState(false);
 
+    const navigate = useNavigate();
+
+    const role = authStorage.getRole();
+
+    function handleHome() {
+    role === "ADMIN" ? navigate("/admin/home") : navigate("/");
+    }
+
     return(
         <>
             <header className={`${styles.header} ${props.className ?? ""}`}>
 
-                <Logo />
+                <Logo onClick={handleHome}/>
 
                 <button onClick={() => {setIsOpen(!open)
                     console.log("Cliquei");
