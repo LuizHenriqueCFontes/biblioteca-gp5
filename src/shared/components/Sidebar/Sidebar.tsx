@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import styles from "./Sidebar.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { ArrowDown, Book, BookUp, Home, User, Users } from "lucide-react";
+import { Bolt, Book, BookUp, ChevronDown, Home, LogOut, User, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { authStorage } from "../../../feature/auth/services/authStorage";
 
@@ -13,6 +13,7 @@ interface Sidebar {
 
 const role = authStorage.getRole();
 const isAdmin = role === "ADMIN";
+const hasToken = authStorage.getToken();
 
 export default function Sidebar(props: Sidebar){
     return(
@@ -36,8 +37,8 @@ export default function Sidebar(props: Sidebar){
                                 
                 
 
-                                <nav>
-                                    <ul>
+                                <nav className={styles.navContainer}>
+                                    <ul className={styles.listContainer}>
                                         <li className={styles.linkContent}>
                                             <Link className={styles.link} to={isAdmin ? "/admin/home" : "/"}><Home className={styles.linkIcon}/> {isAdmin ? "Dashboard" : "Tela de início"}</Link>
                                         </li>
@@ -47,7 +48,7 @@ export default function Sidebar(props: Sidebar){
                                         </li>
 
                                         <li className={styles.linkContent}>
-                                            <Link className={styles.link} to={isAdmin ? "/admin/list/users" : "/loan"}>{isAdmin ? 
+                                            <Link className={styles.link} to={isAdmin ? "/admin/list/users" : hasToken ? "/loan" : "/auth/login"}>{isAdmin ? 
                                             <>
                                                 <Users className={styles.linkIcon}/> 
                                                 <span>Listar usuários</span>
@@ -66,22 +67,23 @@ export default function Sidebar(props: Sidebar){
                                             </li>
                                         }
 
-                                        <li>
-                                            <Collapsible.Root>
+                                        <li className={styles.myProfile}>
+                                            <Collapsible.Root className={styles.rootCollapsible}>
 
                                                 <Collapsible.Trigger className={styles.trigger}>
                                                     <div className={styles.triggerContent}>
-                                                        <User className={styles.link}/>
+                                                        <User className={styles.profileIcon}/>
                                                         Meu Perfil
                                                     </div>
                                                     
-                                                    <ArrowDown className={styles.arrow}/>
+                                                    <ChevronDown className={`${styles.arrow} ${styles.linkIcon}`}/>
                                                 </Collapsible.Trigger>
 
                                                 <Collapsible.Content className={styles.profileContent} asChild>
-                                                    <ul>
-                                                        <li> <Link to={"/user/edit/data"}>Editar dados</Link> </li>
-                                                        <li> <Link to={"/"}>Sair</Link> </li>
+                                                    <ul className={styles.listProfileContainer}>
+                                                        <li className={styles.profileContent}> <Link className={styles.link} to={hasToken ? "/user/edit/data" : "/auth/login"}> <Bolt className={styles.linkIcon}/> Editar dados</Link> </li>
+
+                                                        <li className={styles.profileContent}> <Link className={styles.link} to={hasToken ? "/" : "/auth/login"}><LogOut className={styles.linkIcon}/> {hasToken ? "Sair" : "Fazer login"}</Link> </li>
                                                     </ul>
 
                                                 </Collapsible.Content>

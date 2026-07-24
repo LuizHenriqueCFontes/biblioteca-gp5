@@ -4,6 +4,7 @@ import { useEditPersonalData } from "../hooks/useEditPersonalData";
 import { Button } from "../../../../../shared/components/Button/Button";
 import { handleEditPersonalData } from "../action/handleEditPersonalData";
 import styles from "./EditPersonalData.module.css";
+import Loading from "../../../../../shared/components/Loading/Loading";
 
 export default function EditPersonalData() {
 
@@ -17,7 +18,7 @@ export default function EditPersonalData() {
 
     return(
         <section className={styles.container}>
-            {userLoading ? <p>Carregando...</p> : 
+            {userLoading ? <Loading /> : 
             
             <form onSubmit={handleOnSubmit} className={styles.formContainer}>
                 <Input id="username"

@@ -14,9 +14,40 @@
     padding-top: 50px;
 }
 
+.navContainer{
+    min-height: 100%;
+}
+
+.listContainer{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
 .linkContent{
     list-style: none;
     padding: 13px 10px;
+}
+
+.listProfileContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 2px;
+    gap: 14px;
+}
+
+.profileContent{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.profileIcon{
+    color: var(--informations-color);
+    
 }
 
 .link{
@@ -34,25 +65,39 @@
     color: var(--informations-color);
 }
 
+.myProfile{
+    margin-top: 135%;
+}
+
+.rootCollapsible{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .trigger {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: none;
     border: none;
+    gap: 45px;
 }
 
 .triggerContent{
     display: flex;
     align-items: center;
-    padding: 13px 10px;
     color: var(--informations-color);
     font-weight: 550;
     gap: 10px;
-    font-size: 1.15em;
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
 .arrow {
+    align-self: unset;
+    stroke-width: 2.5px;
     transition: transform 200ms ease;
 }
 
