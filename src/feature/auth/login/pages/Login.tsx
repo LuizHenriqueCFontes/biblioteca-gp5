@@ -7,6 +7,7 @@ import { Button } from "../../../../shared/components/Button/Button";
 import { handleLogin } from "../action/handleLogin";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { authStorage } from "../../services/authStorage";
 
 export default function Login() {
 
@@ -21,7 +22,10 @@ export default function Login() {
         await handleLogin(login, loginMutation);
 
         loginUse();
-        navigate("/");
+
+        const role = authStorage.getRole();
+
+        role === "ADMIN" ? navigate("/admin/home") : navigate("/");
     }   
 
     function handleRegisterPage() {

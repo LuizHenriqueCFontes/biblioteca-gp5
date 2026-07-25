@@ -1,5 +1,6 @@
 .container{
     padding: 15px 11px;
+    max-width: 1200px;
 }
 
 .title{
@@ -118,4 +119,10 @@
 
 .bookContainer:not(:last-child){
     border-bottom: 1px solid var(--border-color);
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        margin: 0 auto;
+    }
 }

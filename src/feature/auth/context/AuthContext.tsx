@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { authStorage } from "../services/authStorage";
 
 type AuthContextData = {
     isAuthenticated: boolean,
@@ -14,7 +15,9 @@ export const AuthContext = createContext<AuthContextData | null>(null);
 
 export function AuthProvider(props: AuthProvider) {
 
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        return Boolean(authStorage.getToken());
+    });
 
     const loginUse = () => setIsAuthenticated(true);
 

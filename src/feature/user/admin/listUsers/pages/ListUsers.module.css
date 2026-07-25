@@ -1,5 +1,6 @@
 .container{
     padding: 10px;
+    max-width: 1200px;
 }
 
 .pageHeader{
@@ -10,4 +11,10 @@
     margin-top: 20px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        margin: auto;
+    }
 }

@@ -12,6 +12,7 @@
     justify-content: space-between;
     padding: 5px 8px;
     background-color: white;
+    max-width: 160px;
 }
 
 .iconChev{
@@ -34,6 +35,7 @@
     justify-content: center;
     gap: 3px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    max-width: 160px;
 }
 
 .itemList{
@@ -41,6 +43,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.itemList:hover{
+    background-color: var(--secondary-color-transparency);
+}
+
+.label:hover{
+    color: var(--primary-color);
+    transition: 0.3s;
 }
 
 .label{

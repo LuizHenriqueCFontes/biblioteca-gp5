@@ -98,9 +98,11 @@ export default function Sidebar(props: Sidebar){
 
                                                 <Collapsible.Content className={styles.profileContent} asChild>
                                                     <ul className={styles.listProfileContainer}>
-                                                        <li className={styles.profileContent}> <Link className={styles.link} to={"/user/edit/data"}> <Bolt className={styles.linkIcon}/> Editar dados</Link></li>
+                                                        <li className={styles.profileContent}> <Link className={styles.link} to={"/user/edit/data"}> <Bolt className={styles.linkIcon}/> Editar dados</Link>
+                                                        </li>
 
-                                                        <li onClick={handleExit} className={styles.profileContent}> <Link className={styles.link} to={"/"}><LogOut className={styles.linkIcon}/>Sair</Link> </li>
+                                                        <li onClick={() => handleExit} className={styles.profileContent}> <Link className={styles.link} to={"/"}><LogOut className={styles.linkIcon}/>Sair</Link> 
+                                                        </li>
                                                     </ul>
                                                 </Collapsible.Content>
 

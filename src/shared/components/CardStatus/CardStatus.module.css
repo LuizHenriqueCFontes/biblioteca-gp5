@@ -90,3 +90,11 @@
 .blue .caption{
     color: var(--secondary-color);
 }
+
+@media screen and (min-width: 768px) {
+    .container{
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+    }
+}

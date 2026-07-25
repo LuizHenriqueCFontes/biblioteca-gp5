@@ -14,6 +14,7 @@
     background-color: transparent;
     border: none;
     color: var(--contrast-primary-color);
+    cursor: pointer;
 }
 
 .icon{
@@ -22,6 +23,3 @@
     height: 28px;
 }
 
-.exitIcon{
-
-}

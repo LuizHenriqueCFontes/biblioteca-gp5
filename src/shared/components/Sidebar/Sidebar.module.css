@@ -33,8 +33,6 @@
 .listProfileContainer{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     padding: 10px;
     gap: 14px;
 }
@@ -42,7 +40,6 @@
 .profileContent{
     list-style: none;
     display: flex;
-    justify-content: center;
 }
 
 .profileIcon{
