@@ -8,6 +8,6 @@ interface Logo {
 
 export default function Logo(props: Logo){
     return(
-        <img src={logo} className={`${styles.logo} ${props.className ?? ""}`} alt="Logo da empresa" />
+        <img onClick={props.onClick} src={logo} className={`${styles.logo} ${props.className ?? ""}`} alt="Logo da empresa" />
     );
 }

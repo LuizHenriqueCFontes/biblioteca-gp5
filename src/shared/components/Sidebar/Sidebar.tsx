@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import styles from "./Sidebar.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { Bolt, Book, BookUp, ChevronDown, Home, LogIn, LogOut, User, Users } from "lucide-react";
+import { Bolt, Book, BookLock, BookUp, ChevronDown, Home, LogIn, LogOut, User, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { authStorage } from "../../../feature/auth/services/authStorage";
 import { useAuth } from "../../../feature/auth/hooks/useAuth";
@@ -72,9 +72,15 @@ export default function Sidebar(props: Sidebar){
 
                                         {
                                             isAdmin && 
-                                            <li className={styles.linkContent}>
-                                                <Link className={styles.link} to={"/categories"}> <BookUp className={styles.linkIcon}/> Categorias</Link>
-                                            </li>
+                                            <>
+                                                <li className={styles.linkContent}>
+                                                    <Link className={styles.link} to={"/categories"}> <BookUp className={styles.linkIcon}/> Categorias</Link>
+                                                </li>
+                                            
+                                                <li className={styles.linkContent}>
+                                                    <Link className={styles.link} to={"/admin/search/books"}><BookLock className={styles.linkIcon}/> Gerenciar livros</Link>
+                                                </li>
+                                            </>
                                         }
 
                                         {isAuthenticated ? 

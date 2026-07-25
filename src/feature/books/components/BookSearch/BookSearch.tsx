@@ -38,14 +38,9 @@ export default function BookSearch(props: BookSearchProps){
 
                 <form>
 
-                    <div className={styles.inputContainer}>
-                        <Input icon={Search} className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={props.findBook} onChange={props.setFindBook}/>
-                        <select name="category" id="category" className={styles.filter}>
-                            <option>Todos os tipos</option>
-                        </select>
-                    </div>
+                    <Input icon={Search} className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={props.findBook} onChange={props.setFindBook}/>
 
-                    <Button variant="primary">
+                    <Button className={styles.btnSearch} variant="primary">
                         Pesquisar
                     </Button>
                 </form>

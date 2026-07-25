@@ -6,7 +6,6 @@ import { useCategory } from "../../../hooks/useCategory";
 import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
 import CardCategory from "../../components/CardCategory";
 import styles from "./SearchCategories.module.css"
-import Select from "../../../../../shared/components/Select/Select";
 import { useNavigate } from "react-router-dom";
 import { handleDeleteCategory } from "../../actions/handleDeleteCategory";
 
@@ -44,8 +43,6 @@ export default function SearchCategories() {
                 <form>
                     <Input className={styles.findInput} id="categorias" icon={Search} ariaLabel="Buscar Categorias" placeholder="Buscar categorias..." value={findCategory} onChange={setFindCategory}/>
                 </form>
-
-                <Select id="order" options={[{value: "", label: "Nome (A-Z)"}]} label="Ordernar por"/>
             </div>
 
             <div className={styles.categoriesContainer}>

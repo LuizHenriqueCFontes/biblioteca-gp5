@@ -23,6 +23,10 @@
     margin-bottom: 17px;
 }
 
+.btnSearch{
+    margin-top: 10px;
+}
+
 .inputContainer{
     display: flex;
     flex-direction: column;
