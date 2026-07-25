@@ -101,7 +101,7 @@ export default function Sidebar(props: Sidebar){
                                                         <li className={styles.profileContent}> <Link className={styles.link} to={"/user/edit/data"}> <Bolt className={styles.linkIcon}/> Editar dados</Link>
                                                         </li>
 
-                                                        <li onClick={() => handleExit} className={styles.profileContent}> <Link className={styles.link} to={"/"}><LogOut className={styles.linkIcon}/>Sair</Link> 
+                                                        <li onClick={handleExit} className={styles.profileContent}> <Link className={styles.link} to={"/"}><LogOut className={styles.linkIcon}/>Sair</Link> 
                                                         </li>
                                                     </ul>
                                                 </Collapsible.Content>
