@@ -4,8 +4,9 @@ import type { LoginRequestDTO } from "../../types/request/loginRequestDTO";
 import type { AuthResponseDTO } from "../../types/response/authResponseDTO";
 
 export async function handleLogin(request: LoginRequestDTO, loginHandle: (request: LoginRequestDTO) => Promise<AuthResponseDTO>): Promise<void> {
+    authStorage.clear();
+
     const response =  await executeWithToast(() => loginHandle(request), "Autenticando...", "Autenticado com suceso!");
 
-    authStorage.clear();
     authStorage.save(response.token, response.username, response.role);
 }

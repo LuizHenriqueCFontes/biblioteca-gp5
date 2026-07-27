@@ -30,10 +30,12 @@ export type AdminBookDetails = {
 }
 
 export const adminBooksService = {
-    getBooks: async (url?: string): Promise<ImportSearchResponseDTO> => {
+    getBooks: async (url?: string, title?: string, page?: number): Promise<ImportSearchResponseDTO> => {
         const endpoint = url ?? "/admin/books";
 
-        const { data } = await api.get<ImportSearchResponseDTO>(endpoint);
+        const { data } = await api.get<ImportSearchResponseDTO>(endpoint, {
+            title: title
+        });
 
         return data;
     },

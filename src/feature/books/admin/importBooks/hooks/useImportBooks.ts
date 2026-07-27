@@ -3,7 +3,7 @@ import { adminBooksService, type ImportSearchResponseDTO } from "../../services/
 import type { BookResponseDTO } from "../../../types/response/bookReponseDTO";
 import { getErrorMessage } from "../../../../../utils/getErrorMessage";
 
-export function useImportBooks(){
+export function useImportBooks(title?: string, page?: number){
     const [response, setResponse] = useState<ImportSearchResponseDTO | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -66,6 +66,8 @@ export function useImportBooks(){
     return{
         books: response?.results ?? [],
         totalElements: response?.count ?? 0,
+        next: response?.next,
+        previous: response?.previous,
         loading,
         error,
         fetchBooks,

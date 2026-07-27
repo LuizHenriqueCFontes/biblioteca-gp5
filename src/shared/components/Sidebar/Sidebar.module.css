@@ -76,7 +76,7 @@
 .trigger {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center !important;
     background: none;
     border: none;
     gap: 45px;
@@ -85,6 +85,7 @@
 .triggerContent{
     display: flex;
     align-items: center;
+    justify-content: center;
     color: var(--informations-color);
     font-weight: 550;
     gap: 10px;
@@ -93,7 +94,7 @@
 }
 
 .arrow {
-    align-self: unset;
+    align-self: flex-start;
     stroke-width: 2.5px;
     transition: transform 200ms ease;
 }
