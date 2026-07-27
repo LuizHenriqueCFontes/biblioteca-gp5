@@ -6,10 +6,13 @@ import { useLogin } from "../hooks/useLogin";
 import { Button } from "../../../../shared/components/Button/Button";
 import { handleLogin } from "../action/handleLogin";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import { authStorage } from "../../services/authStorage";
 
 export default function Login() {
 
     const { handleSetLogin, login, loginMutation } = useLogin();
+    const { loginUse } = useAuth();
 
     const navigate = useNavigate();
 
@@ -18,7 +21,11 @@ export default function Login() {
 
         await handleLogin(login, loginMutation);
 
-        navigate("/");
+        loginUse();
+
+        const role = authStorage.getRole();
+
+        role === "ADMIN" ? navigate("/admin/home") : navigate("/");
     }   
 
     function handleRegisterPage() {

@@ -5,6 +5,7 @@ import { Button } from "../../../../../shared/components/Button/Button";
 import styles from "./SearchBooks.module.css";
 import { handleBookLoan } from "../../../actions/loanBookAction";
 import { useState } from "react";
+import { useAuth } from "../../../../auth/hooks/useAuth";
 
 export default function SearchBooks(){
 
@@ -18,8 +19,19 @@ export default function SearchBooks(){
 
     const { books, loadingBooks, totalElements, bookLoan } = useSearchBooks({title: findBook, idsCategories: locationCategories});
 
+    const { isAuthenticated } = useAuth();
+
     function handleGoToBookDetails(id: string) {
         navigate(`/book/${id}`)
+    }
+
+    function handleLoan(id: string) {
+        if(isAuthenticated) {
+            handleBookLoan(id, bookLoan);
+
+        }else{
+            navigate("/auth/login");
+        }
     }
     
     return(
@@ -36,7 +48,7 @@ export default function SearchBooks(){
                         Detalhes
                     </Button>
 
-                    <Button onClick={() => handleBookLoan(`${books.id}`, bookLoan)} className={styles.button} variant="primary">
+                    <Button onClick={() => handleLoan(`${books.id}`)} className={styles.button} variant="primary">
                         Emprestimo
                     </Button>
                 </div>

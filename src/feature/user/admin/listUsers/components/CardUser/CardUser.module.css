@@ -83,3 +83,25 @@
 .btn{
     padding: 8px 0px;
 }
+
+@media screen and (min-width: 768px) {
+    .photoUser{
+        margin-top: auto;
+    }
+    
+    .infoContainer{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr auto;
+        align-items: center;
+    }
+
+    .selectContainer{
+        display: flex;
+        gap: 60px;
+    }
+
+    .btnContainer{
+        gap: 10px;
+        width: 40%;
+    }
+}

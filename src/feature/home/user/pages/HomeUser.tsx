@@ -6,6 +6,7 @@ import styles from "./HomeUser.module.css";
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react";
 import { useHomeUser } from "../hooks/useHomeUser";
+import { useAuth } from "../../../auth/hooks/useAuth";
 //import homeUseBackground from "../../../assets/images/home/home-user-background.png";
 
 export default function HomeUser() {
@@ -14,8 +15,8 @@ export default function HomeUser() {
 
     const { books, loadingBooks, totalElements } = useSearchBooks(undefined, {page: 0, size: 6});
 
-    const { handleBookSearchCategory, handleBookDetails, handleExploreBooks } = useHomeUser();
-
+    const { handleBookSearchCategory, handleBookDetails, handleExploreBooks, handleLoan } = useHomeUser();
+ 
     const [categoriesRef] = useKeenSlider<HTMLDivElement>({
         mode: "free-snap",
         slides: {
@@ -32,6 +33,7 @@ export default function HomeUser() {
         }
     });
 
+
     return(
         <section className={styles.container}>
             <div className={styles.titleContainer}>
@@ -43,7 +45,7 @@ export default function HomeUser() {
                     <div className={styles.btnContainer}>
                         <Button className={styles.btn} type="button" variant="primary" icon={BookOpen} onClick={handleExploreBooks}>Explorar livros</Button>
 
-                        <Button className={styles.btn} type="button" variant="loan" icon={Bookmark}> Emprestimos</Button>
+                        <Button onClick={handleLoan} className={styles.btn} type="button" variant="loan" icon={Bookmark}> Emprestimos</Button>
                     </div>
                 </div>
             </div>

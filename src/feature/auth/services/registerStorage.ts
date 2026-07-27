@@ -10,15 +10,15 @@ export const registerStorage = {
     },
 
     getUsername: () => {
-        sessionStorage.getItem(USERNAME_KEY);
+        return sessionStorage.getItem(USERNAME_KEY);
     },
 
     getEmail: () => {
-        sessionStorage.getItem(EMAIL_KEY);
+        return sessionStorage.getItem(EMAIL_KEY);
     },
 
     getPhone: () => {
-        sessionStorage.getItem(PHONE_KEY);
+        return sessionStorage.getItem(PHONE_KEY);
     },
 
     clear: () => {

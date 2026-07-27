@@ -1,5 +1,6 @@
 .container{
     padding: 10px;
+    max-width: 1200px;
 }
 
 .title{
@@ -133,4 +134,15 @@
     color: var(--informations-color);
     font-weight: 700;
     align-self: center;
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        margin: auto;
+    }
+
+    .cardContainer{
+        display: flex;
+        
+    }
 }
