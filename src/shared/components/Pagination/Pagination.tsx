@@ -4,7 +4,8 @@ import "react-responsive-pagination/themes/classic-light-dark.css";
 interface Pagination {
     page: number,
     totalPages: number,
-    onPageChange: (page: number) => void 
+    onPageChange: (page: number) => void,
+    startsAt?: 0 | 1
 
 }
 
@@ -14,9 +15,9 @@ export default function Pagination(props: Pagination) {
     }
 
     return(
-        <ResponsePagination current={props.page}
+        <ResponsePagination current={props.startsAt === 0 ? props.page + 1 : props.page}
         total={props.totalPages} 
-        onPageChange={props.onPageChange}
+        onPageChange={props.startsAt === 0 ? (selectedPage) => props.onPageChange(selectedPage - 1) : props.onPageChange}
         maxWidth={500}
         />
     );

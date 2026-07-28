@@ -6,10 +6,16 @@ import { Pencil, Tag, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useSearchBooksAdmin } from "../hooks/useSearchBooksAdmin";
 import { handleDeactiveBook } from "../action/handleDeactiveBook";
+import { useState } from "react";
+import Loading from "../../../../../shared/components/Loading/Loading";
+import Pagination from "../../../../../shared/components/Pagination/Pagination";
 
 export default function SearchBooksAdmin() {
 
-    const { books, totalElements, loadingBooks } = useSearchBooks();
+    const [findBook, setFindBook] = useState("");
+    const [page, setPage] = useState(0);
+
+    const { books, totalElements, loadingBooks, totalPages } = useSearchBooks({idsCategories: [], title: findBook}, {size: 20, page: page});
 
     const { deleteBook } = useSearchBooksAdmin();
 
@@ -27,9 +33,9 @@ export default function SearchBooksAdmin() {
 
         <>
 
-            {loadingBooks && <p>carregando...</p>}
+            {loadingBooks && <Loading />}
 
-            <BookSearch books={books} description="Gerencie os livros do acervo da biblioteca" totalElements={totalElements} action={(books) => (
+            <BookSearch findBook={findBook} setFindBook={setFindBook} books={books} description="Gerencie os livros do acervo da biblioteca" totalElements={totalElements} action={(books) => (
                 <div className={styles.kebabContainer}>
                     
                     <KebabMenu options={[
@@ -41,7 +47,12 @@ export default function SearchBooksAdmin() {
                     ]}/>
                 </div>
              )}/>
-        
+
+
+            <Pagination page={page}
+            onPageChange={setPage}
+            totalPages={totalPages}
+            startsAt={0}/>
         </>
     );
 }

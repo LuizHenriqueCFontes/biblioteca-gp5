@@ -37,7 +37,7 @@
 .categoriesContainer{
     border: 1px solid var(--border-color);
     border-radius: 7px;
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 .categories{

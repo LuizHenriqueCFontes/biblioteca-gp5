@@ -6,12 +6,16 @@ import { Input } from "../../../../../shared/components/Input/Input";
 import CardUser from "../components/CardUser/CardUser";
 import EmptyState from "../../../../../shared/components/EmptyState/EmptyState";
 import styles from "./ListUsers.module.css";
+import Loading from "../../../../../shared/components/Loading/Loading";
+import Pagination from "../../../../../shared/components/Pagination/Pagination";
 
 export default function ListUsers() {
 
     const [name, setName] = useState("");
 
-    const { users, loadingUsers } = useListUsers(name);
+    const { users, loadingUsers, totalPages } = useListUsers(name);
+
+    const [page, setPage] = useState(0);
 
     return(
         <section className={styles.container}>
@@ -28,7 +32,7 @@ export default function ListUsers() {
             <div className={styles.userContainer}>
                 {users.length === 0 ? <EmptyState icon={UserX} title="Usuário não encontrado" description="Nenhum usuário foi encontrado"/> : ""}
 
-                {loadingUsers ?? <p>Carregando...</p>}
+                {loadingUsers ?? <Loading />}
 
                 {users.map((user) => (
                     <CardUser id={user.idUser} 
@@ -37,6 +41,10 @@ export default function ListUsers() {
                     role={user.role}/>
                 ))}
             </div>
+
+            <Pagination page={page}
+            onPageChange={setPage}
+            totalPages={totalPages ?? 0}/>
         </section>
     );
 }

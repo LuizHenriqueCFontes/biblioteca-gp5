@@ -2,16 +2,17 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { Status } from "../../types/loanStatus";
 import { loanService } from "../../services/loanService";
 import { getErrorMessage } from "../../../../../utils/getErrorMessage";
+import type { Pageable } from "../../../../../shared/types/pageable";
 
-export function useGetLoans(status: Status) {
+export function useGetLoans(status: Status, pageable?: Pageable) {
 
     const queryClient = useQueryClient();
 
     const FIVE_MINUTES = 1000 * 60 * 5;
 
     const getLoans = useQuery({
-        queryKey: ["get-loans", status],
-        queryFn: () => loanService.getLoans(status),
+        queryKey: ["get-loans", status, pageable?.page],
+        queryFn: () => loanService.getLoans(status, pageable),
         staleTime: FIVE_MINUTES
     });
 
@@ -46,6 +47,7 @@ export function useGetLoans(status: Status) {
     return {
         loans: getLoans.data?.content ?? [],
         totalLoans: getLoans.data?.totalElements,
+        totalPages: getLoans.data?.totalPages ?? 0,
         loading: getLoans.isLoading,
         errorLoans,
 

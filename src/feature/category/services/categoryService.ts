@@ -1,4 +1,5 @@
 import { api } from "../../../services/api";
+import type { Pageable } from "../../../shared/types/pageable";
 import type { PageResponse } from "../../../shared/types/pageResponse";
 import type { CategoryResponseDTO } from "../types/response/categoryResponseDTO";
 import type { EditCategoryResponseDTO } from "../types/response/editCategoryResponseDTO";
@@ -9,12 +10,15 @@ const BASE_ENDPOINT = "/category"
 
 export const categoryService = {
 
-    listPageCategories: async(name?: string): Promise<PageResponse<CategoryResponseDTO>> => {
+    listPageCategories: async(name?: string, pageable?: Pageable): Promise<PageResponse<CategoryResponseDTO>> => {
         const endpoint = `${BASE_ENDPOINT}/summary`;
         
         const { data } = await api.get<PageResponse<CategoryResponseDTO>>(endpoint, {
             params: {
-                name: name
+                name: name,
+
+                size: pageable?.size,
+                page: pageable?.page
             }  
         });
         return data;

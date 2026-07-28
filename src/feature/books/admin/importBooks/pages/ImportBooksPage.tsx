@@ -13,10 +13,8 @@ export default function ImportBooksPage(){
 
     const [findBook, setFindBook] = useState("");
     
-    const { books, totalElements, loadingBooks, importBook} = useImportBooks(findBook, page);
+    const { books, totalElements, loadingBooks, importBook, totalPages} = useImportBooks(findBook, page);
     const navigate = useNavigate();
-
-    console.log(totalElements)
 
     function handleGoToImportBookDetails(id: string){
         navigate(`/admin/details/${id}`)
@@ -41,9 +39,10 @@ export default function ImportBooksPage(){
                 )}
                 />
 
-                <Pagination totalPages={totalElements}
+                <Pagination totalPages={totalPages}
                 page={page}
-                onPageChange={setPage}/>
+                onPageChange={setPage}
+                startsAt={1}/>
             </>
     );
 }

@@ -5,6 +5,8 @@ import { Button } from "../../../../../shared/components/Button/Button";
 import { handleEditPersonalData } from "../action/handleEditPersonalData";
 import styles from "./EditPersonalData.module.css";
 import Loading from "../../../../../shared/components/Loading/Loading";
+import { authStorage } from "../../../../auth/services/authStorage";
+import { useNavigate } from "react-router-dom";
 
 export default function EditPersonalData() {
 
@@ -14,6 +16,19 @@ export default function EditPersonalData() {
         event.preventDefault();
 
         handleEditPersonalData(originalUserData, userData, updateUser);
+    }
+
+    const navigate = useNavigate();
+
+    function cancel() {
+        const role = authStorage.getRole();
+
+        if (role === "ADMIN") {
+            navigate("/admin/home")
+
+        }  else {
+            navigate("/");
+        }
     }
 
     return(
@@ -49,7 +64,7 @@ export default function EditPersonalData() {
                         Salvar alterações
                     </Button>
 
-                    <Button type="button" variant="secondary">
+                    <Button onClick={cancel} type="button" variant="secondary">
                         Cancelar
                     </Button>
                 </div>

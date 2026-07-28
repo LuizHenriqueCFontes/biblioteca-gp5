@@ -4,6 +4,8 @@ import { useEditPassword } from "../hooks/useEditPassword";
 import { Button } from "../../../../../shared/components/Button/Button";
 import { handleEditPassword } from "../actions/handleEditPassword";
 import styles from "./EditPassword.module.css";
+import { authStorage } from "../../../../auth/services/authStorage";
+import { useNavigate } from "react-router-dom";
 
 export default function EditPassword() {
 
@@ -13,6 +15,19 @@ export default function EditPassword() {
         event.preventDefault();
 
         handleEditPassword(password, updatePassword);
+    }
+
+    const navigate = useNavigate();
+
+    function cancel() {
+        const role = authStorage.getRole();
+
+        if (role === "ADMIN") {
+            navigate("/admin/home")
+
+        }  else {
+            navigate("/");
+        }
     }
 
     return(
@@ -50,7 +65,7 @@ export default function EditPassword() {
                         Salvar alterações
                     </Button>
 
-                    <Button variant="secondary" type="button">
+                    <Button onClick={cancel} variant="secondary" type="button">
                         Cancelar
                     </Button>
                 </div>

@@ -27,6 +27,7 @@ export function useListUsers(name?: string) {
     return{
         users: listUsers?.data?.content ?? [],
         totalUsers: listUsers.data?.totalElements,
+        totalPages: listUsers.data?.totalPages,
         loadingUsers: listUsers.isPending,
 
         updateRole: updateRole.mutateAsync

@@ -13,11 +13,14 @@ import { useStartReading } from "../../../../reading/hooks/useStartReading";
 import { useNavigate } from "react-router-dom";
 import { startReadingAction } from "../../../../reading/actions/startReading";
 import { handleBookReturn } from "../../actions/handleBookReturn";
+import Pagination from "../../../../../shared/components/Pagination/Pagination";
 
 export default function GetLoans() {
     const [currentStatus, setCurrentStatus] = useState<"ACTIVE" | "RETURNED">("ACTIVE");
 
-    const { loans, summary, errorLoans, returnLoan } = useGetLoans(currentStatus);
+    const[page, setPage] = useState(0);
+
+    const { loans, summary, errorLoans, returnLoan, totalPages } = useGetLoans(currentStatus, {size: 20, page: page});
 
     const { startReading } = useStartReading();
 
@@ -115,7 +118,11 @@ export default function GetLoans() {
                 </div>
                 ))
             }
-            
+
+            <Pagination page={page}
+            onPageChange={setPage}
+            startsAt={0}
+            totalPages={totalPages}/>
         </section>
     );
 }
