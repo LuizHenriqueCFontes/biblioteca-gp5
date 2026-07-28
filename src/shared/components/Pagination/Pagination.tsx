@@ -1,4 +1,5 @@
 import ResponsePagination from "react-responsive-pagination";
+import "react-responsive-pagination/themes/classic-light-dark.css";
 
 interface Pagination {
     page: number,
@@ -13,9 +14,10 @@ export default function Pagination(props: Pagination) {
     }
 
     return(
-        <ResponsePagination current={props.page + 1}
+        <ResponsePagination current={props.page}
         total={props.totalPages} 
-        onPageChange={(selectedPage) => props.onPageChange(selectedPage - 1)}
+        onPageChange={props.onPageChange}
+        maxWidth={500}
         />
     );
 

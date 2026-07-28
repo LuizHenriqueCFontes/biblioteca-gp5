@@ -34,7 +34,10 @@ export const adminBooksService = {
         const endpoint = url ?? "/admin/books";
 
         const { data } = await api.get<ImportSearchResponseDTO>(endpoint, {
-            title: title
+            params: {
+                title: title,
+                page: page
+            }
         });
 
         return data;

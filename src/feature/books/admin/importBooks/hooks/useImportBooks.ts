@@ -2,35 +2,20 @@ import { useCallback, useEffect, useState } from "react";
 import { adminBooksService, type ImportSearchResponseDTO } from "../../services/adminBookService";
 import type { BookResponseDTO } from "../../../types/response/bookReponseDTO";
 import { getErrorMessage } from "../../../../../utils/getErrorMessage";
+import { useQuery } from "@tanstack/react-query";
 
 export function useImportBooks(title?: string, page?: number){
     const [response, setResponse] = useState<ImportSearchResponseDTO | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const PAGE_SIZE = 32;
+    const FIVE_MINUTES = 1000 * 60 * 5;
 
-    const fetchBooks = useCallback(async (url?: string): Promise<void> => {
-        try {
-            setLoading(true);
-            setError(null);
-
-            const data = await adminBooksService.getBooks(url);
-
-            setResponse(data);
-
-        } catch (error) {
-            setError(
-                error instanceof Error
-                ? error.message
-                : "Erro ao carregar livros"
-            );
-
-            throw error;
-
-        } finally {
-            setLoading(false);
-        }
-
-    }, []);
+    const fetchBooks  = useQuery({
+        queryKey: ["books-gutendex", title, page],
+        queryFn: () => adminBooksService.getBooks(undefined, title, page),
+        staleTime: FIVE_MINUTES
+    });
 
     const importBook = useCallback(async(id: string): Promise<BookResponseDTO> => {
         try {
@@ -58,17 +43,12 @@ export function useImportBooks(title?: string, page?: number){
 
     }, []);
 
-    useEffect(() => {
-        fetchBooks();
-        
-    }, [fetchBooks]);
-
     return{
-        books: response?.results ?? [],
-        totalElements: response?.count ?? 0,
-        next: response?.next,
-        previous: response?.previous,
-        loading,
+        books: fetchBooks.data?.results ?? [],
+        totalElements: Math.ceil((fetchBooks.data?.count ?? 0 )/ PAGE_SIZE),
+        next: fetchBooks?.data?.next,
+        previous: fetchBooks?.data?.previous,
+        loadingBooks: fetchBooks.isPending,
         error,
         fetchBooks,
         importBook

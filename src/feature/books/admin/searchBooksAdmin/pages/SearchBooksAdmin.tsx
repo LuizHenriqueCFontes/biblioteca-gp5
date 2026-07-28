@@ -9,7 +9,7 @@ import { handleDeactiveBook } from "../action/handleDeactiveBook";
 
 export default function SearchBooksAdmin() {
 
-    const { books, totalElements, loading } = useSearchBooks();
+    const { books, totalElements, loadingBooks } = useSearchBooks();
 
     const { deleteBook } = useSearchBooksAdmin();
 
@@ -27,7 +27,7 @@ export default function SearchBooksAdmin() {
 
         <>
 
-            {loading && <p>carregando...</p>}
+            {loadingBooks && <p>carregando...</p>}
 
             <BookSearch books={books} description="Gerencie os livros do acervo da biblioteca" totalElements={totalElements} action={(books) => (
                 <div className={styles.kebabContainer}>

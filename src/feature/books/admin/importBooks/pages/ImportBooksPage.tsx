@@ -8,16 +8,21 @@ import { useState } from "react";
 import Pagination from "../../../../../shared/components/Pagination/Pagination";
 
 export default function ImportBooksPage(){
-    const { books, totalElements, loading, importBook} = useImportBooks();
-    const navigate = useNavigate();
-
+    
     const [page, setPage] = useState(1);
 
     const [findBook, setFindBook] = useState("");
+    
+    const { books, totalElements, loadingBooks, importBook} = useImportBooks(findBook, page);
+    const navigate = useNavigate();
+
+    console.log(totalElements)
 
     function handleGoToImportBookDetails(id: string){
         navigate(`/admin/details/${id}`)
     }
+
+    console.log(page)
 
     return (
             <>
@@ -25,7 +30,7 @@ export default function ImportBooksPage(){
                 findBook={findBook}
                 setFindBook={setFindBook}
                 books={books} totalElements={totalElements} 
-                loading={loading}
+                loading={loadingBooks}
                 showGutendexInfo
                 action={(books) => (
                     <div className={styles.buttonContainer}>
