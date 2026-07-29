@@ -43,7 +43,7 @@ export default function GetLoans() {
     const isActive = currentStatus === "ACTIVE";
 
     return(
-        <section>
+        <section className={styles.container}>
 
             {errorLoans && <div>{errorLoans}</div>}
 
@@ -83,8 +83,10 @@ export default function GetLoans() {
             </div>
 
             {loans.length === 0 
-                ? <EmptyState  icon={BookX} title={isActive ? "Nenhum emprestimo encontrado" : "Nenhum histórico encontrado"} 
-                description={isActive ? "Você não possui nenhum emprestimo" : "Você não possui nenhum histórico de emprestimos"}/>
+                ? <div className={styles.emptyContainer}>
+                    <EmptyState  icon={BookX} title={isActive ? "Nenhum emprestimo encontrado" : "Nenhum histórico encontrado"} 
+                    description={isActive ? "Você não possui nenhum emprestimo" : "Você não possui nenhum histórico de emprestimos"}/>
+                </div>
                 
                 : loans.map((loan) => (
                 <div key={loan.idLoan} className={styles.loanContainer}>

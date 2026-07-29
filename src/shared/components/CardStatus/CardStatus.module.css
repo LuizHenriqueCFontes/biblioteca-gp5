@@ -97,4 +97,10 @@
         align-items: center;
         gap: 25px;
     }
+
+    .containerInformation{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
 }
