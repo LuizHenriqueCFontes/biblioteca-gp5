@@ -65,12 +65,12 @@ export default function RegisterCategory() {
                     <hr className={styles.divider}/>
 
                     <div className={styles.btnContainer}>
-                        <Button variant="primary">
+                        <Button className={styles.btn} variant="primary">
                             <Save />
                             Salvar categoria
                         </Button>
                         
-                        <Button type="button" variant="secondary" onClick={handleCancel}>
+                        <Button className={styles.btn} type="button" variant="secondary" onClick={handleCancel}>
                             Cancelar
                         </Button>
                     </div>

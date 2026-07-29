@@ -1,5 +1,6 @@
 .container{
     padding: 10px;
+    max-width: 1200px;
 }
 
 .formContainer{
@@ -94,4 +95,21 @@
     pointer-events: none;
     color: var(--informations-color);
     font-weight: 530;
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        margin: auto;
+    }
+
+    .btnContainer{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+
+    }
+
+    .btn{
+        width: 20%;
+    }
 }

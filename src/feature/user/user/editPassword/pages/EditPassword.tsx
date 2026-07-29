@@ -60,12 +60,12 @@ export default function EditPassword() {
                 placeholder="Confirme a sua nova senha..."
                 required/>
 
-                <div>
-                    <Button icon={Save} variant="primary">
+                <div className={styles.btnContainer}>
+                    <Button className={styles.btn} icon={Save} variant="primary">
                         Salvar alterações
                     </Button>
 
-                    <Button onClick={cancel} variant="secondary" type="button">
+                    <Button className={styles.btn} onClick={cancel} variant="secondary" type="button">
                         Cancelar
                     </Button>
                 </div>

@@ -32,7 +32,6 @@ export default function SearchBooksAdmin() {
     return(
 
         <>
-
             {loadingBooks && <Loading />}
 
             <BookSearch findBook={findBook} setFindBook={setFindBook} books={books} description="Gerencie os livros do acervo da biblioteca" totalElements={totalElements} action={(books) => (

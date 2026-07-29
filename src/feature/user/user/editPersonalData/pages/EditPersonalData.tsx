@@ -59,12 +59,12 @@ export default function EditPersonalData() {
                 onChange={(value) => handleUserData("phone", value)}
                 placeholder="Atualize seu telefone..."/>
 
-                <div>
-                    <Button variant="primary" icon={Save}>
+                <div className={styles.btnContainer}>
+                    <Button className={styles.btn} variant="primary" icon={Save}>
                         Salvar alterações
                     </Button>
 
-                    <Button onClick={cancel} type="button" variant="secondary">
+                    <Button className={styles.btn} onClick={cancel} type="button" variant="secondary">
                         Cancelar
                     </Button>
                 </div>

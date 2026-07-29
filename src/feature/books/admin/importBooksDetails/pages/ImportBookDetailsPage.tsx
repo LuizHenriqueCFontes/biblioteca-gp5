@@ -6,6 +6,7 @@ import { Button } from "../../../../../shared/components/Button/Button";
 import styles from "./ImportBookDetailsPage.module.css"
 import { handleImportBook } from "../../../actions/importBookAction";
 import { useImportBooks } from "../../importBooks/hooks/useImportBooks";
+import Loading from "../../../../../shared/components/Loading/Loading";
 
 
 export default function ImportBookDetailPage(){
@@ -25,7 +26,7 @@ export default function ImportBookDetailPage(){
 
     return(
         <section className={styles.container}>
-            {loading ? <div>Carregando</div> : ""}
+            {loading ? <div className={styles.loadingContainer}><Loading /></div> : ""}
 
             {book && <BookDetails id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} actions={
                 <Button className={styles.import} variant="primary" onClick={() => handleImportBook(`${book.id}`, importBook)}>

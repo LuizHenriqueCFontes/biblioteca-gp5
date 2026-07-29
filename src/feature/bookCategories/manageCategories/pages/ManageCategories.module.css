@@ -1,5 +1,6 @@
 .container{
     padding: 10px;
+    max-width: 1200px;
 }
 
 .bookContainer{
@@ -84,6 +85,12 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+.emptyContainer{
+    display: block;
+    width: fit-content;
+    margin: auto;
+}
+
 .checkbox {
   display: none;
 }
@@ -135,4 +142,28 @@
     margin: 20px 0;
     border: none;
     border-top: 1px solid var(--border-color);
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        margin: auto;
+    }
+
+    .bookTitleContainer{
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        gap: 100px;
+    }
+
+    .btnContainer{
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+
+    .btn{
+        width: 13.6%;
+        align-self: flex-start;
+    }
 }

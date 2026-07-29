@@ -81,10 +81,10 @@ export default function EditBookPage() {
                     </div>
                 </div>
 
-                <div>
-                    <Button variant="primary" icon={Save}>Salvar alterações</Button>
+                <div className={styles.btnContainer}>
+                    <Button className={styles.btn} variant="primary" icon={Save}>Salvar alterações</Button>
 
-                    <Button onClick={handleCancel} type="button" variant="secondary">Cancelar</Button>
+                    <Button className={styles.btn} onClick={handleCancel} type="button" variant="secondary">Cancelar</Button>
                 </div>
             </form>
         </section>

@@ -59,13 +59,13 @@ export default function EditCategory() {
                     <hr className={styles.divider}/>
 
                     <div className={styles.btnContainer}>
-                        <Button variant="primary" type="submit"> 
+                        <Button className={styles.btn} variant="primary" type="submit"> 
                             <Save />
 
                             Salvar alterações
                         </Button>
 
-                        <Button variant="secondary" type="button" onClick={handleCancelEdit}>
+                        <Button className={styles.btn} variant="secondary" type="button" onClick={handleCancelEdit}>
                             Cancelar
                         </Button>
                     </div>

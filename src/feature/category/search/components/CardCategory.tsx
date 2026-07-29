@@ -18,7 +18,7 @@ export default function CardCategory(props: CardCategory) {
 
             <div className={styles.titleContainer}>
                 <h2 className={styles.title}>{props.title}</h2>
-                <p className={styles.numberBooks}>{props.numberBooks} {props.numberBooks >= 1 ? "livro" : "livros"}</p>
+                <p className={styles.numberBooks}>{props.numberBooks} {props.numberBooks <= 1 ? "livro" : "livros"}</p>
             </div>
 
             <div className={styles.actionContainer}>

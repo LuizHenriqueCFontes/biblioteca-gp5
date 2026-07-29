@@ -11,6 +11,7 @@ import EmptyState from "../../../../shared/components/EmptyState/EmptyState";
 import { useManageCategories } from "../hooks/useManageCategories";
 import { handleUpdateCategories } from "../../action/handleUpdateCategories";
 import styles from "./ManageCategories.module.css";
+import Loading from "../../../../shared/components/Loading/Loading";
 
 export default function ManageCategories() {
 
@@ -85,11 +86,9 @@ export default function ManageCategories() {
                 <div className={styles.categoriesTitleContainer}>
                     <h3 className={styles.categoriesTitle}>Categorias</h3>
                     <h3 className={styles.booksCategories}>Livros vinculados</h3>
-                </div>
+                </div> 
 
-                {loadingListCategories && <p>Carregando...</p>}    
-
-                {listCategories.length === 0 ? <EmptyState icon={FolderOpen} title="Falha ao encontrar categoria" description="Nenhuma categoria foi encontrada"/> : ""}
+                {listCategories.length === 0 ? <div className={styles.emptyContainer}><EmptyState icon={FolderOpen} title="Falha ao encontrar categoria" description="Nenhuma categoria foi encontrada"/></div> : ""}
 
                 {listCategories.map((listCategorie) => (
                     <div key={listCategorie.idCategory} className={styles.categories}>
@@ -116,12 +115,14 @@ export default function ManageCategories() {
 
             <hr className={styles.divider}/>
 
-            <div>
-                <Button variant="primary" icon={Save} onClick={() => handleUpdateCategories(`${idBook}`, selectedCategorie, editCategory)}>
+            {loadingListCategories && <Loading />}   
+
+            <div className={styles.btnContainer}>
+                <Button className={styles.btn} variant="primary" icon={Save} onClick={() => handleUpdateCategories(`${idBook}`, selectedCategorie, editCategory)}>
                     Salvar categorias
                 </Button>
 
-                <Button variant="secondary" onClick={handleCancel}>
+                <Button className={styles.btn} variant="secondary" onClick={handleCancel}>
                     Cancelar
                 </Button>
             </div>

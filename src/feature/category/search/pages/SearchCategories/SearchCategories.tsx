@@ -9,6 +9,7 @@ import styles from "./SearchCategories.module.css"
 import { useNavigate } from "react-router-dom";
 import { handleDeleteCategory } from "../../actions/handleDeleteCategory";
 import Pagination from "../../../../../shared/components/Pagination/Pagination";
+import Loading from "../../../../../shared/components/Loading/Loading";
 
 export default function SearchCategories() {
 
@@ -49,10 +50,15 @@ export default function SearchCategories() {
             </div>
 
             <div className={styles.categoriesContainer}>
-               {categories.length === 0 && <EmptyState  icon={Shapes} title="Nenhuma categoria cadastrada" description="O sistema nao possui categorias cadastradas"/>}
+               {categories.length === 0 && loadingCategories === false && 
+                <div className={styles.emptyContainer}>
+                    <EmptyState  icon={Shapes} title="Nenhuma categoria encontrada" description="Não foi possível encontrar nenhuma categoria."/>
+                </div>}
 
                 {loadingCategories 
-                    ? <p>Carregando...</p>
+                    ?   <div className={styles.loadingContainer}>
+                            <Loading />
+                        </div>
 
                     : categories.map((categorie) => (
                         <CardCategory  className={styles.categories} key={categorie.idCategory}

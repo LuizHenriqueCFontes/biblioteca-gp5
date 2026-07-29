@@ -1,5 +1,6 @@
 .mainContainer{
     padding: 15px;
+    max-width: 1200px;
 }
 
 .generalContainer{
@@ -69,6 +70,7 @@
     padding: 10px;
     gap: 15px;
     margin-bottom: 27px;
+    max-width: 410px;
 }
 
 .iconTag{
@@ -91,4 +93,32 @@
 
 .btnContainer{
     margin-top: 27px;
+}
+
+@media screen and (min-width: 768px) {
+    .mainContainer{
+        margin: auto;
+    }
+
+    .titleContainer{
+        justify-content: flex-start;
+    }
+
+    .description{
+        width: 100%;
+    }
+
+    .tagContainer{
+        margin: 0 auto 27px; 
+    }
+
+    .btnContainer{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    .btn{
+        width: 15%;
+    }
 }

@@ -9,3 +9,16 @@
     flex-direction: column;
     gap: 23px;
 }
+
+@media screen and (min-width: 768px) {
+    .btnContainer{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+
+    }
+
+    .btn{
+        width: 20%;
+    }
+}
