@@ -10,9 +10,9 @@ import Loading from "../../../../shared/components/Loading/Loading";
 
 export default function HomeUser() {
 
-    const { listCategories, loadingListCategories } = useCategory(undefined, 6);
+    const { listCategories, loadingListCategories } = useCategory(undefined, 20);
 
-    const { books, loadingBooks, totalElements } = useSearchBooks(undefined, {page: 0, size: 6});
+    const { books, loadingBooks, totalElements } = useSearchBooks(undefined, {page: 0, size: 20});
 
     const { handleBookSearchCategory, handleBookDetails, handleExploreBooks, handleLoan } = useHomeUser();
  

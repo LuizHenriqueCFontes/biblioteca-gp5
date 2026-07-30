@@ -28,6 +28,22 @@
 .linkContent{
     list-style: none;
     padding: 13px 10px;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.linkContent:hover{
+    background-color: var(--secondary-color-transparency);   
+}
+
+.linkContent:hover .link{
+    color: #002D40;
+    transition: 0.2s;
+}
+
+.linkContent:hover .linkIcon {
+  color: #002D40;
+  transition: 0.2s;
 }
 
 .listProfileContainer{
@@ -54,12 +70,14 @@
     color: var(--informations-color);
     font-weight: 520;
     gap: 10px;
+    transition: 0.3s;
 }
 
 .linkIcon{
     width: 19px;
     height: 19px;
     color: var(--informations-color);
+    display: inline-block;
 }
 
 .myProfile{
