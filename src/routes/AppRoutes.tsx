@@ -20,6 +20,7 @@ import Login from "../feature/auth/login/pages/Login";
 import AuthLayout from "../layout/AuthLayout/AuthLayout";
 import RegisterValidate from "../feature/auth/register/RegisterValidate/pages/RegisterValidate";
 import RegisterPassword from "../feature/auth/register/RegisterPassword/pages/RegisterPassword";
+import ReaderLayout from "../layout/ReaderLayout/ReaderLayout";
 
 export default function AppRoutes(){
     return(
@@ -40,8 +41,6 @@ export default function AppRoutes(){
 
                 <Route path="/loan" element={<GetLoans />}/>
 
-                <Route path="/reading/:idBook" element={<ReaderPage />}/>
-
                 <Route path="/categories" element={<SearchCategories />}/>
                 <Route path="/categories/create" element={<RegisterCategory />}/>
                 <Route path="/categories/edit/:idCategory" element={<EditCategory />}/>
@@ -49,6 +48,10 @@ export default function AppRoutes(){
                 <Route path="/user/edit/data" element={<EditData />}/>
 
                 <Route path="/" element={<HomeUser />}/>
+            </Route>
+
+            <Route element={<ReaderLayout />}>
+                <Route path="/reading/:idBook" element={<ReaderPage />}/>
             </Route>
 
             <Route element={<AuthLayout />}>

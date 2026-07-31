@@ -1,5 +1,6 @@
 .mainContainer{
     padding: 15px;
+    max-width: 1200px;
 }
 
 .generalContainer{
@@ -62,4 +63,31 @@
 
 .btnContainer{
     margin-top: 27px;
+}
+
+@media screen and (min-width: 768px) {
+    .mainContainer{
+        margin: auto;
+    }
+
+    .titleContainer{
+        justify-content: flex-start;
+    }
+
+    .description{
+        width: 100%;
+    }
+
+    .btnContainer{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .btn{
+        width: 15%;
+        padding: 7px;
+    }
 }

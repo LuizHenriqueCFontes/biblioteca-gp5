@@ -7,6 +7,7 @@ import styles from "./SearchBookDetails.module.css";
 import { useSearchBooks } from "../../searchBooks/hooks/useSearchBooks";
 import { handleBookLoan } from "../../../actions/loanBookAction";
 import Loading from "../../../../../shared/components/Loading/Loading";
+import Breadcrumb from "../../../../../shared/components/Breadcrumb/Breadcrumb";
 
 export default function SearchBookDetails() {
     const { id } = useParams();
@@ -18,6 +19,12 @@ export default function SearchBookDetails() {
     return (
         <section className={styles.container}>
             {loading ? <Loading /> : ""}
+
+            <Breadcrumb breadcrumb={[
+                {label: "Pesquisar livros", to: "/search/books"},
+                
+                {label: "Detalhes do livro"}
+            ]}/>
 
            {book &&  <BookDetails id={book?.id} coverUrl={book?.coverUrl} title={book?.title} authors={book?.authors} actions={
                 <Button onClick={() => handleBookLoan(book.id, bookLoan)} className={styles.loan} variant="primary">

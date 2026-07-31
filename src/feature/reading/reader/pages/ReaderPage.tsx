@@ -6,6 +6,7 @@ import { useReaderProgress } from "../hooks/useReaderProgress";
 import { Rendition } from "epubjs"
 import { readerTheme } from "../../themes/readerTheme";
 import { BookX } from "lucide-react";
+import Loading from "../../../../shared/components/Loading/Loading";
 
 export default function ReaderPage() {
 
@@ -26,7 +27,7 @@ export default function ReaderPage() {
     }
 
     if(loadingReading) {
-        return(<p>Carregando...</p>);
+        return(<Loading />);
     }
 
     if(!reading) {

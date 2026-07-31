@@ -1,5 +1,6 @@
 .container{
     margin: 0 17px;
+    max-width: 1200px;
 }
 
 .titleContainer{
@@ -37,7 +38,19 @@
 .categoriesContainer{
     border: 1px solid var(--border-color);
     border-radius: 7px;
-    margin-top: 15px;
+    margin: 15px 0;
+}
+
+.emptyContainer{
+    display: block;
+    width: fit-content;
+    margin: auto;
+}
+
+.loadingContainer{
+    display: block;
+    width: fit-content;
+    margin: auto; 
 }
 
 .categories{
@@ -95,6 +108,16 @@
 .btnDel:hover,
 .btnDel:active{
     background-color: var(--red-hover);
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        margin: 0 auto;
+    }
+
+    .titleContainer{
+        justify-content: space-between;
+    }
 }
 
 

@@ -3,6 +3,7 @@ import { api } from "../../../../services/api";
 import type { Status } from "../../user/types/loanStatus";
 import type { PageResponse } from "../../../../shared/types/pageResponse";
 import type { LoanSummaryResponseDTO } from "../../user/types/loanSummaryResponseDTO";
+import type { Pageable } from "../../../../shared/types/pageable";
 
 const BASE_ENDPOINT = "/loan"
 
@@ -26,12 +27,15 @@ export const loanService = {
         return data;
     },
 
-    getLoans: async(status: Status): Promise<PageResponse<BookLoanResponseDTO>> => {
+    getLoans: async(status: Status, pageable?: Pageable): Promise<PageResponse<BookLoanResponseDTO>> => {
         const endpoint = BASE_ENDPOINT;
 
         const { data } = await api.get<PageResponse<BookLoanResponseDTO>>(endpoint, {
             params: {
-                status: status
+                status: status,
+
+                size: pageable?.size,
+                page: pageable?.page
             }
         });
 

@@ -6,6 +6,7 @@ import styles from "./SearchBooks.module.css";
 import { handleBookLoan } from "../../../actions/loanBookAction";
 import { useState } from "react";
 import { useAuth } from "../../../../auth/hooks/useAuth";
+import Pagination from "../../../../../shared/components/Pagination/Pagination";
 
 export default function SearchBooks(){
 
@@ -17,7 +18,9 @@ export default function SearchBooks(){
 
     const locationCategories = location.state?.categories || [];
 
-    const { books, loadingBooks, totalElements, bookLoan } = useSearchBooks({title: findBook, idsCategories: locationCategories});
+    const [page, setPage] = useState(0);
+
+    const { books, loadingBooks, totalElements, bookLoan, totalPages } = useSearchBooks({title: findBook, idsCategories: locationCategories}, {size: 20, page: page});
 
     const { isAuthenticated } = useAuth();
 
@@ -35,7 +38,8 @@ export default function SearchBooks(){
     }
     
     return(
-        <BookSearch 
+        <>
+            <BookSearch 
             description="Encontre livros disponíveis e amplie seus conhecimentos"
             books={books}
             setFindBook={setFindBook}
@@ -53,6 +57,12 @@ export default function SearchBooks(){
                     </Button>
                 </div>
             )}
-        />
+            />
+
+            <Pagination page={page}
+            startsAt={0}
+            onPageChange={setPage}
+            totalPages={totalPages}/>
+        </>
     );
 }

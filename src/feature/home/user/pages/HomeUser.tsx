@@ -6,14 +6,13 @@ import styles from "./HomeUser.module.css";
 import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react";
 import { useHomeUser } from "../hooks/useHomeUser";
-import { useAuth } from "../../../auth/hooks/useAuth";
-//import homeUseBackground from "../../../assets/images/home/home-user-background.png";
+import Loading from "../../../../shared/components/Loading/Loading";
 
 export default function HomeUser() {
 
-    const { listCategories, loadingListCategories } = useCategory(undefined, 6);
+    const { listCategories, loadingListCategories } = useCategory(undefined, 20);
 
-    const { books, loadingBooks, totalElements } = useSearchBooks(undefined, {page: 0, size: 6});
+    const { books, loadingBooks, totalElements } = useSearchBooks(undefined, {page: 0, size: 20});
 
     const { handleBookSearchCategory, handleBookDetails, handleExploreBooks, handleLoan } = useHomeUser();
  
@@ -54,7 +53,7 @@ export default function HomeUser() {
                 <h3 className={styles.titleCategories}>Categorias</h3>
 
                 <div ref={categoriesRef} className={`${styles.listCategories} keen-slider`}>
-                    {loadingListCategories ?? <p>Carregando...</p>}
+                    {loadingListCategories ?? <Loading />}
 
                     {listCategories.map((categorie) => (
                         <div key={categorie.idCategory} className={`${styles.categoryCard} keen-slider__slide`} onClick={() => handleBookSearchCategory(categorie.idCategory)}>
@@ -71,7 +70,7 @@ export default function HomeUser() {
             <article className={styles.booksSection}>
                 <h3>Livros sugeridos</h3>
 
-                {loadingBooks ?? <p>Carregando...</p>}
+                {loadingBooks ?? <Loading />}
 
                 <div ref={booksRef} className={`${styles.bookCardContainer} keen-slider`}>
                     {books.map((book) => (

@@ -60,9 +60,9 @@ export default function BookSearch(props: BookSearchProps){
                         <p className={styles.resultDescription}>{props.totalElements} resultados encontrados</p>
                     </div>
                 
-                    <button className={styles.resultIconContainer}>
+                    {/*<button className={styles.resultIconContainer}>
                         <SlidersHorizontal className={styles.resultIcon}/>
-                    </button>
+                    </button>*/}
                 </div>
 
                 <hr className={styles.divider}/>

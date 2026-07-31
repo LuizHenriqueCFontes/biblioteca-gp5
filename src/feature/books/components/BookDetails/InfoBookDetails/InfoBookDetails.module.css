@@ -1,3 +1,7 @@
+.container{
+  max-width: 1200px;
+}
+
 .informationContainer {
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -102,22 +106,15 @@
 
 /*Config para telas maiores*/
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: 45%;
-        display: inline-block;
-        vertical-align: top;
-        margin-right: 4%;
-    }
+  .container{
+    margin: auto;
+  }
 
-  .descriptionContainer {
-        max-width: 50%;
-        display: inline-block;
-        margin: 16px 0;
-    }
-
-  .categoriesContainer {
-        width: 100%;
-        display: block;
-        margin-top: 24px;
-    }
+  .infoAndCategoryContainer{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 }

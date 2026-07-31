@@ -1,3 +1,7 @@
+.container{
+    max-width: 1200px;
+}
+
 .titleContainer{
     display: flex;
     margin: 22px 10px;
@@ -63,6 +67,12 @@
     position: relative;
 }
 
+.emptyContainer{
+    display: block;
+    width: fit-content;
+    margin: auto;
+}
+
 .active{
     color: var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
@@ -114,4 +124,14 @@
     display: flex;
     flex-direction: column;
     margin-left: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        margin: auto;
+    }
+
+    .returnedContainer{
+        margin: auto 0 0 auto;
+    }
 }

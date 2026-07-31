@@ -13,11 +13,14 @@ import { useStartReading } from "../../../../reading/hooks/useStartReading";
 import { useNavigate } from "react-router-dom";
 import { startReadingAction } from "../../../../reading/actions/startReading";
 import { handleBookReturn } from "../../actions/handleBookReturn";
+import Pagination from "../../../../../shared/components/Pagination/Pagination";
 
 export default function GetLoans() {
     const [currentStatus, setCurrentStatus] = useState<"ACTIVE" | "RETURNED">("ACTIVE");
 
-    const { loans, summary, errorLoans, returnLoan } = useGetLoans(currentStatus);
+    const[page, setPage] = useState(0);
+
+    const { loans, summary, errorLoans, returnLoan, totalPages } = useGetLoans(currentStatus, {size: 20, page: page});
 
     const { startReading } = useStartReading();
 
@@ -40,7 +43,7 @@ export default function GetLoans() {
     const isActive = currentStatus === "ACTIVE";
 
     return(
-        <section>
+        <section className={styles.container}>
 
             {errorLoans && <div>{errorLoans}</div>}
 
@@ -80,8 +83,10 @@ export default function GetLoans() {
             </div>
 
             {loans.length === 0 
-                ? <EmptyState  icon={BookX} title={isActive ? "Nenhum emprestimo encontrado" : "Nenhum histórico encontrado"} 
-                description={isActive ? "Você não possui nenhum emprestimo" : "Você não possui nenhum histórico de emprestimos"}/>
+                ? <div className={styles.emptyContainer}>
+                    <EmptyState  icon={BookX} title={isActive ? "Nenhum emprestimo encontrado" : "Nenhum histórico encontrado"} 
+                    description={isActive ? "Você não possui nenhum emprestimo" : "Você não possui nenhum histórico de emprestimos"}/>
+                </div>
                 
                 : loans.map((loan) => (
                 <div key={loan.idLoan} className={styles.loanContainer}>
@@ -115,7 +120,11 @@ export default function GetLoans() {
                 </div>
                 ))
             }
-            
+
+            <Pagination page={page}
+            onPageChange={setPage}
+            startsAt={0}
+            totalPages={totalPages}/>
         </section>
     );
 }
