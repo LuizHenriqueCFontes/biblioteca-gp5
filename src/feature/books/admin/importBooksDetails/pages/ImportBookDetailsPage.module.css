@@ -1,5 +1,6 @@
 .container{
-    padding: 0 15px 10px;
+    padding: 10px 15px 10px;
+    max-width: 1200px;
 }
 
 .loadingContainer{
@@ -14,4 +15,10 @@
 
 .infoBook{
     margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        margin: auto;
+    }
 }

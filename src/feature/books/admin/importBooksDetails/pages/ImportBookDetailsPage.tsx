@@ -7,6 +7,7 @@ import styles from "./ImportBookDetailsPage.module.css"
 import { handleImportBook } from "../../../actions/importBookAction";
 import { useImportBooks } from "../../importBooks/hooks/useImportBooks";
 import Loading from "../../../../../shared/components/Loading/Loading";
+import Breadcrumb from "../../../../../shared/components/Breadcrumb/Breadcrumb";
 
 
 export default function ImportBookDetailPage(){
@@ -27,6 +28,11 @@ export default function ImportBookDetailPage(){
     return(
         <section className={styles.container}>
             {loading ? <div className={styles.loadingContainer}><Loading /></div> : ""}
+
+            <Breadcrumb breadcrumb={[
+                {label: "Importar livros", to: "/admin/imports"},
+                {label: "Detalhes do livro"}
+            ]}/>
 
             {book && <BookDetails id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} actions={
                 <Button className={styles.import} variant="primary" onClick={() => handleImportBook(`${book.id}`, importBook)}>
