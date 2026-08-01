@@ -7,6 +7,7 @@ import "keen-slider/keen-slider.min.css"
 import { useKeenSlider } from "keen-slider/react";
 import { useHomeUser } from "../hooks/useHomeUser";
 import Loading from "../../../../shared/components/Loading/Loading";
+import { useEffect } from "react";
 
 export default function HomeUser() {
 
@@ -16,7 +17,7 @@ export default function HomeUser() {
 
     const { handleBookSearchCategory, handleBookDetails, handleExploreBooks, handleLoan } = useHomeUser();
  
-    const [categoriesRef] = useKeenSlider<HTMLDivElement>({
+    const [categoriesRef, categoriesSlider] = useKeenSlider<HTMLDivElement>({
         mode: "free-snap",
         slides: {
             perView: "auto",
@@ -24,13 +25,23 @@ export default function HomeUser() {
         },
     });
 
-    const [booksRef] = useKeenSlider<HTMLDivElement>({
+    useEffect(() => {
+        categoriesSlider.current?.update();
+
+    }, [listCategories, categoriesSlider])
+
+    const [booksRef, booksSlider] = useKeenSlider<HTMLDivElement>({
         mode: "free-snap",
         slides: {
             perView: "auto",
             spacing: 12
         }
     });
+
+    useEffect(() => {
+        booksSlider.current?.update();
+
+    }, [books, booksSlider])
 
 
     return(
@@ -53,7 +64,7 @@ export default function HomeUser() {
                 <h3 className={styles.titleCategories}>Categorias</h3>
 
                 <div ref={categoriesRef} className={`${styles.listCategories} keen-slider`}>
-                    {loadingListCategories ?? <Loading />}
+                    {loadingListCategories && <Loading />}
 
                     {listCategories.map((categorie) => (
                         <div key={categorie.idCategory} className={`${styles.categoryCard} keen-slider__slide`} onClick={() => handleBookSearchCategory(categorie.idCategory)}>
@@ -70,7 +81,7 @@ export default function HomeUser() {
             <article className={styles.booksSection}>
                 <h3>Livros sugeridos</h3>
 
-                {loadingBooks ?? <Loading />}
+                {loadingBooks && <Loading />}
 
                 <div ref={booksRef} className={`${styles.bookCardContainer} keen-slider`}>
                     {books.map((book) => (

@@ -1,0 +1,8 @@
+.header{
+    flex-direction: row-reverse;
+    
+}
+
+.main{
+    padding: 100px 0 15px;
+}

@@ -13,6 +13,7 @@
 .imageBackground{
     background-image: url("../../../../assets/auth/background-auth-mobile.png");
     aspect-ratio: 3 / 2;
+    max-width: 500px;
     width: 100%;
     background-repeat: no-repeat;
     background-size: contain;

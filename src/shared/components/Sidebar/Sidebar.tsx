@@ -24,6 +24,10 @@ export default function Sidebar(props: Sidebar){
         logout();
     }   
 
+    function onClickChange() {
+        props.onOpenChange(false);
+    }
+
     console.log(isAuthenticated);
 
     return(
@@ -49,15 +53,15 @@ export default function Sidebar(props: Sidebar){
 
                                 <nav className={styles.navContainer}>
                                     <ul className={styles.listContainer}>
-                                        <li className={styles.linkContent}>
+                                        <li onClick={onClickChange} className={styles.linkContent}>
                                             <Link className={styles.link} to={isAdmin ? "/admin/home" : "/"}><Home className={styles.linkIcon}/> {isAdmin ? "Dashboard" : "Tela de início"}</Link>
                                         </li>
                                         
-                                        <li className={styles.linkContent}>
+                                        <li onClick={onClickChange} className={styles.linkContent}>
                                             <Link className={styles.link} to={isAdmin ? "/admin/imports" : "/search/books"}><Book className={styles.linkIcon}/> {isAdmin ? "Importar livros" : "Pesquisar livros"}</Link>
                                         </li>
 
-                                        <li className={styles.linkContent}>
+                                        <li onClick={onClickChange} className={styles.linkContent}>
                                             <Link className={styles.link} to={isAdmin ? "/admin/list/users" : isAuthenticated ? "/loan" : "/auth/login"}>{isAdmin ? 
                                             <>
                                                 <Users className={styles.linkIcon}/> 
@@ -73,11 +77,11 @@ export default function Sidebar(props: Sidebar){
                                         {
                                             isAdmin && 
                                             <>
-                                                <li className={styles.linkContent}>
+                                                <li onClick={onClickChange} className={styles.linkContent}>
                                                     <Link className={styles.link} to={"/categories"}> <BookUp className={styles.linkIcon}/> Categorias</Link>
                                                 </li>
                                             
-                                                <li className={styles.linkContent}>
+                                                <li onClick={onClickChange} className={styles.linkContent}>
                                                     <Link className={styles.link} to={"/admin/search/books"}><BookLock className={styles.linkIcon}/> Gerenciar livros</Link>
                                                 </li>
                                             </>
@@ -98,7 +102,7 @@ export default function Sidebar(props: Sidebar){
 
                                                 <Collapsible.Content className={styles.profileContent} asChild>
                                                     <ul className={styles.listProfileContainer}>
-                                                        <li className={`${styles.profileContent} ${styles.profileItem}`}> <Link className={styles.link} to={"/user/edit/data"}> <Bolt className={styles.linkIcon}/> Editar dados</Link>
+                                                        <li onClick={onClickChange} className={`${styles.profileContent} ${styles.profileItem}`}> <Link className={styles.link} to={"/user/edit/data"}> <Bolt className={styles.linkIcon}/> Editar dados</Link>
                                                         </li>
 
                                                         <li onClick={handleExit} className={`${styles.profileContent} ${styles.profileItem}`}> <Link className={styles.link} to={"/"}><LogOut className={styles.linkIcon}/>Sair</Link> 

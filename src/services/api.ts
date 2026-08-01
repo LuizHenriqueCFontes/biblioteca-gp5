@@ -1,4 +1,5 @@
 import axios from "axios";
+import { authStorage } from "../feature/auth/services/authStorage";
 
 export const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
@@ -31,6 +32,8 @@ api.interceptors.response.use(
     (error) => {
         if(error.response?.status === 401){
             console.log("Token expirado");
+
+            authStorage.clear();
         }
 
         return Promise.reject(error);

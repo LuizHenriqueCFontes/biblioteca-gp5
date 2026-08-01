@@ -21,11 +21,19 @@ import AuthLayout from "../layout/AuthLayout/AuthLayout";
 import RegisterValidate from "../feature/auth/register/RegisterValidate/pages/RegisterValidate";
 import RegisterPassword from "../feature/auth/register/RegisterPassword/pages/RegisterPassword";
 import ReaderLayout from "../layout/ReaderLayout/ReaderLayout";
+import ProtectedRoute from "../layout/ProtectedRoute/ProtectedRoute";
 
 export default function AppRoutes(){
     return(
         <Routes>
             <Route element={<MainLayout />}>
+                <Route path="/search/books" element={<SearchBooks />}/>
+                <Route path="/book/:id" element={<BookDetails />}/>
+
+                <Route path="/" element={<HomeUser />}/>
+            </Route>
+
+            <Route element={<ProtectedRoute />}>
                 <Route path="/admin/imports" element={<ImportBooksPage />}/>
                 <Route path="/admin/details/:id" element={<ImportBookDetailsPage />}/>
                 <Route path="/admin/search/books" element={<SearchBooksAdmin />}/>
@@ -36,9 +44,6 @@ export default function AppRoutes(){
 
                 <Route path="/admin/home" element={<HomeAdmin />}/>
 
-                <Route path="/search/books" element={<SearchBooks />}/>
-                <Route path="/book/:id" element={<BookDetails />}/>
-
                 <Route path="/loan" element={<GetLoans />}/>
 
                 <Route path="/categories" element={<SearchCategories />}/>
@@ -46,8 +51,6 @@ export default function AppRoutes(){
                 <Route path="/categories/edit/:idCategory" element={<EditCategory />}/>
 
                 <Route path="/user/edit/data" element={<EditData />}/>
-
-                <Route path="/" element={<HomeUser />}/>
             </Route>
 
             <Route element={<ReaderLayout />}>
