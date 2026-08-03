@@ -3,7 +3,7 @@ import styles from "./Sidebar.module.css";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { Bolt, Book, BookLock, BookUp, ChevronDown, Home, LogIn, LogOut, User, Users } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authStorage } from "../../../feature/auth/services/authStorage";
 import { useAuth } from "../../../feature/auth/hooks/useAuth";
 
@@ -16,12 +16,16 @@ export default function Sidebar(props: Sidebar){
 
     const { isAuthenticated, logout } = useAuth();
 
+    const navigate = useNavigate();
+
     const role = authStorage.getRole();
     const isAdmin = role === "ADMIN";
 
     function handleExit() {
         authStorage.clear();
         logout();
+        props.onOpenChange(false);
+        navigate("/");
     }   
 
     function onClickChange() {
@@ -87,35 +91,35 @@ export default function Sidebar(props: Sidebar){
                                             </>
                                         }
 
-                                        {isAuthenticated ? 
-                                        <li className={styles.myProfile}>
-                                            <Collapsible.Root className={styles.rootCollapsible}>
+                                        
+                                    </ul>
 
+                                    <div className={styles.profileContainer}>
+                                        {isAuthenticated ?
+                                        <div className={styles.myProfile}>
+                                            <Collapsible.Root className={`${styles.rootCollapsible}`}>
                                                 <Collapsible.Trigger className={styles.trigger}>
                                                     <div className={styles.triggerContent}>
                                                         <User className={styles.profileIcon}/>
                                                         Meu Perfil
                                                     </div>
-                                                    
+                                        
                                                     <ChevronDown className={`${styles.arrow} ${styles.linkIcon}`}/>
                                                 </Collapsible.Trigger>
-
                                                 <Collapsible.Content className={styles.profileContent} asChild>
                                                     <ul className={styles.listProfileContainer}>
                                                         <li onClick={onClickChange} className={`${styles.profileContent} ${styles.profileItem}`}> <Link className={styles.link} to={"/user/edit/data"}> <Bolt className={styles.linkIcon}/> Editar dados</Link>
                                                         </li>
-
-                                                        <li onClick={handleExit} className={`${styles.profileContent} ${styles.profileItem}`}> <Link className={styles.link} to={"/"}><LogOut className={styles.linkIcon}/>Sair</Link> 
+                                                        <li onClick={handleExit} className={`${styles.profileContent} ${styles.profileItem}`}> <Link className={styles.link} to={"/"}><LogOut className={styles.linkIcon}/>Sair</Link>
                                                         </li>
                                                     </ul>
                                                 </Collapsible.Content>
-
                                             </Collapsible.Root>
-                                        </li>
+                                        </div>
                                         :
-                                        <li className={`${styles.linkContent} ${styles.linkLogin}`}><Link className={styles.link} to={"/auth/login"}> <LogIn className={styles.linkIcon}/> Fazer login</Link></li>
+                                        <div className={`${styles.linkContent} ${styles.linkLogin}`}><Link className={styles.link} to={"/auth/login"}> <LogIn className={styles.linkIcon}/> Fazer login</Link></div>
                                         }
-                                    </ul>
+                                    </div>
                                 </nav>
 
                             </motion.aside>

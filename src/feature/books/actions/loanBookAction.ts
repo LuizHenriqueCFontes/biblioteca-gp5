@@ -4,6 +4,7 @@ import type { BookLoanResponseDTO } from "../../loan/user/types/bookLoanResponse
 import { getErrorMessage } from "../../../utils/getErrorMessage";
 
 export async function handleBookLoan(id: string, bookLoan: (id: string) => Promise<BookLoanResponseDTO>): Promise<void> {
+
     const confirmed = await confirmAction("Emprestimo", "Você deseja realizar o emprestimo desse livro?");
 
     if(!confirmed) {
