@@ -6,6 +6,7 @@ import { useRegisterPassword } from "../hooks/useRegisterPassword";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../../../../shared/components/Button/Button";
 import { handleRegisterPassword } from "../actions/handleRegisterPassword";
+import { useAuth } from "../../../hooks/useAuth";
 
 export default function RegisterPassword() {
 
@@ -13,10 +14,14 @@ export default function RegisterPassword() {
 
     const navigate = useNavigate();
 
+    const { loginUse } = useAuth();
+
     async function onSubmit(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
 
         await handleRegisterPassword(register, registerMutation);
+
+        loginUse();
 
         navigate("/");
     }

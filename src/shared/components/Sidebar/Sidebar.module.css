@@ -4,22 +4,25 @@
 
 .sidebar {
     position: fixed;
-    top: 10%;
+    top: 0;
     left: 0;
 
-    width: 220px;
-    height: 100vh;
+    width: 250px;
+    height: 100%;
 
-    background: white;
-    padding-top: 50px;
+    background-color: #f8fafc;
+    padding-top: 110px;
 }
 
 .navContainer{
     min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 17px;
 }
 
 .listContainer{
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -45,6 +48,10 @@
 .linkContent:hover .linkIcon {
   color: var(--constrast-secondary-color-transparency);
   transition: 0.2s;
+}
+
+.profileContainer{
+    padding: 5px;
 }
 
 .listProfileContainer{
@@ -79,9 +86,6 @@
     display: inline-block;
 }
 
-.myProfile{
-    margin-top: 85%;
-}
 
 .rootCollapsible{
     padding: 10px;
@@ -121,13 +125,6 @@
     transform: rotate(180deg);
 }
 
-.linkLogin{
-    margin-top: 120%;
-}
-
-.profileContent {
-    overflow: hidden;
-}
 
 .profileItem{
     cursor: pointer;
