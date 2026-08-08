@@ -7,6 +7,9 @@
 .titleContainer{
     background-image: url("../../../../assets/images/home/home-user-background.png");
     max-width: 1200px;
+    width: 100%;
+    overflow: hidden;
+    height: 270px;
     aspect-ratio: 3 / 2;
     background-size: cover;
     background-repeat: no-repeat;
@@ -43,7 +46,7 @@
 }
 
 .title{
-    font-size: 1.35em;
+    font-size: 1.3em;
     color: var(--title-color);
     font-weight: 700;
 }
@@ -56,6 +59,7 @@
 
 .btnContainer{
     width: 87%;
+    height: 70px;
 
 }
 

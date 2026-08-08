@@ -9,9 +9,10 @@
 
     width: 250px;
     height: 100%;
+    margin-top: 80px;
 
     background-color: #f8fafc;
-    padding-top: 110px;
+    padding-top: 50px;
 }
 
 .navContainer{
@@ -52,11 +53,13 @@
 
 .profileContainer{
     padding: 5px;
+    padding-bottom: 70px;
 }
 
 .listProfileContainer{
     display: flex;
     flex-direction: column;
+    
 }
 
 .profileContent{
