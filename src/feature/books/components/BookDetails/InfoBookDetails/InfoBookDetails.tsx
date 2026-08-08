@@ -5,7 +5,7 @@ import type { CategoryResponseDTO } from "../../../types/response/bookDetailsRes
 interface InfoBookDetails {
     title: string,
     authors: string[],
-    bookshelves: CategoryResponseDTO[],
+    bookshelves?: CategoryResponseDTO[],
     description: string[],
     className?: string
 }
@@ -15,7 +15,7 @@ export default function InfoBookDetails(props: InfoBookDetails) {
 
     const localeTimeFormated = date.toLocaleTimeString("pt-BR", {hour: "2-digit", minute: "2-digit"})
 
-    const firstBookshelves = props.bookshelves[0];
+    const firstBookshelves =  props.bookshelves ? props.bookshelves[0] : "";
 
     return(
         <>
@@ -55,7 +55,7 @@ export default function InfoBookDetails(props: InfoBookDetails) {
                     </section>}
                 </div>
 
-                {props.bookshelves.length > 0 && <section className={styles.categoriesContainer}>
+                {props.bookshelves && props.bookshelves.length > 0 && <section className={styles.categoriesContainer}>
                     <h2 className={styles.categories}>Categorias relacionadas</h2>
                     {props.bookshelves.map((bookshelve) => (
                         <p className={styles.tagCategories} key={bookshelve.idCategory ?? bookshelve.name}>{bookshelve.name}</p>

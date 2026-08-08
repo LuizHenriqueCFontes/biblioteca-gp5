@@ -1,11 +1,10 @@
 import { useCallback, useState } from "react";
-import { adminBooksService, type ImportSearchResponseDTO } from "../../services/adminBookService";
+import { adminBooksService } from "../../services/adminBookService";
 import type { BookResponseDTO } from "../../../types/response/bookReponseDTO";
 import { getErrorMessage } from "../../../../../utils/getErrorMessage";
 import { useQuery } from "@tanstack/react-query";
 
 export function useImportBooks(title?: string, page?: number){
-    const [response, setResponse] = useState<ImportSearchResponseDTO | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const FIVE_MINUTES = 1000 * 60 * 5;
@@ -31,9 +30,7 @@ export function useImportBooks(title?: string, page?: number){
             return data;
 
         } catch (error) {
-            let message = "Falha ao importar o livro";
-
-            message = getErrorMessage(error);   
+           const message = getErrorMessage(error);   
 
             setError(message);
 
@@ -56,6 +53,8 @@ export function useImportBooks(title?: string, page?: number){
         totalPages,
         error,
         fetchBooks,
-        importBook
+        importBook,
+
+        loadingImport: loading
     }
 }

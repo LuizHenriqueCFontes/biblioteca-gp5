@@ -1,4 +1,4 @@
-import { CircleAlert, Search, SlidersHorizontal } from "lucide-react";
+import { CircleAlert, Search } from "lucide-react";
 import { Button } from "../../../../shared/components/Button/Button";
 import { Input } from "../../../../shared/components/Input/Input";
 import styles from "./BookSearch.module.css"

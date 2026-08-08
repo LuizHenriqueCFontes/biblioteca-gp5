@@ -1,4 +1,4 @@
-import { BookX, type LucideIcon } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 import styles from "./EmptyState.module.css";
 
 interface EmptyState {

@@ -48,6 +48,9 @@ export function useSearchBooks(filter?: BookFilterRequestDTO, pageable?: Pageabl
         books: searchBook.data?.content ?? [],
         loadingBooks: searchBook.isPending,
 
+        loadingLoan: loading,
+        errorLoan: error,
+
         first: searchBook?.data?.first,
         last: searchBook?.data?.last,
         number: searchBook?.data?.number ?? 0,

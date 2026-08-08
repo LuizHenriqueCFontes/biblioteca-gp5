@@ -39,7 +39,7 @@ export default function ManageCategories() {
         if(checked) {
             setSelectedCategorie(prev => [
                 ...prev,
-                idCategory
+                idCategory  
             ]);
 
         } else{

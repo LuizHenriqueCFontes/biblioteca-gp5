@@ -18,13 +18,6 @@ export default function ImportBookDetailPage(){
 
     const { importBook } = useImportBooks();
 
-
-    const normalizedBookshelves = book ? book.bookshelves.map(bookshelve => ({
-        name: bookshelve
-    }))
-    : []
-
-
     return(
         <section className={styles.container}>
             {loading ? <div className={styles.loadingContainer}><Loading /></div> : ""}
@@ -40,7 +33,7 @@ export default function ImportBookDetailPage(){
                 </Button>
             }/>}
 
-            {book && <InfoBookDetails className={styles.infoBook} title={book.title} description={book.description} bookshelves={normalizedBookshelves} authors={book.authors}/>}
+            {book && <InfoBookDetails className={styles.infoBook} title={book.title} description={book.description} authors={book.authors}/>}
         </section>
     );
 }

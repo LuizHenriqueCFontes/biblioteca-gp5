@@ -1,5 +1,4 @@
 import { Check, ChevronDown } from "lucide-react";
-import styles from "./Select.module.css";
 import * as SelectRadix from "@radix-ui/react-select";
 
 interface OptionType {
