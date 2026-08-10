@@ -18,7 +18,7 @@ export default function Pagination(props: Pagination) {
         <ResponsePagination current={props.startsAt === 0 ? props.page + 1 : props.page}
         total={props.totalPages} 
         onPageChange={props.startsAt === 0 ? (selectedPage) => props.onPageChange(selectedPage - 1) : props.onPageChange}
-        maxWidth={500}
+        maxWidth={300}
         />
     );
 
