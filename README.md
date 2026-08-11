@@ -127,6 +127,14 @@
   3. Use `dist` como diretorio de saida.
   4. Configure a variavel de ambiente `VITE_API_URL` com a URL da API em producao.
 
+  ## Demonstração
+  
+  Acesse a aplicação: https://biblioteca-gp5.vercel.app/
+
+  ## Backend
+
+  O backend da aplicação está disponível em: https://github.com/LuizHenriqueCFontes/API-Biblioteca-GP5
+
   ## Observacoes
 
   - Este repositorio contem o frontend da Biblioteca GP5; o backend e a persistencia dos dados sao fornecidos separadamente.
