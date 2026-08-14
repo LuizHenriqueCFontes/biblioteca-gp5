@@ -2,7 +2,7 @@ import { Menu, X } from "lucide-react";
 import Logo from "../Logo/Logo";
 import styles from "./Header.module.css"
 import { useState } from "react";
-import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "../Sidebar/Mobile/SidebarMobile";
 import { useNavigate } from "react-router-dom";
 import { authStorage } from "../../../feature/auth/services/authStorage";
 

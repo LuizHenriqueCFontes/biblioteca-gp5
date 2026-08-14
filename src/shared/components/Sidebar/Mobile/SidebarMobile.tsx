@@ -4,8 +4,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { Bolt, Book, BookLock, BookUp, ChevronDown, Home, LogIn, LogOut, User, Users } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { authStorage } from "../../../feature/auth/services/authStorage";
-import { useAuth } from "../../../feature/auth/hooks/useAuth";
+import { authStorage } from "../../../../feature/auth/services/authStorage";
+import { useAuth } from "../../../../feature/auth/hooks/useAuth";
 
 interface Sidebar {
     open: boolean,
