@@ -179,6 +179,7 @@
     word-break: break-all;
     overflow: hidden;
     flex-direction: column;
+    white-space: nowrap;
 }
 
 .authors{
