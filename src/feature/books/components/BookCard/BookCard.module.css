@@ -39,7 +39,6 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     flex-direction: column;
-    white-space: nowrap;
 }
 
 .authors{
