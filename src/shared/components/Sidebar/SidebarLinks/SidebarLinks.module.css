@@ -1,0 +1,83 @@
+.navContainer{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 17px;
+}
+
+.linkContent{
+    list-style: none;
+    padding: 13px 10px;
+    transition: 0.3s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.linkContent:hover{
+    background-color: var(--secondary-color-transparency);   
+}
+
+.linkContent:hover .link{
+    color: #002D40;
+    transition: 0.2s;
+}
+
+.linkContent:hover .linkIcon {
+  color: var(--constrast-secondary-color-transparency);
+  transition: 0.2s;
+}
+
+.link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--informations-color);
+    font-weight: 520;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.linkIcon{
+    width: 19px;
+    height: 19px;
+    color: var(--informations-color);
+    display: inline-block;
+}
+
+.profileContainer{
+    padding: 5px;
+    padding-bottom: 70px;
+}
+
+.rootCollapsible{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center !important;
+    background: none;
+    border: none;
+    gap: 45px;
+    cursor: pointer;
+}
+
+.triggerContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--informations-color);
+    font-weight: 550;
+    gap: 10px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.profileIcon{
+    color: var(--informations-color);   
+}

@@ -1,20 +1,43 @@
+import { Link, useNavigate } from "react-router-dom";
+import styles from "./SidebarLinks.module.css";
+import { authStorage } from "../../../../feature/auth/services/authStorage";
+import * as Collapsible from "@radix-ui/react-collapsible";
+import { Bolt, Book, BookLock, BookUp, ChevronDown, Home, LogIn, LogOut, User, Users } from "lucide-react";
+import { useAuth } from "../../../../feature/auth/hooks/useAuth";
+
 interface SidebarLinks {
-    onClick: () => void
+    onClick?: () => void
 }
 
 export default function SidebarLinks(props: SidebarLinks) {
+
+    const { isAuthenticated, logout } = useAuth();
+
+    const role = authStorage.getRole();
+    const isAdmin = role === "ADMIN";
+
+    const navigate = useNavigate();
+
+    function handleExit() {
+        authStorage.clear();
+        logout();
+        props.onClick
+        navigate("/");
+    }   
+
+
     return(
         <nav className={styles.navContainer}>
             <ul className={styles.listContainer}>
-                <li onClick={onClickChange} className={styles.linkContent}>
+                <li onClick={props.onClick} className={styles.linkContent}>
                     <Link className={styles.link} to={isAdmin ? "/admin/home" : "/"}><Home className={styles.linkIcon}/> {isAdmin ? "Dashboard" : "Tela de início"}</Link>
                 </li>
                 
-                <li onClick={onClickChange} className={styles.linkContent}>
+                <li onClick={props.onClick} className={styles.linkContent}>
                     <Link className={styles.link} to={isAdmin ? "/admin/imports" : "/search/books"}><Book className={styles.linkIcon}/> {isAdmin ? "Importar livros" : "Pesquisar livros"}</Link>
                 </li>
 
-                <li onClick={onClickChange} className={styles.linkContent}>
+                <li onClick={props.onClick} className={styles.linkContent}>
                     <Link className={styles.link} to={isAdmin ? "/admin/list/users" : isAuthenticated ? "/loan" : "/auth/login"}>{isAdmin ? 
                     <>
                         <Users className={styles.linkIcon}/> 
@@ -30,11 +53,11 @@ export default function SidebarLinks(props: SidebarLinks) {
                 {
                     isAdmin && 
                     <>
-                        <li onClick={onClickChange} className={styles.linkContent}>
+                        <li onClick={props.onClick} className={styles.linkContent}>
                             <Link className={styles.link} to={"/categories"}> <BookUp className={styles.linkIcon}/> Categorias</Link>
                         </li>
                     
-                        <li onClick={onClickChange} className={styles.linkContent}>
+                        <li onClick={props.onClick} className={styles.linkContent}>
                             <Link className={styles.link} to={"/admin/search/books"}><BookLock className={styles.linkIcon}/> Gerenciar livros</Link>
                         </li>
                     </>
@@ -57,8 +80,9 @@ export default function SidebarLinks(props: SidebarLinks) {
                         </Collapsible.Trigger>
                         <Collapsible.Content className={styles.profileContent} asChild>
                             <ul className={styles.listProfileContainer}>
-                                <li onClick={onClickChange} className={`${styles.profileContent} ${styles.profileItem}`}> <Link className={styles.link} to={"/user/edit/data"}> <Bolt className={styles.linkIcon}/> Editar dados</Link>
+                                <li onClick={props.onClick} className={`${styles.profileContent} ${styles.profileItem}`}> <Link className={styles.link} to={"/user/edit/data"}> <Bolt className={styles.linkIcon}/> Editar dados</Link>
                                 </li>
+
                                 <li onClick={handleExit} className={`${styles.profileContent} ${styles.profileItem}`}> <Link className={styles.link} to={"/"}><LogOut className={styles.linkIcon}/>Sair</Link>
                                 </li>
                             </ul>
