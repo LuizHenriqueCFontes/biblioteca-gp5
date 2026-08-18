@@ -2,9 +2,9 @@ import { Menu, X } from "lucide-react";
 import Logo from "../Logo/Logo";
 import styles from "./Header.module.css"
 import { useState } from "react";
-import Sidebar from "../Sidebar/Mobile/SidebarMobile";
 import { useNavigate } from "react-router-dom";
 import { authStorage } from "../../../feature/auth/services/authStorage";
+import SidebarMobile from "../Sidebar/Mobile/SidebarMobile";
 
 interface HeaderProps{
     className?: string
@@ -34,7 +34,7 @@ export default function Header(props:HeaderProps){
                 </button>
             </header>
 
-            <Sidebar open={open}
+            <SidebarMobile open={open}
             onOpenChange={setIsOpen}/>
         </>
     );
