@@ -22,7 +22,7 @@ export default function Header(props:HeaderProps){
     role === "ADMIN" ? navigate("/admin/home") : navigate("/");
     }
 
-const isDesktop = useMediaQuery("(min-width: 1024px)")
+    const isDesktop = useMediaQuery("(min-width: 1024px)")
 
     return(
         <>

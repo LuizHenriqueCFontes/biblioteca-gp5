@@ -10,11 +10,15 @@
 }
 
 .main{
-    padding-bottom: 10px;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+    flex: 1;
+    min-width: 0;
 }
 
 .outlet{
-    padding-top: 120px;
+    padding-top: 15px;
     margin-left: 20px;
+    overflow-y: auto;
 }

@@ -42,7 +42,7 @@
   border-radius: 8px;
   font-size: 12px;
   font-weight: 700;
-  font-size: 0.7em;
+  font-size: 0.65em;
 }
 
 .title{
@@ -52,13 +52,13 @@
 }
 
 .description{
-    font-size: 0.8em;
+    font-size: 0.75em;
     color: var(--informations-color);
     font-weight: 700;
 }
 
 .btnContainer{
-    width: 87%;
+    width: 92%;
     height: 70px;
 
 }
