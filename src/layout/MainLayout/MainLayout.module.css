@@ -1,8 +1,20 @@
+.mainContainer{
+    display: flex;
+    overflow-x: hidden;
+    height: 100vh;
+    overflow: hidden;
+}
+
 .header{
-    flex-direction: row-reverse;
-    
+    flex-direction: row-reverse;   
 }
 
 .main{
-    padding: 100px 0 15px;
+    padding-bottom: 10px;
+    overflow-y: auto;
+}
+
+.outlet{
+    padding-top: 120px;
+    margin-left: 20px;
 }

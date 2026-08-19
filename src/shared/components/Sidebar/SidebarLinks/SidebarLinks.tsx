@@ -90,7 +90,8 @@ export default function SidebarLinks(props: SidebarLinks) {
                     </Collapsible.Root>
                 </div>
                 :
-                <div className={`${styles.linkContent} ${styles.linkLogin}`}><Link className={styles.link} to={"/auth/login"}> <LogIn className={styles.linkIcon}/> Fazer login</Link></div>
+                <div className={`${styles.linkContent} ${styles.linkLogin}`}><Link className={styles.link} to={"/auth/login"}> <LogIn className={styles.linkIcon}/> Fazer login</Link>
+                </div>
                 }
             </div>
         </nav>
