@@ -10,7 +10,9 @@ export default function SidebarDesktop(props: SidebarDesktop) {
     return(
         <motion.aside className={`${styles.sidebar} ${props.isCollapsed ? styles.collapsed : ""}`}
         initial={false}
-        animate={{width: props.isCollapsed ? 80 : 260}}
+        animate={{width: props.isCollapsed ? 0 : 260,
+                 opacity: props.isCollapsed ? 0 : 1
+        }}
         transition={{type: "spring", stiffness: 300, damping: 30}}>
             
             <SidebarLinks />

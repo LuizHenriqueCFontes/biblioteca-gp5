@@ -50,6 +50,10 @@
     padding-bottom: 70px;
 }
 
+.profileContainerDesktop{
+    padding-bottom: 0;
+}
+
 .rootCollapsible{
     padding: 10px;
     display: flex;

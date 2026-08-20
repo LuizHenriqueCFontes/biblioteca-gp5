@@ -2,8 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./SidebarLinks.module.css";
 import { authStorage } from "../../../../feature/auth/services/authStorage";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { Bolt, Book, BookLock, BookUp, ChevronDown, Home, LogIn, LogOut, User, Users } from "lucide-react";
+import { Bolt, Book, BookLock, BookOpen, BookUp, ChevronDown, Home, LogIn, LogOut, User, Users } from "lucide-react";
 import { useAuth } from "../../../../feature/auth/hooks/useAuth";
+import { useMediaQuery } from "../../../hooks/useMediaQuery";
 
 interface SidebarLinks {
     onClick?: () => void
@@ -18,6 +19,8 @@ export default function SidebarLinks(props: SidebarLinks) {
 
     const navigate = useNavigate();
 
+    const isDesktop = useMediaQuery("(min-width: 1024px)");
+
     function handleExit() {
         authStorage.clear();
         logout();
@@ -28,45 +31,50 @@ export default function SidebarLinks(props: SidebarLinks) {
 
     return(
         <nav className={styles.navContainer}>
-            <ul className={styles.listContainer}>
-                <li onClick={props.onClick} className={styles.linkContent}>
-                    <Link className={styles.link} to={isAdmin ? "/admin/home" : "/"}><Home className={styles.linkIcon}/> {isAdmin ? "Dashboard" : "Tela de início"}</Link>
-                </li>
+
+            <div>
+                <div>
+                    <BookOpen />
+                    <h1>Biblioteca</h1>
+                </div>
+
+                <ul className={styles.listContainer}>
+                    <li onClick={props.onClick} className={styles.linkContent}>
+                        <Link className={styles.link} to={isAdmin ? "/admin/home" : "/"}><Home className={styles.linkIcon}/> {isAdmin ? "Dashboard" : "Tela de início"}</Link>
+                    </li>
                 
-                <li onClick={props.onClick} className={styles.linkContent}>
-                    <Link className={styles.link} to={isAdmin ? "/admin/imports" : "/search/books"}><Book className={styles.linkIcon}/> {isAdmin ? "Importar livros" : "Pesquisar livros"}</Link>
-                </li>
-
-                <li onClick={props.onClick} className={styles.linkContent}>
-                    <Link className={styles.link} to={isAdmin ? "/admin/list/users" : isAuthenticated ? "/loan" : "/auth/login"}>{isAdmin ? 
-                    <>
-                        <Users className={styles.linkIcon}/> 
-                        <span>Listar usuários</span>
-                    </> 
-                    :
-                    <>
-                        <BookUp className={styles.linkIcon}/> 
-                        <span>Meus empréstimos</span>
-                    </>}</Link>
-                </li>
-
-                {
-                    isAdmin && 
-                    <>
-                        <li onClick={props.onClick} className={styles.linkContent}>
-                            <Link className={styles.link} to={"/categories"}> <BookUp className={styles.linkIcon}/> Categorias</Link>
-                        </li>
-                    
-                        <li onClick={props.onClick} className={styles.linkContent}>
-                            <Link className={styles.link} to={"/admin/search/books"}><BookLock className={styles.linkIcon}/> Gerenciar livros</Link>
-                        </li>
-                    </>
-                }
-
+                    <li onClick={props.onClick} className={styles.linkContent}>
+                        <Link className={styles.link} to={isAdmin ? "/admin/imports" : "/search/books"}><Book className={styles.linkIcon}/> {isAdmin ? "Importar livros" : "Pesquisar livros"}</Link>
+                    </li>
+                    <li onClick={props.onClick} className={styles.linkContent}>
+                        <Link className={styles.link} to={isAdmin ? "/admin/list/users" : isAuthenticated ? "/loan" : "/auth/login"}>{isAdmin ?
+                        <>
+                            <Users className={styles.linkIcon}/>
+                            <span>Listar usuários</span>
+                        </>
+                        :
+                        <>
+                            <BookUp className={styles.linkIcon}/>
+                            <span>Meus empréstimos</span>
+                        </>}</Link>
+                    </li>
+                    {
+                        isAdmin &&
+                        <>
+                            <li onClick={props.onClick} className={styles.linkContent}>
+                                <Link className={styles.link} to={"/categories"}> <BookUp className={styles.linkIcon}/> Categorias</Link>
+                            </li>
                 
-            </ul>
+                            <li onClick={props.onClick} className={styles.linkContent}>
+                                <Link className={styles.link} to={"/admin/search/books"}><BookLock className={styles.linkIcon}/> Gerenciar livros</Link>
+                            </li>
+                        </>
+                    }
+                
+                </ul>
+            </div>
 
-            <div className={styles.profileContainer}>
+            <div className={`${styles.profileContainer} ${isDesktop ? styles.profileContainerDesktop : ""}`}>
                 {isAuthenticated ?
                 <div className={styles.myProfile}>
                     <Collapsible.Root className={`${styles.rootCollapsible}`}>

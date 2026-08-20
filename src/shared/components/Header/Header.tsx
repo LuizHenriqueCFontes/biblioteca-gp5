@@ -1,4 +1,4 @@
-import { Menu, X } from "lucide-react";
+import { Menu, PanelLeft, PanelLeftClose, X } from "lucide-react";
 import Logo from "../Logo/Logo";
 import styles from "./Header.module.css"
 import { useState } from "react";
@@ -8,7 +8,9 @@ import SidebarMobile from "../Sidebar/Mobile/SidebarMobile";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 interface HeaderProps{
-    className?: string
+    className?: string,
+    isDesktopCollapsed?: boolean,
+    setIsDesktopCollapsed?: () => void
 }
 
 export default function Header(props:HeaderProps){
@@ -30,11 +32,14 @@ export default function Header(props:HeaderProps){
 
                 <Logo onClick={handleHome}/>
 
-                {!isDesktop && <button onClick={() => {setIsOpen(!open)
+                {!isDesktop ? <button onClick={() => {setIsOpen(!open)
                     console.log("Cliquei");
                 }} aria-label="Abrir menu" className={styles.iconContainer}>
                     {open ? <X className={styles.icon}/> : <Menu className={styles.icon}/>} 
-                </button>}
+                </button> 
+                :   <button aria-label="Abrir menu" className={styles.iconContainer} type="button" onClick={props.setIsDesktopCollapsed}>
+                        {props.isDesktopCollapsed ? <PanelLeft className={styles.icon}/> : <PanelLeftClose className={styles.icon}/>}
+                    </button>}
             </header>
 
             <SidebarMobile open={open}
