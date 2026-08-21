@@ -1,21 +1,19 @@
 import { Menu, PanelLeft, PanelLeftClose, X } from "lucide-react";
 import Logo from "../Logo/Logo";
 import styles from "./Header.module.css"
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authStorage } from "../../../feature/auth/services/authStorage";
-import SidebarMobile from "../Sidebar/Mobile/SidebarMobile";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 interface HeaderProps{
     className?: string,
     isDesktopCollapsed?: boolean,
-    setIsDesktopCollapsed?: () => void
+    setIsDesktopCollapsed?: () => void,
+    open: boolean,
+    setIsOpen: (value: boolean) => void
 }
 
 export default function Header(props:HeaderProps){
-    const [open, setIsOpen] = useState(false);
-
     const navigate = useNavigate();
 
     const role = authStorage.getRole();
@@ -32,18 +30,15 @@ export default function Header(props:HeaderProps){
 
                 <Logo onClick={handleHome}/>
 
-                {!isDesktop ? <button onClick={() => {setIsOpen(!open)
+                {!isDesktop ? <button onClick={() => {props.setIsOpen(!props.open)
                     console.log("Cliquei");
                 }} aria-label="Abrir menu" className={styles.iconContainer}>
-                    {open ? <X className={styles.icon}/> : <Menu className={styles.icon}/>} 
+                    {props.open ? <X className={styles.icon}/> : <Menu className={styles.icon}/>} 
                 </button> 
                 :   <button aria-label="Abrir menu" className={styles.iconContainer} type="button" onClick={props.setIsDesktopCollapsed}>
                         {props.isDesktopCollapsed ? <PanelLeft className={styles.icon}/> : <PanelLeftClose className={styles.icon}/>}
                     </button>}
             </header>
-
-            <SidebarMobile open={open}
-            onOpenChange={setIsOpen}/>
         </>
     );
 }

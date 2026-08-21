@@ -33,9 +33,12 @@ export default function SidebarLinks(props: SidebarLinks) {
         <nav className={styles.navContainer}>
 
             <div>
-                <div>
-                    <BookOpen />
-                    <h1>Biblioteca</h1>
+                <div className={styles.logoContainer}>
+                    <div className={styles.logoIconContainer}>
+                        <BookOpen className={styles.logoIcon}/>
+                    </div>
+
+                    <h1 className={styles.logoTitle}>Biblioteca</h1>
                 </div>
 
                 <ul className={styles.listContainer}>

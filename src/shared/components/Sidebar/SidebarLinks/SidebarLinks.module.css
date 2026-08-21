@@ -6,6 +6,35 @@
     padding-bottom: 17px;
 }
 
+.logoContainer{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 0 18px 5px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.logoIconContainer{
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 37px;
+    height: 37px;
+    border-radius: 8px;
+}
+
+.logoIcon{
+    color: var(--contrast-primary-color);
+    width: 25px;
+    height: 25px;
+}
+
+.logoTitle{
+    font-size: 1.35em;
+    color: var(--title-color);
+}
+
 .linkContent{
     list-style: none;
     padding: 13px 10px;
