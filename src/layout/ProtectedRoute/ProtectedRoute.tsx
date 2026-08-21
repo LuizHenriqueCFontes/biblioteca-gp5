@@ -5,6 +5,7 @@ import { authStorage } from "../../feature/auth/services/authStorage";
 import SidebarDesktop from "../../shared/components/Sidebar/Desktop/SidebarDesktop";
 import { useMediaQuery } from "../../shared/hooks/useMediaQuery";
 import { useState } from "react";
+import SidebarMobile from "../../shared/components/Sidebar/Mobile/SidebarMobile";
 
 export default function ProtectedRoute() {
 
@@ -20,13 +21,20 @@ export default function ProtectedRoute() {
         setIsDesktopCollapsed((prev) => !prev);
     }
 
+    const [open, setIsOpen] = useState(false);
+
+    const toggleMobileSidebar = () => {
+        setIsOpen((prev) => (!prev));
+    }
+
     return(
         <>
             <div className={styles.mainContainer}>
-                {isDesktop && <SidebarDesktop isCollapsed={isDesktopCollapsed}/>}
+                {isDesktop ? <SidebarDesktop isCollapsed={isDesktopCollapsed}/> : <SidebarMobile open={open}
+                onOpenChange={setIsOpen}/>}
 
                 <main className={styles.main}>
-                    <Header className={styles.header} isDesktopCollapsed={isDesktopCollapsed} setIsDesktopCollapsed={toggleDesktopSidebar}/>
+                    <Header className={styles.header} isDesktopCollapsed={isDesktopCollapsed} setIsDesktopCollapsed={toggleDesktopSidebar} open={open} setIsOpen={toggleMobileSidebar}/>
                     
                     {isAuthenticated
                         ?   <div className={styles.outlet}>
