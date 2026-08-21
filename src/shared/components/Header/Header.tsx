@@ -1,18 +1,19 @@
-import { Menu, X } from "lucide-react";
+import { Menu, PanelLeft, PanelLeftClose, X } from "lucide-react";
 import Logo from "../Logo/Logo";
 import styles from "./Header.module.css"
-import { useState } from "react";
-import Sidebar from "../Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 import { authStorage } from "../../../feature/auth/services/authStorage";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 interface HeaderProps{
-    className?: string
+    className?: string,
+    isDesktopCollapsed?: boolean,
+    setIsDesktopCollapsed?: () => void,
+    open: boolean,
+    setIsOpen: (value: boolean) => void
 }
 
 export default function Header(props:HeaderProps){
-    const [open, setIsOpen] = useState(false);
-
     const navigate = useNavigate();
 
     const role = authStorage.getRole();
@@ -21,21 +22,23 @@ export default function Header(props:HeaderProps){
     role === "ADMIN" ? navigate("/admin/home") : navigate("/");
     }
 
+    const isDesktop = useMediaQuery("(min-width: 1024px)")
+
     return(
         <>
             <header className={`${styles.header} ${props.className ?? ""}`}>
 
                 <Logo onClick={handleHome}/>
 
-                <button onClick={() => {setIsOpen(!open)
+                {!isDesktop ? <button onClick={() => {props.setIsOpen(!props.open)
                     console.log("Cliquei");
                 }} aria-label="Abrir menu" className={styles.iconContainer}>
-                    {open ? <X className={styles.icon}/> : <Menu className={styles.icon}/>} 
-                </button>
+                    {props.open ? <X className={styles.icon}/> : <Menu className={styles.icon}/>} 
+                </button> 
+                :   <button aria-label="Abrir menu" className={styles.iconContainer} type="button" onClick={props.setIsDesktopCollapsed}>
+                        {props.isDesktopCollapsed ? <PanelLeft className={styles.icon}/> : <PanelLeftClose className={styles.icon}/>}
+                    </button>}
             </header>
-
-            <Sidebar open={open}
-            onOpenChange={setIsOpen}/>
         </>
     );
 }
