@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import styles from "./Input.module.css";
+import { Link } from "react-router-dom";
 
 interface InputProps{
     id: string,
@@ -14,6 +15,7 @@ interface InputProps{
     onChange: (value: string) => void,
     required?: boolean,
     className?: string,
+    forgotPassword?: boolean
 }
 
 export function Input(props: InputProps){
@@ -23,7 +25,11 @@ export function Input(props: InputProps){
     return(
         <div className={styles.inputContainer}>
 
-            {props.label && <label  className={`${styles.label} ${props.required ? styles.required : ""}`} htmlFor={props.id}>{props.label}</label>}
+            <div className={styles.labelContainer}>
+                {props.label && <label  className={`${styles.label} ${props.required ? styles.required : ""}`} htmlFor={props.id}>{props.label}</label>}
+
+                {props.forgotPassword && <Link to={"/"} className={styles.forgotPassword}>Esqueceu sua senha?</Link>}
+            </div>
 
             <div className={styles.inputContainer}>
                 {Icon && <Icon className={styles.icon}/>}

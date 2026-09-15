@@ -2,6 +2,11 @@
     position: relative;
 }
 
+.labelContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
 .icon{
     position: absolute;
     left: 10px;
@@ -43,6 +48,19 @@
     font-size: 0.9em;
     color: var(--title-color);
     font-weight: 530;
+}
+
+.forgotPassword{
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 7px;
+    font-size: 0.875em;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.forgotPassword:hover{
+    text-decoration: underline;
 }
 
 .required::after{
