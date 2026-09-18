@@ -1,5 +1,7 @@
 import { useState } from "react";
 import type { ForgotPasswordRequestDTO } from "../../types/forgotPasswordRequestDTO ";
+import { useMutation } from "@tanstack/react-query";
+import { passwordResetTokenService } from "../../services/passwordResetTokenService";
 
 export function useSendEmail() {
 
@@ -11,8 +13,14 @@ export function useSendEmail() {
         }));
     }
 
+    const requestPasswordReset = useMutation({
+        mutationFn: passwordResetTokenService.requestPasswordReset
+    });
+
     return {
         email,
-        handleSetEmail
+        handleSetEmail,
+
+        requestPasswordReset: requestPasswordReset.mutateAsync
     }
 }

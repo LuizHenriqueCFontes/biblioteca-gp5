@@ -28,7 +28,7 @@ export function Input(props: InputProps){
             <div className={styles.labelContainer}>
                 {props.label && <label  className={`${styles.label} ${props.required ? styles.required : ""}`} htmlFor={props.id}>{props.label}</label>}
 
-                {props.forgotPassword && <Link to={"/"} className={styles.forgotPassword}>Esqueceu sua senha?</Link>}
+                {props.forgotPassword && <Link to={"/password-reset/email"} className={styles.forgotPassword}>Esqueceu sua senha?</Link>}
             </div>
 
             <div className={styles.inputContainer}>

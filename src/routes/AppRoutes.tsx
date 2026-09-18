@@ -22,6 +22,7 @@ import RegisterValidate from "../feature/auth/register/RegisterValidate/pages/Re
 import RegisterPassword from "../feature/auth/register/RegisterPassword/pages/RegisterPassword";
 import ReaderLayout from "../layout/ReaderLayout/ReaderLayout";
 import ProtectedRoute from "../layout/ProtectedRoute/ProtectedRoute";
+import SendEmail from "../feature/passwordResetToken/SendEmail/pages/SendEmail/SendEmail";
 
 export default function AppRoutes(){
     return(
@@ -59,8 +60,12 @@ export default function AppRoutes(){
 
             <Route element={<AuthLayout />}>
                 <Route path="auth/login" element={<Login />}/>
+
                 <Route path="auth/register" element={<RegisterValidate />}/>
+
                 <Route path="auth/register/password" element={<RegisterPassword />}/>
+
+                <Route path="password-reset/email" element={<SendEmail />}/>
             </Route>
         </Routes>
     );
