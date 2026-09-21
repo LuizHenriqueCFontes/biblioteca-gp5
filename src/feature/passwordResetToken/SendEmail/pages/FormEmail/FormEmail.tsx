@@ -4,6 +4,7 @@ import Logo from "../../../../../shared/components/Logo/Logo";
 import { useSendEmail } from "../../hooks/useSendEmail";
 import { Mail } from "lucide-react"
 import styles from "./FormEmail.module.css";
+import SendEmail from "../SendEmail/SendEmail";
 
 export default function FormEmail() {
 
@@ -35,7 +36,7 @@ export default function FormEmail() {
                 onChange={handleSetEmail}
                 required/>
 
-                <Button variant="primary" >Enviar e-mail</Button>
+                <Button variant="primary">Enviar e-mail</Button>
             </form>
         </section>
     );

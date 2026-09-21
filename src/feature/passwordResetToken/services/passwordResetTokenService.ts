@@ -5,6 +5,8 @@ const BASE_ENDPOINT = "/reset-password"
 
 export const passwordResetTokenService = {
     requestPasswordReset: async(request: ForgotPasswordRequestDTO): Promise<void> => {
-        await api.post(BASE_ENDPOINT, request);
+        const endpoint = `${BASE_ENDPOINT}/email`;
+
+        await api.post(endpoint, request);
     }
 }
