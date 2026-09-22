@@ -4,9 +4,12 @@ import Logo from "../../../../../shared/components/Logo/Logo";
 import { useSendEmail } from "../../hooks/useSendEmail";
 import { Mail } from "lucide-react"
 import styles from "./FormEmail.module.css";
-import SendEmail from "../SendEmail/SendEmail";
 
-export default function FormEmail() {
+interface FormEmail {
+    onEmailSend: () => void
+}
+
+export default function FormEmail(props: FormEmail) {
 
     const { email, handleSetEmail, requestPasswordReset } = useSendEmail();
 
@@ -14,11 +17,13 @@ export default function FormEmail() {
         event.preventDefault();
 
         requestPasswordReset(email);
+
+        props.onEmailSend();
     }
 
     return(
         <section className={styles.container}>
-            <div>
+            <div className={styles.detailsContainer}>
                 <Logo className={styles.logo}/>
 
                 <h1 className={styles.title}>Redefina sua senha</h1>
@@ -26,7 +31,7 @@ export default function FormEmail() {
                 <p className={styles.description}>Insira o endereço de e-mail da sua conta e enviaremos um link para redefinir sua senha.</p>
             </div>
 
-            <form onSubmit={(event) => sendEmail(event)}>
+            <form className={styles.inputContainer} onSubmit={(event) => sendEmail(event)}>
                 <Input id="email"
                 label="Email"
                 icon={Mail}
