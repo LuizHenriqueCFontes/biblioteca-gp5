@@ -23,6 +23,7 @@ import RegisterPassword from "../feature/auth/register/RegisterPassword/pages/Re
 import ReaderLayout from "../layout/ReaderLayout/ReaderLayout";
 import ProtectedRoute from "../layout/ProtectedRoute/ProtectedRoute";
 import SendEmail from "../feature/passwordResetToken/SendEmail/pages/SendEmail/SendEmail";
+import ResetPasswordForm from "../feature/passwordResetToken/resetPassword/pages/ResetPasswordForm/ResetPasswordForm";
 
 export default function AppRoutes(){
     return(
@@ -66,6 +67,7 @@ export default function AppRoutes(){
                 <Route path="auth/register/password" element={<RegisterPassword />}/>
 
                 <Route path="password-reset/email" element={<SendEmail />}/>
+                <Route path="password-reset/password" element={<ResetPasswordForm />}/>
             </Route>
         </Routes>
     );
