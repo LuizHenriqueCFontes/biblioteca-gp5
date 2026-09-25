@@ -56,7 +56,7 @@ export default function ResetPasswordForm() {
                     <Button type="submit" variant="primary">Salvar nova senha</Button>
 
                     <div className={styles.linkContainer}>
-                        <Clock4 className={styles.icon}/> 
+                        <Clock4 className={styles.iconLink}/> 
                         
                         <p className={styles.link}> O link de redefinição expira após um período determinado.</p>
                     </div>
