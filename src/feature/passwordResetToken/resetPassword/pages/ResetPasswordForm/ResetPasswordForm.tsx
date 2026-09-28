@@ -4,10 +4,14 @@ import Logo from "../../../../../shared/components/Logo/Logo";
 import { useResetPassword } from "../../hooks/useResetPassword";
 import { useSearchParams } from "react-router-dom";
 import { Button } from "../../../../../shared/components/Button/Button";
-import { executeWithToast } from "../../../../../utils/toast";
 import styles from "./ResetPasswordForm.module.css"
+import { resetPasswordForm } from "../../action/resetPasswordForm";
 
-export default function ResetPasswordForm() {
+interface ResetPasswordForm {
+    setResetPassword: () => void
+}
+
+export default function ResetPasswordForm(props: ResetPasswordForm) {
 
     const [ searchParams ] = useSearchParams();
 
@@ -18,7 +22,9 @@ export default function ResetPasswordForm() {
     async function handlePasswordReset(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        executeWithToast(() => resetPassword(passwordData), "Alterando senha...", "Senha Alterada com sucesso!")
+        await resetPasswordForm(() => resetPassword(passwordData), "Alterando senha...");
+
+        props.setResetPassword();
     }
 
     return(
