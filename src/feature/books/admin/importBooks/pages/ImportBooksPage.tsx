@@ -13,7 +13,7 @@ export default function ImportBooksPage(){
 
     const [findBook, setFindBook] = useState("");
     
-    const { books, totalElements, loadingBooks, importBook, totalPages} = useImportBooks(findBook, page);
+    const { books, totalElements, loadingBooks, importBook, totalPages, loadingImport} = useImportBooks(findBook, page);
     const navigate = useNavigate();
 
     function handleGoToImportBookDetails(id: string){
@@ -32,9 +32,9 @@ export default function ImportBooksPage(){
                 showGutendexInfo
                 action={(books) => (
                     <div className={styles.buttonContainer}>
-                        <Button className={styles.button} onClick={() => handleGoToImportBookDetails(`${books.id}`)} variant="secondary">Detalhes</Button>
+                        <Button disabled={loadingImport} className={styles.button} onClick={() => handleGoToImportBookDetails(`${books.id}`)} variant="secondary">Detalhes</Button>
 
-                        <Button className={styles.button} onClick={() => handleImportBook(`${books.id}`, importBook)} variant="primary">Importar</Button>
+                        <Button disabled={loadingImport} className={styles.button} onClick={() => handleImportBook(`${books.id}`, importBook)} variant="primary">Importar</Button>
                     </div>
                 )}
                 />

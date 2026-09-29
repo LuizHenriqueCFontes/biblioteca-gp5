@@ -7,7 +7,8 @@ interface ButtonProps{
     onClick?: () => void,
     variant: "primary" | "secondary" | "action" | "dashed" | "loan" | "create" | "continue", 
     className?: string,
-    icon?: LucideIcon
+    icon?: LucideIcon,
+    disabled?: boolean
 }
 
 export function Button(props: ButtonProps){
@@ -16,7 +17,7 @@ export function Button(props: ButtonProps){
 
     return(
         <>
-            <button className={`${styles.button} ${styles[props.variant]} ${props.className ?? ""}`} type={props.type} onClick={props.onClick}>
+            <button disabled={props.disabled} className={`${styles.button} ${styles[props.variant]} ${props.className ?? ""}`} type={props.type} onClick={props.onClick}>
 
                 {Icon && <Icon className={styles.icon}/>}
 

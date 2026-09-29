@@ -26,6 +26,11 @@
     gap: 15px;
 }
 
+.button:disabled{
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 .content{
     display: flex;
     align-items: center;
