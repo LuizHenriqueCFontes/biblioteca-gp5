@@ -34,7 +34,7 @@ export default function ListUsers() {
                         <EmptyState icon={UserX} title="Usuário não encontrado" description="Nenhum usuário foi encontrado"/>
                     </div> : ""}
 
-                {loadingUsers ?? <Loading />}
+                {loadingUsers && <Loading />}
 
                 {users.map((user) => (
                     <CardUser id={user.idUser} 

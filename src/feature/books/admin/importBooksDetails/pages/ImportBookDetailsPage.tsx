@@ -16,19 +16,19 @@ export default function ImportBookDetailPage(){
 
     const { book, loading, /*error*/ } = useImportBooksDetails(id);
 
-    const { importBook } = useImportBooks();
+    const { importBook, loadingImport } = useImportBooks();
 
     return(
         <section className={styles.container}>
-            {loading ? <div className={styles.loadingContainer}><Loading /></div> : ""}
-
             <Breadcrumb breadcrumb={[
                 {label: "Importar livros", to: "/admin/imports"},
                 {label: "Detalhes do livro"}
             ]}/>
 
+            {loading ? <div className={styles.loadingContainer}><Loading /></div> : ""}
+
             {book && <BookDetails id={book.id} coverUrl={book.coverUrl} title={book.title} authors={book.authors} actions={
-                <Button className={styles.import} variant="primary" onClick={() => handleImportBook(`${book.id}`, importBook)}>
+                <Button disabled={loadingImport} className={styles.import} variant="primary" onClick={() => handleImportBook(`${book.id}`, importBook)}>
                     Importar Livro
                 </Button>
             }/>}
