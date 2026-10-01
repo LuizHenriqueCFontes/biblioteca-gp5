@@ -24,7 +24,6 @@ import ReaderLayout from "../layout/ReaderLayout/ReaderLayout";
 import ProtectedRoute from "../layout/ProtectedRoute/ProtectedRoute";
 import SendEmail from "../feature/passwordResetToken/SendEmail/pages/SendEmail/SendEmail";
 import ResetPassword from "../feature/passwordResetToken/resetPassword/pages/ResetPassword/ResetPassword";
-import ResetPasswordDone from "../feature/passwordResetToken/resetPassword/pages/ResetPasswordDone/ResetPasswordDone";
 
 export default function AppRoutes(){
     return(
@@ -69,8 +68,6 @@ export default function AppRoutes(){
 
                 <Route path="password-reset/email" element={<SendEmail />}/>
                 <Route path="password-reset/password" element={<ResetPassword />}/>
-
-                <Route path="teste" element={<ResetPasswordDone />}/>
             </Route>
         </Routes>
     );

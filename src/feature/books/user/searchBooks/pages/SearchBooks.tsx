@@ -7,6 +7,7 @@ import { handleBookLoan } from "../../../actions/loanBookAction";
 import { useState } from "react";
 import { useAuth } from "../../../../auth/hooks/useAuth";
 import Pagination from "../../../../../shared/components/Pagination/Pagination";
+import { authStorage } from "../../../../auth/services/authStorage";
 
 export default function SearchBooks(){
 
@@ -22,19 +23,24 @@ export default function SearchBooks(){
 
     const { books, loadingBooks, totalElements, bookLoan, totalPages } = useSearchBooks({title: findBook, idsCategories: locationCategories}, {size: 20, page: page});
 
-    const { isAuthenticated } = useAuth();
+    const { logout } = useAuth();
+
+    const token = authStorage.getToken();
 
     function handleGoToBookDetails(id: string) {
         navigate(`/book/${id}`)
     }
 
     function handleLoan(id: string) {
-        if(isAuthenticated) {
-            handleBookLoan(id, bookLoan);
+        if(!token) {
+            navigate("/auth/login", {replace: true});
 
-        }else{
-            navigate("/auth/login");
+            logout();
+
+            return;
         }
+
+        handleBookLoan(id, bookLoan);
     }
     
     return(
