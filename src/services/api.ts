@@ -1,6 +1,10 @@
 import axios from "axios";
 import { authStorage } from "../feature/auth/services/authStorage";
 
+export const navigationService = {
+    navigate: null as any
+}
+
 export const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
 
@@ -34,6 +38,15 @@ api.interceptors.response.use(
             console.log("Token expirado");
 
             authStorage.clear();
+        }
+
+        if(error.response?.status === 403) {
+
+            authStorage.clear();
+
+            if(navigationService.navigate) {
+                navigationService.navigate("/auth/login", {replace: true});
+            }
         }
 
         return Promise.reject(error);

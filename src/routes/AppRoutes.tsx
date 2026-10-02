@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import MainLayout from "../layout/MainLayout/MainLayout";
 import ImportBooksPage from "../feature/books/admin/importBooks/pages/ImportBooksPage";
 import ImportBookDetailsPage from "../feature/books/admin/importBooksDetails/pages/ImportBookDetailsPage";
@@ -24,8 +24,18 @@ import ReaderLayout from "../layout/ReaderLayout/ReaderLayout";
 import ProtectedRoute from "../layout/ProtectedRoute/ProtectedRoute";
 import SendEmail from "../feature/passwordResetToken/SendEmail/pages/SendEmail/SendEmail";
 import ResetPassword from "../feature/passwordResetToken/resetPassword/pages/ResetPassword/ResetPassword";
+import { useEffect } from "react";
+import { navigationService } from "../services/api";
 
 export default function AppRoutes(){
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        navigationService.navigate = navigate;
+
+    }, [navigate]);
+
     return(
         <Routes>
             <Route element={<MainLayout />}>
