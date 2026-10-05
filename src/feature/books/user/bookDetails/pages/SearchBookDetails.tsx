@@ -17,7 +17,7 @@ export default function SearchBookDetails() {
 
     const {book, loading} = useBookDetails(id);
 
-    const { bookLoan } = useSearchBooks();
+    const { bookLoan, loadingLoan } = useSearchBooks();
 
     const token = authStorage.getToken();
 
@@ -48,7 +48,7 @@ export default function SearchBookDetails() {
             {loading ? <Loading /> : ""}
 
            {book &&  <BookDetails id={book?.id} coverUrl={book?.coverUrl} title={book?.title} authors={book?.authors} actions={
-                <Button onClick={() => verifyHandleBookLoan(book.id, bookLoan)} className={styles.loan} variant="primary">
+                <Button disabled={loadingLoan} onClick={() => verifyHandleBookLoan(book.id, bookLoan)} className={styles.loan} variant="primary">
                     Emprestimo
                 </Button>
             }/>}

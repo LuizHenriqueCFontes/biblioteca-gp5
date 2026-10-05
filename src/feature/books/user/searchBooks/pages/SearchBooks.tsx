@@ -21,7 +21,7 @@ export default function SearchBooks(){
 
     const [page, setPage] = useState(0);
 
-    const { books, loadingBooks, totalElements, bookLoan, totalPages } = useSearchBooks({title: findBook, idsCategories: locationCategories}, {size: 20, page: page});
+    const { books, loadingBooks, totalElements, bookLoan, totalPages, loadingLoan } = useSearchBooks({title: findBook, idsCategories: locationCategories}, {size: 20, page: page});
 
     const { logout } = useAuth();
 
@@ -54,7 +54,7 @@ export default function SearchBooks(){
             loading={loadingBooks}
             action={(books) => (
                  <div className={styles.buttonContainer}>
-                    <Button onClick={() => handleGoToBookDetails(`${books.id}`)} className={styles.button} variant="secondary">
+                    <Button onClick={() => handleGoToBookDetails(`${books.id}`)} disabled={loadingLoan} className={styles.button} variant="secondary">
                         Detalhes
                     </Button>
 
