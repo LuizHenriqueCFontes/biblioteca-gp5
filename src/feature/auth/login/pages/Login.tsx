@@ -54,6 +54,7 @@ export default function Login() {
                         value={login.email}
                         onChange={(value) => handleSetLogin("email", value)}
                         placeholder="seu@email.com"/>
+
                         <Input id="password"
                         label="Senha "
                         type="password"
@@ -61,7 +62,9 @@ export default function Login() {
                         required
                         value={login.password}
                         onChange={(value) => handleSetLogin("password", value)}
-                        placeholder="........"/>
+                        placeholder="........"
+                        forgotPassword/>
+
                         <div className={styles.btnContainer}>
                             <Button variant="primary">Entrar</Button>
                             <div className={styles.detailsContainer}>

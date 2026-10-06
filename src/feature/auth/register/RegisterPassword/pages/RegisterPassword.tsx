@@ -48,6 +48,7 @@ export default function RegisterPassword() {
                             placeholder="Digite sua senha"
                             required
                             minLength={8}
+                            type="password"
                             value={register.password}
                             onChange={(value) => handleSetRegister("password", value)}/>
                     
@@ -59,6 +60,7 @@ export default function RegisterPassword() {
                         placeholder="Confirme sua senha"
                         required
                         minLength={8}
+                        type="password"
                         value={register.confirmPassword}
                         onChange={(value) => handleSetRegister("confirmPassword", value)}/>
                         <Button icon={ArrowRight} variant="continue">Criar conta</Button>

@@ -160,10 +160,8 @@
         display: flex;
         justify-content: flex-end;
         gap: 20px;
-    }
-
-    .btn{
-        width: 13.6%;
+        width: 40%;
         align-self: flex-start;
+        margin-left: auto;
     }
 }

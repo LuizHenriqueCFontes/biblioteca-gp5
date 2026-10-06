@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import MainLayout from "../layout/MainLayout/MainLayout";
 import ImportBooksPage from "../feature/books/admin/importBooks/pages/ImportBooksPage";
 import ImportBookDetailsPage from "../feature/books/admin/importBooksDetails/pages/ImportBookDetailsPage";
@@ -22,8 +22,20 @@ import RegisterValidate from "../feature/auth/register/RegisterValidate/pages/Re
 import RegisterPassword from "../feature/auth/register/RegisterPassword/pages/RegisterPassword";
 import ReaderLayout from "../layout/ReaderLayout/ReaderLayout";
 import ProtectedRoute from "../layout/ProtectedRoute/ProtectedRoute";
+import SendEmail from "../feature/passwordResetToken/SendEmail/pages/SendEmail/SendEmail";
+import ResetPassword from "../feature/passwordResetToken/resetPassword/pages/ResetPassword/ResetPassword";
+import { useEffect } from "react";
+import { navigationService } from "../services/api";
 
 export default function AppRoutes(){
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        navigationService.navigate = navigate;
+
+    }, [navigate]);
+
     return(
         <Routes>
             <Route element={<MainLayout />}>
@@ -59,8 +71,13 @@ export default function AppRoutes(){
 
             <Route element={<AuthLayout />}>
                 <Route path="auth/login" element={<Login />}/>
+
                 <Route path="auth/register" element={<RegisterValidate />}/>
+
                 <Route path="auth/register/password" element={<RegisterPassword />}/>
+
+                <Route path="password-reset/email" element={<SendEmail />}/>
+                <Route path="password-reset/password" element={<ResetPassword />}/>
             </Route>
         </Routes>
     );

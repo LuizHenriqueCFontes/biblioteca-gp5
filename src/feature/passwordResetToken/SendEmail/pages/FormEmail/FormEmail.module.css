@@ -1,0 +1,44 @@
+.container{
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.detailsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.logo{
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.title{
+    color: var(--title-color);
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.description{
+    font-size: 0.95em;
+    text-align: center;
+    font-weight: 470;
+}
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
