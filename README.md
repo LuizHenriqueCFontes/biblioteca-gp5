@@ -140,3 +140,8 @@
   - Este repositorio contem o frontend da Biblioteca GP5; o backend e a persistencia dos dados sao fornecidos separadamente.
   - Os livros importados dependem da integracao com o Gutendex e da API backend configurada.
   - Nao adicione arquivos `.env` ao repositorio. Use `.env.example` para documentar valores necessarios sem expor configuracoes privadas.
+
+  ---
+
+  ## Orientador
+  Professor Hudson Neves
