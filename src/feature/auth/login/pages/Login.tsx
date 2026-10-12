@@ -11,7 +11,7 @@ import { authStorage } from "../../services/authStorage";
 
 export default function Login() {
 
-    const { handleSetLogin, login, loginMutation } = useLogin();
+    const { handleSetLogin, login, loginMutation, loading } = useLogin();
     const { loginUse } = useAuth();
 
     const navigate = useNavigate();
@@ -66,14 +66,15 @@ export default function Login() {
                         forgotPassword/>
 
                         <div className={styles.btnContainer}>
-                            <Button variant="primary">Entrar</Button>
+                            <Button disabled={loading} variant="primary">Entrar</Button>
+
                             <div className={styles.detailsContainer}>
                                 <hr className={styles.divider}/>
                     
                                 <p className={styles.details}>ou</p>
                                 <hr className={styles.divider}/>
                             </div>
-                            <Button type="button" icon={User} variant="create" onClick={handleRegisterPage}>Criar uma conta</Button>
+                            <Button disabled={loading} type="button" icon={User} variant="create" onClick={handleRegisterPage}>Criar uma conta</Button>
                         </div>
                     </form>
                 </div>

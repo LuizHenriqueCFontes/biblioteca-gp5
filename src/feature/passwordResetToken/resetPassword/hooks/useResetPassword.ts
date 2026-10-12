@@ -22,7 +22,8 @@ export function useResetPassword(token: string) {
         passwordData,
         handleSetPassword,
 
-        resetPassword: resetPassword.mutateAsync
+        resetPassword: resetPassword.mutateAsync,
+        loading: resetPassword.isPending
     }
 
 }
