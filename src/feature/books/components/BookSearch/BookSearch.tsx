@@ -4,6 +4,7 @@ import { Input } from "../../../../shared/components/Input/Input";
 import styles from "./BookSearch.module.css"
 import BookCard from "../BookCard/BookCard";
 import Loading from "../../../../shared/components/Loading/Loading";
+import Select from "../../../../shared/components/Select/Select";
 
 interface BookCardItem {
     id: number | string,
@@ -39,6 +40,8 @@ export default function BookSearch(props: BookSearchProps){
                 <form>
 
                     <Input icon={Search} className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={props.findBook} onChange={props.setFindBook}/>
+
+                    <Select id="categories"/>
 
                     <Button className={styles.btnSearch} variant="primary">
                         Pesquisar
