@@ -2,7 +2,7 @@ import { Check, ChevronDown } from "lucide-react";
 import * as SelectRadix from "@radix-ui/react-select";
 
 interface OptionType {
-    label: string,
+    label?: string,
     value: string
 }
 
@@ -11,7 +11,7 @@ interface Select {
     value?: string,
     onChangeValue?: (value: string) => void,
     placeholder?: string,
-    options: OptionType[]
+    options?: OptionType[]
 }
 
 export default function Select(props: Select) {
@@ -29,7 +29,7 @@ export default function Select(props: Select) {
                 <SelectRadix.Content>
 
                     <SelectRadix.Viewport>
-                        {props.options.map((option) => (
+                        {props.options?.map((option) => (
                             <SelectRadix.Item value={option.value}>
                                 <SelectRadix.ItemText>{option.label}</SelectRadix.ItemText>
 

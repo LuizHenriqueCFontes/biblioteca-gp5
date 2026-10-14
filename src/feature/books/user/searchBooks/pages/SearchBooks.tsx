@@ -13,6 +13,8 @@ export default function SearchBooks(){
 
     const[findBook, setFindBook] = useState("");
 
+    const [category, setCategory] = useState("");
+
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -21,7 +23,7 @@ export default function SearchBooks(){
 
     const [page, setPage] = useState(0);
 
-    const { books, loadingBooks, totalElements, bookLoan, totalPages, loadingLoan } = useSearchBooks({title: findBook, idsCategories: locationCategories}, {size: 20, page: page});
+    const { books, loadingBooks, totalElements, bookLoan, totalPages, loadingLoan } = useSearchBooks({title: findBook, idsCategories: category}, {size: 20, page: page});
 
     const { logout } = useAuth();
 
@@ -50,6 +52,8 @@ export default function SearchBooks(){
             books={books}
             setFindBook={setFindBook}
             findBook={findBook}
+            category={category}
+            setCategory={setCategory}
             totalElements={totalElements}
             loading={loadingBooks}
             action={(books) => (

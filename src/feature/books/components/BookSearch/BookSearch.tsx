@@ -5,6 +5,7 @@ import styles from "./BookSearch.module.css"
 import BookCard from "../BookCard/BookCard";
 import Loading from "../../../../shared/components/Loading/Loading";
 import Select from "../../../../shared/components/Select/Select";
+import { useCategory } from "../../../category/hooks/useCategory";
 
 interface BookCardItem {
     id: number | string,
@@ -22,10 +23,14 @@ interface BookSearchProps {
     showGutendexInfo?: boolean,
     findBook: string,
     setFindBook: (book: string) => void,
+    category: string,
+    setCategory: (value: string) => void
     action?: (book: BookCardItem) => React.ReactNode
 }
 
 export default function BookSearch(props: BookSearchProps){
+
+    const { listCategories } = useCategory();
 
     return (
         <section className={styles.container}>
@@ -41,7 +46,10 @@ export default function BookSearch(props: BookSearchProps){
 
                     <Input icon={Search} className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={props.findBook} onChange={props.setFindBook}/>
 
-                    <Select id="categories"/>
+                    <Select id="categories" placeholder="Todos os tipos" value={props.category} onChangeValue={props.setCategory} options={listCategories.map((categorie) => ({
+                        label: categorie.name,
+                        value: categorie.idCategory
+                    })) }/>
 
                     <Button className={styles.btnSearch} variant="primary">
                         Pesquisar
