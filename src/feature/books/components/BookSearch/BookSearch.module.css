@@ -24,15 +24,13 @@
     margin-bottom: 17px;
 }
 
-.btnSearch{
-    margin-top: 10px;
-}
 
 .inputContainer{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
+
 
 .filter{
     width: 100%;

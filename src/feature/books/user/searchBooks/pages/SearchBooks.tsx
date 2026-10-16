@@ -13,17 +13,17 @@ export default function SearchBooks(){
 
     const[findBook, setFindBook] = useState("");
 
-    const [category, setCategory] = useState("");
-
     const navigate = useNavigate();
 
     const location = useLocation();
 
     const locationCategories = location.state?.categories || [];
 
+    const [category, setCategory] = useState(locationCategories[0] ?? "");
+
     const [page, setPage] = useState(0);
 
-    const { books, loadingBooks, totalElements, bookLoan, totalPages, loadingLoan } = useSearchBooks({title: findBook, idsCategories: category}, {size: 20, page: page});
+    const { books, loadingBooks, totalElements, bookLoan, totalPages, loadingLoan } = useSearchBooks({title: findBook, idsCategories: category ? [category] : []}, {size: 20, page: page});
 
     const { logout } = useAuth();
 

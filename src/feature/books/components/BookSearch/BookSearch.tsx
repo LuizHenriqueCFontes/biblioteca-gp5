@@ -6,6 +6,7 @@ import BookCard from "../BookCard/BookCard";
 import Loading from "../../../../shared/components/Loading/Loading";
 import Select from "../../../../shared/components/Select/Select";
 import { useCategory } from "../../../category/hooks/useCategory";
+import { authStorage } from "../../../auth/services/authStorage";
 
 interface BookCardItem {
     id: number | string,
@@ -32,6 +33,8 @@ export default function BookSearch(props: BookSearchProps){
 
     const { listCategories } = useCategory();
 
+    const role = authStorage.getRole();
+
     return (
         <section className={styles.container}>
 
@@ -42,14 +45,15 @@ export default function BookSearch(props: BookSearchProps){
 
             <div className={styles.searchContainer}>
 
-                <form>
+                <form className={styles.inputContainer}>
 
                     <Input icon={Search} className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={props.findBook} onChange={props.setFindBook}/>
 
+                    {role !== "ADMIN" && 
                     <Select id="categories" placeholder="Todos os tipos" value={props.category} onChangeValue={props.setCategory} options={listCategories.map((categorie) => ({
                         label: categorie.name,
                         value: categorie.idCategory
-                    })) }/>
+                    })) }/>}
 
                     <Button className={styles.btnSearch} variant="primary">
                         Pesquisar

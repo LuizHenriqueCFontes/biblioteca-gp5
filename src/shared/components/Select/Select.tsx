@@ -1,5 +1,6 @@
 import { Check, ChevronDown } from "lucide-react";
 import * as SelectRadix from "@radix-ui/react-select";
+import styles from "./Select.module.css";
 
 interface OptionType {
     label?: string,
@@ -18,22 +19,23 @@ export default function Select(props: Select) {
    return(
         <SelectRadix.Root value={props.value} onValueChange={props.onChangeValue}>
 
-            <SelectRadix.Trigger>
+            <SelectRadix.Trigger className={styles.trigger} id={props.id}>
                 <SelectRadix.Value placeholder={props.placeholder}/>
                 <SelectRadix.Icon asChild>
-                    <ChevronDown />
+                    <ChevronDown className={styles.icon}/>
                 </SelectRadix.Icon>
             </SelectRadix.Trigger>
 
             <SelectRadix.Portal>
-                <SelectRadix.Content>
+                <SelectRadix.Content className={styles.content}>
 
-                    <SelectRadix.Viewport>
+                    <SelectRadix.Viewport className={styles.viewport}>
                         {props.options?.map((option) => (
-                            <SelectRadix.Item value={option.value}>
+                            <SelectRadix.Item className={styles.item} key={option.value} 
+                                value={option.value}>
                                 <SelectRadix.ItemText>{option.label}</SelectRadix.ItemText>
 
-                                <SelectRadix.ItemIndicator asChild>
+                                <SelectRadix.ItemIndicator className={styles.itemIndicator} asChild>
                                     <Check />
                                 </SelectRadix.ItemIndicator>
                             </SelectRadix.Item>
