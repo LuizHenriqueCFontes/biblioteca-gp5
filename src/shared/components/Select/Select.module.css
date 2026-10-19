@@ -52,6 +52,7 @@
   cursor: pointer;
   user-select: none;
   align-items: center;
+  justify-content: space-between;
   border-radius: 4px;
   padding: 8px 8px 8px 32px;
   font-size: 14px;
@@ -62,13 +63,17 @@
 
 .item:hover,
 .item[data-highlighted] {
-  background-color: #f3f4f6;
-  color: #111827;
+  background-color: var(--contrast-secondary-color);
+  color: var(--title-color);
+}
+
+.item[data-state="checked"] {
+  background-color: var(--contrast-secondary-color);
+  color: var(--title-color);
+  font-weight: 560;
 }
 
 .itemIndicator {
-  position: absolute;
-  left: 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;

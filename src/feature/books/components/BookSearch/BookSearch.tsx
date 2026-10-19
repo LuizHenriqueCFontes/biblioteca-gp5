@@ -50,10 +50,13 @@ export default function BookSearch(props: BookSearchProps){
                     <Input icon={Search} className={styles.input} id="1" placeholder="Digite o título, autor ou palavra-chave" value={props.findBook} onChange={props.setFindBook}/>
 
                     {role !== "ADMIN" && 
-                    <Select id="categories" placeholder="Todos os tipos" value={props.category} onChangeValue={props.setCategory} options={listCategories.map((categorie) => ({
-                        label: categorie.name,
-                        value: categorie.idCategory
-                    })) }/>}
+                    <Select id="categories" placeholder="Selecione a categoria..." value={props.category} onChangeValue={props.setCategory} options={[
+                        {label: "Todos os tipos", value: ""},
+                        ...listCategories.map((categorie) => ({
+                            label: categorie.name,
+                            value: categorie.idCategory 
+                        }))
+                    ]}/>}
 
                     <Button className={styles.btnSearch} variant="primary">
                         Pesquisar

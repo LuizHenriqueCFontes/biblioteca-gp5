@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-bottom: 17px;
+    z-index: 200000;
 }
 
 .logoContainer{
@@ -77,7 +77,6 @@
 
 .profileContainer{
     padding: 5px;
-    padding-bottom: 70px;
 }
 
 .profileContainerDesktop{
