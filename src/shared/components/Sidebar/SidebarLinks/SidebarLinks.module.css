@@ -9,9 +9,18 @@
 .logoContainer{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 15px;
     padding: 0 0 22px 20px;
     border-bottom: 2.40px solid var(--border-color);
+}
+
+.titleLogoContainer {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40.55px;
 }
 
 .logoIconContainer{
@@ -33,6 +42,24 @@
 .logoTitle{
     font-size: 1.35em;
     color: var(--title-color);
+}
+
+.btnIcon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    padding: 10px;
+}
+
+.icon{
+    color: var(--title-color);
+    width: 20px;
+    height: 20px;
+    stroke-width: 3;
 }
 
 .linkContent{
