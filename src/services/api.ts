@@ -40,15 +40,6 @@ api.interceptors.response.use(
             authStorage.clear();
         }
 
-        if(error.response?.status === 403) {
-
-            authStorage.clear();
-
-            if(navigationService.navigate) {
-                navigationService.navigate("/auth/login", {replace: true});
-            }
-        }
-
         return Promise.reject(error);
     }
 

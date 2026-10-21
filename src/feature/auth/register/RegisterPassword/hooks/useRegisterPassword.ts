@@ -26,6 +26,7 @@ export function useRegisterPassword() {
         handleSetRegister,
         register,
 
-        registerMutation: registerMutation.mutateAsync
+        registerMutation: registerMutation.mutateAsync,
+        loading: registerMutation.isPending
     }
 }

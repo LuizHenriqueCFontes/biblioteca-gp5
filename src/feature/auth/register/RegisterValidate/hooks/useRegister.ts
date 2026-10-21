@@ -20,7 +20,8 @@ export function useRegisterValidate() {
     return {
         handleSetData,
         data,
-        registerValidate: registerValidateMutation.mutateAsync
+        registerValidate: registerValidateMutation.mutateAsync,
+        loading: registerValidateMutation.isPending
     }
 
 }

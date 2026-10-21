@@ -9,7 +9,7 @@ import { handleRegisterValidate } from "../action/handleRegisterValidate";
 
 export default function RegisterValidate() {
 
-    const { handleSetData, data, registerValidate } = useRegisterValidate();
+    const { handleSetData, data, registerValidate, loading } = useRegisterValidate();
 
     const navigate = useNavigate();
 
@@ -58,7 +58,8 @@ export default function RegisterValidate() {
                         placeholder="(00) 00000-0000"
                         required
                         maxLength={15}/>
-                        <Button icon={ArrowRight} variant="continue">Continuar</Button>
+
+                        <Button disabled={loading} icon={ArrowRight} variant="continue">Continuar</Button>
                     </form>
                     <div className={styles.informationContainer}>
                         <p  className={styles.information}>Já tem uma conta? <Link className={styles.informationLink} to={"/auth/login"}>Faça login</Link> </p>

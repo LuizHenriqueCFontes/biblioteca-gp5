@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./SidebarLinks.module.css";
 import { authStorage } from "../../../../feature/auth/services/authStorage";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { Bolt, Book, BookLock, BookOpen, BookUp, ChevronDown, Home, LogIn, LogOut, User, Users } from "lucide-react";
+import { Bolt, Book, BookLock, BookOpen, BookUp, ChevronDown, Home, LogIn, LogOut, User, Users, X } from "lucide-react";
 import { useAuth } from "../../../../feature/auth/hooks/useAuth";
 import { useMediaQuery } from "../../../hooks/useMediaQuery";
 
@@ -34,12 +34,21 @@ export default function SidebarLinks(props: SidebarLinks) {
 
             <div>
                 <div className={styles.logoContainer}>
-                    <div className={styles.logoIconContainer}>
-                        <BookOpen className={styles.logoIcon}/>
+                    <div className={`${styles.titleLogoContainer}`}>
+                        <div className={styles.logoIconContainer}>
+                            <BookOpen className={styles.logoIcon}/>
+                        </div>
+                        <h1 className={styles.logoTitle}>Biblioteca</h1>
                     </div>
 
-                    <h1 className={styles.logoTitle}>Biblioteca</h1>
+                    {!isDesktop && 
+                        <button className={styles.btnIcon} onClick={props.onClick}>
+                            <X className={styles.icon}/>
+                        </button>
+                    }
                 </div>
+                
+                <hr className={`${styles.divider}`}/>
 
                 <ul className={styles.listContainer}>
                     <li onClick={props.onClick} className={styles.linkContent}>

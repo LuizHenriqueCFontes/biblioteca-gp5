@@ -10,7 +10,7 @@ import { useAuth } from "../../../hooks/useAuth";
 
 export default function RegisterPassword() {
 
-    const { handleSetRegister, register, registerMutation } = useRegisterPassword();
+    const { handleSetRegister, register, registerMutation, loading } = useRegisterPassword();
 
     const navigate = useNavigate();
 
@@ -63,7 +63,8 @@ export default function RegisterPassword() {
                         type="password"
                         value={register.confirmPassword}
                         onChange={(value) => handleSetRegister("confirmPassword", value)}/>
-                        <Button icon={ArrowRight} variant="continue">Criar conta</Button>
+
+                        <Button disabled={loading} icon={ArrowRight} variant="continue">Criar conta</Button>
                     </form>
                     <div className={styles.informationContainer}>
                         <p  className={styles.information}>Já tem uma conta? <Link className={styles.informationLink} to={"/auth/login"}>Faça login</Link> </p>

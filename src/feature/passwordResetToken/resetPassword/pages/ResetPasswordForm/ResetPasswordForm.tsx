@@ -17,7 +17,7 @@ export default function ResetPasswordForm(props: ResetPasswordForm) {
 
     const token = searchParams.get("token");
 
-    const { passwordData, handleSetPassword, resetPassword } = useResetPassword(token ?? "");
+    const { passwordData, handleSetPassword, resetPassword, loading } = useResetPassword(token ?? "");
 
     async function handlePasswordReset(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -59,7 +59,7 @@ export default function ResetPasswordForm(props: ResetPasswordForm) {
                 onChange={(value) => handleSetPassword("confirmPassword", value)}/>
 
                 <div className={styles.btnContainer}>
-                    <Button type="submit" variant="primary">Salvar nova senha</Button>
+                    <Button disabled={loading} type="submit" variant="primary">Salvar nova senha</Button>
 
                     <div className={styles.linkContainer}>
                         <Clock4 className={styles.iconLink}/> 
