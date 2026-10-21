@@ -11,8 +11,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    padding: 0 0 22px 20px;
-    border-bottom: 2.40px solid var(--border-color);
+    padding: 0 0 22px 20px
 }
 
 .titleLogoContainer {
@@ -20,7 +19,7 @@
     gap: 15px;
     align-items: center;
     justify-content: center;
-    padding-top: 40.55px;
+    padding-top: 30px;
 }
 
 .logoIconContainer{
@@ -60,6 +59,12 @@
     width: 20px;
     height: 20px;
     stroke-width: 3;
+}
+
+.divider {
+    border: none;
+    border-bottom: 2.40px solid var(--border-color);
+    padding-top: 9.9px;
 }
 
 .linkContent{

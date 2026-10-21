@@ -47,6 +47,8 @@ export default function SidebarLinks(props: SidebarLinks) {
                         </button>
                     }
                 </div>
+                
+                <hr className={`${styles.divider}`}/>
 
                 <ul className={styles.listContainer}>
                     <li onClick={props.onClick} className={styles.linkContent}>
