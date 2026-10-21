@@ -24,8 +24,8 @@ interface BookSearchProps {
     showGutendexInfo?: boolean,
     findBook: string,
     setFindBook: (book: string) => void,
-    category: string,
-    setCategory: (value: string) => void
+    category?: string,
+    setCategory?: (value: string) => void
     action?: (book: BookCardItem) => React.ReactNode
 }
 
