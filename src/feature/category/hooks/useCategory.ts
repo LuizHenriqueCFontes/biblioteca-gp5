@@ -2,8 +2,9 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { categoryService } from "../services/categoryService";
 import type { EditCategoryRequestDTO } from "../types/request/editCategoryRequestDTO";
 import type { Pageable } from "../../../shared/types/pageable";
+import { useEffect, useState } from "react";
 
-export function useCategory(name?: string, limit?: number, pageable?: Pageable) {
+export function useCategory(idCategory?: string, name?: string, limit?: number, pageable?: Pageable) {
     const queryClient = useQueryClient();
 
     const FIVE_MINUTES = 1000 * 60 * 5;
@@ -17,6 +18,12 @@ export function useCategory(name?: string, limit?: number, pageable?: Pageable) 
     const listCategories = useQuery({
         queryKey: ["listCategories", name],
         queryFn: () => categoryService.listCategories(name, limit),
+        staleTime: FIVE_MINUTES
+    });
+
+    const categoryDetails = useQuery({
+        queryKey: ["categoryDetails", idCategory],
+        queryFn: () => categoryService.categoryDetails(idCategory ?? ""),
         staleTime: FIVE_MINUTES
     });
 
@@ -49,6 +56,14 @@ export function useCategory(name?: string, limit?: number, pageable?: Pageable) 
             })
         }
     });
+
+    
+    const [updatedCategory, setUpdatedCategory] = useState("");
+
+    useEffect(() => {
+        
+
+    }, [idCategory]);
 
     return {
         categories: listPageCategories.data?.content ?? [],
