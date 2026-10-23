@@ -45,6 +45,8 @@ export default function GetLoans() {
     return(
         <section className={styles.container}>
 
+            <title>Empréstimos</title>
+
             {errorLoans && <div>{errorLoans}</div>}
 
             <div className={styles.titleContainer}>

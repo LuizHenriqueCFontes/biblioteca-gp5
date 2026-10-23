@@ -1,7 +1,6 @@
 import { Save, SquarePen } from "lucide-react";
 import Breadcrumb from "../../../../shared/components/Breadcrumb/Breadcrumb";
 import { Input } from "../../../../shared/components/Input/Input";
-import { useState } from "react";
 import { Button } from "../../../../shared/components/Button/Button";
 import styles from "./EditCategory.module.css";
 import { handleEditCategory } from "../actions/handleEditCategory";
@@ -12,9 +11,7 @@ export default function EditCategory() {
 
     const { idCategory } = useParams();
 
-    const [updatedCategory, setUpdatedCategory] = useState("");
-
-    const { editCategory } = useCategory();
+    const { editCategory, updatedCategory, setUpdatedCategory } = useCategory(idCategory);
 
     const navigate = useNavigate();
 
@@ -32,6 +29,8 @@ export default function EditCategory() {
 
     return(
         <section className={styles.mainContainer}>
+            <title>Editar categorias</title>
+
             <Breadcrumb breadcrumb={[
                 {label: "Categorias", to: "/categories"},
                 {label: "Editar categorias"}

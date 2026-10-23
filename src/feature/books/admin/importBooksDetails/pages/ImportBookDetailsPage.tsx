@@ -20,6 +20,8 @@ export default function ImportBookDetailPage(){
 
     return(
         <section className={styles.container}>
+            <title>Detalhes do livro</title>
+
             <Breadcrumb breadcrumb={[
                 {label: "Importar livros", to: "/admin/imports"},
                 {label: "Detalhes do livro"}

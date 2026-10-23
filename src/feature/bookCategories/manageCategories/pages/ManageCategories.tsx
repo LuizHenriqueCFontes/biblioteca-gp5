@@ -53,6 +53,8 @@ export default function ManageCategories() {
 
     return(
         <section className={styles.container}>
+            <title>Gerenciar categorias</title>
+
             <Breadcrumb breadcrumb={[
                 {label: "Gerenciar livros", to: "/admin/search/books"},
 

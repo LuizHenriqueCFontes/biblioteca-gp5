@@ -39,6 +39,8 @@ export default function SearchBookDetails() {
 
     return (
         <section className={styles.container}>
+            <title>Detalhes do livro</title>
+
             <Breadcrumb breadcrumb={[
                 {label: "Pesquisar livros", to: "/search/books"},
                 

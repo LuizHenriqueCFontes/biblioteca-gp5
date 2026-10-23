@@ -24,6 +24,8 @@ export default function ImportBooksPage(){
 
     return (
             <>
+                <title>Importar livros</title>
+
                 <BookSearch description="Pesquise e importe livros para a biblioteca e disponibilize para todos os usuários." 
                 findBook={findBook}
                 setFindBook={setFindBook}

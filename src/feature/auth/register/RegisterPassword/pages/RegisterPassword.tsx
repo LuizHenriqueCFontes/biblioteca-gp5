@@ -28,6 +28,8 @@ export default function RegisterPassword() {
 
     return(
         <section className={styles.container}>
+            <title>Registar senha</title>
+
             <div className={styles.logoContainer}>
                 <Logo className={styles.logo}/>
             </div>

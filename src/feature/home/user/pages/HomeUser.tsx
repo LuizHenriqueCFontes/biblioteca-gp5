@@ -11,7 +11,7 @@ import { useEffect } from "react";
 
 export default function HomeUser() {
 
-    const { listCategories, loadingListCategories } = useCategory(undefined, 20);
+    const { listCategories, loadingListCategories } = useCategory("", undefined, 20);
 
     const { books, loadingBooks, totalElements } = useSearchBooks(undefined, {page: 0, size: 20});
 
@@ -46,6 +46,8 @@ export default function HomeUser() {
 
     return(
         <section className={styles.container}>
+            <title>Início</title>
+
             <div className={styles.titleContainer}>
                 <div className={styles.containerContent}>
                     <span className={styles.tagTitle}>Bem-vindo à sua biblioteca</span>

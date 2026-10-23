@@ -27,12 +27,14 @@ export default function SearchCategories() {
 
     const [page, setPage] = useState(0);
 
-    const { categories, loadingCategories, errorCategories, deleteCategory, totalPages } = useCategory(findCategory, undefined, {size: 20, page: page});
+    const { categories, loadingCategories, errorCategories, deleteCategory, totalPages } = useCategory("", findCategory, undefined, {size: 20, page: page});
 
     {errorCategories ? errorCategories.valueOf : ""}
 
     return(
         <section className={styles.container}>
+            <title>Pesquisar categorias</title>
+
             <div className={styles.titleContainer}>
                 <div className={styles.informContainer}>
                     <h1 className={styles.title}>Categorias</h1>

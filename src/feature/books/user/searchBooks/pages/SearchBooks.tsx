@@ -47,6 +47,8 @@ export default function SearchBooks(){
     
     return(
         <>
+            <title>Pesquisar livros</title>
+
             <BookSearch 
             description="Encontre livros disponíveis e amplie seus conhecimentos"
             books={books}

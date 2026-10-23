@@ -23,6 +23,8 @@ export default function RegisterValidate() {
 
     return(
         <section className={styles.container}>
+            <title>Registrar-se</title>
+
             <div className={styles.logoContainer}>
                 <Logo className={styles.logo}/>
             </div>

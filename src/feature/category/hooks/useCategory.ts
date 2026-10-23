@@ -43,6 +43,10 @@ export function useCategory(idCategory?: string, name?: string, limit?: number, 
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: ["categories"]
+            }),
+
+            queryClient.invalidateQueries({
+                queryKey: ["categoryDetails"]
             })
         }
     });
@@ -61,9 +65,15 @@ export function useCategory(idCategory?: string, name?: string, limit?: number, 
     const [updatedCategory, setUpdatedCategory] = useState("");
 
     useEffect(() => {
-        
+        if(!categoryDetails.data) {
+            return;
+        }
 
-    }, [idCategory]);
+        const nameCategory = categoryDetails.data.name;
+
+        setUpdatedCategory(nameCategory);
+
+    }, [categoryDetails.data]);
 
     return {
         categories: listPageCategories.data?.content ?? [],
@@ -79,6 +89,9 @@ export function useCategory(idCategory?: string, name?: string, limit?: number, 
 
         editCategory: editCategory.mutateAsync,
 
-        deleteCategory: deleteCategory.mutateAsync
+        deleteCategory: deleteCategory.mutateAsync,
+
+        updatedCategory,
+        setUpdatedCategory
     }
 }
