@@ -37,6 +37,8 @@ export default function EditBookPage() {
 
     return(
         <section className={styles.container}>
+            <title>Editar livro</title>
+
             <Breadcrumb breadcrumb={[
                 {label: "Gerenciar livros", to: "/admin/search/books"},
                 {label: "Editar livro"}

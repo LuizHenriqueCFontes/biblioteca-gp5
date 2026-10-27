@@ -33,7 +33,10 @@ export default function Login() {
     }
 
     return(
+
         <section className={styles.container}>
+            <title>Login</title>
+
             <div className={styles.logoContainer}>
                 <Logo className={styles.logo}/>
             </div>
@@ -62,7 +65,7 @@ export default function Login() {
                         required
                         value={login.password}
                         onChange={(value) => handleSetLogin("password", value)}
-                        placeholder="........"
+                        placeholder="●●●●●●●●"
                         forgotPassword/>
 
                         <div className={styles.btnContainer}>

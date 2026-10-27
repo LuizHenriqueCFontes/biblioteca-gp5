@@ -8,6 +8,8 @@ export default function SendEmail() {
 
     return(
         <section>
+            <title>Recuperação de senha</title>
+
             {sendEmail ? <FormEmailDone /> : <FormEmail onEmailSend={() => setSendEmail(true)}/>}
         </section>
     );

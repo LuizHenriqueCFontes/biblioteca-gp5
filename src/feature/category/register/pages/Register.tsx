@@ -30,6 +30,8 @@ export default function RegisterCategory() {
     return(
         <section className={styles.mainContainer}>
 
+            <title>Registrar categoria</title>
+
             <Breadcrumb breadcrumb={[
                 {label: "Categorias", to: "/categories"},
                 {label: "Nova categoria"}

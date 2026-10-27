@@ -8,6 +8,7 @@ export default function ResetPassword() {
 
     return(
         <section>
+            <title>Alteração de senha</title>
             {resetPassword ? <ResetPasswordDone /> : <ResetPasswordForm setResetPassword={() => setResetPassword(true)}/>}
         </section>
     );

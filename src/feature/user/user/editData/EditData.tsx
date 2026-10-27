@@ -16,6 +16,8 @@ export default function EditData() {
 
     return(
         <section className={styles.container}>
+            <title>Alterar dados</title>
+
             <PageHeader icon={UserPen} title="Editar dados pessoais" description="Altere suas informações abaixo e clique em salvar para atualizar seus dados"/>
 
             <hr className={styles.divider}/>

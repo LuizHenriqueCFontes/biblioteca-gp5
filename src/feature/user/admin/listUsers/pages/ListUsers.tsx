@@ -19,6 +19,8 @@ export default function ListUsers() {
 
     return(
         <section className={styles.container}>
+            <title>Listar usuários</title>
+
             <PageHeader icon={UserRoundCog} title="Usuários" description="Gerencie os usuários do sistema" className={styles.pageHeader}/>
 
             <Input id="search-users"
@@ -30,7 +32,7 @@ export default function ListUsers() {
             placeholder="Buscar usuário..."/>
 
             <div className={styles.userContainer}>
-                {users.length === 0 ? <div className={styles.emptyContainer}>
+                {users.length === 0 && !loadingUsers ? <div className={styles.emptyContainer}>
                         <EmptyState icon={UserX} title="Usuário não encontrado" description="Nenhum usuário foi encontrado"/>
                     </div> : ""}
 

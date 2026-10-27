@@ -4,6 +4,8 @@ import styles from "./FormEmailDone.module.css";
 export default function FormEmailDone() {
     return(
         <section className={styles.container}>
+            <title>Envio de e-mail</title>
+
             <Logo className={styles.logo}/>
 
             <h1 className={styles.title}>Redefina sua senha</h1>

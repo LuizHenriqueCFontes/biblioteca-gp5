@@ -25,7 +25,9 @@ export default function HomeAdmin() {
 
     return(
         <section className={styles.container}>
-                <h1 className={styles.title}>Olá, {username}! 👋</h1>
+            <title>Início</title>
+
+            <h1 className={styles.title}>Olá, {username}! 👋</h1>
             <p className={styles.welcome}>Bem-vindo ao painel administrativo da Biblioteca-GP5.</p>
 
             <section className={styles.cardContainer}>

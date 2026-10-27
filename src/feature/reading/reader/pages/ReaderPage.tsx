@@ -35,16 +35,23 @@ export default function ReaderPage() {
     }
 
     return(
-        <div className={styles.readerContainer}>
-            <ReactReader url={reading.fileUrl} 
-            location={reading.epubCfi  || null} 
-            locationChanged={handleLocationChange}
-            getRendition={handleSetRendition}
-            epubOptions={{
-                allowPopups: true,
-                allowScriptedContent: true
-            }}
-            />
-        </div>
+
+
+        <>
+            <title>Leitura de livro</title>
+
+            <div className={styles.readerContainer}>
+                <ReactReader url={reading.fileUrl} 
+                location={reading.epubCfi  || null} 
+                locationChanged={handleLocationChange}
+                getRendition={handleSetRendition}
+                epubOptions={{
+                    allowPopups: true,
+                    allowScriptedContent: true
+                }}
+                />
+            </div>
+        
+        </>
     );
 }

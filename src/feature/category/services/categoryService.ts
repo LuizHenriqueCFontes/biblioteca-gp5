@@ -1,6 +1,7 @@
 import { api } from "../../../services/api";
 import type { Pageable } from "../../../shared/types/pageable";
 import type { PageResponse } from "../../../shared/types/pageResponse";
+import type { CategoryDetailsResponseDTO } from "../types/response/CategoryDetailsResponseDTO";
 import type { CategoryResponseDTO } from "../types/response/categoryResponseDTO";
 import type { EditCategoryResponseDTO } from "../types/response/editCategoryResponseDTO";
 import type { ListCategoryResponseDTO } from "../types/response/listCategoryResponseDTO";
@@ -32,6 +33,14 @@ export const categoryService = {
                 limit: limit
             }
         });
+
+        return data;
+    },
+
+    categoryDetails: async(idCategory: string): Promise<CategoryDetailsResponseDTO> => {
+        const endpoint = `${BASE_ENDPOINT}/${idCategory}`;
+
+        const { data } = await api.get<CategoryDetailsResponseDTO>(endpoint);
 
         return data;
     },
